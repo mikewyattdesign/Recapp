@@ -33,10 +33,20 @@ gem 'devise', '3.2.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-# Add testing via rspec
 group :development, :test do
+    # Add testing via rspec
     gem 'rspec-rails', '2.14.0'
+
+    # Add guard to auto-test
     gem 'guard-rspec', '3.0.2'
+
+    # add terminal notifier to see guard results
+    gem 'terminal-notifier-guard', '1.5.3'
+
+    # add better errors
+    gem 'better_errors', '0.9.0'
+    gem 'binding_of_caller', '0.7.2'
+
 end
 
 
