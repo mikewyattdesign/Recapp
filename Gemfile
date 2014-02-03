@@ -47,6 +47,9 @@ group :development, :test do
     gem 'better_errors', '0.9.0'
     gem 'binding_of_caller', '0.7.2'
 
+    # add sprockets better errors
+    gem 'sprockets_better_errors', '0.0.4'
+
 end
 
 
