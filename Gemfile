@@ -28,15 +28,15 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Add devise for user authentication
-gem 'devise'
+gem 'devise', '3.2.2'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
 # Add testing via rspec
 group :development, :test do
-    gem 'rspec-rails'
-    gem 'guard-rspec'
+    gem 'rspec-rails', '2.14.0'
+    gem 'guard-rspec', '3.0.2'
 end
 
 

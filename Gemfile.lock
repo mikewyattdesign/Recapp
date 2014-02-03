@@ -166,13 +166,13 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.1.0)
   coffee-rails (~> 4.0.0)
-  devise
-  guard-rspec
+  devise (= 3.2.2)
+  guard-rspec (= 3.0.2)
   jbuilder (~> 1.2)
   jquery-rails
   pg
   rails (= 4.0.0)
-  rspec-rails
+  rspec-rails (= 2.14.0)
   sass-rails (~> 4.0.0)
   sdoc
   turbolinks
