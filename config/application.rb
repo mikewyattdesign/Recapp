@@ -24,5 +24,10 @@ module G360EventApplication
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
   end
 end
