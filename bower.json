@@ -4,7 +4,7 @@
   "authors": [
     "Mike Wyatt II <mike@mikewyattdesign.com>"
   ],
-  "description": "An application to gather and event data and make it actionable",
+  "description": "A rails application to gather and event data and make it actionable",
   "license": "MIT",
   "private": true,
   "ignore": [
