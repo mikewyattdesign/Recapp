@@ -10,6 +10,14 @@
       </ul>
     </div>
   <% end %>
+  <div class="general-info">
+        <%= f.text_field :name, class: "form-control input-lg" %>
+        <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :name),{} ,class: "form-control" %>
+        <%= f.datetime_field :start_date_time, class: "form-control" %>
+        <%= f.datetime_field :end_date_time, class: "form-control" %>
+        <%= f.select :location_id, options_from_collection_for_select(Location.all, :id, :name),{} ,class: "form-control" %>
+        <%= f.text_area :note, class: "form-control" %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
