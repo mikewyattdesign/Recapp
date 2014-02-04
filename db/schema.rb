@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204171821) do
+ActiveRecord::Schema.define(version: 20140204173724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,11 +53,23 @@ ActiveRecord::Schema.define(version: 20140204171821) do
     t.integer  "total_attendance"
     t.integer  "estimated_total_impressions"
     t.integer  "weather_id"
+    t.text     "note"
+    t.boolean  "wholesaler_or_local_support"
+  end
+
+  create_table "events_locations", id: false, force: true do |t|
+    t.integer "event_id",    null: false
+    t.integer "location_id", null: false
   end
 
   create_table "events_photos", id: false, force: true do |t|
     t.integer "event_id", null: false
     t.integer "photo_id", null: false
+  end
+
+  create_table "events_weathers", id: false, force: true do |t|
+    t.integer "event_id",   null: false
+    t.integer "weather_id", null: false
   end
 
   create_table "giveaways", force: true do |t|
@@ -86,8 +98,8 @@ ActiveRecord::Schema.define(version: 20140204171821) do
     t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "imeageable_id"
-    t.string   "imeageable_type"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
   end
 
   create_table "programs", force: true do |t|
@@ -102,6 +114,8 @@ ActiveRecord::Schema.define(version: 20140204171821) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
   end
 
   create_table "users", force: true do |t|

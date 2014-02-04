@@ -4,4 +4,6 @@ class Event < ActiveRecord::Base
     has_many :photos, as: :imageable
     has_many :event_giveaways
     has_many :giveaways, through: :event_giveaways
+    has_one :weather
+    has_many :tags, as: :taggable
 end
