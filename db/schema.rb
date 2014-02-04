@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203234533) do
+ActiveRecord::Schema.define(version: 20140204001812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140203234533) do
     t.integer  "display_attendance"
     t.integer  "total_attendance"
     t.integer  "estimated_total_impressions"
+    t.integer  "weather_id"
   end
 
   create_table "locations", force: true do |t|
@@ -94,5 +95,15 @@ ActiveRecord::Schema.define(version: 20140203234533) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "weathers", force: true do |t|
+    t.integer  "temperature"
+    t.integer  "precipitation"
+    t.integer  "wind_chill"
+    t.integer  "heat_index"
+    t.integer  "wind_speed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
