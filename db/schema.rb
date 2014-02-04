@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204173724) do
+ActiveRecord::Schema.define(version: 20140204180244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,19 +57,9 @@ ActiveRecord::Schema.define(version: 20140204173724) do
     t.boolean  "wholesaler_or_local_support"
   end
 
-  create_table "events_locations", id: false, force: true do |t|
-    t.integer "event_id",    null: false
-    t.integer "location_id", null: false
-  end
-
   create_table "events_photos", id: false, force: true do |t|
     t.integer "event_id", null: false
     t.integer "photo_id", null: false
-  end
-
-  create_table "events_weathers", id: false, force: true do |t|
-    t.integer "event_id",   null: false
-    t.integer "weather_id", null: false
   end
 
   create_table "giveaways", force: true do |t|
@@ -146,6 +136,9 @@ ActiveRecord::Schema.define(version: 20140204173724) do
     t.integer  "wind_speed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
   end
+
+  add_index "weathers", ["event_id"], name: "index_weathers_on_event_id", using: :btree
 
 end

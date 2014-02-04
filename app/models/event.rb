@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
     belongs_to :program
-    has_one :location
+    belongs_to :location
     has_many :comments
     has_many :photos, as: :imageable
     has_many :event_giveaways
