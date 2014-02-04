@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+    belongs_to :program
     has_one :location
     has_many :comments
     has_many :photos, as: :imageable
