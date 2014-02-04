@@ -32,4 +32,7 @@ G360EventApplication::Application.configure do
 
   # Enable sprockets better errors
   config.assets.raise_production_errors = true
+
+  # Specify Paperclip option
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

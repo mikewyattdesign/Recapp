@@ -30,6 +30,9 @@ gem 'turbolinks'
 # Add devise for user authentication
 gem 'devise', '3.2.2'
 
+# Use paperclip for photo attachment
+gem 'paperclip', '4.0.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
