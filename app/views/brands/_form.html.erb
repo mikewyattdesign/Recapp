@@ -1,17 +1,24 @@
 <%= form_for(@brand) do |f| %>
-  <% if @brand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+<% if @brand.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
 
-      <ul>
-      <% @brand.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<ul>
+			<% @brand.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="brand-info">
+	<div class="form-field">
+		<%= f.text_field :name %>
+	</div>
+	<div class="form-field">
+		<%= f.file_field :logo %>
+	</div>
+</div>
+<div class="actions">
+		<%= f.submit %>
+</div>
 <% end %>
