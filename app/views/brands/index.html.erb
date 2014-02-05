@@ -16,7 +16,7 @@
       <tr>
         <td class="brand-image"><%= image_tag brand.logo, class: "img-responsive" unless brand.logo.nil? %></td>
         <td class="brand-name"><%= brand.name %></td>
-        <td><%= link_to 'Show', brand %></td>
+        <td><%= link_to "Show Programs (#{brand.programs.count})", brand_programs_path(brand) %></td>
         <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
         <td><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

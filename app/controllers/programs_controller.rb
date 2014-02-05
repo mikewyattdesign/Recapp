@@ -1,10 +1,11 @@
 class ProgramsController < ApplicationController
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
-  # GET /programs
-  # GET /programs.json
+  # GET /brands/:brand_id/programs
+  # GET /brands/:brand_id/programs.json
   def index
-    @programs = Program.all
+    @brand = Brand.find(params[:brand_id])
+    @programs = @brand.programs
   end
 
   # GET /programs/1
@@ -14,7 +15,8 @@ class ProgramsController < ApplicationController
 
   # GET /programs/new
   def new
-    @program = Program.new
+    @brand = Brand.find(params[:brand_id])
+    @program = Program.new(brand_id: @brand.id)
   end
 
   # GET /programs/1/edit
@@ -54,9 +56,10 @@ class ProgramsController < ApplicationController
   # DELETE /programs/1
   # DELETE /programs/1.json
   def destroy
+    @brand = @program.brand
     @program.destroy
     respond_to do |format|
-      format.html { redirect_to programs_url }
+      format.html { redirect_to brand_programs_path(@brand) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,6 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params[:program]
+      params.require(:program).permit(:name, :brand_id)
     end
 end

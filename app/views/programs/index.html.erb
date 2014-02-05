@@ -23,5 +23,5 @@
 </table>
 
 <br>
-
-<%= link_to 'New Program', new_brand_program_path %>
+<%= link_to_unless @brand.nil?, "Back to Brands", brands_path %> |
+<%= link_to "New #{@brand.name} Program", new_brand_program_path %>
