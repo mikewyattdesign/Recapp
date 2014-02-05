@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_event_comment_path %>
+<%= link_to 'New Comment', new_event_comment_path %> | <%= link_to_unless @event.nil?, 'Back', event_path(@event) %>
