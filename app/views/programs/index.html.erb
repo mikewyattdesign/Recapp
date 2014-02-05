@@ -1,8 +1,9 @@
 <h1>Listing programs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th>Name</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,6 +13,7 @@
   <tbody>
     <% @programs.each do |program| %>
       <tr>
+        <td><%= program.name %></td>
         <td><%= link_to 'Show', program %></td>
         <td><%= link_to 'Edit', edit_program_path(program) %></td>
         <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Program', new_program_path %>
+<%= link_to 'New Program', new_brand_program_path %>

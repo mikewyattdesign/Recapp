@@ -6,10 +6,20 @@ G360EventApplication::Application.routes.draw do
     # You can have the root of your site routed with "root"
     root 'events#index'
 
-    resources :events, shallow: true do
-        resources :tags
-        resources :comments
-        resources :photos
+    resources :events do
+        shallow do
+            resources :tags
+            resources :comments
+            resources :photos
+        end
+    end
+
+    resources :brands do
+        shallow do
+            resources :programs do
+                resources :events
+            end
+        end
     end
 
     # Example of regular route:

@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+brand_list = [
+"Busch",
+"Natural Light",
+"Rolling Rock",
+"Shock Top",
+"Michelob",
+"LandShark"
+]
+
+brand_list.each do | name |
+    Brand.find_or_create_by(name: name)
+end
