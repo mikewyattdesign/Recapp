@@ -6,9 +6,9 @@ class EventsController < ApplicationController
   def index
     if params[:program_id]
         @program = Program.find(params[:program_id])
-        @events = @program.events
+        @events = @program.events.order(start_date_time: :desc)
     else
-        @events = Event.all
+        @events = Event.all.order(start_date_time: :desc)
     end
   end
 
