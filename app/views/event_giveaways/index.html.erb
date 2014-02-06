@@ -1,4 +1,4 @@
-<%= link_to_unless @event.nil?, "Back to #{@event.name}", @event %>
+<%= link_to_unless @event.nil?, "Back to #{@event.name}", edit_event_path(@event) %>
 <h1>Listing event_giveaways</h1>
 
 <table class="table">
