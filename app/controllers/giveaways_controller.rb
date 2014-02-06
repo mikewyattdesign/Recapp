@@ -31,8 +31,7 @@ class GiveawaysController < ApplicationController
         format.html { redirect_to @giveaway, notice: 'Giveaway was successfully created.' }
         format.json { render action: 'show', status: :created, location: @giveaway }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @giveaway.errors, status: :unprocessable_entity }
+        format.html { render action: 'new' } format.json { render json: @giveaway.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +68,6 @@ class GiveawaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def giveaway_params
-      params[:giveaway]
+      params.require(:giveaway).permit(:name, :image)
     end
 end

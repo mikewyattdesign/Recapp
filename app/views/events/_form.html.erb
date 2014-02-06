@@ -10,71 +10,33 @@
     </ul>
 </div>
 <% end %>
-<div class="general-info">
-    <div class="form-group">
-        <%= f.text_field :name, class: "form-control input-lg" %>
-    </div>
-    <div class="form-group">
-        <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :name),{} ,class: "form-control" %>
-    </div>
-    <div class="form-group">
-        <%= f.datetime_field :start_date_time, class: "form-control", placeholder: "Start time" %>
-    </div>
-    <div class="form-group">
-        <%= f.datetime_field :end_date_time, class: "form-control", placeholder: "End time" %>
-    </div>
-
-    <div class="form-group">
-        <%= f.select :location_id, options_from_collection_for_select(Location.all, :id, :name),{} ,class: "form-control" %>
-    </div>
-    <div class="form-group">
-        <%= f.text_area :note, class: "form-control", placeholder: "Event notes" %>
-    </div>
-</div>
+<%= render 'general_fields', f: f %>
 <% @details = true %>
 <div class="detail <%= "hidden" unless @details %>">
     <div class="checkbox">
         <%= f.check_box :brand_demo_fit, class: "" %>
         <%= f.label :brand_demo_fit, "Brand fits the demographic" %>
     </div>
-    <div class="form-group">
-        <%= f.label :samples_given, "Samples Given" %>
-        <%= f.number_field :samples_given %>
-    </div>
-
-    <div class="form-group">
-        <%= f.label :digital_engagements, "Digital Engagements" %>
-        <%= f.number_field :digital_engagements %>
-
-    </div>
-    <div class="form-group">
-        <%= f.label :mileage_impressions, "Mileage Impressions" %>
-        <%= f.number_field :mileage_impressions %>
-
-    </div>
-    <div class="form-group">
-        <%= f.label :estimated_total_impressions, "Estimated Total Impressions" %>
-        <%= f.number_field :estimated_total_impressions %>
-
-    </div>
-    <div class="form-group">
-        <%= f.label :footprint_attendance, "Footprint Attendance" %>
-        <%= f.number_field :footprint_attendance %>
-
-    </div>
-    <div class="form-group">
-        <%= f.label :display_attendance, "Display Attendance" %>
-        <%= f.number_field :display_attendance %>
-
-    </div>
-    <div class="form-group">
-        <%= f.label :total_attendance, "Total Event Attendance" %>
-        <%= f.number_field :total_attendance %>
-
-    </div>
     <div class="checkbox">
         <%= f.check_box :wholesaler_or_local_support %>
         <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
+    </div>
+
+<%= render 'impression_fields', f: f %>
+
+    <div class="giveaways">
+        <div class="form-group">
+            <%= f.label :samples_given, "Samples Given" %>
+            <%= f.number_field :samples_given %>
+        </div>
+        <%= render 'giveaways_fields', f: f %>
+    </div>
+
+    <div class="engagements">
+        <div class="form-group">
+            <%= f.label :digital_engagements, "Digital Engagements" %>
+            <%= f.number_field :digital_engagements %>
+        </div>
     </div>
 </div>
 

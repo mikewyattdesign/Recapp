@@ -69,6 +69,6 @@ class EventGiveawaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_giveaway_params
-      params[:event_giveaway]
+      params.require(:event_giveaway).permit(:event_id, :giveaway_id, :count_given_away, :giveaway_attributes)
     end
 end
