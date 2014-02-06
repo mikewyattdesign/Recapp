@@ -8,11 +8,17 @@ G360EventApplication::Application.routes.draw do
     # You can have the root of your site routed with "root"
     root 'events#index'
 
+
+    resources :locations
+    resources :giveaways
+    resources :event_giveaways
+
     resources :events do
         shallow do
             resources :tags
             resources :comments
             resources :photos
+            resources :event_giveaways
         end
     end
 
@@ -23,10 +29,6 @@ G360EventApplication::Application.routes.draw do
             end
         end
     end
-
-    resources :locations
-    resources :giveaways
-    resources :event_giveaways
 
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'

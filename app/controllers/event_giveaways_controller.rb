@@ -4,7 +4,12 @@ class EventGiveawaysController < ApplicationController
   # GET /event_giveaways
   # GET /event_giveaways.json
   def index
-    @event_giveaways = EventGiveaway.all
+    if params[:event_id]
+        @event = Event.find(params[:event_id])
+        @event_giveaways = @event.event_giveaways
+    else
+        @event_giveaways = EventGiveaway.all
+    end
   end
 
   # GET /event_giveaways/1
@@ -14,7 +19,12 @@ class EventGiveawaysController < ApplicationController
 
   # GET /event_giveaways/new
   def new
-    @event_giveaway = EventGiveaway.new
+    if params[:event_id]
+        @event = Event.find(params[:event_id])
+        @event_giveaway = EventGiveaway.new(event_id: @event.id)
+    else
+        @event_giveaway = EventGiveaway.new
+    end
   end
 
   # GET /event_giveaways/1/edit

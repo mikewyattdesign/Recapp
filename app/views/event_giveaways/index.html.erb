@@ -1,8 +1,12 @@
+<%= link_to_unless @event.nil?, "Back to #{@event.name}", @event %>
 <h1>Listing event_giveaways</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th>Event</th>
+      <th>Giveaway</th>
+      <th>Count</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,6 +16,9 @@
   <tbody>
     <% @event_giveaways.each do |event_giveaway| %>
       <tr>
+        <td><%= event_giveaway.event.name %></td>
+        <td><%= event_giveaway.giveaway.name %></td>
+        <td><%= event_giveaway.count_given_away %></td>
         <td><%= link_to 'Show', event_giveaway %></td>
         <td><%= link_to 'Edit', edit_event_giveaway_path(event_giveaway) %></td>
         <td><%= link_to 'Destroy', event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -21,5 +28,4 @@
 </table>
 
 <br>
-
-<%= link_to 'New Event giveaway', new_event_giveaway_path %>
+<%= link_to 'New Event giveaway', @event.nil? ? new_event_giveaway_path : new_event_event_giveaway_path(@event) %>

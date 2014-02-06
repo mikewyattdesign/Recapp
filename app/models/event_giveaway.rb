@@ -1,6 +1,6 @@
 class EventGiveaway < ActiveRecord::Base
-    belongs_to :event, inverse_of: :event
-    belongs_to :giveaway, inverse_of: :giveaway
+    belongs_to :event
+    belongs_to :giveaway
 
     validates_presence_of :event
     validates_presence_of :giveaway
