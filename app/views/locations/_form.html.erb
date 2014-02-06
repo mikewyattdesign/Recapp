@@ -1,0 +1,51 @@
+<%= form_for(@location) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="location-info">
+      <div class="form-group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, class: "" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :latitude, "Latitude" %>
+          <%= f.text_field :latitude, class: "" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :longitude, "Longitude" %>
+          <%= f.text_field :longitude, class: "" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :street, "Street" %>
+          <%= f.text_field :street, class: "" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :city, "City" %>
+          <%= f.text_field :city, class: "" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :state, "State" %>
+          <%= f.text_field :state, class: "" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :country, "Country" %>
+          <%= f.text_field :country, class: "" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :postal_code, "Postal Code" %>
+          <%= f.text_field :postal_code, class: "" %>
+      </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 G360EventApplication::Application.routes.draw do
+  resources :locations
+
     devise_for :users
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
@@ -21,6 +23,10 @@ G360EventApplication::Application.routes.draw do
             end
         end
     end
+
+    resources :locations
+    resources :giveaways
+    resources :event_giveaways
 
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'

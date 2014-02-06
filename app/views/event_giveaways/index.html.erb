@@ -1,0 +1,25 @@
+<h1>Listing event_giveaways</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_giveaways.each do |event_giveaway| %>
+      <tr>
+        <td><%= link_to 'Show', event_giveaway %></td>
+        <td><%= link_to 'Edit', edit_event_giveaway_path(event_giveaway) %></td>
+        <td><%= link_to 'Destroy', event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event giveaway', new_event_giveaway_path %>

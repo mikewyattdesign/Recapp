@@ -18,4 +18,8 @@ class EventDecorator
     def duration
         distance_of_time_in_words(event.start_date_time, event.end_date_time)
     end
+
+    def brand
+        event.program.brand
+    end
 end
