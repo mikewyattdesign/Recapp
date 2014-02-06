@@ -18,3 +18,19 @@ brand_list = [
 brand_list.each do | name |
     Brand.find_or_create_by(name: name)
 end
+
+giveaway_list = [
+"Plastic Glasses",
+"Wristbands",
+"T-Shirts",
+"One Sheets",
+"Coozies",
+"Blankets",
+"Necklace Beads",
+"Magnets",
+"Stickers"
+]
+
+giveaway_list.each do | name |
+    Giveaway.find_or_create_by(name: name)
+end
