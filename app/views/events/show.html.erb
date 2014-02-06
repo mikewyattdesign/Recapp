@@ -2,13 +2,20 @@
 
 <div class="event">
     <div class="row">
-        <div class="event-header">
-            <div class="event-name col-md-3"><%= @event_decorator.name %></div>
-            <div class="event-program col-md-3"><%= @event_decorator.program.name %></div>
-            <div class="event-brand col-md-3"><%= @event_decorator.program.brand.name %></div>
-            <div class="event-date col-md-3"><%= time_tag @event_decorator.start_date_time %></div>
+        <div class="event-header col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="event-name"><%= @event_decorator.name %></h2>
+                    <div class="event-program">part of <%= @event_decorator.program.name %></div>
+                    <div class="event-date"><%= time_tag @event_decorator.start_date_time %></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
+                </div>
+            </div>
         </div>
-        <div class="event-summary">
+        <div class="clearfix"></div>
+        <div class="event-summary hidden">
             <div class="event-weather col-md-3">
                 <%= @event_decorator.try(:weather) %>
             </div>
@@ -18,9 +25,55 @@
             <div class="col-md-3 event-attendees"><%= @event_decorator.total_attendance %></div>
             <div class="col-md-3 event-impressions"><%= @event_decorator.estimated_total_impressions %></div>
         </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="event-impressions panel panel-default">
+                <div class="panel-heading">Impressions</div>
+                <div class="panel-body">
+                    <div class="estimated-total-impressions">Estimated Total: <%= @event_decorator.estimated_total_impressions %>
+                    </div>
+                    <div class="mileage_impressions">
+                        Mileage: <%= @event_decorator.mileage_impressions %>
+                    </div>
+                    <div class="footprint-attendance">
+                        Footprint: <%= @event_decorator.footprint_attendance %>
+                    </div>
+                    <div class="display-attendance">
+                        Display:<%= @event_decorator.display_attendance %>
+                    </div>
+                    <div class="total-attendance">
+                        Total: <%= @event_decorator.total_attendance %>
+                    </div>
+
+                </div>
+            </div>
+            <div class="event-giveaways panel panel-default">
+                <div class="panel-heading">Giveaways</div>
+                <div class="panel-body">
+                    <% @event_decorator.event_giveaways.each do | event_giveaway| %>
+                        <div class="event-giveaway">
+                            <span class="giveaway-name"><%= event_giveaway.giveaway.name %></span>
+                            <span class="giveaway-count"><%= event_giveaway.count_given_away %></span>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="event-engagements panel panel-default">
+                <div class="panel-heading">Engagements</div>
+                <div class="panel-body">
+                    <div class="extended-engagements">
+                        Extended: 0
+                    </div>
+                    <div class="digital-engagements">Digital: <%= @event_decorator.digital_engagements %></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<%= link_to 'Edit Event Recap', edit_event_path(@event), class: "btn btn-primary" %> |
-<%= link_to 'Back', events_path %> |
-<%= link_to 'Comments', event_comments_path(@event) %>
+<div class="actions text-center">
+    <ul class="list-inline">
+        <li><%= link_to 'Back', events_path %></li>
+        <li><%= link_to 'Edit Event Recap', edit_event_path(@event), class: "btn btn-primary" %></li>
+        <li><%= link_to 'Comments', event_comments_path(@event) %></li>
+    </ul>
+</div>
