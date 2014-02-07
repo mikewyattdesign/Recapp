@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206163411) do
+ActiveRecord::Schema.define(version: 20140207201936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,15 +47,15 @@ ActiveRecord::Schema.define(version: 20140206163411) do
     t.integer  "location_id"
     t.integer  "program_id"
     t.boolean  "brand_demo_fit"
-    t.integer  "samples_given"
+    t.integer  "samples_given",               default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "digital_engagements",         default: 0
     t.integer  "mileage_impressions",         default: 0
-    t.integer  "footprint_attendance"
-    t.integer  "display_attendance"
-    t.integer  "total_attendance"
-    t.integer  "estimated_total_impressions"
+    t.integer  "footprint_attendance",        default: 0
+    t.integer  "display_attendance",          default: 0
+    t.integer  "total_attendance",            default: 0
+    t.integer  "estimated_total_impressions", default: 0
     t.integer  "weather_id"
     t.text     "note"
     t.boolean  "wholesaler_or_local_support"
