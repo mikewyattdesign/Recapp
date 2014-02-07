@@ -31,7 +31,8 @@ class GiveawaysController < ApplicationController
         format.html { redirect_to @giveaway, notice: 'Giveaway was successfully created.' }
         format.json { render action: 'show', status: :created, location: @giveaway }
       else
-        format.html { render action: 'new' } format.json { render json: @giveaway.errors, status: :unprocessable_entity }
+        format.html { render action: 'new' }
+        format.json { render json: @giveaway.errors, status: :unprocessable_entity }
       end
     end
   end
