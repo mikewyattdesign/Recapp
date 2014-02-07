@@ -21,5 +21,4 @@
 // Load all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap3-datetimepicker/build/js/bootstrap-datetimepicker.min
-//= require bootstrap-datepicker
 //= require_tree .

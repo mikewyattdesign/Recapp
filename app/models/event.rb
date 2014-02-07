@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
 
     # Virtual Attributes to simplify Start and End Date Time Entry
     def start_time
-        self.start_date_time.localtime.strftime("%I:%M %p")
+        start_date_time.localtime.strftime("%I:%M %p") if start_date_time.present?
     end
 
     def start_time=(time)
@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
     end
 
     def start_date
-        self.start_date_time.to_date.strftime("%m/%d/%Y")
+        start_date_time.to_date.strftime("%m/%d/%Y") if start_date_time.present?
     end
 
     def start_date=(date)
@@ -46,7 +46,7 @@ class Event < ActiveRecord::Base
     end
 
     def end_time
-        self.end_date_time.localtime.strftime("%I:%M %p")
+        end_date_time.localtime.strftime("%I:%M %p") if end_date_time.present?
     end
 
     def end_time=(time)
@@ -60,7 +60,7 @@ class Event < ActiveRecord::Base
     end
 
     def end_date
-        self.end_date_time.to_date.strftime("%m/%d/%Y")
+        end_date_time.to_date.strftime("%m/%d/%Y") if end_date_time.present?
     end
 
     def end_date=(date)
