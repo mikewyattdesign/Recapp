@@ -14,8 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 
+// Load moment for bootstrap datetimepicker
+//= require moment/moment
+
+
 // Load all Bootstrap javascripts
 //= require bootstrap
-//= require bootstrap-timepicker
+//= require bootstrap3-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require bootstrap-datepicker
 //= require_tree .

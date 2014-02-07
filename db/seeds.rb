@@ -7,12 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 brand_list = [
-"Busch",
-"Natural Light",
-"Rolling Rock",
-"Shock Top",
-"Michelob",
-"LandShark"
+    "Busch",
+    "Natural Light",
+    "Rolling Rock",
+    "Shock Top",
+    "Michelob",
+    "LandShark"
 ]
 
 brand_list.each do | name |
@@ -20,15 +20,15 @@ brand_list.each do | name |
 end
 
 giveaway_list = [
-"Plastic Glasses",
-"Wristbands",
-"T-Shirts",
-"One Sheets",
-"Coozies",
-"Blankets",
-"Necklace Beads",
-"Magnets",
-"Stickers"
+    "Plastic Glasses",
+    "Wristbands",
+    "T-Shirts",
+    "One Sheets",
+    "Coozies",
+    "Blankets",
+    "Necklace Beads",
+    "Magnets",
+    "Stickers"
 ]
 
 giveaway_list.each do | name |

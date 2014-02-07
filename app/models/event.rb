@@ -12,4 +12,67 @@ class Event < ActiveRecord::Base
     accepts_nested_attributes_for :giveaways
     accepts_nested_attributes_for :weather
     accepts_nested_attributes_for :location
+
+
+    # Virtual Attributes to simplify Start and End Date Time Entry
+    def start_time
+        self.start_date_time.localtime.strftime("%I:%M %p")
+    end
+
+    def start_time=(time)
+        t = Time.parse(time)
+        if self.start_date_time.present?
+            d = self.start_date_time.to_date
+        else
+            d = Date.today
+        end
+
+        self.start_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
+    end
+
+    def start_date
+        self.start_date_time.to_date.strftime("%m/%d/%Y")
+    end
+
+    def start_date=(date)
+        d = Date.strptime(date, "%m/%d/%Y")
+        if self.start_date_time.present?
+            t = self.start_date_time.to_time
+        else
+            t = DateTime.now.to_time
+        end
+
+        self.start_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
+    end
+
+    def end_time
+        self.end_date_time.localtime.strftime("%I:%M %p")
+    end
+
+    def end_time=(time)
+        t = Time.parse(time)
+        if self.end_date_time.present?
+            d = self.end_date_time.to_date
+        else
+            d = Date.today
+        end
+        self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
+    end
+
+    def end_date
+        self.end_date_time.to_date.strftime("%m/%d/%Y")
+    end
+
+    def end_date=(date)
+        d = Date.strptime(date, "%m/%d/%Y")
+        if self.end_date_time.present?
+            t = self.end_date_time.to_time
+        else
+            t = DateTime.now.to_time
+        end
+        self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
+    end
+
+
+
 end

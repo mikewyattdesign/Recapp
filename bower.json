@@ -16,5 +16,6 @@
     "tests"
   ],
   "dependencies": {
+    "bootstrap3-datetimepicker": "~2.1.30"
   }
 }
