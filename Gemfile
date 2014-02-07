@@ -12,6 +12,9 @@ gem 'sass-rails', '~> 4.0.0'
 # Use bootstrap for styling
 gem 'bootstrap-sass', '~> 3.1.0'
 
+# Use bootstrap timepicker (predictably) for time picking
+gem 'bootstrap-timepicker-rails', '0.1.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
