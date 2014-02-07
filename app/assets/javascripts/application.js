@@ -17,4 +17,5 @@
 // Load all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap-timepicker
+//= require bootstrap-datepicker
 //= require_tree .
