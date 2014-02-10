@@ -9,7 +9,6 @@ G360EventApplication::Application.routes.draw do
     root 'events#index'
 
 
-    resources :locations
     resources :giveaways
     resources :event_giveaways
 
@@ -19,6 +18,7 @@ G360EventApplication::Application.routes.draw do
             resources :comments
             resources :photos
             resources :event_giveaways
+            resources :locations
         end
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207201936) do
+ActiveRecord::Schema.define(version: 20140210175154) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20140207201936) do
     t.string   "name"
     t.datetime "start_date_time"
     t.datetime "end_date_time"
-    t.integer  "location_id"
     t.integer  "program_id"
     t.boolean  "brand_demo_fit"
     t.integer  "samples_given",               default: 0
@@ -53,7 +52,6 @@ ActiveRecord::Schema.define(version: 20140207201936) do
     t.integer  "display_attendance",          default: 0
     t.integer  "total_attendance",            default: 0
     t.integer  "estimated_total_impressions", default: 0
-    t.integer  "weather_id"
     t.text     "note"
     t.boolean  "wholesaler_or_local_support"
   end
@@ -84,7 +82,10 @@ ActiveRecord::Schema.define(version: 20140207201936) do
     t.string   "postal_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
   end
+
+  add_index "locations", ["event_id"], name: "index_locations_on_event_id"
 
   create_table "photos", force: true do |t|
     t.string   "photo_file_name"

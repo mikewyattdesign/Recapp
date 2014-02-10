@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
     belongs_to :program
-    belongs_to :location
+    has_one :location
     has_many :comments
     has_many :photos, as: :imageable
     has_many :event_giveaways, inverse_of: :event
@@ -72,7 +72,5 @@ class Event < ActiveRecord::Base
         end
         self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
-
-
 
 end
