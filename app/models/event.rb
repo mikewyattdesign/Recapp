@@ -1,6 +1,5 @@
 class Event < ActiveRecord::Base
     belongs_to :program
-    has_one :location
     has_many :comments
     has_many :photos, as: :imageable
     has_many :event_giveaways, inverse_of: :event
@@ -11,7 +10,6 @@ class Event < ActiveRecord::Base
     accepts_nested_attributes_for :event_giveaways
     accepts_nested_attributes_for :giveaways
     accepts_nested_attributes_for :weather
-    accepts_nested_attributes_for :location
 
 
     # Virtual Attributes to simplify Start and End Date Time Entry

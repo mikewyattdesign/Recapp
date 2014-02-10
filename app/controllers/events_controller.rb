@@ -84,6 +84,10 @@ class EventsController < ApplicationController
         :end_time,
         :end_date,
         :location_id,
+        :street,
+        :city,
+        :state,
+        :country,
         :program_id,
         :note,
         :brand_demo_fit,
@@ -98,7 +102,6 @@ class EventsController < ApplicationController
         :wholesaler_or_local_support,
         :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id],
         :giveaways_attributes => [:id, :name],
-        :weather_attributes => [:id],
-        :location_attributes => [:id, :name])
+        :weather_attributes => [:id])
     end
 end
