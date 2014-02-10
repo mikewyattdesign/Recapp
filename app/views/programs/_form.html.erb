@@ -1,4 +1,4 @@
-<%= form_for([@brand,@program]) do |f| %>
+<%= form_for([@brand,@program], html: {class: "form-horizontal"}) do |f| %>
   <% if @program.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
@@ -13,16 +13,20 @@
 
     <div class="program-info">
         <div class="form-group">
-            <%= f.label :name, "Name" %>
-            <%= f.text_field :name %>
+            <%= f.label :name, "Name", class: "control-label col-md-2" %>
+            <div class="col-md-10">
+              <%= f.text_field :name %>
+            </div>
         </div>
         <div class="form-group">
-            <%= f.label :brand_id, "Brand" %>
-            <%= f.select :brand_id, options_from_collection_for_select(Brand.all, :id, :name, @program.brand_id),{}, class: "" %>
+            <%= f.label :brand_id, "Brand", class: "control-label col-md-2" %>
+            <div class="col-md-10">
+              <%= f.select :brand_id, options_from_collection_for_select(Brand.all, :id, :name, @program.brand_id),{}, class: "" %>
+            </div>
         </div>
     </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions col-md-offset-2">
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,11 +1,13 @@
 <div class="general-info">
     <div class="form-group">
-        <div class="col-sm-12 col-md-12">
+            <%= f.label :name, "Name", class: "control-label col-md-2" %>
+        <div class="col-md-10">
             <%= f.text_field :name, class: "form-control input-lg", placeholder: "Event name" %>
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-12 col-md-12">
+        <%= f.label :program_id, "Program", class: "control-label col-md-2" %>
+        <div class="col-md-10">
             <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand),{} ,class: "form-control" %>
         </div>
     </div>
@@ -42,7 +44,8 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-12">
+        <%= f.label :note, "Note", class: "control-label col-md-2" %>
+        <div class="col-md-10">
             <%= f.text_area :note, class: "form-control", placeholder: "Event notes" %>
         </div>
     </div>
