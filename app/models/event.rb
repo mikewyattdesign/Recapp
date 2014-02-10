@@ -14,6 +14,7 @@ class Event < ActiveRecord::Base
     validates :start_date_time, presence: true
     validates :end_date_time, presence: true
     validates :name, presence: true
+    validates :program_id, presence: true
 
     # Virtual Attributes to simplify Start and End Date Time Entry
     def start_time
