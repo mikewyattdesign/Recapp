@@ -22,4 +22,8 @@ class EventDecorator
     def brand
         event.program.brand
     end
+
+    def location
+        "#{event.city}, #{event.state}"
+    end
 end
