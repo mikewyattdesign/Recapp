@@ -24,6 +24,6 @@ class EventDecorator
     end
 
     def location
-        "#{event.city}, #{event.state}"
+        "#{event.city}, #{event.state}" unless event.city.blank? || event.state.blank?
     end
 end
