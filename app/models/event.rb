@@ -11,6 +11,9 @@ class Event < ActiveRecord::Base
     accepts_nested_attributes_for :giveaways
     accepts_nested_attributes_for :weather
 
+    validates :start_date_time, presence: true
+    validates :end_date_time, presence: true
+    validates :name, presence: true
 
     # Virtual Attributes to simplify Start and End Date Time Entry
     def start_time
