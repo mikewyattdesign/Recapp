@@ -19,10 +19,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    if params[:event_id]
-      @event = Event.find(params[:event_id])
-    end
-    @comment = Comment.new
+    @event = Event.find(params[:event_id])
+    @comment = Comment.new(event_id: @event.id)
   end
 
   # GET /comments/1/edit
@@ -32,8 +30,9 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    @event = Event.find(params[:event_id])
     @comment = Comment.new(comment_params)
-
+    @comment.event_id = @event.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -77,6 +76,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params[:comment]
+      params.require(:comment).permit(:content, :event_id)
     end
 end
