@@ -32,6 +32,9 @@ gem 'devise', '3.2.2'
 # Use paperclip for photo attachment
 gem 'paperclip', '4.0.0'
 
+# Use Amazon S3 for production file storage
+gem 'aws-sdk', '1.33.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
