@@ -30,7 +30,7 @@ class ProgramsController < ApplicationController
 
     respond_to do |format|
       if @program.save
-        format.html { redirect_to @program, notice: 'Program was successfully created.' }
+        format.html { redirect_to program_events_path(@program), notice: 'Program was successfully created.' }
         format.json { render action: 'show', status: :created, location: @program }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class ProgramsController < ApplicationController
   def update
     respond_to do |format|
       if @program.update(program_params)
-        format.html { redirect_to @program, notice: 'Program was successfully updated.' }
+        format.html { redirect_to program_events_path(@program), notice: 'Program was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
