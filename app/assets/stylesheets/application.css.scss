@@ -12,3 +12,25 @@
 .event-header {
     padding-bottom: 4%;
 }
+
+// Events Style
+.events-header {
+    text-align: center;
+}
+
+.events-group {
+    border: 1px solid #c5c5c5;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    .events-info {
+
+    }
+}
+
+.event-marker {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+}

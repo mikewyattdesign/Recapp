@@ -1,29 +1,37 @@
-<h1>Listing events</h1>
+<div class="row">
+    <div class="col-md-10">
+        <div class="events-header">
+            <h1>All Events</h1>
+        </div>
+    </div>
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @events.each do |event| %>
+<div class="row">
+    <div class="col-md-10">
+        <div class="row events-group">
+            <div class="col-md-2 events-img">
+                <img src="">
+            </div>
+            <div class="col-md-10 events-info">
+                <div><%= event.name %></div>
+                <div><%= time_tag event.start_date_time %></div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default"><%= link_to 'Show', event %></button>
+                    <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_event_path(event) %></button>
+                    <button type="button" class="btn btn-default"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= time_tag event.start_date_time %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-md-2">
+        <div class="event-marker">
+        </div>
+    </div>
+</div>
+<% end %>
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<button type="button" class="btn btn-default"><%= link_to 'New Event', new_event_path %></button>
