@@ -48,6 +48,9 @@ group :development, :test do
     # add terminal notifier to see guard results
     gem 'terminal-notifier-guard', '1.5.3'
 
+    # Use FactoryGirl to create stubs, test models, etc
+    gem 'factory_girl_rails', '4.4.0'
+
     # add better errors
     gem 'better_errors', '0.9.0'
     gem 'binding_of_caller', '0.7.2'
