@@ -51,6 +51,9 @@ group :development, :test do
     # Use FactoryGirl to create stubs, test models, etc
     gem 'factory_girl_rails', '4.4.0'
 
+    # Use Capybara for functional testing
+    gem 'capybara', '2.2.1'
+
     # add better errors
     gem 'better_errors', '0.9.0'
     gem 'binding_of_caller', '0.7.2'
