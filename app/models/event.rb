@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
     validates :end_date_time, presence: true
     validates :name, presence: true
     validates :program_id, presence: true
+    validates_with DateValidator
 
     # Virtual Attributes to simplify Start and End Date Time Entry
     def start_time
@@ -74,5 +75,4 @@ class Event < ActiveRecord::Base
         end
         self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
-
 end
