@@ -2,6 +2,10 @@ development:
     access_key_id: AKIAJEYPUIB65MBB4J7Q
     secret_access_key: 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
     bucket: nutshell-360-dev
+test: 
+    access_key_id: AKIAJEYPUIB65MBB4J7Q
+    secret_access_key: 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
+    bucket: nutshell-360-dev
 production: 
     access_key_id: AKIAJEYPUIB65MBB4J7Q
     secret_access_key: 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

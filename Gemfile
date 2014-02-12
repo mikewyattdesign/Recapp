@@ -42,6 +42,9 @@ group :development, :test do
     # Add testing via rspec
     gem 'rspec-rails', '2.14.0'
 
+    # Use fuubar to style rspec output
+    gem 'fuubar', '1.3.2'
+
     # Add guard to auto-test
     gem 'guard-rspec', '3.0.2'
 
