@@ -2,7 +2,7 @@
     <%= image_tag 'test-image.jpg', class: "event-img" %>
     <ul class="list-inline">
         <li><button class="btn btn-default">[5] Impressions</button></li>
-        <li><button class="btn btn-default">Giveaways</button></li>
-        <li><button class="btn btn-default">Comments</button></li>
+        <li><%= link_to 'Giveaways', event_event_giveaways_path(event), class: "btn btn-default" %></li>
+        <li><%= link_to 'Comments', event_comments_path(event), class: "btn btn-default" %></li>
     </ul>
 </div>
