@@ -15,9 +15,9 @@ describe Program do
 		expect(Program.new(name: 'Heroes', brand_id: 1)).to respond_to(:brand)
 	end
 	it "returns its brand" do
-		brand = Brand.create(name: 'Busch')
-		program = Program.new(name: 'Heroes', brand_id: brand.id)
-		expect(program.brand).to eq brand
+		busch = create(:brand)
+		program = Program.new(name: 'Heroes', brand_id: busch.id)
+		expect(program.brand).to eq busch
 	end
 	it "responds to events" do
 		expect(Program.new(name: 'Heroes', brand_id: 1)).to respond_to(:events)

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Brand do
 	it "is valid with a name" do
-		brand = Brand.new(name: 'Busch')
+		brand = build(:brand)
 		expect(brand).to be_valid
 	end
 	it "is invalid without a name" do
