@@ -1,47 +1,47 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8 col-md-offset-2">
         <div class="event-header">
-            <h1>All Events</h1>
+            <h1>Events
+                <button type="button" class="pull-right new-event-btn btn btn-default"><%= link_to 'New Event', new_event_path %></button>
+            </h1>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-6">
+<div class="row" >
+    <div class="col-md-8 col-md-offset-2">
         <div class="event-container">
-            <div class="event-bar">All Events</div>
             <div class="event-group">
             <% @events.each do |event| %>
-                <div class="event-info">
-                    <div class="event-info-text">
-                        <div class="event-name"><%= event.name %></div>
-                        <div class="event-start"><%= time_tag event.start_date_time %></div>
+                <div class="row">
+                    <div class="col-md-2">
                     </div>
-                    <div class="event-info-button">
-                            <%= link_to edit_event_path(event) do %>
-                        <button type="button" class="btn btn-default info-button glyphicon glyphicon glyphicon-pencil">
-                        </button>
-                        <% end %>
-                            <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <button type="button" class="btn btn-default info-button glyphicon glyphicon-trash">
-                        </button>
-                        <% end %>
+
+                    <div class="col-md-10">
+                        <div class="event-info">
+                            <div class="event-info-text">
+                                <div class="event-name"><%= event.name %></div>
+                                <div class="event-start"><%= time_tag event.start_date_time %></div>
+                            </div>
+                            <div class="event-info-button">
+                                    <%= link_to edit_event_path(event) do %>
+                                <button type="button" class="btn btn-default info-button glyphicon glyphicon glyphicon-pencil">
+                                </button>
+                                <% end %>
+                                    <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                <button type="button" class="btn btn-default info-button glyphicon glyphicon-trash">
+                                </button>
+                                <% end %>
+                            </div>
+                            <%= render 'event_details' %>
+                            <div class="event-circle"></div>
+                            <div class="event-timeline"></div>
+                        </div>
                     </div>
                 </div>
             <% end %>
             </div>
         </div>
     </div>
-
-    <div class="col-md-6">
-        <div class="event-detial-container">
-            <div class="event-detail">
-            </div>
-        </div>
-    </div>
 </div>
 
-
-<br>
-
-<button type="button" class="btn btn-default"><%= link_to 'New Event', new_event_path %></button>
