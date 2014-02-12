@@ -3,5 +3,5 @@ class Brand < ActiveRecord::Base
     has_attached_file :logo
     validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\z/
 
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: true
 end

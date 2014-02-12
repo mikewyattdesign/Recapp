@@ -54,9 +54,6 @@ group :development, :test do
     # Use FactoryGirl to create stubs, test models, etc
     gem 'factory_girl_rails', '4.4.0'
 
-    # Use Capybara for functional testing
-    gem 'capybara', '2.2.1'
-
     # add better errors
     gem 'better_errors', '0.9.0'
     gem 'binding_of_caller', '0.7.2'
@@ -68,6 +65,23 @@ group :development, :test do
     gem 'meta_request', '0.2.8'
 
     gem 'sqlite3'
+end
+
+group :test do
+    # Use faker for fake data generation
+    gem 'faker', '~> 1.1.2'
+
+    # Use Capybara for functional testing
+    gem 'capybara', '2.2.1'
+
+    # Use database cleaner to (predictably) clean the db after tests
+    gem 'database_cleaner', '~> 1.0.1'
+
+    # Use launchy to view web results of integration tests
+    gem 'launchy', '~> 2.3.0'
+
+    # Make selenium test driver available
+    gem 'selenium-webdriver', '~> 2.39.0'
 end
 
 group :production do
