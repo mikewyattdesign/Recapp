@@ -1,27 +1,47 @@
-<h1>Listing comments</h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Comments</h1>
+        </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Comment</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+        <div class="form-box">
 
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.content %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Comment</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-<br>
+          <tbody>
+            <% @comments.each do |comment| %>
+              <tr>
+                <td><%= comment.content %></td>
+                <td><%= link_to 'Show', comment %></td>
+                <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+                <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<%= link_to 'New Comment', new_event_comment_path %> | <%= link_to_unless @event.nil?, 'Back', event_path(@event) %>
+        <br>
+
+            <div class="row">
+                <div class="col-md-12 form-header-label"></div>
+                <div class="col-md-12 submit-container">
+                    <div class="form-group">
+                    <%= link_to 'New Comment', new_event_comment_path, class: "btn btn-primary pull-right" %>
+
+                    <%= link_to_unless @event.nil?, 'Back', event_path(@event), class: "btn btn-default pull-right back-button" %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

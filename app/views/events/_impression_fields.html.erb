@@ -1,32 +1,64 @@
-<div class="impressions">
-    <div class="form-group">
-        <%= f.label :mileage_impressions, "Mileage Impressions", class: "control-label col-md-2" %>
-        <div class="col-md-10">
-            <%= f.number_field :mileage_impressions, class: "form-control" %>
+<div class="impressions row">
+    <div class="col-md-12 form-header-label">
+        <h3>Impressions & Stats</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <%= f.label :mileage_impressions, "Mileage Impressions", class: "control-label col-md-12" %>
+            <div class="col-md-12">
+                <%= f.number_field :mileage_impressions, class: "form-control" %>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <%= f.label :estimated_total_impressions, "Estimated Total Impressions", class: "control-label col-md-2" %>
-        <div class="col-md-10">
-            <%= f.number_field :estimated_total_impressions, class: "form-control" %>
+    <div class="col-md-6">
+        <div class="form-group">
+            <%= f.label :estimated_total_impressions, "Estimated Total Impressions", class: "control-label col-md-12" %>
+            <div class="col-md-12">
+                <%= f.number_field :estimated_total_impressions, class: "form-control" %>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <%= f.label :footprint_attendance, "Footprint Attendance", class: "control-label col-md-2" %>
-        <div class="col-md-10">
-            <%= f.number_field :footprint_attendance, class: "form-control" %>
+    <div class="col-md-6">
+        <div class="form-group">
+            <%= f.label :footprint_attendance, "Footprint Attendance", class: "control-label col-md-12" %>
+            <div class="col-md-12">
+                <%= f.number_field :footprint_attendance, class: "form-control" %>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <%= f.label :display_attendance, "Display Attendance", class: "control-label col-md-2" %>
-        <div class="col-md-10">
-            <%= f.number_field :display_attendance, class: "form-control" %>
+    <div class="col-md-6">
+        <div class="form-group">
+            <%= f.label :display_attendance, "Display Attendance", class: "control-label col-md-12" %>
+            <div class="col-md-12">
+                <%= f.number_field :display_attendance, class: "form-control" %>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <%= f.label :total_attendance, "Total Event Attendance", class: "control-label col-md-2" %>
-        <div class="col-md-10">
-            <%= f.number_field :total_attendance, class: "form-control" %>
+    <div class="col-md-6">
+        <div class="form-group">
+            <%= f.label :total_attendance, "Total Event Attendance", class: "control-label col-md-12" %>
+            <div class="col-md-12">
+                <%= f.number_field :total_attendance, class: "form-control" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <%= f.label :digital_engagements, "Digital Engagements", class: "control-label col-md-12" %>
+            <div class="col-md-12">
+                <%= f.number_field :digital_engagements, class: "form-control" %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="checkbox">
+                    <%= f.check_box :brand_demo_fit, class: "" %>
+                    <%= f.label :brand_demo_fit, "Brand fits the demographic" %>
+                </div>
+            </div>
         </div>
     </div>
 </div>

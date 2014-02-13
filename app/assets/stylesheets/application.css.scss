@@ -12,9 +12,6 @@ $lightMediumGrey: #e6e6e6;
 .brand-image {
     width: 10%;
 }
-.event-header {
-    padding-bottom: 4%;
-}
 
 // Events Style
 .event-logo {
@@ -22,8 +19,8 @@ $lightMediumGrey: #e6e6e6;
 }
 
 .event-header {
+    padding-bottom: 4%;
     background-color: $lightGrey;
-    margin-bottom: 15px;
     padding: 10px 20px;
     border: 1px solid #e1e1e1;
     border-bottom: 5px solid #a6a6a6;
@@ -46,15 +43,10 @@ $lightMediumGrey: #e6e6e6;
     }
 }
 
-.event-box {
-    border: 1px dotted #e1e1e1;
+.container-box {
+    border: 1px solid #e1e1e1;
     padding: 0;
     margin-bottom: 20px;
-}
-
-.event-detail {
-    height: 536px;
-    overflow: scroll;
 }
 
 .event-name {
@@ -77,7 +69,8 @@ $lightMediumGrey: #e6e6e6;
 
 .event-info {
     padding: 10px 20px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     border: 1px solid #e1e1e1;
     position: relative;
     -webkit-box-shadow: 0px 0px 10px $lightMediumGrey;
@@ -145,4 +138,39 @@ $lightMediumGrey: #e6e6e6;
 .event-info-button {
     width: 10%;
     display: inline-block;
+}
+
+.form-header-label {
+    border-bottom: 1px solid $lightMediumGrey;
+    h3 {
+        margin: 0 0 5px 0;
+    }
+}
+
+.form-box {
+    padding: 30px;
+}
+
+.control-label {
+    text-align: left !important;
+}
+
+.form-control {
+    height: 40px;
+}
+
+.form-row {
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    padding-top: 0 !important;
+}
+
+.submit-container {
+    margin-top: 20px;
+}
+
+.back-button {
+    margin-right: 20px;
 }

@@ -1,31 +1,48 @@
-<%= link_to_unless @event.nil?, "Back to #{@event.name}", edit_event_path(@event) %>
-<h1>Listing event_giveaways</h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Event Giveaway</h1>
+        </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Event</th>
-      <th>Giveaway</th>
-      <th>Count</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+        <div class="form-box">
 
-  <tbody>
-    <% @event_giveaways.each do |event_giveaway| %>
-      <tr>
-        <td><%= event_giveaway.event.name %></td>
-        <td><%= event_giveaway.giveaway.name %></td>
-        <td><%= event_giveaway.count_given_away %></td>
-        <td><%= link_to 'Show', event_giveaway %></td>
-        <td><%= link_to 'Edit', edit_event_giveaway_path(event_giveaway) %></td>
-        <td><%= link_to 'Destroy', event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Giveaway</th>
+                  <th>Count</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
 
-<br>
-<%= link_to 'New Event giveaway', @event.nil? ? new_event_giveaway_path : new_event_event_giveaway_path(@event) %>
+              <tbody>
+                <% @event_giveaways.each do |event_giveaway| %>
+                  <tr>
+                    <td><%= event_giveaway.event.name %></td>
+                    <td><%= event_giveaway.giveaway.name %></td>
+                    <td><%= event_giveaway.count_given_away %></td>
+                    <td><%= link_to 'Show', event_giveaway %></td>
+                    <td><%= link_to 'Edit', edit_event_giveaway_path(event_giveaway) %></td>
+                    <td><%= link_to 'Destroy', event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-md-12 form-header-label"></div>
+                <div class="col-md-12 submit-container">
+                    <div class="form-group">
+                    <%= link_to 'New Giveaway', @event.nil? ? new_event_giveaway_path : new_event_event_giveaway_path(@event),class: "btn btn-primary pull-right" %>
+
+                    <%= link_to_unless @event.nil?, "Back", edit_event_path(@event), class: "btn btn-default pull-right back-button" %>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

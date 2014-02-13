@@ -1,7 +1,20 @@
 <%= f.fields_for :event_giveaways, @event.event_giveaways do |eg| %>
     <% event_giveaway = eg.object %>
-    <%= eg.select :giveaway_id, options_from_collection_for_select(Giveaway.all, :id, :name, event_giveaway.giveaway.id ),{}, class: "" %>
-    <%= eg.number_field :count_given_away %>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="col-md-12">
+            <div class="control-label col-md-12"></div>
+            <%= eg.select :giveaway_id, options_from_collection_for_select(Giveaway.all, :id, :name, event_giveaway.giveaway.id ),{}, class: "form-control" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="col-md-12">
+            <div class="control-label col-md-12"></div>
+            <%= eg.number_field :count_given_away, class: "form-control" %>
+            </div>
+        </div>
+    </div>
 <% end %>
 <div class="clearfix"></div>
-<%= link_to "Manage Event Giveaways", event_event_giveaways_path(@event) %>

@@ -1,53 +1,79 @@
-<%= form_for @event,html: {class: "form-horizontal"} do |f| %>
-<% if @event.errors.any? %>
-    <div id="error_explanation">
-        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="form-box">
+    <%= form_for @event,html: {class: "form-horizontal"} do |f| %>
+    <% if @event.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-        <ul>
-            <% @event.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
-<%= render 'general_fields', f: f %>
-<% if @details %>
-    <div class="detail <%= "hidden" unless @details %>">
-        <div class="form-group">
-        <div class="checkbox col-md-offset-2">
-            <%= f.check_box :brand_demo_fit, class: "" %>
-            <%= f.label :brand_demo_fit, "Brand fits the demographic" %>
+            <ul>
+                <% @event.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
         </div>
-            <div class="checkbox col-md-offset-2">
-                <%= f.check_box :wholesaler_or_local_support %>
-                <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
-            </div>
-        </div>
+    <% end %>
+    <%= render 'general_fields', f: f %>
+    <% if @details %>
+        <div class="detail <%= "hidden" unless @details %>">
 
-        <%= render 'impression_fields', f: f %>
+            <%= render 'impression_fields', f: f %>
 
-        <div class="giveaways">
-            <div class="form-group">
-                <%= f.label :samples_given, "Samples Given", class: "control-label col-md-2" %>
-                <div class="col-md-10">
-                    <%= f.number_field :samples_given, class: "form-control" %>
+            <div class="giveaways row">
+                <div class="col-md-12 form-header-label">
+                    <h3>Giveaways</h3>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <%= f.label :samples_given, "Samples Given", class: "control-label col-md-12" %>
+                        <div class="col-md-12">
+                            <%= f.number_field :samples_given, class: "form-control" %>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <%= render 'giveaways_fields', f: f %>
-        </div>
 
-        <div class="engagements">
-            <div class="form-group">
-                <%= f.label :digital_engagements, "Digital Engagements", class: "control-label col-md-2" %>
-                <div class="col-md-10">
-                    <%= f.number_field :digital_engagements, class: "form-control" %>
+            <div class="row">
+                <%= render 'giveaways_fields', f: f %>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                <%= f.check_box :wholesaler_or_local_support %>
+                                <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                        <%= link_to "Manage Event Giveaways", event_event_giveaways_path(@event), class: "btn btn-default" %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-<% end %>
+    <% end %>
 
-<div class="actions">
-    <%= f.submit class: "btn btn-primary pull-right" %>
+        <div class="row">
+            <div class="col-md-12 form-header-label"></div>
+            <div class="col-md-12 submit-container">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="actions">
+                            <%= f.submit class: "btn btn-primary pull-right" %>
+                        </div>
+                        <div class="actions">
+                            <%= link_to 'Back', events_path, class: "btn btn-default pull-right back-button" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
 </div>
-<% end %>
