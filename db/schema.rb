@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212231823) do
+ActiveRecord::Schema.define(version: 20140212235029) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "assignable_id"
+    t.string   "assignable_type"
   end
 
   add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"

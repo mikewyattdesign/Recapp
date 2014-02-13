@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it "responds to events" do 
+		expect(build(:user)).to respond_to(:events)
+	end
+	it "responds to programs" do
+		expect(build(:user)).to respond_to(:programs)
+	end
+	it "responds to brands" do
+		expect(build(:user)).to respond_to(:brands)
+	end
 end

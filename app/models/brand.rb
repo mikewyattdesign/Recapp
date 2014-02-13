@@ -4,4 +4,9 @@ class Brand < ActiveRecord::Base
     validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\z/
 
     validates :name, presence: true, uniqueness: true
+
+    def events
+    	program_ids = programs.pluck(:id)
+    	Event.where(program_id: program_ids)
+    end
 end
