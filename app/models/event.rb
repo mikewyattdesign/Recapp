@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
     has_many :giveaways, through: :event_giveaways
     has_one :weather
     has_many :tags, as: :taggable
+    has_many :assignments, as: :assignable
 
     accepts_nested_attributes_for :event_giveaways
     accepts_nested_attributes_for :giveaways
