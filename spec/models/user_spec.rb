@@ -74,13 +74,13 @@ describe User do
 		expect(u.programs).to_not include program1
 	end
 	it "can be removed from a brand" do
-		# u = create(:user)
-		# brand1 = create(:brand)
-		# brand2 = create(:brand)
-		# u.assign_to_brand(brand1)
-		# u.assign_to_brand(brand2)
-		# u.remove_from_brand(brand1)
-		# expect(u.brands).to_not include brand1
+		u = create(:user)
+		brand1 = create(:brand)
+		brand2 = create(:brand)
+		u.assign_to_brand(brand1)
+		u.assign_to_brand(brand2)
+		u.remove_from_brand(brand1)
+		expect(u.brands).to_not include brand1
 	end
 
 end
