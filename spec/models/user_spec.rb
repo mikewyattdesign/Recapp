@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe User do
+	it "is invalid without a role" do
+		expect(build(:user, role: nil)).to be_invalid
+	end
+
 	it "responds to events" do 
 		expect(build(:user)).to respond_to(:events)
 	end
@@ -82,5 +86,10 @@ describe User do
 		u.remove_from_brand(brand1)
 		expect(u.brands).to_not include brand1
 	end
+
+	it "knows if it's an admin"
+	it "knows if it's a social media manager"
+	it "knows if it's an event manager"
+	it "knows if it's a base user"
 
 end

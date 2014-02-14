@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+         validates :role, presence: true
+
   has_many :assignments
   # has_many :events, 
   # 			through: :assignments, 
