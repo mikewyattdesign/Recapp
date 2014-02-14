@@ -1,8 +1,8 @@
 <div class="event-details">
     <%= image_tag 'test-image.jpg', class: "event-img" %>
     <ul class="list-inline">
-        <li><button class="btn btn-default">[5] Impressions</button></li>
-        <li><%= link_to 'Giveaways', event_event_giveaways_path(event), class: "btn btn-default" %></li>
-        <li><%= link_to 'Comments', event_comments_path(event), class: "btn btn-default" %></li>
+        <li><%= link_to "/events/#{event.id}/edit#impression-jump" do %><button class="btn btn-default"><div class="counter">(<%= event.impressions %>)</div>Impressions</button><% end %></li>
+        <li><%= link_to event_event_giveaways_path(event) do %><button type="button" class="btn btn-default"><div class="counter">(<%= event.giveaways.length %>)</div>Giveaways</button><% end %></li>
+        <li><%= link_to event_comments_path(event) do %><button type="button" class="btn btn-default"><div class="counter">(<%= event.comments.length %>)</div>Comments</button><% end %></li>
     </ul>
 </div>
