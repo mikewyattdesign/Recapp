@@ -17,3 +17,6 @@
 
 # Ignore node modules
 /node_modules
+
+# Ignore locally uploaded photos
+/public/system
