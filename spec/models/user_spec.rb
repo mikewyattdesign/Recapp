@@ -87,7 +87,14 @@ describe User do
 		expect(u.brands).to_not include brand1
 	end
 
-	it "knows if it's an admin"
+	it "knows if it's an admin" do
+		u = create(:user, role: 0)
+		expect(u.is_admin?).to be_true
+	end
+	it "knows if it's not an admin" do
+		u = create(:user, role: 4)
+		expect(u.is_admin?).to be_false
+	end
 	it "knows if it's a social media manager"
 	it "knows if it's an event manager"
 	it "knows if it's a base user"

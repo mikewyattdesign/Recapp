@@ -12,9 +12,18 @@
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
-		<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav navbar-left">
 			<li><%= link_to "Events", "/events" %></li>
 			<li><%= link_to "Brands", "/brands" %></li>
 		</ul>
+		<ul class="nav navbar-nav navbar-right">
+		<% if user_signed_in? %>
+			<li><%= link_to destroy_user_session_path, method: :delete do %><span class="glyphicon glyphicon-log-out"></span> Logout<% end %></li>
+		<% else %>
+			<li><%= link_to new_user_session_path do %><span class="glyphicon glyphicon-log-in"></span> Login<% end %></li>
+
+		<% end %>
+		</ul>
 	</div><!-- /.navbar-collapse -->
+
 </nav>

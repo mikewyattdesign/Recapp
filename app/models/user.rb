@@ -43,8 +43,12 @@ class User < ActiveRecord::Base
   end
 
   def events
+    return Event.all if is_admin?
     program_ids = programs.pluck(:id)
     Event.where(program_id: program_ids)
   end
 
+  def is_admin?
+    role == 0
+  end
 end

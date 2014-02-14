@@ -4,12 +4,21 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    if params[:program_id]
-        @program = Program.find(params[:program_id])
-        @events = @program.events.order(start_date_time: :desc)
+    if user_signed_in?
+      if params[:program_id]
+          @program = Program.find(params[:program_id])
+          @events = @program.events.order(start_date_time: :desc)
+      else
+          @events = current_user.events.order(start_date_time: :desc)
+      end
     else
-        @events = Event.all.order(start_date_time: :desc)
-    end
+      if params[:program_id]
+          @program = Program.find(params[:program_id])
+          @events = @program.events.order(start_date_time: :desc)
+      else
+          @events = Event.all.order(start_date_time: :desc)
+      end 
+    end 
   end
 
   # GET /events/1
