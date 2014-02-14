@@ -1,29 +1,43 @@
-<h1>Listing brands</h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Brands</h1>
+        </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Logo</th>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+        <div class="form-box">
 
-  <tbody>
-    <% @brands.each do |brand| %>
-      <tr>
-        <td class="brand-image"><%= image_tag brand.logo, class: "img-responsive" unless brand.logo.nil? %></td>
-        <td class="brand-name"><%= brand.name %></td>
-        <td><%= link_to "Show Programs (#{brand.programs.count})", brand_programs_path(brand) %></td>
-        <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
-        <td><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Name</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-<br>
+          <tbody>
+            <% @brands.each do |brand| %>
+              <tr>
+                <td class="brand-image"><%= image_tag brand.logo, class: "img-responsive" unless brand.logo.nil? %></td>
+                <td class="brand-name"><%= brand.name %></td>
+                <td><%= link_to "Show Programs (#{brand.programs.count})", brand_programs_path(brand) %></td>
+                <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
+                <td><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<%= link_to 'New Brand', new_brand_path %>
+        <div class="row">
+            <div class="col-md-12 form-header-label"></div>
+            <div class="col-md-12 submit-container">
+                <div class="form-group">
+                <%= link_to 'New Brand', new_brand_path, class: "btn btn-primary pull-right" %>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
