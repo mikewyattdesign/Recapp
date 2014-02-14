@@ -11,6 +11,7 @@
                 <div class="event-container">
                     <div class="event-group">
                     <% @events.each do |event| %>
+                    <% event_decorator = EventDecorator.new(event) %>
                     <div class="row">
                         <div class="col-md-2">
                         </div>
@@ -18,9 +19,9 @@
                         <div class="col-md-10">
                             <div class="event-info">
                                 <div class="event-info-text">
-                                    <%= image_tag 'NaturalLightLogo.jpg', class: "event-logo pull-left" %>
-                                    <div class="event-name"><%= event.name %></div>
-                                    <div class="event-start"><%= time_tag event.start_date_time %></div>
+                                    <%= image_tag event_decorator.brand.logo, class: "event-logo pull-left" %>
+                                    <div class="event-name"><%= event_decorator.name %></div>
+                                    <div class="event-start"><%= event_decorator.start_date %></div>
                                 </div>
                                 <div class="event-info-button">
                                         <%= link_to edit_event_path(event) do %>
