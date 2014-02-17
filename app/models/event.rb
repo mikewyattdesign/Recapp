@@ -79,4 +79,12 @@ class Event < ActiveRecord::Base
     def impressions
         estimated_total_impressions
     end
+    def miles
+        mileage_rate =  82
+        mileage_impressions / mileage_rate
+    end
+    def miles=(mileage)
+        mileage_rate = 82
+        self.mileage_impressions = mileage_rate * mileage.to_f
+    end
 end

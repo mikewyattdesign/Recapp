@@ -55,4 +55,14 @@ describe Event do
 		event = build(:event)
 		expect(event).to respond_to(:tags)
 	end
+	it "responds to miles" do
+		event = build(:event)
+		expect(event).to respond_to(:miles)
+	end
+
+	it "calculates mileage impressions based on miles" do
+		event = build(:event)
+		event.miles = 1
+		expect(event.mileage_impressions).to eq(82)
+	end
 end

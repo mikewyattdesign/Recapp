@@ -103,6 +103,7 @@ class EventsController < ApplicationController
         :samples_given,
         :digital_engagements,
         :mileage_impressions,
+        :miles,
         :footpring_attendance,
         :display_attendance,
         :total_attendance,
