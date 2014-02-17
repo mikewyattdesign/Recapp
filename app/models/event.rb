@@ -76,8 +76,8 @@ class Event < ActiveRecord::Base
         end
         self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
-    def impressions
-        estimated_total_impressions
+    def estimated_total_impressions
+        mileage_impressions + walk_by_impressions
     end
     def miles
         mileage_rate =  82

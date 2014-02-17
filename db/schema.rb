@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214180056) do
+ActiveRecord::Schema.define(version: 20140217220117) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140214180056) do
     t.integer "event_id"
     t.integer "giveaway_id"
     t.integer "count_given_away"
+    t.boolean "wholesaler_or_local_support", default: false
   end
 
   create_table "events", force: true do |t|
@@ -54,15 +55,13 @@ ActiveRecord::Schema.define(version: 20140214180056) do
     t.datetime "end_date_time"
     t.integer  "program_id"
     t.boolean  "brand_demo_fit"
-    t.integer  "samples_given",               default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "digital_engagements",         default: 0
     t.integer  "mileage_impressions",         default: 0
-    t.integer  "footprint_attendance",        default: 0
-    t.integer  "display_attendance",          default: 0
+    t.integer  "footprint_impressions",       default: 0
+    t.integer  "walk_by_impressions",         default: 0
     t.integer  "total_attendance",            default: 0
-    t.integer  "estimated_total_impressions", default: 0
     t.text     "note"
     t.boolean  "wholesaler_or_local_support"
     t.string   "city"
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140214180056) do
     t.string   "street"
     t.string   "postal_code"
     t.string   "country"
+    t.integer  "extended_engagements",        default: 0
   end
 
   create_table "events_photos", id: false, force: true do |t|

@@ -104,13 +104,14 @@ class EventsController < ApplicationController
         :digital_engagements,
         :mileage_impressions,
         :miles,
-        :footpring_attendance,
-        :display_attendance,
+        :footprint_impressions,
+        :walk_by_impressions,
         :total_attendance,
         :estimated_total_impressions,
+        :extended_engagements,
         :weather_id,
         :wholesaler_or_local_support,
-        :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id],
+        :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id, :wholesaler_or_local_support],
         :giveaways_attributes => [:id, :name],
         :weather_attributes => [:id])
     end
