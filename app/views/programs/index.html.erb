@@ -1,27 +1,36 @@
-<h1>Listing programs</h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Listing programs</h1>
+        </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+        <div class="form-box">
 
-  <tbody>
-    <% @programs.each do |program| %>
-      <tr>
-        <td><%= program.name %></td>
-        <td><%= link_to 'Show Events', program_events_path(program) %></td>
-        <td><%= link_to 'Edit', edit_program_path(program) %></td>
-        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
 
-<br>
-<%= link_to_unless @brand.nil?, "Back to Brands", brands_path %> |
-<%= link_to "New #{@brand.name} Program", new_brand_program_path %>
+              <tbody>
+                <% @programs.each do |program| %>
+                  <tr>
+                    <td><%= program.name %></td>
+                    <td><%= link_to 'Show Events', program_events_path(program) %></td>
+                    <td><%= link_to 'Edit', edit_program_path(program) %></td>
+                    <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            <br>
+            <%= link_to_unless @brand.nil?, "Back to Brands", brands_path %> |
+            <%= link_to "New #{@brand.name} Program", new_brand_program_path %>
+        </div>
+    </div>
+</div>

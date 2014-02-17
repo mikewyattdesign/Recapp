@@ -6,29 +6,36 @@
 
         <div class="form-box">
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Logo</th>
-              <th>Name</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
+        <div class="row">
+        <% @brands.each do |brand| %>
+          <div class="col-md-4">
+            <div class="brand-icon-container">
+            <div class="brand-icon">
+                <%= image_tag brand.logo, class: "img-responsive brand-logos" unless brand.logo.nil? %>
+            </div>
+            <div class="brand-name">
+                <%= brand.name %>
+            </div>
+            <div>
+                <%= link_to brand_programs_path(brand) do %>
+                <button type="button" class="btn btn-primary info-button"> <span class="glyphicon glyphicon-eye-open"></span> Programs</button>
+                <% end %>
+            </div>
+            <div>
+                <%= link_to edit_brand_path(brand) do %>
+                <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span> Edit</button>
+                <% end %>
+            </div>
+            <div>
+                <%= link_to brand, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span> Delete</button>
+                <% end %>
+            </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
 
-          <tbody>
-            <% @brands.each do |brand| %>
-              <tr>
-                <td class="brand-image"><%= image_tag brand.logo, class: "img-responsive" unless brand.logo.nil? %></td>
-                <td class="brand-name"><%= brand.name %></td>
-                <td><%= link_to "Show Programs (#{brand.programs.count})", brand_programs_path(brand) %></td>
-                <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
-                <td><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
 
         <div class="row">
             <div class="col-md-12 form-header-label"></div>
