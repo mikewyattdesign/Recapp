@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Photo do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "responds to tags" do
+  	expect(Photo.new()).to respond_to(:tags)
+  end
 end
