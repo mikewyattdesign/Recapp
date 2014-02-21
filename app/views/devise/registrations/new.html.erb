@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Registration</h1>
+        </div>
+
+        <div class="form-box">
+
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                  <%= devise_error_messages! %>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                          <%= f.label :email, class: "control-label" %>
+                          <%= f.email_field :email, :autofocus => true, class: "form-control" %>
+                        </div>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                          <%= f.label :password, class: "control-label" %>
+                          <%= f.password_field :password, class: "form-control" %>
+                        </div>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                          <%= f.label :password_confirmation, class: "control-label" %>
+                          <%= f.password_field :password_confirmation, class: "form-control" %>
+                        </div>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col-md-12 form-header-label"></div>
+                        <div class="col-md-12 submit-container">
+                            <%= f.submit "Sign up", class: "btn btn-primary pull-right" %>
+                            <%= render "devise/shared/links" %>
+                        </div>
+                    </div>
+
+                <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

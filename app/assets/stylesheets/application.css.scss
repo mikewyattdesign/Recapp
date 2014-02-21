@@ -9,6 +9,10 @@
 $lightGrey: #f8f8f8;
 $lightMediumGrey: #e6e6e6;
 
+.container-full {
+    width: 100%;
+}
+
 // Events Style
 .event-header {
     padding-bottom: 4%;
@@ -165,7 +169,7 @@ $lightMediumGrey: #e6e6e6;
     height: 40px;
 }
 
-.form-row {
+.form-row, .form-cont-box {
     margin-bottom: 10px;
 }
 
@@ -177,17 +181,17 @@ $lightMediumGrey: #e6e6e6;
     margin-top: 20px;
 }
 
-.back-button {
+.back-button, .btn-right-space {
     margin-right: 20px;
 }
 
 
 #brand_logo {
     opacity: 0;
+    position: absolute;
 }
 
 .input-button {
-    position: absolute;
     z-index: -1;
 }
 
@@ -217,6 +221,11 @@ $lightMediumGrey: #e6e6e6;
 
 .brand-icon {
     height: 300px;
+    background-color: $lightGrey;
+}
+
+.prize-icon {
+    height: 150px;
     background-color: $lightGrey;
 }
 

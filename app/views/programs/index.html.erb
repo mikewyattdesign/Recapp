@@ -4,33 +4,44 @@
             <h1>Listing programs</h1>
         </div>
 
+
         <div class="form-box">
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
+            <div class="row">
+            <% @programs.each do |program| %>
+              <div class="col-md-4">
+                <div class="brand-icon-container">
+                <div class="prize-icon">
+                    <!-- Prize Picture -->
+                </div>
+                <div class="brand-name">
+                    <%= program.name %>
+                </div>
+                <div>
+                    <%= link_to program_events_path(program) do %>
+                    <button type="button" class="btn btn-primary info-button"> <span class="glyphicon glyphicon-eye-open"></span> Show Events</button>
+                    <% end %>
+                </div>
+                <div>
+                    <%= link_to edit_program_path(program) do %>
+                    <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span> Edit</button>
+                    <% end %>
+                </div>
+                <div>
+                    <%= link_to program, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span> Delete</button>
+                    <% end %>
+                </div>
+                </div>
+              </div>
+            <% end %>
+            </div>
 
-              <tbody>
-                <% @programs.each do |program| %>
-                  <tr>
-                    <td><%= program.name %></td>
-                    <td><%= link_to 'Show Events', program_events_path(program) %></td>
-                    <td><%= link_to 'Edit', edit_program_path(program) %></td>
-                    <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
+        </div>
 
             <br>
             <%= link_to_unless @brand.nil?, "Back to Brands", brands_path %> |
             <%= link_to "New #{@brand.name} Program", new_brand_program_path %>
-        </div>
+
     </div>
 </div>
