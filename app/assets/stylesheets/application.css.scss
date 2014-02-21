@@ -205,6 +205,14 @@ $lightMediumGrey: #e6e6e6;
     -webkit-box-shadow: 0px 0px 10px $lightMediumGrey;
     -moz-box-shadow: 0px 0px 10px $lightMediumGrey;
     box-shadow: 0px 0px 10px $lightMediumGrey;
+
+    &:hover {
+        background-color: $lightGrey;
+        -webkit-box-shadow: 0px 0px 15px #b6b6b6;
+        -moz-box-shadow: 0px 0px 15px #b6b6b6;
+        box-shadow: 0px 0px 15px #b6b6b6;
+        border-left: 1px solid #e1e1e1;
+    }
 }
 
 .brand-icon {
