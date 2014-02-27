@@ -1,7 +1,11 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1 container-box">
         <div class="event-header">
-            <h1>Listing programs</h1>
+            <h1>Program Listings for <%= @brand.name %>
+                <%= link_to new_brand_program_path do %>
+                <button type="button" class="pull-right new-event-btn btn btn-default">New <%= @brand.name %> Programs</button>
+                <% end %>
+            </h1>
         </div>
 
 
@@ -39,9 +43,7 @@
 
         </div>
 
-            <br>
-            <%= link_to_unless @brand.nil?, "Back to Brands", brands_path %> |
-            <%= link_to "New #{@brand.name} Program", new_brand_program_path %>
+        <%= link_to_unless @brand.nil?, "Back to Brands", brands_path %>
 
     </div>
 </div>
