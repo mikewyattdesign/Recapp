@@ -6,37 +6,43 @@
 
         <div class="form-box">
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Event</th>
-                  <th>Giveaway</th>
-                  <th>Count</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <% @event_giveaways.each do |event_giveaway| %>
-                  <tr>
-                    <td><%= event_giveaway.event.name %></td>
-                    <td><%= event_giveaway.giveaway.name %></td>
-                    <td><%= event_giveaway.count_given_away %></td>
-                    <td><%= link_to 'Show', event_giveaway %></td>
-                    <td><%= link_to 'Edit', edit_event_giveaway_path(event_giveaway) %></td>
-                    <td><%= link_to 'Destroy', event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
+            <div class="row">
+            <% @event_giveaways.each do |event_giveaway| %>
+              <div class="col-md-4">
+                <div class="brand-icon-container">
+                <div class="prize-icon">
+                    <!-- Prize Picture -->
+                </div>
+                <div class="brand-name">
+                    <%= event_giveaway.event.name %>
+                    <%= event_giveaway.giveaway.name %>
+                    <%= event_giveaway.count_given_away %>
+                </div>
+                <div>
+                    <%= link_to event_giveaway do %>
+                    <button type="button" class="btn btn-primary info-button"><span class="glyphicon glyphicon-eye-open"></span> Show</button>
+                    <% end %>
+                </div>
+                <div>
+                    <%= link_to edit_event_giveaway_path(event_giveaway) do %>
+                    <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span> Show</button>
+                    <% end %>
+                </div>
+                <div>
+                    <%= link_to event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span> Delete</button>
+                    <% end %>
+                </div>
+                </div>
+              </div>
+            <% end %>
+            </div>
 
             <div class="row">
                 <div class="col-md-12 form-header-label"></div>
                 <div class="col-md-12 submit-container">
                     <div class="form-group">
-                    <%= link_to 'New Giveaway', @event.nil? ? new_event_giveaway_path : new_event_event_giveaway_path(@event),class: "btn btn-primary pull-right" %>
+                    <%= link_to 'New Giveaway', @event.nil? ? new_event_giveaway_path : new_event_event_giveaway_path(@event), class: "btn btn-primary pull-right" %>
 
                     <%= link_to_unless @event.nil?, "Back", edit_event_path(@event), class: "btn btn-default pull-right back-button" %>
                     </div>
