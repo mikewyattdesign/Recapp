@@ -13,6 +13,12 @@ $lightMediumGrey: #e6e6e6;
     width: 100%;
 }
 
+table {
+    th {
+        background-color: $lightGrey;
+    }
+}
+
 // Events Style
 .event-header {
     padding-bottom: 4%;
@@ -202,7 +208,7 @@ $lightMediumGrey: #e6e6e6;
     box-shadow: 0px 0px 10px $lightMediumGrey;
 }
 
-.brand-icon-container {
+.brand-icon-container, .event-giveaway-container,.comments-container {
     padding: 15px;
     margin-bottom: 30px;
     border: 1px solid $lightMediumGrey;
@@ -219,8 +225,14 @@ $lightMediumGrey: #e6e6e6;
     }
 }
 
+.comments-container, .event-giveaway-container {
+    border-radius: 10px;
+    border: 2px solid $lightMediumGrey;
+    margin-bottom: 15px;
+}
+
 .brand-icon {
-    height: 300px;
+    height: 250px;
     background-color: $lightGrey;
 }
 
@@ -229,8 +241,21 @@ $lightMediumGrey: #e6e6e6;
     background-color: $lightGrey;
 }
 
+.event-giveaway-icon {
+    height: 70px;
+    background-color: $lightGrey;
+}
+
 .brand-name {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+}
+
+.event-giveaway-name {
+    height: 70px;
+}
+
+.comments {
+    font-size: 18px;
 }
