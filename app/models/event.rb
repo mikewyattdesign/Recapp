@@ -87,4 +87,8 @@ class Event < ActiveRecord::Base
         mileage_rate = 82
         self.mileage_impressions = mileage_rate * mileage.to_f
     end
+
+    def past?
+        end_date_time < DateTime.now
+    end
 end

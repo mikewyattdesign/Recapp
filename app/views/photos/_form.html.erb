@@ -11,7 +11,6 @@
     </div>
   <% end %>
   <div class="form-group">
-    <%= f.label :image, "Photo" %>
     <%= f.file_field :image %>
     <%= f.hidden_field :imageable_id, value: @event.id %>
     <%= f.hidden_field :imageable_type, value: @event.class.name %>

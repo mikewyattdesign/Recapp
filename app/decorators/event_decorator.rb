@@ -1,5 +1,5 @@
 class EventDecorator
-    include ActionView::Helpers::DateHelper
+    include ActionView::Helpers
 
     attr_reader :event
 
@@ -29,7 +29,11 @@ class EventDecorator
 
     def photo
         if event.photos.last.present? 
-            event.photos.last.image
+            image_tag event.photos.last.image, class: "event-img"
+        elsif event.past?
+            link_to "Add an event photo", "/events/#{event.id}/photos/new", class: 'no-event-photos'
+        else 
+            nil
         end
     end
 end

@@ -151,6 +151,22 @@ table {
     padding-right: 0;
 }
 
+
+
+.no-event-photos {
+    display: block;
+    clear: both;
+    text-align: center;
+    padding: 5%;
+    border-radius: 5px;
+    border: dashed 4px;
+    margin: 5% 0;
+}
+
+.event-details {
+    @extend .clearfix;
+}
+
 .form-header-label {
     border-bottom: 1px solid $lightMediumGrey;
     h3 {

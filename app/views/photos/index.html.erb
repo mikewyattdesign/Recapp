@@ -1,24 +1,14 @@
 <h1>Listing photos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
     <% @photos.each do |photo| %>
-      <tr>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-md-4 photo">
+        <div><%= image_tag photo.image, class: 'img-responsive' %></div>
+        <div><%= link_to 'Show', photo, class: "btn btn-default" %></div>
+        <div><%= link_to 'Edit', edit_photo_path(photo), class: "btn btn-default" %></div>
+        <div><%= link_to 'Destroy', photo, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
 <br>
 
