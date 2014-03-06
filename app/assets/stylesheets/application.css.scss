@@ -9,6 +9,16 @@
 $lightGrey: #f8f8f8;
 $lightMediumGrey: #e6e6e6;
 
+.container-full {
+    width: 100%;
+}
+
+table {
+    th {
+        background-color: $lightGrey;
+    }
+}
+
 // Events Style
 .event-header {
     padding-bottom: 4%;
@@ -165,7 +175,7 @@ $lightMediumGrey: #e6e6e6;
     height: 40px;
 }
 
-.form-row {
+.form-row, .form-cont-box {
     margin-bottom: 10px;
 }
 
@@ -177,17 +187,17 @@ $lightMediumGrey: #e6e6e6;
     margin-top: 20px;
 }
 
-.back-button {
+.back-button, .btn-right-space {
     margin-right: 20px;
 }
 
 
 #brand_logo {
     opacity: 0;
+    position: absolute;
 }
 
 .input-button {
-    position: absolute;
     z-index: -1;
 }
 
@@ -198,17 +208,41 @@ $lightMediumGrey: #e6e6e6;
     box-shadow: 0px 0px 10px $lightMediumGrey;
 }
 
-.brand-icon-container {
+.brand-icon-container, .event-giveaway-container,.comments-container {
     padding: 15px;
     margin-bottom: 30px;
     border: 1px solid $lightMediumGrey;
     -webkit-box-shadow: 0px 0px 10px $lightMediumGrey;
     -moz-box-shadow: 0px 0px 10px $lightMediumGrey;
     box-shadow: 0px 0px 10px $lightMediumGrey;
+
+    &:hover {
+        background-color: $lightGrey;
+        -webkit-box-shadow: 0px 0px 15px #b6b6b6;
+        -moz-box-shadow: 0px 0px 15px #b6b6b6;
+        box-shadow: 0px 0px 15px #b6b6b6;
+        border-left: 1px solid #e1e1e1;
+    }
+}
+
+.comments-container, .event-giveaway-container {
+    border-radius: 10px;
+    border: 2px solid $lightMediumGrey;
+    margin-bottom: 15px;
 }
 
 .brand-icon {
-    height: 300px;
+    height: 250px;
+    background-color: $lightGrey;
+}
+
+.prize-icon {
+    height: 150px;
+    background-color: $lightGrey;
+}
+
+.event-giveaway-icon {
+    height: 70px;
     background-color: $lightGrey;
 }
 
@@ -216,4 +250,12 @@ $lightMediumGrey: #e6e6e6;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+}
+
+.event-giveaway-name {
+    height: 70px;
+}
+
+.comments {
+    font-size: 18px;
 }

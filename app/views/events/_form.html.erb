@@ -28,25 +28,15 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="checkbox">
-                                <%= f.check_box :wholesaler_or_local_support %>
-                                <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-6 form-cont-box">
+                    <%= f.check_box :wholesaler_or_local_support %>
+                    <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                        <%= link_to "Manage Event Giveaways", event_event_giveaways_path(@event), class: "btn btn-default" %>
-                        </div>
-                    </div>
+                <div class="col-md-6 form-cont-box">
+                    <%= link_to "Manage Event Giveaways", event_event_giveaways_path(@event), class: "btn btn-default" %><br><br>
                 </div>
             </div>
         </div>
@@ -55,16 +45,8 @@
         <div class="row">
             <div class="col-md-12 form-header-label"></div>
             <div class="col-md-12 submit-container">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="actions">
-                            <%= f.submit class: "btn btn-primary pull-right" %>
-                        </div>
-                        <div class="actions">
-                            <%= link_to 'Back', events_path, class: "btn btn-default pull-right back-button" %>
-                        </div>
-                    </div>
-                </div>
+                <%= f.submit class: "btn btn-primary pull-right" %>
+                <%= link_to 'Back', events_path, class: "btn btn-default pull-right back-button" %>
             </div>
         </div>
     <% end %>

@@ -1,32 +1,34 @@
-<%= form_for([@brand,@program], html: {class: "form-horizontal"}) do |f| %>
-  <% if @program.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+<div class="form-box">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <%= form_for([@brand,@program], html: {class: "form-horizontal"}) do |f| %>
+              <% if @program.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
 
-      <ul>
-      <% @program.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+                  <ul>
+                  <% @program.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-    <div class="program-info">
-        <div class="form-group">
-            <%= f.label :name, "Name", class: "control-label col-md-2" %>
-            <div class="col-md-10">
-              <%= f.text_field :name %>
+            <div class="row">
+                <div class="col-md-12 form-cont-box">
+                    <%= f.label :name, "Name", class: "control-label" %>
+                    <%= f.text_field :name, class: "form-control" %>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <%= f.label :brand_id, "Brand", class: "control-label col-md-2" %>
-            <div class="col-md-10">
-              <%= f.select :brand_id, options_from_collection_for_select(Brand.all, :id, :name, @program.brand_id),{}, class: "" %>
-            </div>
+
+            <div class="row">
+                <div class="col-md-12 form-cont-box">
+                    <%= f.label :brand_id, "Brand", class: "control-label" %>
+                    <%= f.select :brand_id, options_from_collection_for_select(Brand.all, :id, :name, @program.brand_id),{}, class: "form-control"  %>
+                </div>
+            </div><br>
+
+        <% end %>
         </div>
     </div>
-
-  <div class="actions col-md-offset-2">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
