@@ -1,6 +1,6 @@
 <div class="event-details">
     <%= event_decorator.photo %>
-    <ul class="list-inline">
+    <ul class="list-inline quick-info">
         <li><%= link_to "/events/#{event.id}/edit#impression-jump" do %><button class="btn btn-default"><div class="counter">(<%= event.estimated_total_impressions %>)</div>Impressions</button><% end %></li>
         <li><%= link_to event_event_giveaways_path(event) do %><button type="button" class="btn btn-default"><div class="counter">(<%= event.giveaways.length %>)</div>Giveaways</button><% end %></li>
         <li><%= link_to event_comments_path(event) do %><button type="button" class="btn btn-default"><div class="counter">(<%= event.comments.length %>)</div>Comments</button><% end %></li>

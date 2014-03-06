@@ -158,9 +158,9 @@ table {
     clear: both;
     text-align: center;
     padding: 5%;
+    margin: 5% 0;
     border-radius: 5px;
     border: dashed 4px;
-    margin: 5% 0;
 }
 
 .photo {
@@ -169,6 +169,11 @@ table {
 
 .event-details {
     @extend .clearfix;
+
+    .quick-info {
+        clear: left;
+        margin-top: 10px;
+    }
 }
 
 .form-header-label {
