@@ -1,12 +1,12 @@
 development: 
   access_key_id: AKIAJIH7A6UL5TW2KCNQ
   secret_access_key: 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
-    bucket: nutshell-360-dev
+  bucket: nutshell-360-dev
 test: 
   access_key_id: AKIAJIH7A6UL5TW2KCNQ
   secret_access_key: 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
-    bucket: nutshell-360-dev
+  bucket: nutshell-360-dev
 production: 
   access_key_id: AKIAJIH7A6UL5TW2KCNQ
   secret_access_key: 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
-    bucket: nutshell-360
+  bucket: nutshell-360
