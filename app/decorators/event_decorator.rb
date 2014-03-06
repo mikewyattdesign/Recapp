@@ -26,4 +26,10 @@ class EventDecorator
     def location
         "#{event.city}, #{event.state}" unless event.city.blank? || event.state.blank?
     end
+
+    def photo
+        if event.photos.last.present? 
+            event.photos.last.image
+        end
+    end
 end

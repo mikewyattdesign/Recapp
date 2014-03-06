@@ -4,7 +4,12 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    if params[:event_id] && Event.where(id: params[:event_id]).count > 0
+      @event = Event.find(params[:event_id])
+      @photos = @event.photos
+    else
+      @photos = Photo.none
+    end
   end
 
   # GET /photos/1
@@ -14,6 +19,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
+    @event = Event.find(params[:event_id])
     @photo = Photo.new
   end
 
@@ -54,9 +60,10 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    @event = @photo.event
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url }
+      format.html { redirect_to event_photos_url(@event) }
       format.json { head :no_content }
     end
   end
@@ -69,8 +76,7 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:name, 
-        :photo, 
+      params.require(:photo).permit(:image,
         :imageable_id, 
         :imageable_type )
     end
