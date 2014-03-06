@@ -163,6 +163,10 @@ table {
     margin: 5% 0;
 }
 
+.photo {
+    @extend .event-info;
+}
+
 .event-details {
     @extend .clearfix;
 }

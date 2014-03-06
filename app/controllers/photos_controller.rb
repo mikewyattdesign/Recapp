@@ -7,8 +7,10 @@ class PhotosController < ApplicationController
     if params[:event_id] && Event.where(id: params[:event_id]).count > 0
       @event = Event.find(params[:event_id])
       @photos = @event.photos
+      @descriptor = @event.name
     else
       @photos = Photo.none
+      @descriptor = "No"
     end
   end
 
