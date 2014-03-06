@@ -1,12 +1,12 @@
 development: 
-    access_key_id: AKIAJEYPUIB65MBB4J7Q
-    secret_access_key: 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
+  access_key_id: AKIAJIH7A6UL5TW2KCNQ
+  secret_access_key: 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
     bucket: nutshell-360-dev
 test: 
-    access_key_id: AKIAJEYPUIB65MBB4J7Q
-    secret_access_key: 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
+  access_key_id: AKIAJIH7A6UL5TW2KCNQ
+  secret_access_key: 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
     bucket: nutshell-360-dev
 production: 
-    access_key_id: AKIAJEYPUIB65MBB4J7Q
-    secret_access_key: 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
-    bucket: nutshell-360-dev
+  access_key_id: AKIAJIH7A6UL5TW2KCNQ
+  secret_access_key: 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
+    bucket: nutshell-360
