@@ -20,6 +20,9 @@ G360EventApplication::Application.routes.draw do
     
     resources :tags
 
+    # Because viewing events by tag is even better with a route for it 
+    get 'events/tags/:tag' => 'events#index'
+
     resources :events do
         shallow do
             resources :tags
@@ -28,6 +31,7 @@ G360EventApplication::Application.routes.draw do
             resources :event_giveaways
         end
     end
+
 
     resources :brands do
         shallow do

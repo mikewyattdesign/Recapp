@@ -13,7 +13,7 @@
     <% end %>
     <%= render 'general_fields', f: f %>
     <% if @details %>
-        <div class="detail <%= "hidden" unless @details %>">
+        <div class="detail<%= " hidden" unless @details %>">
 
             <%= render 'impression_fields', f: f %>
 
@@ -39,11 +39,26 @@
                     <%= link_to "Manage Event Giveaways", event_event_giveaways_path(@event), class: "btn btn-default" %><br><br>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 form-header-label">
+                    <h3>Photos</h3>
+                </div>
+                <div class="col-md-6">
+                    <%= link_to "Manage Event Photos", event_photos_path(@event), class: "btn btn-default" %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-header-label">
+                    <h3>Tags</h3>
+                </div>
+                <div class="col-md-6">
+                    <%= f.text_field :tag_list, data: {tag_list: "", pre: @event.tags}, class: "form-control" %>
+                </div>
+            </div>
         </div>
     <% end %>
 
         <div class="row">
-            <div class="col-md-12 form-header-label"></div>
             <div class="col-md-12 submit-container">
                 <%= f.submit class: "btn btn-primary pull-right" %>
                 <%= link_to 'Back', events_path, class: "btn btn-default pull-right back-button" %>

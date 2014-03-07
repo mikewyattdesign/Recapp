@@ -8,6 +8,8 @@ class EventsController < ApplicationController
       if params[:program_id]
           @program = Program.find(params[:program_id])
           @events = @program.events.order(start_date_time: :desc)
+      elsif params[:tag]
+          @events = Event.tagged_with(params[:tag])
       else
           @events = current_user.events.order(start_date_time: :desc)
       end
@@ -15,6 +17,8 @@ class EventsController < ApplicationController
       if params[:program_id]
           @program = Program.find(params[:program_id])
           @events = @program.events.order(start_date_time: :desc)
+      elsif params[:tag]
+          @events = Event.tagged_with(params[:tag])
       else
           @events = Event.all.order(start_date_time: :desc)
       end 
@@ -110,6 +114,7 @@ class EventsController < ApplicationController
         :estimated_total_impressions,
         :extended_engagements,
         :weather_id,
+        :tag_list,
         :wholesaler_or_local_support,
         :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id, :wholesaler_or_local_support],
         :giveaways_attributes => [:id, :name],
