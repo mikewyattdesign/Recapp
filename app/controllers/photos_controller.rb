@@ -8,9 +8,12 @@ class PhotosController < ApplicationController
       @event = Event.find(params[:event_id])
       @photos = @event.photos
       @descriptor = @event.name
+    elsif params[:tag]
+      @photos = Photo.tagged_with(params[:tag])
+      @descriptor = params[:tag]
     else
-      @photos = Photo.none
-      @descriptor = "No"
+      @photos = Photo.all
+      @descriptor = "All"
     end
   end
 
@@ -37,7 +40,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to event_photos_url(@photo.event), notice: 'Photo was successfully created.' }
         format.json { render action: 'show', status: :created, location: @photo }
       else
         format.html { render action: 'new' }
@@ -51,7 +54,7 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to event_photos_url(@photo.event), notice: 'Photo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

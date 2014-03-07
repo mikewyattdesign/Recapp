@@ -12,6 +12,14 @@ G360EventApplication::Application.routes.draw do
     resources :giveaways
     resources :event_giveaways
 
+    resources :photos
+
+    # Because viewing photos by tag is even better with a route for it 
+    get 'photos/tags/:tag' => 'photos#index'
+
+    
+    resources :tags
+
     resources :events do
         shallow do
             resources :tags
@@ -29,8 +37,6 @@ G360EventApplication::Application.routes.draw do
         end
     end
 
-    resources :photos
-    resources :tags
     
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'
