@@ -27,6 +27,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    @event = @photo.event
   end
 
   # POST /photos
@@ -80,6 +81,7 @@ class PhotosController < ApplicationController
     def photo_params
       params.require(:photo).permit(:image,
         :imageable_id, 
-        :imageable_type )
+        :imageable_type,
+        :tag_list )
     end
 end

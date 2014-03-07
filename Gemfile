@@ -35,6 +35,9 @@ gem 'paperclip', '4.0.0'
 # Use Amazon S3 for production file storage
 gem 'aws-sdk', '1.33.0'
 
+# Use acts-as-taggable-on for tagging
+gem 'acts-as-taggable-on'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\z/
 
     belongs_to :imageable, polymorphic: true
-    has_many :tags, as: :taggable
+    acts_as_taggable
 
     def event
     	Event.find(imageable_id) if imageable_type == Event.name

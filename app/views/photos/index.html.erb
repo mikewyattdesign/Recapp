@@ -4,6 +4,11 @@
       <div class="col-md-4">
         <div class="photo">
           <div><%= image_tag photo.image, class: 'img-responsive' %></div>
+          <ul class="tag-list">
+            <% photo.tags.each do |tag| %>
+              <li><%= tag %></li>
+            <% end %>
+          </ul>
           <div>
             <%= link_to edit_photo_path(photo) do %>
               <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span> Edit</button>
