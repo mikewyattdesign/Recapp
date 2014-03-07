@@ -1,0 +1,9 @@
+jQuery ->
+	$("[data-tag-list]").tokenInput("/tags.json", {
+		crossDomain: false
+		prePopulate: $("[data-tag-list]").data 'pre'
+		tokenValue: "name"
+		preventDuplicates: true
+		theme: "facebook"
+		allowFreeTagging: true
+		})

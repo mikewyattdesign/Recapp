@@ -13,7 +13,7 @@
   <div class="form-group">
     <%= f.file_field :image %>
     <%= f.label :tag_list, "Tags" %>
-    <%= f.text_field :tag_list %>
+    <%= f.text_field :tag_list, data: {tag_list: "", pre: @photo.tags} %>
     <%= f.hidden_field :imageable_id, value: @event.id %>
     <%= f.hidden_field :imageable_type, value: @event.class.name %>
   </div>

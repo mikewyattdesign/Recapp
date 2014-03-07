@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 
@@ -21,4 +22,8 @@
 // Load all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap3-datetimepicker/build/js/bootstrap-datetimepicker.min
+
+// Load jquery token input for tags
+//= require jquery-tokeninput/src/jquery.tokeninput
+
 //= require_tree .

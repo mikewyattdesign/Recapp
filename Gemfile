@@ -26,6 +26,9 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# Turbolinks also makes you mad when event binding doesn't work as expected
+gem 'jquery-turbolinks', '2.0.2'
+
 # Add devise for user authentication
 gem 'devise', '3.2.2'
 
@@ -36,7 +39,7 @@ gem 'paperclip', '4.0.0'
 gem 'aws-sdk', '1.33.0'
 
 # Use acts-as-taggable-on for tagging
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '3.0.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

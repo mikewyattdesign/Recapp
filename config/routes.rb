@@ -30,6 +30,7 @@ G360EventApplication::Application.routes.draw do
     end
 
     resources :photos
+    resources :tags
     
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'
