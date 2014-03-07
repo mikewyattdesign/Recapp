@@ -1,5 +1,13 @@
-<h1>Add photo to <%= @event.name %></h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Add photo to <%= @event.name %></h1>
+        </div>
 
-<%= render 'form' %>
+        <div class="form-box">
+        <%= render 'form' %>
+        </div>
 
-<%= link_to 'Back', event_photos_path, class: 'btn btn-link' %>
+        <%= link_to 'Back', event_photos_path, class: 'btn btn-link' %>
+    </div>
+</div>
