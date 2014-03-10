@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1 container-box">
         <div class="event-header">
-            <h1>Program Listings for <%= @brand.name %>
+            <h1><span class="glyphicon glyphicon-list-alt"></span> Programs for <%= @brand.name %>
                 <%= link_to new_brand_program_path do %>
-                <button type="button" class="pull-right new-event-btn btn btn-default">New Program</button>
+                <button type="button" class="pull-right new-event-btn btn btn-primary">New Program</button>
                 <% end %>
             </h1>
         </div>
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <%= link_to program_events_path(program) do %>
-                    <button type="button" class="btn btn-primary info-button"> <span class="glyphicon glyphicon-eye-open"></span> Show Events</button>
+                    <button type="button" class="btn btn-primary info-button"> <span class="glyphicon glyphicon-calendar"></span> Show Events</button>
                     <% end %>
                 </div>
                 <div>
@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-md-12 form-header-label"></div>
                 <div class="col-md-12 submit-container">
-                    <%= link_to_unless @brand.nil?, "Back to Brands", brands_path, class: "btn btn-default pull-right" %>
+                    <%= link_to_unless @brand.nil?, "Back", brands_path, class: "btn btn-default pull-right" %>
                 </div>
             </div>
 
