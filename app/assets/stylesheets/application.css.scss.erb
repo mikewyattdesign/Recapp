@@ -2,17 +2,111 @@
 //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
 //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
 //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
+//= depend_on_asset "29CE32_6_0.eot"
+//= depend_on_asset "29CE32_6_0.woff"
+//= depend_on_asset "29CE32_6_0.ttf"
+//= depend_on_asset "29CE32_10_0.eot"
+//= depend_on_asset "29CE32_10_0.woff"
+//= depend_on_asset "29CE32_10_0.ttf"
 
 @import "bootstrap";
 @import "bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker";
 @import "tags";
 @import "jquery-tokeninput/styles/token-input-facebook";
 
+@import url("http://hello.myfonts.net/count/29ce32");
+
+// Colors
 $lightGrey: #f8f8f8;
 $lightMediumGrey: #e6e6e6;
 
+$lightest-orange: #ffcb9f;
+$light-orange: #fcb171;
+$orange: #fc9f4c;
+$dark-orange: #ff8d28;
+
+$lightest-grey: #e4e4e5;
+$light-grey: #c3c2c3;
+$grey: #8b8a8f;
+$dark-grey: #58585a;
+$darkest-grey: #404041;
+
+// Fonts
+@font-face {
+    font-family: 'TrendSansOne';
+    src: url(<%= asset_path '29CE32_6_0.eot' %>);
+    src: url(<%= asset_path '29CE32_6_0.woff' %>) format('woff'),
+         url(<%= asset_path '29CE32_6_0.ttf' %>) format('truetype');
+ }
+
+@font-face {
+    font-family: 'TrendSlabOne';
+    src: url(<%= asset_path '29CE32_10_0.eot' %>);
+    src: url(<%= asset_path '29CE32_10_0.woff' %>) format('woff'),
+         url(<%= asset_path '29CE32_10_0.ttf' %>) format('truetype');
+ }
+
+// Navigation Bar
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+
+.navbar {
+    background-color: $dark-grey;
+    border-color: $darkest-grey;
+    border-radius: 0;
+}
+
+.navbar-header {
+    a {
+        color: $orange !important;
+        font-family: TrendSansOne, sans-serif;
+    }
+}
+
+.nav {
+    margin: 0;
+
+    li {
+        background-color: $dark-grey;
+
+        &:hover {
+            background-color: $orange;
+        }
+
+        &:active {
+            background-color: $orange;
+        }
+
+        a {
+            color: white !important;
+            font-family: TrendSansOne, sans-serif;
+        }
+    }
+
+    .client-login {
+        color: $orange !important;
+
+        &:hover {
+            color: white !important;
+        }
+    }
+}
+
+// Global
 .container-full {
     width: 100%;
+}
+
+.btn-primary {
+    background-color: $orange;
+    border-color: $light-orange;
+
+    &:hover {
+        background-color: $dark-orange;
+        border-color: $orange;
+    }
 }
 
 table {
@@ -21,16 +115,25 @@ table {
     }
 }
 
+body {
+    background-color: $lightest-grey;
+}
+
 // Events Style
+
 .event-header {
     padding-bottom: 4%;
-    background-color: $lightGrey;
+    background-color: $dark-grey;
+    border-bottom: 1px solid $darkest-grey;
+    color: white;
     padding: 10px 20px;
     border: 1px solid #e1e1e1;
-    border-bottom: 5px solid #a6a6a6;
     -webkit-box-shadow: 0px 3px 10px $lightMediumGrey;
     -moz-box-shadow: 0px 3px 10px $lightMediumGrey;
     box-shadow: 0px 3px 10px $lightMediumGrey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-family: TrendSansOne, sans-serif;
 
     h1 {
         margin: 0;
@@ -48,9 +151,15 @@ table {
 }
 
 .container-box {
+    background-color: white;
     border: 1px solid #e1e1e1;
     padding: 0;
     margin-bottom: 20px;
+    -webkit-box-shadow: 0px 3px 10px $lightest-grey;
+    -moz-box-shadow: 0px 3px 10px $lightest-grey;
+    box-shadow: 0px 3px 10px $lightest-grey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .event-name {
@@ -68,6 +177,8 @@ table {
 .event-img {
     margin: 10px 0;
     width: 100%;
+    border: 2px solid $dark-grey;
+    border-radius: 5px;
 }
 
 .event-bar {
@@ -82,18 +193,22 @@ table {
     padding: 10px 20px;
     margin-top: 15px;
     margin-bottom: 15px;
-    border: 1px solid #e1e1e1;
+    border-bottom: 1px solid $light-grey;
+    border-left: 5px solid $light-grey;
+    border-right: 1px solid $light-grey;
+    border-top: 1px solid $light-grey;
     position: relative;
-    -webkit-box-shadow: 0px 0px 10px $lightMediumGrey;
-    -moz-box-shadow: 0px 0px 10px $lightMediumGrey;
-    box-shadow: 0px 0px 10px $lightMediumGrey;
+    -webkit-box-shadow: 0px 0px 10px $light-grey;
+    -moz-box-shadow: 0px 0px 10px $light-grey;
+    box-shadow: 0px 0px 10px $light-grey;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 
     &:hover {
         background-color: $lightGrey;
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
-        border-left: 1px solid #e1e1e1;
     }
 
     .active {
@@ -106,37 +221,38 @@ table {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: $lightGrey;
-    border: 2px solid #e1e1e1;
+    background: $lightest-orange;
+    border: 3px solid $light-grey;
     position: absolute;
     top: 50%;
     margin-top: -15px;
     left: -10%;
+    z-index: 5
 }
 
 .event-timeline {
     width: 3px;
-    background-color: #e1e1e1;
+    background-color: $light-grey;
     top: -15%;
     bottom: -15%;
     position: absolute;
     left: -10%;
     margin-left: 13px;
-    z-index: -1;
+    z-index: 4;
 }
 
 .event-arrow {
     width: 0;
     height: 0;
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-right:15px solid #e1e1e1;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right:15px solid $light-grey;
 
     position: absolute;
     top: 50%;
-    margin-top: -30px;
-    left: -2%;
-    z-index: -1;
+    margin-top: -50px;
+    left: -2.2%;
+    z-index: 4;
 }
 
 .info-button {
@@ -153,8 +269,6 @@ table {
     padding-right: 0;
 }
 
-
-
 .no-event-photos {
     display: block;
     clear: both;
@@ -162,9 +276,12 @@ table {
     padding: 5%;
     margin: 5% 0;
     border-radius: 5px;
-    border: dashed 4px;
+    border: 2px dotted;
+    font-family: TrendSansOne, sans-serif;
     &:hover {
         background-color: white;
+        border: 2px dotted $orange;
+        color: $orange;
     }
 }
 
@@ -221,7 +338,6 @@ table {
 .back-button, .btn-right-space {
     margin-right: 20px;
 }
-
 
 #brand_logo {
     opacity: 0;

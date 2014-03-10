@@ -3,7 +3,7 @@
         <div class="event-header">
             <h1>Program Listings for <%= @brand.name %>
                 <%= link_to new_brand_program_path do %>
-                <button type="button" class="pull-right new-event-btn btn btn-default">New <%= @brand.name %> Programs</button>
+                <button type="button" class="pull-right new-event-btn btn btn-default">New Program</button>
                 <% end %>
             </h1>
         </div>
@@ -41,9 +41,14 @@
             <% end %>
             </div>
 
-        </div>
+            <div class="row">
+                <div class="col-md-12 form-header-label"></div>
+                <div class="col-md-12 submit-container">
+                    <%= link_to_unless @brand.nil?, "Back to Brands", brands_path, class: "btn btn-default pull-right" %>
+                </div>
+            </div>
 
-        <%= link_to_unless @brand.nil?, "Back to Brands", brands_path %>
+        </div>
 
     </div>
 </div>
