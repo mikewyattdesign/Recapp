@@ -1,25 +1,50 @@
-<h1>Listing giveaways</h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1><span class="glyphicon glyphicon-gift"></span> Listing giveaways
+                <%= link_to new_giveaway_path do %>
+                <button type="button" class="pull-right new-event-btn btn btn-primary">New Giveaway</button>
+                <% end %>
+            </h1>
+        </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+        <div class="form-box">
 
-  <tbody>
-    <% @giveaways.each do |giveaway| %>
-      <tr>
-        <td><%= giveaway.name %></td>
-        <td><%= link_to 'Edit', edit_giveaway_path(giveaway), class: 'btn btn-default' %></td>
-        <td><%= link_to 'Delete', giveaway, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <div class="row">
+            <% @giveaways.each do |giveaway| %>
+              <div class="col-md-10 col-md-offset-1">
+                <div class="event-giveaway-container row">
+                    <div class="event-giveaway-icon col-md-2">
+                        <%= link_to image_tag giveaway.image, class: "giveaway-image" %>
+                    </div>
+                    <div class="event-giveaway-name col-md-8">
+                        <table class="table">
+                            <tr>
+                              <th>Giveaway Name</th>
+                            </tr>
+                            <tr>
+                              <td><%= giveaway.name %></td>
+                            </tr>
+                        </table>
+                    </div>
 
-<br>
+                    <div class="col-md-2">
+                        <div>
+                            <%= link_to edit_giveaway_path(giveaway) do %>
+                            <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
+                            <% end %>
+                        </div>
+                        <div>
+                           <%= link_to giveaway, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                            <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span></button>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            <% end %>
+            </div>
 
-<%= link_to 'New Giveaway', new_giveaway_path, class: 'btn btn-primary' %>
+        </div>
+    </div>
+</div>
