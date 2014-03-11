@@ -6,7 +6,6 @@
       <th>Name</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -14,9 +13,8 @@
     <% @giveaways.each do |giveaway| %>
       <tr>
         <td><%= giveaway.name %></td>
-        <td><%= link_to 'Show', giveaway %></td>
-        <td><%= link_to 'Edit', edit_giveaway_path(giveaway) %></td>
-        <td><%= link_to 'Destroy', giveaway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_giveaway_path(giveaway), class: 'btn btn-default' %></td>
+        <td><%= link_to 'Delete', giveaway, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Giveaway', new_giveaway_path %>
+<%= link_to 'New Giveaway', new_giveaway_path, class: 'btn btn-primary' %>
