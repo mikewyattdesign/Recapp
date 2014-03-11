@@ -8,6 +8,7 @@
 //= depend_on_asset "29CE32_10_0.eot"
 //= depend_on_asset "29CE32_10_0.woff"
 //= depend_on_asset "29CE32_10_0.ttf"
+//= depend_on_asset "group360-logo.png"
 
 @import "bootstrap";
 @import "bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker";
@@ -47,9 +48,8 @@ $darkest-grey: #404041;
  }
 
 // Navigation Bar
-.group360-logo {
-    height: 50px;
-    padding: 5px;
+.navbar-brand {
+    margin-left: 50px;
 }
 
 .navbar .navbar-nav {
@@ -61,6 +61,10 @@ $darkest-grey: #404041;
     background-color: $dark-grey;
     border-color: $darkest-grey;
     border-radius: 0;
+    background-image: url(<%= asset_path 'group360-logo.png' %>);
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: 20px 5px;
 }
 
 .navbar-header {
