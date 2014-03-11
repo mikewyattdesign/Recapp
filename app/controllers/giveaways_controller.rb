@@ -28,7 +28,7 @@ class GiveawaysController < ApplicationController
 
     respond_to do |format|
       if @giveaway.save
-        format.html { redirect_to @giveaway, notice: 'Giveaway was successfully created.' }
+        format.html { redirect_to giveaways_url, notice: "#{@giveaway.name} was successfully created." }
         format.json { render action: 'show', status: :created, location: @giveaway }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class GiveawaysController < ApplicationController
   def update
     respond_to do |format|
       if @giveaway.update(giveaway_params)
-        format.html { redirect_to @giveaway, notice: 'Giveaway was successfully updated.' }
+        format.html { redirect_to giveaways_url, notice: "#{@giveaway.name} was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
