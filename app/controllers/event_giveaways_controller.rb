@@ -38,7 +38,7 @@ class EventGiveawaysController < ApplicationController
 
     respond_to do |format|
       if @event_giveaway.save
-        format.html { redirect_to event_giveaways_url, notice: 'Event giveaway was successfully created.' }
+        format.html { redirect_to event_event_giveaways_url(@event_giveaway.event), notice: 'Event giveaway was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event_giveaway }
       else
         format.html { render action: 'new' }
@@ -52,7 +52,7 @@ class EventGiveawaysController < ApplicationController
   def update
     respond_to do |format|
       if @event_giveaway.update(event_giveaway_params)
-        format.html { redirect_to event_giveaways_url, notice: 'Event giveaway was successfully updated.' }
+        format.html { redirect_to event_event_giveaways_url(@event_giveaway.event), notice: 'Event giveaway was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,9 +64,10 @@ class EventGiveawaysController < ApplicationController
   # DELETE /event_giveaways/1
   # DELETE /event_giveaways/1.json
   def destroy
+    @event = @event_giveaway.event
     @event_giveaway.destroy
     respond_to do |format|
-      format.html { redirect_to event_giveaways_url }
+      format.html { redirect_to event_event_giveaways_url(@event) }
       format.json { head :no_content }
     end
   end

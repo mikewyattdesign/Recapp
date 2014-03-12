@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1 container-box">
         <div class="event-header">
-            <h1><span class="glyphicon glyphicon-gift"></span> Event Giveaway</h1>
+            <h1><span class="glyphicon glyphicon-gift"></span> Event Giveaways <%= "for #{@event.name}" if @event.present? %> </h1>
         </div>
 
         <div class="form-box">
@@ -56,9 +56,11 @@
                 <div class="col-md-12 form-header-label"></div>
                 <div class="col-md-12 submit-container">
                     <div class="form-group">
-                    <%= link_to 'New Giveaway', @event.nil? ? new_event_giveaway_path : new_event_event_giveaway_path(@event), class: "btn btn-primary pull-right" %>
+                    <% unless @event.nil? %>
+                    <%= link_to 'New Giveaway',new_event_event_giveaway_path(@event), class: "btn btn-primary pull-right" %>
 
-                    <%= link_to_unless @event.nil?, "Back", edit_event_path(@event), class: "btn btn-default pull-right back-button" %>
+                    <%= link_to "Back", edit_event_path(@event), class: "btn btn-default pull-right back-button" %>
+                    <% end %>
                     </div>
                 </div>
             </div>
