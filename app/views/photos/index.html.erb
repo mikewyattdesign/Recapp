@@ -1,16 +1,12 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1 container-box">
         <div class="event-header">
-            <h1>Brands
-                <%= link_to new_brand_path do %>
-                <button type="button" class="pull-right new-event-btn btn btn-primary">New Brand</button>
-                <% end %>
-            </h1>
+            <h1>Listing <%= @descriptor %> photos</h1>
         </div>
 
         <div class="form-box">
 
-        <h1>Listing <%= @descriptor %> photos</h1>
+        
           <div class="row">
             <% @photos.each do |photo| %>
               <div class="col-md-4">
