@@ -26,6 +26,11 @@
         </div>
 
         <div class="row">
+            <% if @event.giveaways.count == 0 %>
+                <div class="col-md-12 form-cont-box">
+                    <%= link_to "Add Event Giveaway", new_event_event_giveaway_path(@event), class: 'btn btn-default' %>
+                </div>
+            <% end %>
             <div class="col-md-6 form-cont-box">
                 <%= f.check_box :wholesaler_or_local_support %>
                 <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
