@@ -7,62 +7,50 @@
         <div class="form-box">
 
             <div class="row">
-            <% @event_giveaways.each do |event_giveaway| %>
-              <div class="col-md-10 col-md-offset-1">
-                <div class="event-giveaway-container row">
-                    <div class="event-giveaway-icon col-md-2">
-                        <!-- Prize Picture -->
-                    </div>
-                    <div class="event-giveaway-name col-md-8">
-                        <table class="table">
-                            <tr>
-                              <th>Event</th>
-                              <th>Giveaway</th>
-                              <th>Amount</th>
-                            </tr>
-                            <tr>
-                              <td><%= event_giveaway.event.name %></td>
-                              <td><%= event_giveaway.giveaway.name %></td>
-                              <td><%= event_giveaway.count_given_away %></td>
-                            </tr>
-                        </table>
-                    </div>
+                <% @event_giveaways.each do |event_giveaway| %>
+                  <div class="col-md-10 col-md-offset-1">
+                    <div class="event-giveaway-container row">
+                        <div class="event-giveaway-icon col-md-2">
+                            <!-- Prize Picture -->
+                        </div>
+                        <div class="event-giveaway-name col-md-8">
+                            <table class="table">
+                                <tr>
+                                  <th>Event</th>
+                                  <th>Giveaway</th>
+                                  <th>Amount</th>
+                                </tr>
+                                <tr>
+                                  <td><%= event_giveaway.event.name %></td>
+                                  <td><%= event_giveaway.giveaway.name %></td>
+                                  <td><%= event_giveaway.count_given_away %></td>
+                                </tr>
+                            </table>
+                        </div>
 
-                    <div class="col-md-2">
-<!--
-                        <div>
-                            <%= link_to event_giveaway do %>
-                            <button type="button" class="btn btn-primary info-button"><span class="glyphicon glyphicon-eye-open"></span> Show</button>
-                            <% end %>
-                        </div>
- -->
-                        <div>
-                            <%= link_to edit_event_giveaway_path(event_giveaway) do %>
-                            <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
-                            <% end %>
-                        </div>
-                        <div>
-                            <%= link_to event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                            <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span></button>
-                            <% end %>
+                        <div class="col-md-2">
+                            <div>
+                                <%= link_to edit_event_giveaway_path(event_giveaway) do %>
+                                <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
+                                <% end %>
+                            </div>
+                            <div>
+                                <%= link_to event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span></button>
+                                <% end %>
+                            </div>
                         </div>
                     </div>
-                </div>
-              </div>
-            <% end %>
-            </div>
+                  </div>
+                <% end %>
 
-            <div class="row">
                 <div class="col-md-12 form-header-label"></div>
                 <div class="col-md-12 submit-container">
-                    <div class="form-group">
                     <% unless @event.nil? %>
                     <%= link_to 'New Giveaway',new_event_event_giveaway_path(@event), class: "btn btn-primary pull-right" %>
 
                     <%= link_to "Return to Event", edit_event_path(@event), class: "btn btn-default pull-right back-button" %>
                     <% end %>
-
-                    </div>
                 </div>
             </div>
 

@@ -7,40 +7,35 @@
         <div class="form-box">
 
             <div class="row">
-            <% @comments.each do |comment| %>
-              <div class="col-md-10 col-md-offset-1">
-                <div class="comments-container row">
-                    <div class="col-md-10">
-                        <div class="comments">
-                            <%= comment.content %>
+                <% @comments.each do |comment| %>
+                  <div class="col-md-10 col-md-offset-1">
+                    <div class="comments-container row">
+                        <div class="col-md-10">
+                            <div class="comments">
+                                <%= comment.content %>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div>
+                                <%= link_to edit_comment_path(comment) do %>
+                                <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
+                                <% end %>
+                            </div>
+                            <div>
+                                <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span></button>
+                                <% end %>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div>
-                            <%= link_to edit_comment_path(comment) do %>
-                            <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
-                            <% end %>
-                        </div>
-                        <div>
-                            <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                            <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span></button>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
-              </div>
-            <% end %>
-            </div>
+                  </div>
+                <% end %>
 
-            <div class="row">
-                <div class="col-md-12 form-header-label"></div>
-                <div class="col-md-12 submit-container">
-                    <div class="form-group">
+                <div class="col-md-10 col-md-offset-1 form-header-label"></div>
+                <div class="col-md-10 col-md-offset-1 submit-container">
                     <%= link_to 'New Comment', new_event_comment_path, class: "btn btn-primary pull-right" %>
 
                     <%= link_to_unless @event.nil?, 'Back', event_path(@event), class: "btn btn-default pull-right back-button" %>
-
-                    </div>
                 </div>
             </div>
         </div>

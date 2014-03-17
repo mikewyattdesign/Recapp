@@ -5,11 +5,10 @@
         </div>
 
         <div class="form-box">
+            <%= render 'form' %>
 
-        <%= render 'form' %>
-
-        <%= link_to 'Show', @program %> |
-        <%= link_to 'Back', brand_programs_path(@program.brand) %>
+            <%= link_to 'Show', @program %> |
+            <%= link_to 'Back', brand_programs_path(@program.brand) %>
         </div>
     </div>
 </div>
