@@ -10,6 +10,7 @@
 	</ul>
 </div>
 <% end %>
+
 <div class="brand-info row">
 	<div class="col-md-10 col-md-offset-1 form-cont-box">
 		<%= f.label :name, "Name", class: "control-label" %>
@@ -20,12 +21,11 @@
         <%= f.file_field :logo, class: "btn btn-default container-full" %>
         <div class="input-button btn btn-default container-full">Choose File</div>
 	</div>
-    <div class="col-md-10 col-md-offset-1 form-cont-box">
-        <%= f.submit class: "btn btn-primary container-full"%>
-    </div>
-    <div class="col-md-10 col-md-offset-1 form-cont-box">
-        <%= link_to 'Show', @brand %> |
-        <%= link_to 'Back', brands_path %>
+
+    <div class="col-md-10 col-md-offset-1 form-header-label"></div>
+    <div class="col-md-10 col-md-offset-1 submit-container">
+        <%= f.submit class: "btn btn-primary pull-right"%>
+        <%= link_to 'Back', brands_path, class: "btn btn-default pull-right back-button" %>
     </div>
 </div>
 <% end %>

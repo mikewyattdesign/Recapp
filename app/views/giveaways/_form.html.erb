@@ -11,18 +11,22 @@
     </div>
   <% end %>
 
-  <div class="giveaway-info">
-      <div class="form-group">
-          <%= f.label :name, "Name" %>
-          <%= f.text_field :name %>
-      </div>
-      <div class="form-group">
-          <%= f.label :image, "Image" %>
-          <%= f.file_field :image %>
-      </div>
-  </div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 form-cont-box">
+            <%= f.label :name, "Name", class: "control-label" %>
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="col-md-10 col-md-offset-1 form-cont-box">
+            <%= f.label :image, "Image", class: "control-label" %>
+            <%= f.file_field :image, class: "btn btn-default container-full" %>
+            <div class="input-button btn btn-default container-full">Choose File</div>
+        </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="col-md-10 col-md-offset-1 form-header-label"></div>
+    <div class="col-md-10 col-md-offset-1 submit-container">
+        <%= f.submit class: "btn btn-primary pull-right" %>
+        <%= link_to 'Back', giveaways_path, class: "btn btn-default pull-right back-button" %>
+    </div>
+</div>
 <% end %>

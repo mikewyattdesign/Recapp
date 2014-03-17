@@ -59,8 +59,9 @@
                     <% unless @event.nil? %>
                     <%= link_to 'New Giveaway',new_event_event_giveaway_path(@event), class: "btn btn-primary pull-right" %>
 
-                    <%= link_to "Back", edit_event_path(@event), class: "btn btn-default pull-right back-button" %>
+                    <%= link_to "Return to Event", edit_event_path(@event), class: "btn btn-default pull-right back-button" %>
                     <% end %>
+
                     </div>
                 </div>
             </div>
