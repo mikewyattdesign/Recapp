@@ -16,19 +16,19 @@
         <%= f.select :event_id, options_from_collection_for_select(Event.all, :id, :name, @event_giveaway.event_id), {}, class: "form-control" %>
     </div>
 
-    <div class="col-md-12 form-cont-box">
+    <div class="col-md-10 col-md-offset-1 form-cont-box">
         <%= f.select :giveaway_id, options_from_collection_for_select(Giveaway.all, :id, :name, @event_giveaway.giveaway_id), {}, class: "form-control" %>
     </div>
 
-    <div class="col-md-12 form-cont-box">
+    <div class="col-md-10 col-md-offset-1 form-cont-box">
         <%= f.number_field :count_given_away, class: "form-control" %>
     </div>
 
-    <div class="col-md-12 form-cont-box">
+    <div class="col-md-10 col-md-offset-1 form-cont-box">
         <%= f.submit class: "btn btn-primary" %>
     </div>
 
-    <div class="col-md-12 form-cont-box">
+    <div class="col-md-10 col-md-offset-1 form-cont-box">
         <%= link_to 'Show', @event_giveaway %> |
         <%= link_to 'Back', event_event_giveaways_path(@event_giveaway.event) %>
     </div>
