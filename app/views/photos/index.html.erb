@@ -5,7 +5,11 @@
         </div>
 
         <div class="form-box">
-
+          <% if @tags.present? %>
+            <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+              <%= link_to tag.name, "/photos/tags/#{tag.name}", class: css_class %>
+            <% end %>
+          <% end %>
           <div class="row">
             <% @photos.each do |photo| %>
               <div class="col-md-4">

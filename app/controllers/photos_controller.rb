@@ -9,11 +9,12 @@ class PhotosController < ApplicationController
       @photos = @event.photos
       @descriptor = @event.name
     elsif params[:tag]
-      @photos = Photo.tagged_with(params[:tag])
+      @photos = Photo.where(imageable_type: 'Event').tagged_with(params[:tag])
       @descriptor = params[:tag]
     else
-      @photos = Photo.all
+      @photos = Photo.where(imageable_type: 'Event')
       @descriptor = "All"
+      # @tags = tag_cloud
     end
   end
 
@@ -86,5 +87,9 @@ class PhotosController < ApplicationController
         :imageable_id, 
         :imageable_type,
         :tag_list )
+    end
+
+    def tag_cloud
+      Photo.tag_counts_on(:tags)
     end
 end
