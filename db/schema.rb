@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307161001) do
+ActiveRecord::Schema.define(version: 20140318193054) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -70,6 +70,9 @@ ActiveRecord::Schema.define(version: 20140307161001) do
     t.string   "postal_code"
     t.string   "country"
     t.integer  "extended_engagements",        default: 0
+    t.decimal  "estimated_number_of_samples"
+    t.decimal  "cost_per_sample"
+    t.integer  "tier"
   end
 
   create_table "events_photos", id: false, force: true do |t|
