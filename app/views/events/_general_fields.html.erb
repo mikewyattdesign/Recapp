@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-6 form-cont-box">
             <%= f.label :program_id, "Program", class: "control-label" %>
-            <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand),{} ,class: "form-control" %>
+            <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand, @event.program.present? ? @event.program.id : nil),{} ,class: "form-control" %>
         </div>
         <div class="col-md-6 form-cont-box">
             <%= f.label :start_date, "Start Date", class: "control-label" %>
