@@ -7,6 +7,8 @@ class Photo < ActiveRecord::Base
     acts_as_taggable
 
     def event
-    	Event.find(imageable_id) if imageable_type == Event.name
+    	if imageable_type == Event.name 
+    		Event.find(imageable_id) if Event.where(id: imageable_id).count > 0
+    	end
     end
 end
