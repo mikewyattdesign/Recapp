@@ -6,6 +6,10 @@ class Photo < ActiveRecord::Base
     belongs_to :imageable, polymorphic: true
     acts_as_taggable
 
+    def self.with_event
+    	Photo.where(id: (Photo.where(imageable_type: 'Event').reject{|p| p.event.nil?}.map{|p|p.id}))
+    end
+
     def event
     	if imageable_type == Event.name 
     		Event.find(imageable_id) if Event.where(id: imageable_id).count > 0

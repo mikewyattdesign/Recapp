@@ -9,10 +9,10 @@ class PhotosController < ApplicationController
       @photos = @event.photos
       @descriptor = @event.name
     elsif params[:tag]
-      @photos = Photo.where(imageable_type: 'Event').tagged_with(params[:tag])
+      @photos = Photo.with_event.tagged_with(params[:tag])
       @descriptor = params[:tag]
     else
-      @photos = Photo.where(imageable_type: 'Event')
+      @photos = Photo.with_event
       @descriptor = "All"
       # @tags = tag_cloud
     end
