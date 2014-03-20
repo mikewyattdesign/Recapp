@@ -1,64 +1,39 @@
-<div class="impressions row">
-    <div class="col-md-12 form-header-label">
-        <h3 id="impression-jump">Impressions & Stats</h3>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <%= f.label :total_attendance, "Total Event Attendance", class: "control-label col-md-12" %>
-            <div class="col-md-12">
-                <%= f.number_field :total_attendance, class: "form-control" %>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <%= f.label :miles, "Miles Traveled from Last Event", class: "control-label col-md-12" %>
-            <div class="col-md-12">
-                <%= f.number_field :miles, class: "form-control" %>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <%= f.label :walk_by_impressions, "Walk By Impressions", class: "control-label col-md-12" %>
-            <div class="col-md-12">
-                <%= f.number_field :walk_by_impressions, class: "form-control" %>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <%= f.label :footprint_impressions, "Footprint Impressions", class: "control-label col-md-12" %>
-            <div class="col-md-12">
-                <%= f.number_field :footprint_impressions, class: "form-control" %>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <%= f.label :extended_engagements, "Extended Engagements", class: "control-label col-md-12" %>
-            <div class="col-md-12">
-                <%= f.number_field :extended_engagements, class: "form-control" %>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <%= f.label :digital_engagements, "Digital Engagements", class: "control-label col-md-12" %>
-            <div class="col-md-12">
-                <%= f.number_field :digital_engagements, class: "form-control" %>
-            </div>
-        </div>
-    </div>
+<div class="col-md-12 form-header-label">
+    <h3 id="impression-jump">Impressions & Stats</h3>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :total_attendance, "Total Event Attendance", class: "control-label" %>
+    <%= f.number_field :total_attendance, class: "form-control" %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :miles, "Miles Traveled from Last Event", class: "control-label" %>
+    <%= f.number_field :miles, class: "form-control" %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :walk_by_impressions, "Walk By Impressions", class: "control-label" %>
+    <%= f.number_field :walk_by_impressions, class: "form-control" %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :footprint_impressions, "Footprint Impressions", class: "control-label" %>
+    <%= f.number_field :footprint_impressions, class: "form-control" %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :extended_engagements, "Extended Engagements", class: "control-label" %>
+    <%= f.number_field :extended_engagements, class: "form-control" %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :digital_engagements, "Digital Engagements", class: "control-label" %>
+    <%= f.number_field :digital_engagements, class: "form-control" %>
+</div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <div class="col-md-12">
-                <div class="checkbox">
-                    <%= f.check_box :brand_demo_fit, class: "" %>
-                    <%= f.label :brand_demo_fit, "Brand fits the demographic" %>
-                </div>
+<div class="col-md-6">
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="checkbox">
+                <%= f.check_box :brand_demo_fit, class: "" %>
+                <%= f.label :brand_demo_fit, "Brand fits the demographic" %>
             </div>
         </div>
     </div>
 </div>
+

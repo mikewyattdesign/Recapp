@@ -1,41 +1,35 @@
-<div class="general-info">
-    <div class="row form-row">
-        <div class="col-md-12 form-header-label">
-            <h3>Name & Times</h3>
-        </div>
+<div class="col-md-12 form-header-label">
+    <h3>Name & Times</h3>
+</div>
 
-        <div class="col-md-6 form-cont-box">
-            <%= f.label :name, "Name", class: "control-label" %>
-            <%= f.text_field :name, class: "form-control input-lg", placeholder: "Event name", required: true %>
-        </div>
-        <div class="col-md-6 form-cont-box">
-            <%= f.label :program_id, "Program", class: "control-label" %>
-            <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand, @event.program.present? ? @event.program.id : nil),{} ,class: "form-control" %>
-        </div>
-        <div class="col-md-6 form-cont-box">
-            <%= f.label :start_date, "Start Date", class: "control-label" %>
-            <%= f.text_field :start_date, class: "form-control", placeholder: "Start date", data: {behavior: "datepicker"}, required: true %>
-        </div>
-        <div class="col-md-6 form-cont-box">
-            <%= f.label :start_time, "Start Time", class: "control-label" %>
-            <%= f.text_field :start_time, class: "form-control", placeholder: "Start time", data: {behavior: "timepicker"}, required: true %>
-        </div>
-        <div class="col-md-6 form-cont-box">
-            <%= f.label :end_date, "End Date", class: "control-label" %>
-            <%= f.text_field :end_date, class: "form-control", placeholder: "End date", data: {behavior: "datepicker"}, required: true %>
-        </div>
-        <div class="col-md-6 form-cont-box">
-            <%= f.label :end_time, "End Time", class: "control-label" %>
-            <%= f.text_field :end_time, class: "form-control", placeholder: "End time", data: {behavior: "timepicker"}, required: true %>
-        </div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :name, "Name", class: "control-label" %>
+    <%= f.text_field :name, class: "form-control input-lg", placeholder: "Event name", required: true %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :program_id, "Program", class: "control-label" %>
+    <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand, @event.program.present? ? @event.program.id : nil),{} ,class: "form-control" %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :start_date, "Start Date", class: "control-label" %>
+    <%= f.text_field :start_date, class: "form-control", placeholder: "Start date", data: {behavior: "datepicker"}, required: true %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :start_time, "Start Time", class: "control-label" %>
+    <%= f.text_field :start_time, class: "form-control", placeholder: "Start time", data: {behavior: "timepicker"}, required: true %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :end_date, "End Date", class: "control-label" %>
+    <%= f.text_field :end_date, class: "form-control", placeholder: "End date", data: {behavior: "datepicker"}, required: true %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :end_time, "End Time", class: "control-label" %>
+    <%= f.text_field :end_time, class: "form-control", placeholder: "End time", data: {behavior: "timepicker"}, required: true %>
+</div>
 
-        <%= render "location_fields", l: f  %>
-    </div>
+<%= render "location_fields", l: f  %>
 
-    <div class="row form-row">
-        <div class="col-md-6 form-cont-box">
-            <%= f.label :note, "Note", class: "control-label col-md-12" %>
-            <%= f.text_area :note, class: "form-control", placeholder: "Event notes" %>
-        </div>
-    </div>
+<div class="col-md-6 form-cont-box">
+    <%= f.label :note, "Note", class: "control-label col-md-12" %>
+    <%= f.text_area :note, class: "form-control", placeholder: "Event notes" %>
 </div>

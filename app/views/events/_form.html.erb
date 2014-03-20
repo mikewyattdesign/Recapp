@@ -1,7 +1,7 @@
 <%= form_for @event,html: {class: "form-horizontal"} do |f| %>
-<% if @event.errors.any? %>
-    <div id="error_explanation">
-        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    <% if @event.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
             <ul>
                 <% @event.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
@@ -15,20 +15,11 @@
 
             <%= render 'impression_fields', f: f %>
             <%= render 'stella_fields', f: f if @event.program.brand.name == 'Stella Artois' %>
-        <div class="giveaways row">
-            <div class="col-md-12 form-header-label">
-                <h3>Giveaways</h3>
-            </div>
-        </div>
-
-        <div class="row">
             <%= render 'giveaways_fields', f: f %>
-        </div>
 
-        <div class="row">
-                <div class="col-md-12 form-cont-box">
-                    <%= link_to "Add Event Giveaway", new_event_event_giveaway_path(@event), class: 'btn btn-default' %>
-                </div>
+            <div class="col-md-12 form-cont-box">
+                <%= link_to "Add Event Giveaway", new_event_event_giveaway_path(@event), class: 'btn btn-default' %>
+            </div>
             <div class="col-md-6 form-cont-box">
                 <%= f.check_box :wholesaler_or_local_support %>
                 <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
@@ -41,16 +32,15 @@
                 <%= link_to "Manage Event Photos", event_photos_path(@event), class: "btn btn-default" %>
             </div>
 
-
             <div class="col-md-12 form-header-label">
                 <h3>Tags (separated by commas)</h3>
             </div>
             <div class="col-md-6">
                 <%= f.text_field :tag_list, data: {tag_list: "", pre: @event.tags}, class: "form-control" %>
             </div>
+
         </div>
-    </div>
-<% end %>
+    <% end %>
 
     <div class="row">
         <div class="col-md-12 form-header-label"></div>
