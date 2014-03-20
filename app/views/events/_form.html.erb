@@ -16,28 +16,7 @@
             <%= render 'impression_fields', f: f %>
             <%= render 'stella_fields', f: f if @event.program.brand.name == 'Stella Artois' %>
             <%= render 'giveaways_fields', f: f %>
-
-            <div class="col-md-12 form-cont-box">
-                <%= link_to "Add Event Giveaway", new_event_event_giveaway_path(@event), class: 'btn btn-default' %>
-            </div>
-            <div class="col-md-6 form-cont-box">
-                <%= f.check_box :wholesaler_or_local_support %>
-                <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
-            </div>
-
-            <div class="col-md-12 form-header-label">
-                <h3>Photos</h3>
-            </div>
-            <div class="col-md-6">
-                <%= link_to "Manage Event Photos", event_photos_path(@event), class: "btn btn-default" %>
-            </div>
-
-            <div class="col-md-12 form-header-label">
-                <h3>Tags (separated by commas)</h3>
-            </div>
-            <div class="col-md-6">
-                <%= f.text_field :tag_list, data: {tag_list: "", pre: @event.tags}, class: "form-control" %>
-            </div>
+            <%= render 'photos_fields', f: f %>
 
         </div>
     <% end %>

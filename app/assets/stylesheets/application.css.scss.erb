@@ -84,8 +84,10 @@ $darkest-grey: #404041;
             background-color: $orange;
         }
 
-        &:active {
-            background-color: $orange;
+        &.active {
+            a {
+                background-color: $orange !important;
+            }
         }
 
         a {
@@ -303,6 +305,20 @@ body {
     }
 }
 
+.list-photos {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.list-photo-container {
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid $dark-grey;
+    border-radius: 5px;
+    height: 150px;
+    overflow: hidden;
+}
+
 .form-header-label {
     border-bottom: 1px solid $lightMediumGrey;
     margin-bottom: 10px;
@@ -386,6 +402,12 @@ body {
 .brand-icon {
     height: 250px;
     background-color: $lightGrey;
+    overflow: hidden;
+}
+
+.brand-logos {
+    min-height: 100%;
+    min-width: 100%;
 }
 
 .prize-icon {

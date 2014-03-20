@@ -10,3 +10,13 @@
     </div>
 <% end %>
 <div class="clearfix"></div>
+
+<div class="col-md-12 form-cont-box">
+    <%= link_to "Add Event Giveaway", new_event_event_giveaway_path(@event), class: 'btn btn-default' %>
+</div>
+<div class="col-md-6 form-cont-box">
+    <div class="checkbox">
+        <%= f.check_box :wholesaler_or_local_support %>
+        <%= f.label :wholesaler_or_local_support, "Wholesaler/Local Support" %>
+    </div>
+</div>
