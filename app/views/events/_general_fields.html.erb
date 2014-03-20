@@ -17,7 +17,7 @@
             <%= f.text_field :start_date, class: "form-control", placeholder: "Start date", data: {behavior: "datepicker"}, required: true %>
         </div>
         <div class="col-md-6 form-cont-box">
-            <%= f.label :start_time, "Start Time", class: "control-label col-md-12" %>
+            <%= f.label :start_time, "Start Time", class: "control-label" %>
             <%= f.text_field :start_time, class: "form-control", placeholder: "Start time", data: {behavior: "timepicker"}, required: true %>
         </div>
         <div class="col-md-6 form-cont-box">
@@ -25,17 +25,11 @@
             <%= f.text_field :end_date, class: "form-control", placeholder: "End date", data: {behavior: "datepicker"}, required: true %>
         </div>
         <div class="col-md-6 form-cont-box">
-            <div class="form-group d">
-                <%= f.label :end_time, "End Time", class: "control-label col-md-12" %>
-                <div class="col-md-12">
-                    <%= f.text_field :end_time, class: "form-control", placeholder: "End time", data: {behavior: "timepicker"}, required: true %>
-                </div>
-            </div>
+            <%= f.label :end_time, "End Time", class: "control-label" %>
+            <%= f.text_field :end_time, class: "form-control", placeholder: "End time", data: {behavior: "timepicker"}, required: true %>
         </div>
-    </div>
 
-    <div class="row form-row">
-    <%= render "location_fields", l: f  %>
+        <%= render "location_fields", l: f  %>
     </div>
 
     <div class="row form-row">
