@@ -274,6 +274,7 @@ body {
 
 .event-info-button {
     padding-right: 0;
+    padding-left: 0;
 }
 
 .no-event-photos {
@@ -294,6 +295,8 @@ body {
 
 .photo {
     @extend .event-info;
+    border: 1px solid $light-grey;
+    border-radius: 8px;
 }
 
 .event-details {
@@ -438,4 +441,29 @@ body {
 
 .giveaway-image {
     height: 100%;
+}
+
+// Mobile styles
+@media only screen
+and (max-width : 768px)
+and (-webkit-min-device-pixel-ratio: 1)  {
+
+    .quick-info {
+        li {
+            padding-left: 5px !important;
+            margin-bottom: 15px;
+        }
+    }
+
+    .event-arrow, .event-timeline, .event-circle {
+        display: none;
+    }
+
+    .event-background {
+        width: 100%;
+    }
+
+    #atlwdg-trigger, #atlwdg-blanket, #atlwdg-container {
+        display: none;
+    }
 }
