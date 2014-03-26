@@ -23,6 +23,11 @@ class EventsController < ApplicationController
           @events = Event.all.order(start_date_time: :desc)
       end 
     end 
+
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   # GET /events/1

@@ -1,0 +1,52 @@
+<Worksheet ss:Name="Events">
+	<Table>
+        <Row>
+            <Cell><Data ss:Type="String">Event Name</Data></Cell>
+            <Cell><Data ss:Type="String">Brand</Data></Cell>
+            <Cell><Data ss:Type="String">Program</Data></Cell>
+            <Cell><Data ss:Type="String">Start Date</Data></Cell>
+            <Cell><Data ss:Type="String">Start Time</Data></Cell>
+            <Cell><Data ss:Type="String">End Date</Data></Cell>
+            <Cell><Data ss:Type="String">End Time</Data></Cell>
+            <Cell><Data ss:Type="String">Street</Data></Cell>
+            <Cell><Data ss:Type="String">City</Data></Cell>
+            <Cell><Data ss:Type="String">State</Data></Cell>
+            <Cell><Data ss:Type="String">Postal Code</Data></Cell>
+            <Cell><Data ss:Type="String">Country</Data></Cell>
+            <Cell><Data ss:Type="String">Total Event Attendance</Data></Cell>
+            <Cell><Data ss:Type="String">Mileage Impressions</Data></Cell>
+            <Cell><Data ss:Type="String">Walk By Impressions</Data></Cell>
+            <Cell><Data ss:Type="String">Footprint Impressions</Data></Cell>
+            <Cell><Data ss:Type="String">Extended Engagements</Data></Cell>
+            <Cell><Data ss:Type="String">Digital Engagements</Data></Cell>
+            <Cell><Data ss:Type="String">Brand Fits the Demographic</Data></Cell>
+            <Cell><Data ss:Type="String">Wholesaler/Local Support</Data></Cell>
+            <Cell><Data ss:Type="String">Note</Data></Cell>
+        </Row>
+        <% events.each do |event| %>
+            <Row>
+                <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.program.brand.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.program.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.start_date %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.start_time %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.end_date %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.end_time %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.street %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.city %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.state %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.postal_code %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.country %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.total_attendance %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.mileage_impressions %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.walk_by_impressions %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.footprint_impressions %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.extended_engagements %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.digital_engagements %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.brand_demo_fit %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.wholesaler_or_local_support %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= event.note %></Data></Cell>
+            </Row>
+        <% end %>
+	</Table>
+</Worksheet>

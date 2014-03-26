@@ -91,4 +91,32 @@ class Event < ActiveRecord::Base
     def past?
         end_date_time < DateTime.now
     end
+
+    def to_xls
+       [
+            "<Row>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{name}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{program.brand.name}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{program.name}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{start_date}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{start_time}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{end_date}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{end_time}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{street}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{city}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{state}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{postal_code}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{country}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{total_attendance}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{mileage_impressions}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{walk_by_impressions}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{footprint_impressions}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{extended_engagements}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{digital_engagements}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{brand_demo_fit}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{wholesaler_or_local_support}</Data></Cell>",
+                "<Cell><Data ss:Type=" + '"String"' + ">#{note}</Data></Cell>",
+            "</Row>"
+        ].join('')
+    end
 end

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Event do
+	before { @event = build(:event)}
 	it "is valid with name, start_date_time, end_date_time, and program_id" do
 		expect(build(:event)).to be_valid
 	end
@@ -32,37 +33,29 @@ describe Event do
 		expect(event.program).to eq program
 	end
 	it "responds to weather" do
-		event = build(:event)
-		expect(event).to respond_to(:weather)
+		expect(@event).to respond_to(:weather)
 	end
 	it "responds to comments" do
-		event = build(:event)
-		expect(event).to respond_to(:comments)
+		expect(@event).to respond_to(:comments)
 	end
 	it "responds to photos" do
-		event = build(:event)
-		expect(event).to respond_to(:photos)
+		expect(@event).to respond_to(:photos)
 	end
 	it "responds to giveaways" do
-		event = build(:event)
-		expect(event).to respond_to(:giveaways)
+		expect(@event).to respond_to(:giveaways)
 	end
 	it "responds to event_giveaways" do
-		event = build(:event)
-		expect(event).to respond_to(:event_giveaways)
+		expect(@event).to respond_to(:event_giveaways)
 	end
 	it "responds to tags" do
-		event = build(:event)
-		expect(event).to respond_to(:tags)
+		expect(@event).to respond_to(:tags)
 	end
 	it "responds to miles" do
-		event = build(:event)
-		expect(event).to respond_to(:miles)
+		expect(@event).to respond_to(:miles)
 	end
 
 	it "calculates mileage impressions based on miles" do
-		event = build(:event)
-		event.miles = 1
-		expect(event.mileage_impressions).to eq(82)
+		@event.miles = 1
+		expect(@event.mileage_impressions).to eq(82)
 	end
 end
