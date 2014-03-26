@@ -22,7 +22,7 @@
                             <div class="event-info">
                                 <div class="event-info-text col-sm-10 col-md-10">
                                     <%= image_tag event_decorator.brand.logo, class: "event-logo pull-left" %>
-                                    <div class="event-name"><%= event_decorator.name %></div>
+                                    <div class="event-name"><%= link_to event_decorator.name, event %></div>
                                     <div class="event-start"><%= event_decorator.start_date %></div>
                                 </div>
                                 <div class="event-info-button col-sm-2 col-md-2">

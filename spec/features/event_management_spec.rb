@@ -73,9 +73,17 @@ feature 'Event Management' do
 		scenario 'User deletes an event' do
 			visit program_events_path(@program)
 			expect(page).to have_css("[href='/events/#{@original_event.id}']")
-			find("[href='/events/#{@original_event.id}']").click
+			find("[href='/events/#{@original_event.id}'][data-method='delete']").click
 			expect(current_path).to eq events_path
-			expect(page).to have_no_css "[data-event-id='#{@original_event.id}']"
+			expect(page).to have_no_css "[data-event-id='#{@original_event.id}'][data-method='delete']"
 		end
+	end
+	scenario 'User views an event recap' do
+		@new_event = create(:event, program_id: @program.id)
+		visit program_events_path(@program)
+		expect(page).to have_css("[href='/events/#{@new_event.id}']")
+		click_link @new_event.name
+		expect(current_path).to eq event_path(@new_event)
+		expect(page).to have_content @new_event.name
 	end
 end

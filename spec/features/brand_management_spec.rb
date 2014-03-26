@@ -22,7 +22,7 @@ feature 'Brand Management' do
 		scenario 'User deletes a brand' do
 			visit brands_path
 			expect(page).to have_css("[href='/brands/#{@original_brand.id}']")
-			find("[href='/brands/#{@original_brand.id}']").click
+			find("[href='/brands/#{@original_brand.id}'][data-method='delete']").click
 			expect(current_path).to eq("/brands")
 			expect(page).to have_no_content "#{@original_brand.name}"
 		end
