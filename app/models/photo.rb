@@ -15,4 +15,20 @@ class Photo < ActiveRecord::Base
     		Event.find(imageable_id) if Event.where(id: imageable_id).count > 0
     	end
     end
+
+    def event_id
+        event.id if event.present?
+    end
+
+    def program_id
+        event.program.id if event.present?
+    end
+
+    def brand_id
+        event.program.brand_id if event.present?
+    end
+
+    def image_url
+        image.url if image.present?
+    end
 end
