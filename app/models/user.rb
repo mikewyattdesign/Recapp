@@ -12,13 +12,13 @@ class User < ActiveRecord::Base
   # 			source: :event, 
   # 			conditions: "assignments.assignable_type = 'Event'"
   has_many :programs, 
-  			through: :assignments, 
-  			source: :program, 
-  			conditions: "assignments.assignable_type = 'Program'"
+  			-> { where "assignments.assignable_type = 'Program'" },
+        through: :assignments, 
+        source: :program
   has_many :brands, 
-  			through: :assignments, 
-  			source: :brand, 
-  			conditions: "assignments.assignable_type = 'Brand'"
+  			-> {where "assignments.assignable_type = 'Brand'"},
+        through: :assignments, 
+        source: :brand
 
   def assign_to_brand(brand)
     brand.assignments.create!(user_id: id)
