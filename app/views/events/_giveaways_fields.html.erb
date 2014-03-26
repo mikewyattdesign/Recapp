@@ -6,7 +6,7 @@
     <% event_giveaway = eg.object %>
     <div class="col-md-6 form-cont-box">
         <%= eg.label :giveaway_id, event_giveaway.giveaway.name, class: "control-label" %>
-        <%= eg.number_field :count_given_away, class: "form-control" %>
+        <%= eg.number_field :count_given_away, min: 0, class: "form-control" %>
     </div>
 <% end %>
 <div class="clearfix"></div>

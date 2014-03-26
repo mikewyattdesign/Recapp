@@ -3,7 +3,7 @@
         <div class="form-group">
             <%= f.label :estimated_number_of_samples, "Estimated Number of Samples", class: "control-label col-md-12" %>
             <div class="col-md-12">
-                <%= f.number_field :estimated_number_of_samples, class: "form-control" %>
+                <%= f.number_field :estimated_number_of_samples, min: 0, class: "form-control" %>
             </div>
         </div>
     </div>    
@@ -11,7 +11,7 @@
         <div class="form-group">
             <%= f.label :cost_per_sample, "Cost Per Sample", class: "control-label col-md-12" %>
             <div class="col-md-12">
-                <%= f.number_field :cost_per_sample, class: "form-control" %>
+                <%= f.number_field :cost_per_sample, min: 0, step: 0.01, class: "form-control" %>
             </div>
         </div>
     </div>    
