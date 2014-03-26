@@ -14,7 +14,7 @@
                     <div class="event-group">
                     <% @events.each do |event| %>
                     <% event_decorator = EventDecorator.new(event) %>
-                    <div class="row">
+                    <div class="row" data-event-id="<%= event.id %>">
                         <div class="col-sm-2 col-md-2">
                         </div>
 
