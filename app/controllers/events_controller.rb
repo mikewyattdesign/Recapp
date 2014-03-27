@@ -7,10 +7,13 @@ class EventsController < ApplicationController
     if params[:program_id]
         @program = Program.find(params[:program_id])
         @events = @program.events.order(start_date_time: :desc)
+        @events = event_date_filter(@events)
     elsif params[:tag]
         @events = Event.tagged_with(params[:tag])
+        @events = event_date_filter(@events)
     else
         @events = current_user.events.order(start_date_time: :desc)
+        @events = event_date_filter(@events)
     end
 
 
@@ -80,6 +83,21 @@ class EventsController < ApplicationController
     def set_event
       @event = Event.find(params[:id])
       @event_decorator = EventDecorator.new(@event)
+    end
+
+    def event_date_filter(events)
+      if params[:start_date].present? && params[:end_date].present?
+        events.where("start_date_time >= :start_date AND start_date_time <= :end_date", 
+          { start_date: Time.strptime(params[:start_date], "%m/%d/%Y"), end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
+      elsif params[:start_date].present?
+        events.where("start_date_time >= :start_date", 
+          { start_date: Time.strptime(params[:start_date], "%m/%d/%Y")})
+      elsif params[:end_date].present?
+        events.where("end_date_time <= :end_date", 
+          { end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
+      else
+        events
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

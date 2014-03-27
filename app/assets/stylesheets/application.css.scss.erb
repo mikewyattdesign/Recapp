@@ -132,6 +132,34 @@ body {
 
 // Events Style
 
+.event-background .date-filters {
+    background-color: $light-orange;
+    padding: 4px 0;
+    position: relative;
+
+    $arrow-width: 50px;
+    &:after, &:before {
+        width: 0;
+        height: 0;
+        border-bottom: 60px solid transparent;
+        border-top: 0 solid transparent;
+        content: '';
+        position: absolute;
+        top: 100%;
+        z-index: -10;
+    }
+
+    &:after {
+        border-left: $arrow-width solid $orange;
+        right: 0;
+    }
+
+    &:before {
+        border-right: $arrow-width solid $orange;
+        left: 0;
+    }
+}
+
 .event-header {
     padding-bottom: 4%;
     background-color: $dark-grey;
