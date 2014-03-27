@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319164011) do
+ActiveRecord::Schema.define(version: 20140327150550) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(version: 20140319164011) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.decimal  "unit_cost",          default: 0.0
+    t.boolean  "is_a_sample",        default: false
+    t.integer  "samples_per_unit",   default: 0
   end
 
   create_table "locations", force: true do |t|

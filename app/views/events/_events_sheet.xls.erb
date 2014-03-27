@@ -1,6 +1,7 @@
 <Worksheet ss:Name="Events">
 	<Table>
         <Row>
+            <Cell><Data ss:Type="String">Event Id</Data></Cell>
             <Cell><Data ss:Type="String">Event Name</Data></Cell>
             <Cell><Data ss:Type="String">Brand</Data></Cell>
             <Cell><Data ss:Type="String">Program</Data></Cell>
@@ -25,6 +26,7 @@
         </Row>
         <% events.each do |event| %>
             <Row>
+                <Cell><Data ss:Type="String"><%= event.id %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= event.program.brand.name %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= event.program.name %></Data></Cell>

@@ -1,2 +1,28 @@
 <Worksheet ss:Name="Event Giveaways">
+	<Table>
+		<Row>
+			<Cell><Data ss:Type="String">Event Id</Data></Cell>
+			<Cell><Data ss:Type="String">Event Name</Data></Cell>
+			<Cell><Data ss:Type="String">Brand</Data></Cell>
+			<Cell><Data ss:Type="String">Program</Data></Cell>
+			<Cell><Data ss:Type="String">Giveaway Name</Data></Cell>
+			<Cell><Data ss:Type="String">Count Given Away</Data></Cell>
+			<Cell><Data ss:Type="String">Unit Cost</Data></Cell>
+			<Cell><Data ss:Type="String">Is A Sample</Data></Cell>
+		</Row>
+		<% events.each do |event| %>
+			<% event.event_giveaways.where("count_given_away > ?",0) do |event_giveaway| %>
+				<Row>
+					<Cell><Data ss:Type="String"><%= event.id %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= event.program.brand.name %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= event.program.name %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= event_giveaway.giveaway.name %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= event_giveaway.count_given_away %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= event_giveaway.giveaway.unit_cost %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= event_giveaway.giveaway.is_a_sample %></Data></Cell>
+				</Row>
+			<% end %>
+		<% end %>
+	</Table>
 </Worksheet>

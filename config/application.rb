@@ -30,5 +30,7 @@ module G360EventApplication
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += %w( .svg .eot .woff .ttf )
+
+    ActsAsTaggableOn.remove_unused_tags
   end
 end
