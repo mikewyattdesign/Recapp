@@ -11,7 +11,7 @@
 			<Cell><Data ss:Type="String">Is A Sample</Data></Cell>
 		</Row>
 		<% events.each do |event| %>
-			<% event.event_giveaways.where("count_given_away > ?",0) do |event_giveaway| %>
+			<% event.event_giveaways.where("count_given_away > ?",0).each do |event_giveaway| %>
 				<Row>
 					<Cell><Data ss:Type="String"><%= event.id %></Data></Cell>
 					<Cell><Data ss:Type="String"><%= event.name %></Data></Cell>

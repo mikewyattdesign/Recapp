@@ -5,5 +5,5 @@
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
 	<%= render 'events/events_sheet',  events: @events %>
-	<%= render 'events/event_giveaways_sheet' %>
+	<%= render 'events/event_giveaways_sheet', events: @events %>
 </Workbook>
