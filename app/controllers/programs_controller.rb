@@ -4,8 +4,12 @@ class ProgramsController < ApplicationController
   # GET /brands/:brand_id/programs
   # GET /brands/:brand_id/programs.json
   def index
-    @brand = Brand.find(params[:brand_id])
-    @programs = @brand.programs
+    @brand = Brand.find(params[:brand_id]) 
+    if current_user.is_admin?
+      @programs = @brand.programs
+    else
+      current_user.programs.where(brand_id: @brand.id)
+    end
   end
 
   # GET /programs/1

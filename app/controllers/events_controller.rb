@@ -1,28 +1,18 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
   # GET /events
   # GET /events.json
   def index
-    if user_signed_in?
-      if params[:program_id]
-          @program = Program.find(params[:program_id])
-          @events = @program.events.order(start_date_time: :desc)
-      elsif params[:tag]
-          @events = Event.tagged_with(params[:tag])
-      else
-          @events = current_user.events.order(start_date_time: :desc)
-      end
+
+    if params[:program_id]
+        @program = Program.find(params[:program_id])
+        @events = @program.events.order(start_date_time: :desc)
+    elsif params[:tag]
+        @events = Event.tagged_with(params[:tag])
     else
-      if params[:program_id]
-          @program = Program.find(params[:program_id])
-          @events = @program.events.order(start_date_time: :desc)
-      elsif params[:tag]
-          @events = Event.tagged_with(params[:tag])
-      else
-          @events = Event.all.order(start_date_time: :desc)
-      end 
-    end 
+        @events = current_user.events.order(start_date_time: :desc)
+    end
+
 
     respond_to do |format|
       format.html
