@@ -5,6 +5,9 @@
                 <%= link_to new_event_path do %>
                 <button type="button" class="pull-right new-event-btn btn btn-primary"><span class="visible-md visible-lg visible-sm .hidden-xs">New Event</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span></button>
                 <% end %>
+                <% if @events.present? %>
+                    <%= link_to 'Export to Excel', "#{request.path}.xls", class: 'btn btn-default hidden-sm hidden-xs'%>
+                <% end %>
             </h1>
         </div>
 
