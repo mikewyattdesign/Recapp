@@ -350,6 +350,14 @@ body {
     overflow: hidden;
 }
 
+.photo-preview {
+    display: inline-block;
+}
+
+.photo-preview[src=''] + .photo-preview-text {
+    display: none;
+}
+
 .form-header-label {
     border-bottom: 1px solid $lightMediumGrey;
     margin-bottom: 10px;

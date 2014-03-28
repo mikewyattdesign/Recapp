@@ -26,26 +26,8 @@
 // Load jquery token input for tags
 //= require jquery-tokeninput/src/jquery.tokeninput
 
+// Load Image Upload Preview
+//= require image-upload-preview
+
 //= require_tree .
 
-// var RECAPP, REPLACE;
-
-// REPLACE = (function() {
-//     var init;
-//     init = function() {
-//         if($(window).width() <= 480){
-//             $( ".event-header a button" ).replaceWith( '<button type="button" class="pull-right new-event-btn btn btn-primary">+</button>' );
-//         }
-//     };
-//         return {
-//         init: init
-//     };
-// })();
-
-// RECAPP = {
-//     init: function () {
-//         REPLACE.init();
-//     }
-// };
-
-// $(document).on('ready', RECAPP.init);
