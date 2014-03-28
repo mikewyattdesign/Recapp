@@ -133,9 +133,17 @@ body {
 // Events Style
 
 .event-background .date-filters {
-    background-color: $light-orange;
-    padding: 4px 0;
+    background-color: $orange;
+    padding: 15px;
     position: relative;
+
+    h2,h3,h4,h5,h6 {
+        color: white;
+    }
+    label {
+        color: white;
+        text-align: right !important;
+    }
 
     $arrow-width: 50px;
     &:after, &:before {
@@ -150,12 +158,12 @@ body {
     }
 
     &:after {
-        border-left: $arrow-width solid $orange;
+        border-left: $arrow-width solid $dark-orange;
         right: 0;
     }
 
     &:before {
-        border-right: $arrow-width solid $orange;
+        border-right: $arrow-width solid $dark-orange;
         left: 0;
     }
 }

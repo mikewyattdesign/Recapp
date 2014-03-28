@@ -7,15 +7,12 @@ class EventsController < ApplicationController
     if params[:program_id]
         @program = Program.find(params[:program_id])
         @events = @program.events.order(start_date_time: :desc)
-        @events = event_date_filter(@events)
-    elsif params[:tag]
-        @events = Event.tagged_with(params[:tag])
-        @events = event_date_filter(@events)
     else
         @events = current_user.events.order(start_date_time: :desc)
-        @events = event_date_filter(@events)
     end
 
+    @events = event_tag_filter(@events)
+    @events = event_date_filter(@events)
 
     respond_to do |format|
       format.html
@@ -95,6 +92,14 @@ class EventsController < ApplicationController
       elsif params[:end_date].present?
         events.where("end_date_time <= :end_date", 
           { end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
+      else
+        events
+      end
+    end
+
+    def event_tag_filter(events)
+      if params[:tag].present?
+        events.tagged_with(params[:tag])
       else
         events
       end
