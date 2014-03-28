@@ -132,42 +132,53 @@ body {
 
 // Events Style
 
-.event-background .date-filters {
-    background-color: $orange;
-    padding: 15px;
-    position: relative;
+.event-background {
 
-    h2,h3,h4,h5,h6 {
-        color: white;
-    }
-    label {
-        color: white;
-        text-align: right !important;
+    .date-filters-container {
+        position: fixed;
+        z-index: 10;
+        top: 150px;
+        left: 50%;
+        margin-left: -700px;
+        width: 200px;
     }
 
-    $arrow-width: 50px;
-    &:after, &:before {
-        width: 0;
-        height: 0;
-        border-bottom: 60px solid transparent;
-        border-top: 0 solid transparent;
-        content: '';
-        position: absolute;
-        top: 100%;
-        z-index: -10;
-    }
+    .date-filters {
+        background-color: $orange;
+        padding: 15px;
+        position: relative;
 
-    &:after {
-        border-left: $arrow-width solid $dark-orange;
-        right: 0;
-    }
+        h2,h3,h4,h5,h6 {
+            color: white;
+        }
+        label {
+            color: white;
+        }
 
-    &:before {
-        border-right: $arrow-width solid $dark-orange;
-        left: 0;
+        $arrow-width: 50px;
+        &:after, &:before {
+            display: none;
+            width: 0;
+            height: 0;
+            border-bottom: 60px solid transparent;
+            border-top: 0 solid transparent;
+            content: '';
+            position: absolute;
+            top: 100%;
+            z-index: -10;
+        }
+
+        &:after {
+            border-left: $arrow-width solid $dark-orange;
+            right: 0;
+        }
+
+        &:before {
+            border-right: $arrow-width solid $dark-orange;
+            left: 0;
+        }
     }
 }
-
 .event-header {
     padding-bottom: 4%;
     background-color: $dark-grey;
