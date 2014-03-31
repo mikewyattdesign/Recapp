@@ -29,19 +29,19 @@
             <div class="event-impressions panel panel-default">
                 <div class="panel-heading">Impressions</div>
                 <div class="panel-body">
-                    <div class="estimated-total-impressions">Estimated Total: <%= @event_decorator.estimated_total_impressions %>
+                    <div class="estimated-total-impressions">Estimated Total Impressions: <%= @event_decorator.estimated_total_impressions %>
                     </div>
                     <div class="mileage_impressions">
-                        Mileage: <%= @event_decorator.mileage_impressions %>
+                        Mileage Impressions: <%= @event_decorator.mileage_impressions %>
                     </div>
                     <div class="footprint-attendance">
-                        Footprint: <%= @event_decorator.footprint_impressions %>
+                        Footprint Impressions: <%= @event_decorator.footprint_impressions %>
                     </div>
                     <div class="display-attendance">
-                        Display:<%= @event_decorator.walk_by_impressions %>
+                        Walk-by Impressions: <%= @event_decorator.walk_by_impressions %>
                     </div>
                     <div class="total-attendance">
-                        Total: <%= @event_decorator.total_attendance %>
+                        Total Event Attendance: <%= @event_decorator.total_attendance %>
                     </div>
 
                 </div>
@@ -51,7 +51,7 @@
                 <div class="panel-body">
                     <% @event_decorator.event_giveaways.each do | event_giveaway| %>
                         <div class="event-giveaway">
-                            <span class="giveaway-name"><%= event_giveaway.giveaway.name %></span>
+                            <span class="giveaway-name"><%= event_giveaway.giveaway.name %>: </span>
                             <span class="giveaway-count"><%= event_giveaway.count_given_away %></span>
                         </div>
                     <% end %>
