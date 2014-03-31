@@ -29,5 +29,8 @@
 // Load Image Upload Preview
 //= require image-upload-preview
 
+// Load Modernizr
+//= require modernizr/modernizr
+
 //= require_tree .
 
