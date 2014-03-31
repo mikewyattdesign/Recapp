@@ -17,93 +17,12 @@
 
 @import url("http://hello.myfonts.net/count/29ce32");
 
-// Colors
-$lightGrey: #f8f8f8;
-$lightMediumGrey: #e6e6e6;
+@import "colors";
+@import "fonts";
+@import "navigation";
 
-$lightest-orange: #ffcb9f;
-$light-orange: #fcb171;
-$orange: #fc9f4c;
-$dark-orange: #ff8d28;
 
-$lightest-grey: #e4e4e5;
-$light-grey: #c3c2c3;
-$grey: #8b8a8f;
-$dark-grey: #58585a;
-$darkest-grey: #404041;
 
-// Fonts
-@font-face {
-    font-family: 'TrendSansOne';
-    src: url(<%= asset_path '29CE32_6_0.eot' %>);
-    src: url(<%= asset_path '29CE32_6_0.woff' %>) format('woff'),
-         url(<%= asset_path '29CE32_6_0.ttf' %>) format('truetype');
- }
-
-@font-face {
-    font-family: 'TrendSlabOne';
-    src: url(<%= asset_path '29CE32_10_0.eot' %>);
-    src: url(<%= asset_path '29CE32_10_0.woff' %>) format('woff'),
-         url(<%= asset_path '29CE32_10_0.ttf' %>) format('truetype');
- }
-
-// Navigation Bar
-.navbar-brand {
-    margin-left: 50px;
-}
-
-.navbar .navbar-nav {
-  display: inline-block;
-  float: none;
-}
-
-.navbar {
-    background-color: $dark-grey;
-    border-color: $darkest-grey;
-    border-radius: 0;
-    background-image: url(<%= asset_path 'group360-logo.png' %>);
-    background-repeat: no-repeat;
-    background-size: 40px;
-    background-position: 20px 5px;
-}
-
-.navbar-header {
-    a {
-        color: $orange !important;
-        font-family: TrendSansOne, sans-serif;
-    }
-}
-
-.nav {
-    margin: 0;
-
-    li {
-        background-color: $dark-grey;
-
-        &:hover {
-            background-color: $orange;
-        }
-
-        &.active {
-            a {
-                background-color: $orange !important;
-            }
-        }
-
-        a {
-            color: white !important;
-            font-family: TrendSansOne, sans-serif;
-        }
-    }
-
-    .client-login {
-        color: $orange !important;
-
-        &:hover {
-            color: white !important;
-        }
-    }
-}
 
 // Global
 .container-full {

@@ -1,0 +1,57 @@
+// Navigation Bar
+.navbar-brand {
+    margin-left: 50px;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+
+.navbar {
+    background-color: $dark-grey;
+    border-color: $darkest-grey;
+    border-radius: 0;
+    background-image: url(<%= asset_path 'group360-logo.png' %>);
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: 20px 5px;
+}
+
+.navbar-header {
+    a {
+        color: $orange !important;
+        font-family: TrendSansOne, sans-serif;
+    }
+}
+
+.nav {
+    margin: 0;
+
+    li {
+        background-color: $dark-grey;
+
+        &:hover {
+            background-color: $orange;
+        }
+
+        &.active {
+            a {
+                background-color: $orange !important;
+            }
+        }
+
+        a {
+            color: white !important;
+            font-family: TrendSansOne, sans-serif;
+        }
+    }
+
+    .client-login {
+        color: $orange !important;
+
+        &:hover {
+            color: white !important;
+        }
+    }
+}
