@@ -32,5 +32,7 @@
 // Load Modernizr
 //= require modernizr/modernizr
 
+//= require events
+
 //= require_tree .
 

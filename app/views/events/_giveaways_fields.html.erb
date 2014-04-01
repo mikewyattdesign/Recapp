@@ -1,19 +1,15 @@
 <div class="col-md-12 form-header-label">
     <h3>Giveaways</h3>
 </div>
-
-<%= f.fields_for :event_giveaways, @event.event_giveaways do |eg| %>
-    <% event_giveaway = eg.object %>
-    <div class="col-md-6 form-cont-box">
-        <%= eg.label :giveaway_id, event_giveaway.giveaway.name, class: "control-label" %>
-        <%= eg.number_field :count_given_away, min: 0, class: "form-control" %>
-    </div>
-<% end %>
+<div id="event-giveaways">
+    <%= f.fields_for :event_giveaways do |eg| %>
+        <%= render 'event_giveaway_fields', f: eg %>
+    <% end %>
+    <%= link_to_add_fields "Add Event Giveaway", f, :event_giveaways %>
+</div>
 <div class="clearfix"></div>
 
-<div class="col-md-12 form-cont-box">
-    <%= link_to "Add Event Giveaway", new_event_event_giveaway_path(@event), class: 'btn btn-default' %>
-</div>
+
 <div class="col-md-6 form-cont-box">
     <div class="checkbox">
         <%= f.check_box :wholesaler_or_local_support %>

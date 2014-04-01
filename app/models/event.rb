@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
     has_many :assignments, as: :assignable
     acts_as_taggable
 
-    accepts_nested_attributes_for :event_giveaways
+    accepts_nested_attributes_for :event_giveaways, allow_destroy: true
     accepts_nested_attributes_for :giveaways
     accepts_nested_attributes_for :weather
 

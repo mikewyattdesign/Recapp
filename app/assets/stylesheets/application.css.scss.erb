@@ -417,8 +417,33 @@ body {
     text-align: center;
 }
 
+#event-giveaways {
+    clear: both;
+    overflow: hidden;
+
+    fieldset {
+        position: relative;
+
+        .remove-label {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            text-decoration: none;
+        }
+    }
+}
+
 .event-giveaway-name {
     height: 70px;
+}
+
+.add_fields {
+    margin: 5px 15px; // Act like it's in the row
+    
+    // Put onto it's own line w/o additional markup
+    float: left; 
+    clear: both;
+
 }
 
 .comments {
