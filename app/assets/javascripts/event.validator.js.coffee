@@ -1,0 +1,3 @@
+@EVENTVALIDATOR = do ->
+	init = ->
+		return
