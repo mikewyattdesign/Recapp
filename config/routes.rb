@@ -1,5 +1,4 @@
 G360EventApplication::Application.routes.draw do
-  resources :locations
 
     devise_for :users
     # The priority is based upon order of creation: first created -> highest priority.
@@ -8,7 +7,8 @@ G360EventApplication::Application.routes.draw do
     # You can have the root of your site routed with "root"
     root to: redirect('/events')
 
-
+    resources :assignments
+    resources :locations
     resources :giveaways
     resources :event_giveaways
 
