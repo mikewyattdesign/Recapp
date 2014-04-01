@@ -51,4 +51,23 @@ class User < ActiveRecord::Base
   def is_admin?
     role == 0
   end
+
+  def role_in_words
+    case role
+    when 0
+      'Administrator'
+    when 3
+      'Program Manager'
+    when 2
+      'Client'
+    when 1
+      'Field Staff'
+    else
+      'Guest'
+    end
+  end
+
+  def has_assignments?
+    assignments.count > 0
+  end
 end

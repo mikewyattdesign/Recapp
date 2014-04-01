@@ -1,25 +1,35 @@
 <h1>Listing assignments</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th class="text-center"><input type="checkbox"></th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Assignments</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @assignments.each do |assignment| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= link_to 'Show', assignment %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-center"><input type="checkbox" name=""></td>
+        <td><%= link_to user.email, '#' %></td>
+        <td><%= link_to user.role_in_words, '#' %></td>
+        <td class="user-assignments-cell">
+          <% if user.has_assignments? %>
+            <ul class="token-input-list-facebook token-list-display assignment-list">
+              <% user.assignments.each do |assignment| %>
+                <% if assignment.assignable_type == 'Brand' %>
+                  <li class="brand-assignment token-input-token-facebook"><%= assignment.brand.name %></li>
+                <% else %>
+                  <li class="program-assignment token-input-token-facebook"><%= assignment.program.name %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Assignment', new_assignment_path %>
