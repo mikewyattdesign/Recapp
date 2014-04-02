@@ -4,8 +4,7 @@
     <table class="table table-hover" id="assignable-select-table">
       <thead>
       <tr>
-        <th class="text-center"><input type="checkbox"></th>
-        <th>Brand</th>
+        <th colspan="2">Brands</th>
       </tr>
       </thead>
       <tbody>
@@ -15,6 +14,14 @@
             <td><%= brand.name %></td>
           </tr>
         <% end %>
+        <tr><th colspan="2">Programs</th></tr>
+        <% Program.all.each do |program| %>
+          <tr>
+            <td class="text-center"><input type="checkbox" class="assignable-select-checkbox" data-assignable-id="<%= program.id %>" data-assignable-type="Program"></td>
+            <td><%= program.name %></td>
+          </tr>
+        <% end %>
+
       </tbody>
     </table>
   </div>

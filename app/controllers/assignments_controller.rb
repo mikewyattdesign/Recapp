@@ -25,15 +25,44 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   # POST /assignments.json
   def create
-    @assignment = Assignment.new(assignment_params)
+    if assignment_params[:assignables].present? && assignment_params[:users].present?
+      assignables = assignment_params[:assignables].map do |assignable|
+        if assignable.last['assignable_type'] == 'Brand'
+          Brand.find(assignable.last['assignable_id'])
+        else
+          Program.find(assignable.last['assignable_id'])
+        end
+      end
+      users = assignment_params[:users].map do |user|
+        User.find(user.last['user_id'])
+      end
 
-    respond_to do |format|
-      if @assignment.save
-        format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @assignment }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @assignment.errors, status: :unprocessable_entity }
+      users.each do |user|
+        assignables.each do |assignable|
+          user.assign(assignable)
+        end
+      end
+
+      assignable_names = assignables.map do |assignable|
+        assignable.name
+      end.to_sentence
+      user_emails = users.map do |user|
+        user.email
+      end.to_sentence
+
+
+      return redirect_to user_management_url, notice: "Assigned #{assignable_names} to #{user_emails}"
+    else
+      @assignment = Assignment.new(assignment_params)
+
+      respond_to do |format|
+        if @assignment.save
+          format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @assignment }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @assignment.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -73,7 +102,7 @@ class AssignmentsController < ApplicationController
       params.require(:assignment).permit(:user_id,
         :assignable_id,
         :assignable_type,
-        :user_ids,
-        :assignments_attributes => [:assignable_id, :assignable_type])
+        :users => [:user_id],
+        :assignables => [:assignable_id, :assignable_type])
     end
 end

@@ -42,6 +42,26 @@ class User < ActiveRecord::Base
     program.brand.assignments.delete(Assignment.where(user_id: id))
   end
 
+  def assign(assignment)
+    case assignment.class.name
+    when 'Brand'
+      assign_to_brand(assignment)
+    when 'Program'
+      assign_to_program(assignment)
+    else
+    end
+  end
+
+  def unassign(assignment)
+    case assignment.class.name
+    when 'Brand'
+      remove_from_brand(assignment)
+    when 'Program'
+      remove_from_program(assignment)
+    else
+    end
+  end
+
   def events
     return Event.all if is_admin?
     program_ids = programs.pluck(:id)
