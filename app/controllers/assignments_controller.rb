@@ -1,5 +1,4 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
@@ -11,6 +10,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    @assignment = set_assignment
   end
 
   # GET /assignments/new
@@ -20,6 +20,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/1/edit
   def edit
+    @assignment = set_assignment
   end
 
   # POST /assignments
@@ -50,7 +51,6 @@ class AssignmentsController < ApplicationController
         user.email
       end.to_sentence
 
-
       return redirect_to user_management_url, notice: "Assigned #{assignable_names} to #{user_emails}"
     else
       @assignment = Assignment.new(assignment_params)
@@ -70,6 +70,7 @@ class AssignmentsController < ApplicationController
   # PATCH/PUT /assignments/1
   # PATCH/PUT /assignments/1.json
   def update
+    @assignment = set_assignment
     respond_to do |format|
       if @assignment.update(assignment_params)
         format.html { redirect_to @assignment, notice: 'Assignment was successfully updated.' }
@@ -84,17 +85,46 @@ class AssignmentsController < ApplicationController
   # DELETE /assignments/1
   # DELETE /assignments/1.json
   def destroy
-    @assignment.destroy
-    respond_to do |format|
-      format.html { redirect_to assignments_url }
-      format.json { head :no_content }
+    if assignment_params[:assignables].present? && assignment_params[:users].present?
+      assignables = assignment_params[:assignables].map do |assignable|
+        if assignable.last['assignable_type'] == 'Brand'
+          Brand.find(assignable.last['assignable_id'])
+        else
+          Program.find(assignable.last['assignable_id'])
+        end
+      end
+      users = assignment_params[:users].map do |user|
+        User.find(user.last['user_id'])
+      end
+
+      users.each do |user|
+        assignables.each do |assignable|
+          user.unassign(assignable)
+        end
+      end
+
+      assignable_names = assignables.map do |assignable|
+        assignable.name
+      end.to_sentence
+      user_emails = users.map do |user|
+        user.email
+      end.to_sentence
+
+      return redirect_to user_management_url, notice: "Unassigned #{assignable_names} from #{user_emails}"
+    else
+      @assignment = set_assignment
+      @assignment.destroy
+      respond_to do |format|
+        format.html { redirect_to assignments_url }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
-      @assignment = Assignment.find(params[:id])
+      Assignment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

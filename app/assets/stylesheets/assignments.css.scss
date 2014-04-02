@@ -11,3 +11,11 @@
 		}
 	}
 }
+
+.assign_form, .unassign_form {
+	display: inline-block;
+}
+
+[data-toggles-all] {
+	cursor: pointer;
+}
