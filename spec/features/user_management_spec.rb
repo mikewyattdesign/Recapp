@@ -8,4 +8,7 @@ feature 'User Management' do
 		@program = @brand.programs.first
 		@user = create(:user)
 	}
+	scenario 'Assign a user to a brand' do
+		visit user_management_path
+	end
 end

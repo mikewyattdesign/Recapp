@@ -8,6 +8,9 @@ G360EventApplication::Application.routes.draw do
     root to: redirect('/events')
 
     resources :assignments
+
+    get '/assignments' => 'assignments#index', as: :user_management
+
     resources :locations
     resources :giveaways
     resources :event_giveaways

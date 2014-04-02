@@ -33,6 +33,7 @@
 //= require modernizr/modernizr
 
 //= require events
+//= require assignments
 
 //= require_tree .
 

@@ -70,6 +70,10 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params[:assignment]
+      params.require(:assignment).permit(:user_id,
+        :assignable_id,
+        :assignable_type,
+        :user_ids,
+        :assignments_attributes => [:assignable_id, :assignable_type])
     end
 end
