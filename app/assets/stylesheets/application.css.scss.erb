@@ -54,6 +54,10 @@ body {
 .event-background {
 
     .date-filters-container {
+        @media screen and (max-width : 1200px)  {
+            left: 58%;
+        }
+
         position: fixed;
         z-index: 10;
         top: 150px;
@@ -406,7 +410,6 @@ body {
 
 .event-giveaway-icon {
     height: 70px;
-    background-color: $lightGrey;
     text-align: center;
     overflow: hidden;
 }
@@ -440,9 +443,9 @@ body {
 
 .add_fields {
     margin: 5px 15px; // Act like it's in the row
-    
+
     // Put onto it's own line w/o additional markup
-    float: left; 
+    float: left;
     clear: both;
 
 }

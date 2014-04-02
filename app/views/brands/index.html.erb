@@ -12,7 +12,7 @@
 
             <div class="row">
             <% @brands.each do |brand| %>
-              <div class="col-md-4">
+              <div class="col-sm-6 col-md-4">
                 <div class="brand-icon-container">
                 <div class="brand-icon">
                     <%= image_tag brand.logo(:medium), class: "img-responsive brand-logos" unless brand.logo.nil? %>

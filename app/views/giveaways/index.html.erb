@@ -12,8 +12,8 @@
 
             <div class="row">
             <% @giveaways.each do |giveaway| %>
-              <div class="col-md-10 col-md-offset-1">
-                <div class="event-giveaway-container row">
+              <div class="col-sm-6 col-md-10 col-md-offset-1">
+                <div class="event-giveaway-container col-md-12">
                     <div class="event-giveaway-icon col-md-2">
                         <%= link_to image_tag giveaway.image, class: "giveaway-image" %>
                     </div>
