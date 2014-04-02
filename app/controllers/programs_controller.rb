@@ -8,7 +8,7 @@ class ProgramsController < ApplicationController
     if current_user.is_admin?
       @programs = @brand.programs
     else
-      current_user.programs.where(brand_id: @brand.id)
+      @programs = current_user.programs.where(brand_id: @brand.id)
     end
   end
 
