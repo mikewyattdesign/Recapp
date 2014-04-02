@@ -42,7 +42,15 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: "#{@event.name} was successfully created." }
+        format.html { 
+          case params[:commit]
+          when 'Create Event'
+            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully created. " 
+          when 'Create Event and View Recap'
+            redirect_to @event, notice: "#{@event.name} was successfully created." 
+          when 'Create Event and Add Another'
+            redirect_to new_event_url, notice: "#{@event.name} was successfully created." 
+          end }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -56,7 +64,16 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: "#{@event.name} was successfully updated." }
+        format.html { 
+          case params[:commit]
+          when 'Update Event'
+            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. " 
+          when 'Update Event and View Recap'
+            redirect_to @event, notice: "#{@event.name} was successfully updated." 
+          when 'Update Event and Add Another'
+            redirect_to new_event_url, notice: "#{@event.name} was successfully updated." 
+          end
+        }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

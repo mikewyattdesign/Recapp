@@ -24,8 +24,12 @@
     <div class="row">
         <div class="col-md-12 form-header-label"></div>
         <div class="col-md-12 submit-container">
-            <%= f.submit class: "btn btn-primary pull-right" %>
-            <%= link_to 'Back', events_path, class: "btn btn-default pull-right back-button" %>
+        <p class="pull-right">
+            <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-default" %>
+            <%= f.submit @event.new_record? ? 'Create Event and View Recap' : 'Update Event and View Recap', class: "btn btn-default" %>
+            <%= f.submit @event.new_record? ? 'Create Event' : 'Update Event', class: "btn btn-primary" %>
+        </p>
+            <%= link_to 'Back', events_path, class: "btn btn-default pull-left back-button" %>
         </div>
     </div>
 <% end %>
