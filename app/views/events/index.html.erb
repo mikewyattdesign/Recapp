@@ -1,48 +1,47 @@
 <div class="row">
-    <div class="col-md-10 col-md-offset-1 container-box">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 container-box">
         <div class="event-header">
             <h1><span class="glyphicon glyphicon-calendar"></span> Events
                 <%= link_to new_event_path do %>
                 <button type="button" class="pull-right new-event-btn btn btn-primary"><span class="visible-md visible-lg visible-sm .hidden-xs">New Event</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span></button>
                 <% end %>
                 <% if @events.present? %>
-                    <%= link_to 'Export to Excel', "#{request.path}.xls", class: 'btn btn-default hidden-sm hidden-xs'%>
+                    <%= link_to 'Export to Excel', "#{request.path}.xls", class: 'btn btn-default hidden-xs'%>
                 <% end %>
             </h1>
         </div>
 
-        <div class="row event-background" >
+        <div class="event-background" >
             <div class="date-filters-container">
-                
-                <div class="date-filters hidden-xs hidden-sm col-md-12">
-                    <%= form_tag request.path, method: 'get', class: 'form-horizontal' do %>
-                        <h2><span class="glyphicon glyphicon-filter"></span> Filters</h2>
-                        <div class="form-group">
-                            <%= label_tag :tag, 'Tag:', class: 'control-label col-md-12' %>
-                            <div class="col-md-12">   
-                                <%= select_tag :tag, options_from_collection_for_select(Event.tag_counts, :name, :name, params[:tag]), class: 'form-control', prompt: '' %>
-                            </div>
+
+                <div class="date-filters col-sm-12 col-md-12">
+                    <%= form_tag request.path, method: 'get', class: '' do %>
+                        <div class="col-sm-2 col-md-2 filter-group">
+                            <h2><span class="glyphicon glyphicon-filter"></span> Filters</h2>
                         </div>
-                        <div class="form-group">
-                            <%= label_tag :start_date, 'From:', class: 'control-label col-md-12' %>
-                            <div class="col-md-12">
-                                <%= text_field_tag :start_date, params[:start_date], class: 'form-control', placeholder: 'Start Date', data: {behavior: "datepicker"} %>
-                            </div>
+                        <div class="form-group col-sm-4 col-md-4">
+                            <%= label_tag :tag, 'Tag:', class: 'control-label' %>
+                            <%= select_tag :tag, options_from_collection_for_select(Event.tag_counts, :name, :name, params[:tag]), class: 'form-control', prompt: '' %>
                         </div>
-                        <div class="form-group">
-                            <%= label_tag :end_date, 'To:', class: 'control-label col-md-12' %>
-                            <div class="col-md-12">                            
-                                <%= text_field_tag :end_date,  params[:end_date], class: 'form-control', placeholder: 'End Date', data: {behavior: "datepicker"} %>
-                            </div>
+                        <div class="form-group col-sm-2 col-md-2">
+                            <%= label_tag :start_date, 'From:', class: 'control-label' %>
+                            <%= text_field_tag :start_date, params[:start_date], class: 'form-control', placeholder: 'Start Date', data: {behavior: "datepicker"} %>
                         </div>
-                        <p class="">
-                            <%= submit_tag 'Filter Events', class: 'btn btn-default btn-block' %>
-                        </p>
-                        <p>
-                            <button class="btn btn-info btn-block" type="reset">Clear Filters</button>
-                        </p>
+                        <div class="form-group col-sm-2 col-md-2">
+                            <%= label_tag :end_date, 'To:', class: 'control-label' %>
+                            <%= text_field_tag :end_date,  params[:end_date], class: 'form-control', placeholder: 'End Date', data: {behavior: "datepicker"} %>
+                        </div>
+                        <div class="col-sm-2 col-md-2 filter-group">
+                            <%= submit_tag 'Filter', class: 'btn btn-default btn-block' %>
+                            <button class="btn btn-info btn-block" type="reset">Clear</button>
+                        </div>
                     <% end %>
                 </div>
+                <div class="filter-triangles">
+                    <div class="left-triangle"></div>
+                    <div class="right-triangle"></div>
+                </div>
+
             </div>
             <div class="col-xs-12 col-sm-11 col-md-11">
                 <div class="event-container">

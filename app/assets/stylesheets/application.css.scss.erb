@@ -54,19 +54,60 @@ body {
 .event-background {
 
     .date-filters-container {
+
         @media screen and (max-width : 1200px)  {
             left: 58%;
         }
 
-        border-radius: 5px;
-        box-shadow: 0 0 4px grey;
+        @media screen and (max-width : 1420px)  {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
 
-        position: fixed;
-        z-index: 10;
-        top: 145px;
-        left: 50%;
-        margin-left: -700px;
-        width: 200px;
+        @media screen and (min-width : 1420px)  {
+            border-radius: 5px;
+            box-shadow: 0 0 4px grey;
+
+            z-index: 10;
+            position: fixed;
+            top: 145px;
+            left: 50%;
+            margin-left: -700px;
+            width: 200px;
+        }
+
+        .filter-triangles {
+            position: relative;
+            width: 100%;
+
+            @media screen and (min-width : 1420px)  {
+                display: none;
+            }
+
+            .left-triangle {
+                position: absolute;
+                left: 0;
+                top: 103px;
+                width: 0;
+                height: 0;
+                border-left: 15px solid transparent;
+                border-right: 0px solid transparent;
+
+                border-top: 15px solid #cb650b;
+            }
+
+            .right-triangle {
+                position: absolute;
+                right: 0;
+                top: 103px;
+                width: 0;
+                height: 0;
+                border-left: 0px solid transparent;
+                border-right: 15px solid transparent;
+
+                border-top: 15px solid #cb650b;
+            }
+        }
     }
 
     .date-filters {
@@ -74,11 +115,61 @@ body {
         padding: 15px;
         position: relative;
 
+        @media screen and (min-width : 1420px)  {
+            padding: 0 0 15px 0;
+        }
+
+        @media screen and (max-width : 1420px)  {
+            box-shadow: 0 1px 5px grey;
+        }
+
         h2,h3,h4,h5,h6 {
             color: white;
         }
         label {
             color: white;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 30px;
+            margin-bottom: 0;
+
+            @media screen and (max-width : 768px)  {
+                margin-top: 0;
+            }
+
+            @media screen and (max-width : 992px)  {
+                font-size: 22px !important;
+            }
+
+            @media screen and (max-width : 1200px)  {
+                font-size: 24px;
+            }
+
+            @media screen and (min-width : 1420px)  {
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+        }
+
+        .filter-group {
+            @media screen and (min-width : 1420px)  {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 0;
+            .control-label {
+                padding-top: 0;
+            }
+
+            @media screen and (min-width : 1420px)  {
+                width: 100%;
+                padding-bottom: 10px;
+            }
         }
 
         $arrow-width: 50px;
@@ -187,6 +278,10 @@ body {
     box-shadow: 0px 0px 10px $light-grey;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+
+    @media screen and (max-width : 768px)  {
+        margin-left: 0 !important;
+    }
 
     &:hover {
         background-color: $lightGrey;
