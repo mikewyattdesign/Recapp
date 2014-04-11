@@ -138,6 +138,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-ffmpeg (1.0.1)
+      paperclip (>= 2.5.2)
     pg (0.17.1)
     polyglot (0.3.3)
     pry (0.9.12.6)
@@ -266,6 +268,7 @@ DEPENDENCIES
   launchy (~> 2.3.0)
   meta_request (= 0.2.8)
   paperclip (= 4.0.0)
+  paperclip-ffmpeg (= 1.0.1)
   pg
   rails (= 4.0.2)
   rails_12factor
