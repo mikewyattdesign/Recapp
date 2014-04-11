@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327172644) do
+ActiveRecord::Schema.define(version: 20140411151421) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -165,6 +165,18 @@ ActiveRecord::Schema.define(version: 20140327172644) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: true do |t|
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+  end
+
+  add_index "videos", ["event_id"], name: "index_videos_on_event_id"
 
   create_table "weathers", force: true do |t|
     t.integer  "temperature"
