@@ -66,9 +66,10 @@ class VideosController < ApplicationController
   # DELETE /videos/1
   # DELETE /videos/1.json
   def destroy
+    @event = @video.event
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to videos_url }
+      format.html { redirect_to event_videos_url(@event.id) }
       format.json { head :no_content }
     end
   end

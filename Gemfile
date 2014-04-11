@@ -35,6 +35,9 @@ gem 'devise', '3.2.2'
 # Use paperclip for photo attachment
 gem 'paperclip', '4.0.0'
 
+# Use paperclip-ffmpeg for video handling
+gem 'paperclip-ffmpeg', '1.0.1'
+
 # Use Amazon S3 for production file storage
 gem 'aws-sdk', '1.33.0'
 
