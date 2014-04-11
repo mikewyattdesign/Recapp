@@ -1,21 +1,32 @@
-<%= form_for [@event,@video] do |f| %>
-  <% if @video.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+<%= form_for [@event,@video], html: {class: "form-horizontal"} do |f| %>
+    <% if @video.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
 
-      <ul>
-      <% @video.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+            <ul>
+                <% @video.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 form-cont-box">
+            <%= f.label :media, "Video", class: "control-label container-full" %>
+            <%= f.file_field :media, class: "btn btn-default container-full" %>
+            <div class="input-button btn btn-default container-full">Choose File</div>
+        </div>
+
+          <% if @event.present? %>
+            <%= f.hidden_field :event_id, value: @event.id %>
+          <% end %>
+
+        <div class="col-md-10 col-md-offset-1 form-header-label"></div>
+        <div class="col-md-10 col-md-offset-1 submit-container">
+            <%= f.submit class: "btn btn-primary pull-right"%>
+            <%= link_to 'Back', event_videos_path, class: "btn btn-default pull-right back-button" %>
+        </div>
     </div>
-  <% end %>
-  <%= f.label :media, "Media" %>
-  <%= f.file_field :media %>
-  <% if @event.present? %>
-    <%= f.hidden_field :event_id, value: @event.id %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
