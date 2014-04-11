@@ -17,7 +17,13 @@
             <%= render 'stella_fields', f: f if @event.program.brand.name == 'Stella Artois' %>
             <%= render 'giveaways_fields', f: f %>
             <%= render 'photos_fields', f: f %>
-
+            <%= render 'links_fields', f: f %>
+            <div class="col-md-12 form-header-label">
+                <h3>Tags (separated by commas)</h3>
+            </div>
+            <div class="col-md-6">
+                <%= f.text_field :tag_list, data: {tag_list: "", pre: @event.tags}, class: "form-control" %>
+            </div>
         </div>
     <% end %>
 

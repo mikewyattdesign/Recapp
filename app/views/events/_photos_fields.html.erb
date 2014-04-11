@@ -4,10 +4,3 @@
 <div class="col-md-6">
     <%= link_to "Manage Event Photos", event_photos_path(@event), class: "btn btn-default" %>
 </div>
-
-<div class="col-md-12 form-header-label">
-    <h3>Tags (separated by commas)</h3>
-</div>
-<div class="col-md-6">
-    <%= f.text_field :tag_list, data: {tag_list: "", pre: @event.tags}, class: "form-control" %>
-</div>

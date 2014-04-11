@@ -1,0 +1,33 @@
+<% event_link = f.object %>
+	<% if event_link.new_record? %>
+		<div class="col-md-12">
+			<fieldset>
+				<div class="row">	
+				    <div class="col-md-2 form-cont-box">
+					<%= f.label :url, "Url:", class: 'control-label' %>
+				    </div>
+				    <div class="col-md-8 form-cont-box">
+						<%= f.text_field :url, class: "form-control" %>
+				    </div>
+				    <div class="col-md-2 form-cont-box">
+			    		<%= f.hidden_field :_destroy %>
+				    	<%= link_to 'Cancel', '#', class: 'remove_fields btn btn-danger btn-block' %>
+				    </div>
+				</div>
+			</fieldset>
+		</div>
+	<% else %>
+		<div class="col-md-12">
+			<fieldset>
+				<div class="row">	
+					<div class="col-md-10 form-cont-box">
+				    	<%= f.label :link_id, event_link.url, class: "control-label" %>
+				    </div>
+				    <div class="col-md-2 form-cont-box">	
+				    	<%= f.hidden_field :_destroy %>
+						<%= link_to 'Remove', '#', class: 'remove_fields btn btn-danger btn-block', title: "Remove #{event_link.url}" %>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	<% end %>
