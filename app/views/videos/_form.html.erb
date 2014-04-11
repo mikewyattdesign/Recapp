@@ -15,7 +15,7 @@
         <div class="col-md-10 col-md-offset-1 form-cont-box">
             <%= f.label :media, "Video", class: "control-label container-full" %>
             <%= f.file_field :media, class: "btn btn-default container-full" %>
-            <div class="input-button btn btn-default container-full">Choose File</div>
+            <!-- <div class="input-button btn btn-default container-full">Choose File</div> -->
         </div>
 
           <% if @event.present? %>
@@ -25,7 +25,7 @@
         <div class="col-md-10 col-md-offset-1 form-header-label"></div>
         <div class="col-md-10 col-md-offset-1 submit-container">
             <%= f.submit class: "btn btn-primary pull-right"%>
-            <%= link_to 'Back', event_videos_path, class: "btn btn-default pull-right back-button" %>
+            <%= link_to 'Back', event_videos_path(@video.event), class: "btn btn-default pull-right back-button" %>
         </div>
     </div>
 
