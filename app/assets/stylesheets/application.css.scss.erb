@@ -22,8 +22,6 @@
 @import "navigation";
 
 
-
-
 // Global
 .container-full {
     width: 100%;
@@ -50,10 +48,14 @@ body {
 }
 
 // Events Style
-
 .event-background {
 
     .date-filters-container {
+
+        @media screen and (max-width : 768px)  {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
 
         @media screen and (max-width : 1420px)  {
             margin-left: -15px;
@@ -75,6 +77,10 @@ body {
         .filter-triangles {
             position: relative;
             width: 100%;
+
+            @media screen and (max-width : 768px)  {
+                display: none;
+            }
 
             @media screen and (min-width : 1420px)  {
                 display: none;
@@ -204,6 +210,10 @@ body {
     border-top-right-radius: 5px;
     font-family: TrendSansOne, sans-serif;
 
+    @media screen and (max-width : 768px)  {
+        border-radius: 0;
+    }
+
     h1 {
         margin: 0;
         font-size: 30px;
@@ -277,8 +287,10 @@ body {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 
-    @media screen and (max-width : 768px)  {
-        margin-left: 0 !important;
+    @media screen and (max-width : 767px)  {
+        width: 100%;
+        border-left: 1px solid $light-grey;
+        border-radius: 8px;
     }
 
     &:hover {
@@ -330,6 +342,16 @@ body {
     margin-top: -50px;
     left: -2.7%;
     z-index: 4;
+
+    @media screen and (max-width : 768px)  {
+        left: -3%;
+    }
+}
+
+.event-arrow, .event-timeline, .event-circle {
+    @media screen and (max-width : 767px)  {
+        display: none;
+    }
 }
 
 .info-button {
@@ -375,6 +397,13 @@ body {
     .quick-info {
         clear: left;
         margin-top: 10px;
+
+        li {
+            @media screen and (max-width : 768px)  {
+                padding-left: 5px !important;
+                margin-bottom: 15px;
+            }
+        }
     }
 }
 
@@ -561,37 +590,7 @@ body {
 and (max-width : 768px)
 and (-webkit-min-device-pixel-ratio: 1)  {
 
-    .quick-info {
-        li {
-            padding-left: 5px !important;
-            margin-bottom: 15px;
-        }
-    }
-
-    .event-arrow, .event-timeline, .event-circle {
-        display: none;
-    }
-
-    .event-background {
-        width: 100%;
-    }
-
     #atlwdg-trigger, #atlwdg-blanket, #atlwdg-container {
         display: none;
-    }
-
-    .event-container {
-        .event-group {
-            .event-info {
-                width: 100%;
-                margin-left: 15px;
-                border-left: 1px solid $light-grey;
-                border-radius: 8px;
-            }
-        }
-    }
-
-    .event-header {
-        border-radius: 0;
     }
 }
