@@ -1,0 +1,10 @@
+<div class="col-md-12 form-header-label">
+    <h3>Links</h3>
+</div>
+<div id="event-links">
+    <%= f.fields_for :links do |el| %>
+        <%= render 'link_fields', f: el %>
+    <% end %>
+    <%= link_to_add_fields "Add Event Link", f, :links %>
+</div>
+<div class="clearfix"></div>

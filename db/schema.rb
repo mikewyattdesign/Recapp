@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411151421) do
+ActiveRecord::Schema.define(version: 20140411201947) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -91,6 +91,14 @@ ActiveRecord::Schema.define(version: 20140411151421) do
     t.decimal  "unit_cost",          default: 0.0
     t.boolean  "is_a_sample",        default: false
     t.integer  "samples_per_unit",   default: 0
+  end
+
+  create_table "links", force: true do |t|
+    t.string   "url"
+    t.integer  "linkable_id"
+    t.string   "linkable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "locations", force: true do |t|

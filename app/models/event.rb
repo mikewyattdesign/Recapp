@@ -7,9 +7,11 @@ class Event < ActiveRecord::Base
     has_one :weather
     has_many :assignments, as: :assignable
     has_many :videos
+    has_many :links, as: :linkable
     acts_as_taggable
 
     accepts_nested_attributes_for :event_giveaways, allow_destroy: true
+    accepts_nested_attributes_for :links, allow_destroy: true
     accepts_nested_attributes_for :giveaways
     accepts_nested_attributes_for :weather
 
