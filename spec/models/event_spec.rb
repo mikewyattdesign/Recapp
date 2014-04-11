@@ -53,6 +53,9 @@ describe Event do
 	it "responds to miles" do
 		expect(@event).to respond_to(:miles)
 	end
+	it "responds to videos" do
+		expect(@event).to respond_to(:videos)
+	end
 
 	it "calculates mileage impressions based on miles" do
 		@event.miles = 1
