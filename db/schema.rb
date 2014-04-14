@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411215713) do
+ActiveRecord::Schema.define(version: 20140414213507) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140411215713) do
     t.string   "doc_content_type"
     t.integer  "doc_file_size"
     t.datetime "doc_updated_at"
+    t.string   "documentable_type"
   end
 
   add_index "documents", ["documentable_id"], name: "index_documents_on_documentable_id"

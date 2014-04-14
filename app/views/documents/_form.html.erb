@@ -11,6 +11,8 @@
     </div>
   <% end %>
   <%= f.file_field :doc %>
+  <%= f.hidden_field :documentable_type, value: Event.name %>
+  <%= f.hidden_field :documentable_id, value: params[:event_id] %>
   <div class="actions">
     <%= f.submit %>
   </div>
