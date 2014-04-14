@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
     has_one :weather
     has_many :assignments, as: :assignable
     has_many :videos
+    has_many :documents, as: :documentable
     has_many :links, as: :linkable
     acts_as_taggable
 

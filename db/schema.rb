@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411201947) do
+ActiveRecord::Schema.define(version: 20140411215713) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 20140411201947) do
     t.datetime "updated_at"
     t.boolean  "is_testimonial", default: false
   end
+
+  create_table "documents", force: true do |t|
+    t.integer  "documentable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "doc_file_name"
+    t.string   "doc_content_type"
+    t.integer  "doc_file_size"
+    t.datetime "doc_updated_at"
+  end
+
+  add_index "documents", ["documentable_id"], name: "index_documents_on_documentable_id"
 
   create_table "event_giveaways", force: true do |t|
     t.integer "event_id"
