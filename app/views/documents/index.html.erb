@@ -5,18 +5,14 @@
     <tr>
       <th></th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @documents.each do |document| %>
       <tr>
-        <td><%= document.doc_file_name %></td>
-        <td><%= link_to 'Show', document %></td>
-        <td><%= link_to 'Edit', edit_document_path(document) %></td>
-        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to document.doc_file_name, document.doc.url %></td>
+        <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
