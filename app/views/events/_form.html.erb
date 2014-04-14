@@ -9,26 +9,27 @@
             </ul>
         </div>
     <% end %>
-    <%= render 'general_fields', f: f %>
-    <% if @details %>
-        <div class="detail<%= " hidden" unless @details %>">
-
-            <%= render 'impression_fields', f: f %>
-            <%= render 'stella_fields', f: f if @event.program.brand.name == 'Stella Artois' %>
-            <%= render 'giveaways_fields', f: f %>
-            <%= render 'photos_fields', f: f %>
-            <%= render 'videos_fields', f: f %>
-            <%= render 'links_fields', f: f %>
-            <div class="col-md-12 form-header-label">
-                <h3>Tags (separated by commas)</h3>
-            </div>
-            <div class="col-md-6">
-                <%= f.text_field :tag_list, data: {tag_list: "", pre: @event.tags}, class: "form-control" %>
-            </div>
-        </div>
-    <% end %>
 
     <div class="row">
+        <%= render 'general_fields', f: f %>
+        <% if @details %>
+            <div class="detail<%= " hidden" unless @details %>">
+
+                <%= render 'impression_fields', f: f %>
+                <%= render 'stella_fields', f: f if @event.program.brand.name == 'Stella Artois' %>
+                <%= render 'giveaways_fields', f: f %>
+                <%= render 'photos_fields', f: f %>
+                <%= render 'videos_fields', f: f %>
+                <%= render 'links_fields', f: f %>
+                <div class="col-md-12 form-header-label">
+                    <h3>Tags (separated by commas)</h3>
+                </div>
+                <div class="col-md-6">
+                    <%= f.text_field :tag_list, data: {tag_list: "", pre: @event.tags}, class: "form-control" %>
+                </div>
+            </div>
+        <% end %>
+
         <div class="col-md-12 form-header-label"></div>
         <div class="col-md-12 submit-container">
         <p class="pull-right">
