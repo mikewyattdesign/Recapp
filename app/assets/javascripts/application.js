@@ -34,6 +34,7 @@
 
 //= require events
 //= require assignments
+//= require documents
 
 //= require_tree .
 

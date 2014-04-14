@@ -1,6 +1,6 @@
 <h1>Listing documents</h1>
 
-<table class="table">
+<table class="table" id="documents-table">
   <thead>
     <tr>
       <th></th>
@@ -10,9 +10,9 @@
 
   <tbody>
     <% @documents.each do |document| %>
-      <tr>
+      <tr data-document-id="<%= document.id %>">
         <td><%= link_to document.doc_file_name, document.doc.url %></td>
-        <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
