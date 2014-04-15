@@ -15,6 +15,10 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = Document.new
+    respond_to do |format|
+      format.html
+      format.js {@remote = true}
+    end
   end
 
   # GET /documents/1/edit
@@ -30,6 +34,7 @@ class DocumentsController < ApplicationController
       if @document.save
         format.html { redirect_to event_documents_path(@document.event.id), notice: 'Document was successfully created.' }
         format.json { render action: 'show', status: :created, location: @document }
+        format.js 
       else
         format.html { render action: 'new' }
         format.json { render json: @document.errors, status: :unprocessable_entity }

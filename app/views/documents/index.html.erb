@@ -9,15 +9,10 @@
   </thead>
 
   <tbody>
-    <% @documents.each do |document| %>
-      <tr data-document-id="<%= document.id %>">
-        <td><%= link_to document.doc_file_name, document.doc.url %></td>
-        <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
-      </tr>
-    <% end %>
+    <%= render @documents %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Document', new_event_document_path %>
+<%= link_to 'New Document', new_event_document_path, id: 'new_document_link', remote: true %>
