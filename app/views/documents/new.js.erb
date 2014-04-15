@@ -1,1 +1,2 @@
-$('#new_document_link').hide().after("<%= j render 'documents/form' %>");
+$('#new_document_link').hide();
+$("<%= j render 'documents/form' %>").insertAfter('#new_document_link').hide().fadeIn();

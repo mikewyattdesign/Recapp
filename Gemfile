@@ -38,6 +38,9 @@ gem 'paperclip', '4.0.0'
 # Use paperclip-ffmpeg for video handling
 gem 'paperclip-ffmpeg', '1.0.1'
 
+# Use remotipart for remote file uploads
+gem 'remotipart', '1.2.1'
+
 # Use Amazon S3 for production file storage
 gem 'aws-sdk', '1.33.0'
 

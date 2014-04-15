@@ -32,7 +32,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to event_documents_path(@document.event.id), notice: 'Document was successfully created.' }
+        format.html { redirect_to event_documents_path(@document.event.id), notice: 'Document was successfully created .' }
         format.json { render action: 'show', status: :created, location: @document }
         format.js 
       else
