@@ -52,7 +52,27 @@ body {
 }
 
 // Events Style
+
+// @keyframes affixFadeIn {
+//     from {opacity: 0;}
+//     to {opacity: 1;}
+// }
+
+// @-webkit-keyframes affixFadeIn {
+//     from {opacity: 0;}
+//     to {opacity: 1;}
+// }
+
 .event-background {
+
+    .affix {
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        // animation: affixFadeIn 1s  ease-in;
+        // -webkit-animation: affixFadeIn 1s;
+    }
 
     .date-filters-container {
 
@@ -204,7 +224,9 @@ body {
         }
     }
 }
-.event-header {
+
+
+.event-header, .show-header {
     padding-bottom: 4%;
     background-color: $dark-grey;
     border-bottom: 1px solid $darkest-grey;
@@ -226,6 +248,11 @@ body {
     .event-name {
         color: white;
     }
+}
+
+.show-header {
+    margin-bottom: 20px;
+    border-radius: 3px;
 }
 
 .event-group {
@@ -484,6 +511,8 @@ body {
 
 #brand_logo, #giveaway_image, #photo_image, #media_video, .btn-absolute {
     opacity: 0;
+    height: 34px;
+    cursor: pointer;
     position: absolute;
 }
 

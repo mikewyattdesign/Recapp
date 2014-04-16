@@ -1,31 +1,33 @@
 <div class="event">
     <div class="row">
-        <div class="event-header col-md-12">
-            <div class="row">
-                <div class="col-md-9">
-                    <h2 class="event-name"><%= @event_decorator.name %></h2>
-                    <div class="event-program">part of <%= @event_decorator.program.name %></div>
-                    <div class="event-date"><%= "#{@event_decorator.start_date} #{@event_decorator.start_time}" %> to <%= "#{@event_decorator.end_date} #{@event_decorator.end_time}" %> </div>
-                    <div class="event-location"><%= @event_decorator.location %></div>
-                </div>
-                <div class="col-md-3">
-                    <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
-                </div>
-            </div>
-        </div>
-        <div class="event-summary hidden clearfix">
-            <div class="event-weather col-md-3">
-                <%= @event_decorator.try(:weather) %>
-            </div>
-            <div class="col-md-3 event-duration">
-                <%= @event_decorator.duration %>
-            </div>
-            <div class="col-md-3 event-attendees"><%= @event_decorator.total_attendance %></div>
-            <div class="col-md-3 event-impressions"><%= @event_decorator.estimated_total_impressions %></div>
-        </div>
-        <div class="clearfix"></div>
         <div class="col-md-12">
+            <div class="show-header">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2 class="event-name"><%= @event_decorator.name %></h2>
+                        <div class="event-program">part of <%= @event_decorator.program.name %></div>
+                        <div class="event-date"><%= "#{@event_decorator.start_date} #{@event_decorator.start_time}" %> to <%= "#{@event_decorator.end_date} #{@event_decorator.end_time}" %> </div>
+                        <div class="event-location"><%= @event_decorator.location %></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
+                    </div>
+                </div>
+            </div>
+            <div class="event-summary hidden clearfix">
+                <div class="event-weather col-md-3">
+                    <%= @event_decorator.try(:weather) %>
+                </div>
+                <div class="col-md-3 event-duration">
+                    <%= @event_decorator.duration %>
+                </div>
+                <div class="col-md-3 event-attendees"><%= @event_decorator.total_attendance %></div>
+                <div class="col-md-3 event-impressions"><%= @event_decorator.estimated_total_impressions %></div>
+            </div>
+            <div class="clearfix"></div>
+
             <%= render 'photo_carousel' %>
+
             <div class="event-impressions panel panel-default">
                 <div class="panel-heading">Impressions</div>
                 <div class="panel-body">
@@ -73,8 +75,8 @@
 </div>
 <div class="actions text-center">
     <ul class="list-inline">
-        <li><%= link_to 'Back', events_path %></li>
+        <li><%= link_to 'Back', events_path, class: "btn btn-default" %></li>
         <li><%= link_to 'Edit Event Recap', edit_event_path(@event), class: "btn btn-primary" %></li>
-        <li><%= link_to 'Comments', event_comments_path(@event) %></li>
+        <li><%= link_to 'Comments', event_comments_path(@event), class: "btn btn-default" %></li>
     </ul>
 </div>
