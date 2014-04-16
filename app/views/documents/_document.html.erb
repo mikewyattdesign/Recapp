@@ -1,4 +1,10 @@
-      <tr data-document-id="<%= document.id %>">
+<div data-document-id="<%= document.id %>">
+    <tr>
         <td><%= link_to document.doc_file_name, document.doc.url %></td>
-        <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
-      </tr>
+        <td>
+            <%= link_to document, method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+            <button type="button" class="new-event-btn btn btn-danger container-full"><span class="glyphicon glyphicon-trash"></span></button>
+            <% end %>
+        </td>
+    </tr>
+</div>

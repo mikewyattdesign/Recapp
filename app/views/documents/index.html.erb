@@ -1,18 +1,25 @@
-<h1>Listing documents</h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1><span class="glyphicon glyphicon-file"></span> Documents
+                <%= link_to new_event_document_path, id: 'new_document_link', remote: true do %>
+                <button type="button" class="pull-right new-event-btn btn btn-primary"><span class="visible-md visible-lg visible-sm .hidden-xs">New Document</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span></button>
+                <% end %>
+            </h1>
+        </div>
 
-<table class="table" id="documents-table">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%= render @documents %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Document', new_event_document_path, id: 'new_document_link', remote: true %>
+        <div class="form-box">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 document-contaner">
+                    <table class="table document-table">
+                        <tr>
+                            <th>File Name</th>
+                            <th></th>
+                        </tr>
+                        <%= render @documents %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
