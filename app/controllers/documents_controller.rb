@@ -4,7 +4,18 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    if params[:event_id] && Event.where(id: params[:event_id]).count > 0
+      @event = Event.find(params[:event_id])
+      @documents = @event.documents
+      @descriptor = @event.name
+    elsif params[:tag]
+      @documents = Document.with_event.tagged_with(params[:tag])
+      @descriptor = params[:tag]
+    else
+      @documents = Document.with_event
+      @descriptor = "All"
+      # @tags = tag_cloud
+    end
   end
 
   # GET /documents/1
@@ -34,7 +45,7 @@ class DocumentsController < ApplicationController
       if @document.save
         format.html { redirect_to event_documents_path(@document.event.id), notice: 'Document was successfully created .' }
         format.json { render action: 'show', status: :created, location: @document }
-        format.js 
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @document.errors, status: :unprocessable_entity }
