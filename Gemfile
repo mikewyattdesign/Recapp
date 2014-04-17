@@ -5,6 +5,9 @@ gem 'unicorn'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+# Error monitoring service
+gem 'rollbar', '0.12.17'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -104,6 +107,6 @@ group :production do
 end
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+    # bundle exec rake doc:rails generates the API under doc/api.
+    gem 'sdoc', require: false
 end
