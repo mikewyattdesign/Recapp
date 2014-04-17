@@ -29,9 +29,9 @@ class EventDecorator
 
     def photo
         if event.photos.last.present?
-            image_tag event.photos.last.image(:large), class: "event-img"
+            image_tag event.photos.last.image(:large), class: 'event-img'
         elsif event.past?
-            link_to "Add an event photo", "/events/#{event.id}/photos/new", class: 'no-event-photos'
+            link_to 'Add an event photo', "/events/#{event.id}/photos/new", class: 'no-event-photos'
         else
             nil
         end
