@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414213507) do
+ActiveRecord::Schema.define(version: 20140417213112) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140414213507) do
     t.decimal  "unit_cost",          default: 0.0
     t.boolean  "is_a_sample",        default: false
     t.integer  "samples_per_unit",   default: 0
+    t.integer  "starting_inventory", default: 0
   end
 
   create_table "links", force: true do |t|

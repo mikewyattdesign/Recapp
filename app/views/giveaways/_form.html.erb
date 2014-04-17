@@ -12,14 +12,30 @@
     <% end %>
 
     <div class="row">
+        <% if @giveaway.present? && @giveaway.image.present? %>
+          <div class="text-center current-photo-container"><%= image_tag @giveaway.image, class: 'img-responsive photo-preview' %><p>Current Photo</p></div>
+        <% end %>
+        <div class="text-center photo-preview-container"><img src="" alt="" id="photo-preview" class="img-responsive photo-preview" style="display: none;"><p class="photo-preview-text">Preview</p></div>
+        <div class="col-md-10 col-md-offset-1 form-cont-box">
+            <%= f.label :image, "Image", class: "control-label" %>
+            <%= f.file_field :image, class: "btn btn-default container-full", data: {image_upload_preview: '#photo-preview'} %>
+            <div class="input-button btn btn-default container-full">Choose File</div>
+        </div>
         <div class="col-md-10 col-md-offset-1 form-cont-box">
             <%= f.label :name, "Name", class: "control-label" %>
             <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="col-md-10 col-md-offset-1 form-cont-box">
-            <%= f.label :image, "Image", class: "control-label" %>
-            <%= f.file_field :image, class: "btn btn-default container-full" %>
-            <div class="input-button btn btn-default container-full">Choose File</div>
+            <%= f.label :unit_cost, "Unit Cost", class: "control-label" %>
+            <%= f.number_field :unit_cost, class: "form-control", min: 0, step: 0.01 %>
+        </div>
+        <div class="col-md-10 col-md-offset-1 form-cont-box">
+            <%= f.label :starting_inventory, "Starting Inventory", class: "control-label"%>
+            <%= f.number_field :starting_inventory, class: "form-control", min: 0  %>
+        </div>
+        <div class="col-md-10 col-md-offset-1 form-cont-box">
+            <%= f.label :is_a_sample, "Giveaway Type", class: "control-label"%>
+            <%= f.select :is_a_sample, [['Premium',false],['Sample',true]], {}, class: "form-control"  %>
         </div>
 
         <div class="col-md-10 col-md-offset-1 form-header-label"></div>

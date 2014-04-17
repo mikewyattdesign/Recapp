@@ -20,10 +20,10 @@
                     <div class="event-giveaway-name col-md-8">
                         <table class="table">
                             <tr>
-                              <th>Giveaway</th>
+                              <th><%= giveaway.name %> (<%= giveaway.is_a_sample ? 'Sample' : 'Premium' %>)</th>
                             </tr>
                             <tr>
-                              <td><%= giveaway.name %></td>
+                              <td><%= giveaway.starting_inventory %> @ <%= number_to_currency(giveaway.unit_cost) %> each</td>
                             </tr>
                         </table>
                     </div>
