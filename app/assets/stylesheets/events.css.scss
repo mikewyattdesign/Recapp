@@ -1,0 +1,39 @@
+.impressions {
+	float: left;
+	font-family: TrendSansOne, sans-serif;
+	text-align: center;
+	&.estimated-total-impressions {
+		font-size: 300%;
+		&:after {
+			content: 'Total';
+		}
+	}
+	&.mileage-impressions, &.footprint-attendance, &.display-attendance, &.total-attendance {
+		font-size: 200%;
+	}
+	&.mileage-impressions {
+		&:after {
+			content: 'Mileage';
+		}
+	}
+	&.footprint-attendance {
+		&:after {
+			content: 'Footprint';
+		}
+	}
+	&.display-attendance {
+		&:after {
+			content: 'Walk-by';
+		}
+	}
+	&.total-attendance {
+		&:after {
+			content: 'Event';
+		}
+	}
+	&:after {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		display: block;
+		line-height: 0.6;
+	}
+}
