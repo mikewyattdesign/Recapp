@@ -7,4 +7,8 @@ module ApplicationHelper
 	    end
 	    link_to(name, '#', class: "add_fields btn btn-default clearfix", data: {id: id, fields: fields.gsub("\n", "")})
     end
+
+    def number_to_abbreviated(number)
+    	number_to_human(number, units: {thousand: "k", million: "m", billion: "b"})
+    end
 end

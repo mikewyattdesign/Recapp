@@ -1,0 +1,25 @@
+.impressions {
+	float: left;
+	font-family: TrendSansOne, sans-serif;
+	text-align: center;
+	font-size: 200%;
+	&.estimated-total-impressions {
+		font-size: 300%;
+	}
+
+	.heading {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		display: block;
+		line-height: 0.6;
+	}
+	&.event-giveaway .giveaway-image {
+		height: 150px;
+		width: 150px;
+		margin: 0 auto;
+		text-align: center;
+		img {
+			margin: 0 auto;
+			max-height: 100%;
+		}
+	}
+}

@@ -31,45 +31,58 @@
             <div class="event-impressions panel panel-default">
                 <div class="panel-heading">Impressions</div>
                 <div class="panel-body">
-                    <div class="estimated-total-impressions impressions">Estimated Total Impressions: <%= @event_decorator.estimated_total_impressions %>
-                    </div>
-                    <div class="mileage_impressions impressions">
-                        Mileage Impressions: <%= @event_decorator.mileage_impressions %>
-                    </div>
-                    <div class="footprint-attendance impresssions">
-                        Footprint Impressions: <%= @event_decorator.footprint_impressions %>
-                    </div>
-                    <div class="display-attendance impresssions">
-                        Walk-by Impressions: <%= @event_decorator.walk_by_impressions %>
-                    </div>
-                    <div class="total-attendance impressions">
-                        Total Event Attendance: <%= @event_decorator.total_attendance %>
+                    <div class="row">
+                        
+                        <div class="col-md-4 estimated-total-impressions impressions"><%= number_to_abbreviated(@event_decorator.estimated_total_impressions) %>
+                            <span class="heading">Total</span>
+                        </div>
+                        <div class="col-md-2 mileage-impressions impressions">
+                            <%= number_to_abbreviated(@event_decorator.mileage_impressions) %>
+                            <span class="heading">Mileage</span>
+                        </div>
+                        <div class="col-md-2 footprint-attendance impressions">
+                            <%= number_to_abbreviated(@event_decorator.footprint_impressions) %>
+                            <span class="heading">Footprint</span>
+                        </div>
+                        <div class="col-md-2 display-attendance impressions">
+                            <%= number_to_abbreviated(@event_decorator.walk_by_impressions) %>
+                            <span class="heading">Walk-by</span>
+                        </div>
+                        <div class="col-md-2 total-attendance impressions">
+                            <%= number_to_abbreviated(@event_decorator.total_attendance) %>
+                            <span class="heading">Event</span>
+                        </div>
                     </div>
 
+                </div>
+            </div>            
+            <div class="event-engagements panel panel-default">
+                <div class="panel-heading">Engagements</div>
+                <div class="panel-body">
+                    <div class="col-md-6 extended-engagements impressions">
+                        <%= number_to_abbreviated(@event_decorator.extended_engagements) %>
+                        <span class="heading">Extended</span>
+
+                    </div>
+                    <div class="col-md-6 digital-engagements impressions">
+                        <%= number_to_abbreviated(@event_decorator.digital_engagements) %>
+                        <span class="heading">Digital</span>
+                    </div>
                 </div>
             </div>
             <div class="event-giveaways panel panel-default">
                 <div class="panel-heading">Giveaways</div>
                 <div class="panel-body">
                     <% @event_decorator.event_giveaways.each do | event_giveaway| %>
-                        <div class="event-giveaway">
-                            <span class="giveaway-name"><%= event_giveaway.giveaway.name %>: </span>
+                        <div class="event-giveaway impressions col-md-3">
+                            <div class="giveaway-image"><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %></div>
                             <span class="giveaway-count"><%= event_giveaway.count_given_away %></span>
+                            <span class="giveaway-name heading"><%= event_giveaway.giveaway.name %></span>
                         </div>
                     <% end %>
                 </div>
             </div>
-            <div class="event-engagements panel panel-default">
-                <div class="panel-heading">Engagements</div>
-                <div class="panel-body">
-                    <div class="extended-engagements">
-                        Extended: <%= @event_decorator.extended_engagements %>
-                    </div>
-                    <div class="digital-engagements">
-                        Digital: <%= @event_decorator.digital_engagements %>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
