@@ -5,43 +5,21 @@
 	font-size: 200%;
 	&.estimated-total-impressions {
 		font-size: 300%;
-		&:after {
-			content: 'Total';
-		}
 	}
-	&.mileage-impressions {
-		&:after {
-			content: 'Mileage';
-		}
-	}
-	&.footprint-attendance {
-		&:after {
-			content: 'Footprint';
-		}
-	}
-	&.display-attendance {
-		&:after {
-			content: 'Walk-by';
-		}
-	}
-	&.total-attendance {
-		&:after {
-			content: 'Event';
-		}
-	}
-	&.extended-engagements {
-		&:after {
-			content: 'Extended';
-		}
-	}
-	&.digital-engagements {
-		&:after {
-			content: 'Digital';
-		}
-	}
-	&:after {
+
+	.heading {
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		display: block;
 		line-height: 0.6;
+	}
+	&.event-giveaway .giveaway-image {
+		height: 150px;
+		width: 150px;
+		margin: 0 auto;
+		text-align: center;
+		img {
+			margin: 0 auto;
+			max-height: 100%;
+		}
 	}
 }
