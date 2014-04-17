@@ -50,6 +50,17 @@
                     </div>
 
                 </div>
+            </div>            
+            <div class="event-engagements panel panel-default">
+                <div class="panel-heading">Engagements</div>
+                <div class="panel-body">
+                    <div class="col-md-6 extended-engagements impressions">
+                        <%= number_to_abbreviated(@event_decorator.extended_engagements) %>
+                    </div>
+                    <div class="col-md-6 digital-engagements impressions">
+                        <%= number_to_abbreviated(@event_decorator.digital_engagements) %>
+                    </div>
+                </div>
             </div>
             <div class="event-giveaways panel panel-default">
                 <div class="panel-heading">Giveaways</div>
@@ -62,17 +73,7 @@
                     <% end %>
                 </div>
             </div>
-            <div class="event-engagements panel panel-default">
-                <div class="panel-heading">Engagements</div>
-                <div class="panel-body">
-                    <div class="extended-engagements">
-                        Extended: <%= @event_decorator.extended_engagements %>
-                    </div>
-                    <div class="digital-engagements">
-                        Digital: <%= @event_decorator.digital_engagements %>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

@@ -2,14 +2,12 @@
 	float: left;
 	font-family: TrendSansOne, sans-serif;
 	text-align: center;
+	font-size: 200%;
 	&.estimated-total-impressions {
 		font-size: 300%;
 		&:after {
 			content: 'Total';
 		}
-	}
-	&.mileage-impressions, &.footprint-attendance, &.display-attendance, &.total-attendance {
-		font-size: 200%;
 	}
 	&.mileage-impressions {
 		&:after {
@@ -29,6 +27,16 @@
 	&.total-attendance {
 		&:after {
 			content: 'Event';
+		}
+	}
+	&.extended-engagements {
+		&:after {
+			content: 'Extended';
+		}
+	}
+	&.digital-engagements {
+		&:after {
+			content: 'Digital';
 		}
 	}
 	&:after {
