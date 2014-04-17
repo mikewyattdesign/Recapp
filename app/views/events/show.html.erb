@@ -76,7 +76,7 @@
                     <% @event_decorator.event_giveaways.each do | event_giveaway| %>
                         <div class="event-giveaway impressions col-md-3">
                             <div class="giveaway-image"><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %></div>
-                            <span class="giveaway-count"><%= event_giveaway.count_given_away %></span>
+                            <span class="giveaway-count"><%= event_giveaway.count_given_away || 0 %></span>
                             <span class="giveaway-name heading"><%= event_giveaway.giveaway.name %></span>
                         </div>
                     <% end %>
