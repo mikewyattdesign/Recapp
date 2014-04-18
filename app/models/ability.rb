@@ -42,6 +42,7 @@ class Ability
         can :read, Program
         can :update, Program
         can :create, Event
+        can :read, Event
         can :update, Event
         can :export, Event
         can :crud, Photo
