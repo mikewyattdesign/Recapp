@@ -72,6 +72,22 @@ class User < ActiveRecord::Base
     role == 0
   end
 
+  def is_manager?
+    role == 3
+  end
+
+  def is_client?
+    role == 2
+  end
+
+  def is_field_staff?
+    role == 1
+  end
+
+  def is_guest?
+    !(is_admin? || is_manager? || is_client? || is_field_staff?)
+  end
+
   def role_in_words
     case role
     when 0
