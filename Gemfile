@@ -36,6 +36,9 @@ gem 'jquery-turbolinks', '2.0.2'
 # Add devise for user authentication
 gem 'devise', '3.2.2'
 
+# Add cancancan for authorization
+gem 'cancancan', '1.7.1'
+
 # Use paperclip for photo attachment
 gem 'paperclip', '4.0.0'
 
