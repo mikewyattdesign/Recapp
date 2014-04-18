@@ -29,6 +29,15 @@ class Ability
     # See the wiki for details:
     # https://github.com/bryanrite/cancancan/wiki/Defining-Abilities
     user ||= User.new
+
+    alias_action :create, :read, :update, :destroy, to: :crud
     can :manage, :all if user.is_admin?
+    if user.is_field_staff?
+        can :create, Event
+        can :read, Event
+        can :update, Event
+        can :crud, Photo
+        can :crud, Video
+    end
   end
 end
