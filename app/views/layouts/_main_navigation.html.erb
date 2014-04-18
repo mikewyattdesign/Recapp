@@ -17,17 +17,24 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav navbar-left">
+		<% if can? :read, Event %>
 			<li class="<%= 'active' if request.path == '/events' %>"><%= link_to "Events", "/events" %></li>
+		<% end %>
+		<% if can? :read, Brand %>
 			<li class="<%= 'active' if request.path == '/brands' %>"><%= link_to "Brands", "/brands" %></li>
+		<% end %>
+		<% if can? :read, Giveaway %>
 			<li class="<%= 'active' if request.path == '/giveaways' %>"><%= link_to "Giveaways", "/giveaways" %></li>
+		<% end %>
+		<% if can? :read, Photo %>
 			<li class="<%= 'active' if request.path == '/photos' %>"><%= link_to "Photos", "/photos" %></li>
+		<% end %>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<% if user_signed_in? %>
 			<li><%= link_to destroy_user_session_path, method: :delete do %><span class="glyphicon glyphicon-log-out"></span> Logout<% end %></li>
 		<% else %>
 			<li><%= link_to new_user_session_path do %><span class="glyphicon glyphicon-log-in"></span> Login<% end %></li>
-
 		<% end %>
 		</ul>
 	</div><!-- /.navbar-collapse -->
