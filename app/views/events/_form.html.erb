@@ -33,12 +33,23 @@
 
         <div class="col-md-12 form-header-label"></div>
         <div class="col-md-12 submit-container">
-        <p class="pull-right">
-            <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-default" %>
-            <%= f.submit @event.new_record? ? 'Create Event and View Recap' : 'Update Event and View Recap', class: "btn btn-default" %>
-            <%= f.submit @event.new_record? ? 'Create Event' : 'Update Event', class: "btn btn-primary" %>
-        </p>
-            <%= link_to 'Back', events_path, class: "btn btn-default pull-left back-button" %>
+            <div class="row">
+                
+                <div class="col-md-2 col-sm-6 col-xs-6"><%= link_to 'Back', events_path, class: "btn btn-default back-button" %></div>
+                <div class="col-md-10 col-md-push-0 col-sm-3 col-sm-push-3 col-xs-5 col-xs-push-1">
+                    <div class="row">
+                        <div class="col-md-2 col-md-push-10 col-sm-12 col-xs-12">
+                            <%= f.submit @event.new_record? ? 'Create Event' : 'Update Event', class: "btn btn-primary" %>
+                        </div>   
+                        <div class="col-md-10 col-md-pull-2 hidden-sm hidden-xs">
+                            <p class="pull-right ">
+                                <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-default" %>
+                                <%= f.submit @event.new_record? ? 'Create Event and View Recap' : 'Update Event and View Recap', class: "btn btn-default" %>
+                            </p>
+                        </div>   
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <% end %>
