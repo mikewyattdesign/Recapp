@@ -4,4 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
 
+  rescue_from CanCan::AccessDenied do |exception|
+  	if current_user.is_guest?
+  		render 'errors/account_setup'
+  	else
+  		redirect_to main_app.root_url, alert: exception.message
+  	end
+  end
+
 end
