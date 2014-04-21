@@ -146,4 +146,8 @@ class AssignmentsController < ApplicationController
     def role_params
       params.require(:user).permit(:user_id,:role)  
     end
+
+    def create_params
+      params.require(:assignment).permit(:users, :assignables)
+    end
 end
