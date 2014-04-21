@@ -23,20 +23,6 @@ class Event < ActiveRecord::Base
     validates_with DateValidator
 
     # Virtual Attributes to simplify Start and End Date Time Entry
-    def start_time
-        start_date_time.localtime.strftime("%I:%M %p") if start_date_time.present?
-    end
-
-    def start_time=(time)
-        t = Time.parse(time)
-        if self.start_date_time.present?
-            d = self.start_date_time.to_date
-        else
-            d = Date.today
-        end
-
-        self.start_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
-    end
 
     def start_date
         start_date_time.to_date.strftime("%m/%d/%Y") if start_date_time.present?
@@ -52,18 +38,25 @@ class Event < ActiveRecord::Base
 
         self.start_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
+    def start_time
+        start_date_time.present? ? start_date_time.localtime.strftime("%I:%M %p") : "12:00 AM"
+    end
+
+    def start_time=(time)
+        t = Time.strptime(time, "%I:%M %p", start_date_time)
+        d = self.start_date_time
+
+        self.start_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
+    end
 
     def end_time
-        end_date_time.localtime.strftime("%I:%M %p") if end_date_time.present?
+        end_date_time.present? ? end_date_time.localtime.strftime("%I:%M %p") : "12:00 AM"
     end
 
     def end_time=(time)
-        t = Time.parse(time)
-        if self.end_date_time.present?
-            d = self.end_date_time.to_date
-        else
-            d = Date.today
-        end
+        t = Time.strptime(time, "%I:%M %p", end_date_time)
+        d = self.end_date_time
+
         self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
 
