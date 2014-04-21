@@ -36,6 +36,7 @@ class Ability
 
     if user.is_manager?
         can :crud, Assignment
+        can :update_role, Assignment
         can :crud, User
         can :read, Brand
         can :create, Program

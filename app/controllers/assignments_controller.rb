@@ -122,6 +122,12 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def update_role
+    @user = User.find(role_params[:user_id])
+    @user.update(role: role_params[:role])
+    redirect_to user_management_url, notice: "Updated #{@user.email}'s role to #{@user.role_in_words}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
@@ -135,5 +141,9 @@ class AssignmentsController < ApplicationController
         :assignable_type,
         :users => [:user_id],
         :assignables => [:assignable_id, :assignable_type])
+    end
+
+    def role_params
+      params.require(:user).permit(:user_id,:role)  
     end
 end

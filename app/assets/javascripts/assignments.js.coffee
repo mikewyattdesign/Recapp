@@ -24,6 +24,9 @@ jQuery ->
 		$target = $($(this).data('toggles-all'))
 		$target.trigger 'click'
 
+	$('#user-select-table tbody .edit_user').on 'change','[name="user[role]"]', (event) ->
+		$(this).parent().submit()
+
 actionCheck = ->
 	if $('.assign_form input.assignable-id').length == 0 || $('.assign_form input.user-id').length == 0
 		$('.assign_form [type="submit"], .unassign_form [type="submit"]').attr('disabled', 'disabled')

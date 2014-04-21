@@ -40,8 +40,11 @@
         <% @users.each do |user| %>
           <tr>
             <td class="text-center"><input type="checkbox"  class="user-select-checkbox" data-user-id="<%= user.id %>"></td>
-            <td><%= link_to user.email, '#' %></td>
-            <td><%= link_to user.role_in_words, '#' %></td>
+            <td <%= "data-you" if user.id == current_user.id %>><%= link_to user.email, '#' %></td>
+            <td><%= form_for user, url: update_role_path  do |f| %>
+              <%= f.select  :role, options_for_select(User.roles,user.role) %>
+              <%= f.hidden_field :user_id, value: user.id %>
+            <% end -%></td>
             <td class="user-assignments-cell">
               <% if user.has_assignments? %>
                 <ul class="token-input-list-facebook token-list-display assignment-list">

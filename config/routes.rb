@@ -9,6 +9,7 @@ G360EventApplication::Application.routes.draw do
 
     resources :assignments
 
+    patch 'update_role' => 'assignments#update_role', as: :update_role
     get '/assignments' => 'assignments#index', as: :user_management
     delete '/assignments' => 'assignments#destroy'
 

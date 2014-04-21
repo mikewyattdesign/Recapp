@@ -68,6 +68,9 @@ class User < ActiveRecord::Base
     Event.where(program_id: program_ids)
   end
 
+  def self.roles
+    [["Administrator",0],["Field Staff",1],["Client",2],["Program Manager",3],["Guest",-1]]
+  end
   def is_admin?
     role == 0
   end
