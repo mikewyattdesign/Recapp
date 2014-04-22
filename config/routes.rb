@@ -50,6 +50,7 @@ G360EventApplication::Application.routes.draw do
         end
     end
 
+    get '/help' => 'static#index', as: :help
     
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'

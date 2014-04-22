@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
     accepts_nested_attributes_for :links, allow_destroy: true
     accepts_nested_attributes_for :giveaways
     accepts_nested_attributes_for :weather
+    accepts_nested_attributes_for :comments, allow_destroy: true
 
     validates :start_date_time, presence: true
     validates :end_date_time, presence: true

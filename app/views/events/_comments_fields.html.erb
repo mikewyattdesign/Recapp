@@ -1,0 +1,10 @@
+<div class="col-md-12 form-header-label">
+    <h3>Comments</h3>
+</div>
+<div id="event-comments">
+    <%= f.fields_for :comments do |el| %>
+        <%= render 'comment_fields', f: el %>
+    <% end %>
+    <%= link_to_add_fields "Add Event Comment", f, :comments %>
+</div>
+<div class="clearfix"></div>
