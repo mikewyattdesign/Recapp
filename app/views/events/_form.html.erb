@@ -15,8 +15,7 @@
         <% if @details %>
             <div class="detail<%= " hidden" unless @details %>">
 
-                <%= render 'impression_fields', f: f %>
-                <%= render 'stella_fields', f: f if @event.program.brand.name == 'Stella Artois' %>
+                <%= render 'impression_fields', f: f %> 
                 <%= render 'giveaways_fields', f: f %>
                 <%= render 'photos_fields', f: f %>
                 <%= render 'videos_fields', f: f %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418161628) do
+ActiveRecord::Schema.define(version: 20140422144603) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 20140418161628) do
     t.integer  "estimated_number_of_samples"
     t.decimal  "cost_per_sample"
     t.integer  "tier"
+    t.text     "overview"
+    t.string   "kpis"
   end
 
   create_table "events_photos", id: false, force: true do |t|
