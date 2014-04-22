@@ -38,7 +38,7 @@
 <div class="col-md-12 form-header-label">
     <h3>Notes</h3>
 </div>
-<% unless @event.new_record? %>
+<% if @details %>
     <div class="col-md-12 form-cont-box">
         <%= f.label :overview, "Overview" %>
         <%= f.text_area :overview, class: "form-control", placeholder: "Event overview" %>
