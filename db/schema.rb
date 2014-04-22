@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422144603) do
+ActiveRecord::Schema.define(version: 20140422152543) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -81,13 +81,13 @@ ActiveRecord::Schema.define(version: 20140422144603) do
     t.string   "state"
     t.string   "street"
     t.string   "postal_code"
-    t.string   "country"
     t.integer  "extended_engagements",        default: 0
     t.integer  "estimated_number_of_samples"
     t.decimal  "cost_per_sample"
     t.integer  "tier"
     t.text     "overview"
     t.string   "kpis"
+    t.string   "venue"
   end
 
   create_table "events_photos", id: false, force: true do |t|
