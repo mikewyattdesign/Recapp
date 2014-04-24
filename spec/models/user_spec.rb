@@ -95,8 +95,18 @@ describe User do
 		u = create(:user, role: 4)
 		expect(u.is_admin?).to be_false
 	end
-	it "knows if it's a social media manager"
-	it "knows if it's an event manager"
-	it "knows if it's a base user"
+	it "knows if it's a manager" do
+		u = create(:user, role: 3)
+		expect(u.is_manager?).to be_true
+	end
+	it "knows if it's field staff" do
+		u = create(:user, role: 1)
+		expect(u.is_field_staff?).to be_true
+	end
+	it "knows if it's a client" do
+		u = create(:user, role: 2)
+		expect(u.is_client?).to be_true
+	end
+	
 
 end

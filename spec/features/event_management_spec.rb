@@ -26,12 +26,11 @@ feature 'Event Management' do
 		fill_in 'State', with: @event.state
 		fill_in 'Postal Code', with: @event.postal_code
 		fill_in 'Venue', with: @event.venue
-		save_and_open_page
 		click_button 'Create Event'
-		save_and_open_page
-		expect(page).to have_content @event.name
-		expect(page).to have_content @event.city
-		expect(page).to have_content @event.state
+		
+		expect(find_field('Name').value).to eq @event.name
+		expect(find_field('City').value).to eq @event.city
+		expect(find_field('State').value).to eq @event.state
 	end
 	context 'User alters existing Event' do
 		before { @original_event = create(:event, program_id: @program.id)}
@@ -45,7 +44,7 @@ feature 'Event Management' do
 			fill_in 'Start Time', with: @event.start_time
 			fill_in 'End Time', with: @event.end_time
 			click_button 'Update Event'
-			expect(page).to have_content @event.name
+			expect(find_field('Name').value).to eq @event.name
 		end
 		scenario 'User edits an event\'s location' do
 			visit edit_event_path(@original_event)
@@ -55,8 +54,8 @@ feature 'Event Management' do
 			fill_in 'Postal Code', with: @event.postal_code
 			fill_in 'Venue', with: @event.venue
 			click_button 'Update Event'
-			expect(page).to have_content @event.city
-			expect(page).to have_content @event.state
+			expect(find_field('City').value).to eq @event.city
+			expect(find_field('State').value).to eq @event.state
 		end
 		scenario 'User edits an event\'s impression and stats' do
 			visit edit_event_path(@original_event)
@@ -69,7 +68,6 @@ feature 'Event Management' do
 			fill_in 'Extended Engagements', with: total_attendance/6
 			fill_in 'Digital Engagements', with: 0
 			click_button 'Update Event'
-			visit edit_event_path(@original_event.id)
 			expect(find_field('Total Event Attendance').value).to eq total_attendance.to_s
 			expect(find_field('Miles Traveled from Last Event').value).to eq miles_traveled.to_s
 			expect(find_field('Walk By Impressions').value).to eq (total_attendance*2/3).to_s
