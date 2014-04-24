@@ -45,7 +45,11 @@ class Event < ActiveRecord::Base
 
     def start_time=(time)
         t = Time.strptime(time, "%I:%M %p", start_date_time)
-        d = self.start_date_time
+        if self.start_date_time.present?
+            d = self.start_date_time.to_time
+        else
+            d = DateTime.now.to_time
+        end
 
         self.start_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
@@ -56,7 +60,11 @@ class Event < ActiveRecord::Base
 
     def end_time=(time)
         t = Time.strptime(time, "%I:%M %p", end_date_time)
-        d = self.end_date_time
+        if self.end_date_time.present?
+            d = self.end_date_time.to_time
+        else
+            d = DateTime.now.to_time
+        end
 
         self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
