@@ -134,6 +134,7 @@ class EventsController < ApplicationController
         :end_time,
         :end_date,
         :location_id,
+        :suite,
         :street,
         :city,
         :state,

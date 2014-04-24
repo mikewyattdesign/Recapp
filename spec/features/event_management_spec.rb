@@ -53,9 +53,11 @@ feature 'Event Management' do
 			fill_in 'State', with: @event.state
 			fill_in 'Postal Code', with: @event.postal_code
 			fill_in 'Venue', with: @event.venue
+			fill_in 'Suite', with: '1A'
 			click_button 'Update Event'
 			expect(find_field('City').value).to eq @event.city
 			expect(find_field('State').value).to eq @event.state
+			expect(find_field('Suite').value).to eq '1A'
 		end
 		scenario 'User edits an event\'s impression and stats' do
 			visit edit_event_path(@original_event)
