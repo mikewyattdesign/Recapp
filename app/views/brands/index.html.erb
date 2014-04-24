@@ -3,8 +3,8 @@
         <div class="event-header">
             <h1><span class="glyphicon glyphicon-th-large"></span> Brands
             <% if can? :create, Brand %>
-                <%= link_to new_brand_path do %>
-                <button type="button" class="pull-right new-event-btn btn btn-primary"><span class="visible-md visible-lg visible-sm .hidden-xs">New Brand</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span></button>
+                <%= link_to new_brand_path, class: 'pull-right new-event-btn btn btn-primary' do %>
+                <span class="visible-md visible-lg visible-sm .hidden-xs">New Brand</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span>
                 <% end %>
             <% end %>
             </h1>
@@ -23,21 +23,21 @@
                     <%= brand.name %>
                 </div>
                 <div>
-                    <%= link_to brand_programs_path(brand) do %>
-                    <button type="button" class="btn btn-primary info-button"> <span class="glyphicon glyphicon-list-alt"></span> Programs</button>
+                    <%= link_to brand_programs_path brand, class: "btn btn-primary info-button" do %>
+                    <span class="glyphicon glyphicon-list-alt"></span> Programs
                     <% end %>
                 </div>
                 <% if can? :update, brand %>
                     <div>
-                        <%= link_to edit_brand_path(brand) do %>
-                        <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span> Edit</button>
+                        <%= link_to edit_brand_path brand, class: "btn btn-default info-button" do %>
+                        <span class="glyphicon glyphicon glyphicon-pencil"></span> Edit
                         <% end %>
                     </div>
                 <% end %>
                 <% if can? :destroy, brand %>
                     <div>
-                        <%= link_to brand, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span> Delete</button>
+                        <%= link_to brand, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default info-button" do %>
+                        <span class="glyphicon glyphicon glyphicon-trash"></span> Delete
                         <% end %>
                     </div>
                 <% end %>

@@ -2,8 +2,8 @@
     <div class="col-md-10 col-md-offset-1 container-box">
         <div class="event-header">
             <h1><span class="glyphicon glyphicon-list-alt"></span> Programs for <%= @brand.name %>
-                <%= link_to new_brand_program_path do %>
-                <button type="button" class="pull-right new-event-btn btn btn-primary">New Program</button>
+                <%= link_to new_brand_program_path, class: "pull-right new-event-btn btn btn-primary" do %>
+                New Program
                 <% end %>
             </h1>
         </div>
@@ -22,18 +22,18 @@
                     <%= program.name %>
                 </div>
                 <div>
-                    <%= link_to program_events_path(program) do %>
-                    <button type="button" class="btn btn-primary info-button"> <span class="glyphicon glyphicon-calendar"></span> Show Events</button>
+                    <%= link_to program_events_path program, class: "btn btn-primary info-button" do %>
+                    <span class="glyphicon glyphicon-calendar"></span> Show Events
                     <% end %>
                 </div>
                 <div>
-                    <%= link_to edit_program_path(program) do %>
-                    <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span> Edit</button>
+                    <%= link_to edit_program_path program, class: "btn btn-default info-button" do %>
+                    <span class="glyphicon glyphicon glyphicon-pencil"></span> Edit
                     <% end %>
                 </div>
                 <div>
-                    <%= link_to program, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-trash"></span> Delete</button>
+                    <%= link_to program, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default info-button" do %>
+                    <span class="glyphicon glyphicon glyphicon-trash"></span> Delete
                     <% end %>
                 </div>
                 </div>
