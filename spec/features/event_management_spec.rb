@@ -43,7 +43,9 @@ feature 'Event Management' do
 			fill_in 'End Date', with: @event.end_date
 			fill_in 'Start Time', with: @event.start_time
 			fill_in 'End Time', with: @event.end_time
+
 			click_button 'Update Event'
+
 			expect(find_field('Name').value).to eq @event.name
 		end
 		scenario 'User edits an event\'s location' do
@@ -54,7 +56,9 @@ feature 'Event Management' do
 			fill_in 'Postal Code', with: @event.postal_code
 			fill_in 'Venue', with: @event.venue
 			fill_in 'Suite', with: '1A'
+
 			click_button 'Update Event'
+
 			expect(find_field('City').value).to eq @event.city
 			expect(find_field('State').value).to eq @event.state
 			expect(find_field('Suite').value).to eq '1A'
@@ -69,7 +73,9 @@ feature 'Event Management' do
 			fill_in 'Footprint Impressions', with: total_attendance/3
 			fill_in 'Extended Engagements', with: total_attendance/6
 			fill_in 'Digital Engagements', with: 0
+
 			click_button 'Update Event'
+			
 			expect(find_field('Total Event Attendance').value).to eq total_attendance.to_s
 			expect(find_field('Miles Traveled from Last Event').value).to eq miles_traveled.to_s
 			expect(find_field('Walk By Impressions').value).to eq (total_attendance*2/3).to_s
