@@ -22,12 +22,12 @@
                     <%= program.name %>
                 </div>
                 <div>
-                    <%= link_to program_events_path program, class: "btn btn-primary info-button" do %>
+                    <%= link_to program_events_path(program), class: "btn btn-primary info-button" do %>
                     <span class="glyphicon glyphicon-calendar"></span> Show Events
                     <% end %>
                 </div>
                 <div>
-                    <%= link_to edit_program_path program, class: "btn btn-default info-button" do %>
+                    <%= link_to edit_program_path(program), class: "btn btn-default info-button" do %>
                     <span class="glyphicon glyphicon glyphicon-pencil"></span> Edit
                     <% end %>
                 </div>
