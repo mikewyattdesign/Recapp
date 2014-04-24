@@ -3,7 +3,12 @@ require 'spec_helper'
 feature 'Program Management' do
 	before {
 		@brand = create(:brand)
-		@program = build(:program)
+		@program = build(:program)		
+		@user = create(:user, role: 0)
+		visit new_user_session_path
+		fill_in 'Email', with: @user.email
+		fill_in 'Password', with: @user.password
+		click_button 'Login'
 	}
 	scenario 'User creates a program' do
 		visit brand_programs_path(@brand)

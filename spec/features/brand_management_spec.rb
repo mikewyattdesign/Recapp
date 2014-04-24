@@ -1,12 +1,20 @@
 require 'spec_helper'
 
 feature 'Brand Management' do
-	before {@brand = build(:brand)}
+	before do
+		@brand = build(:brand)
+		@user = create(:user, role: 0)
+		visit new_user_session_path
+		fill_in 'Email', with: @user.email
+		fill_in 'Password', with: @user.password
+		click_button 'Login'
+	end
 	scenario 'User creates a brand' do
 		visit brands_path
-		click_link 'New Brand'
+		click_on 'New Brand'
+		expect(current_path).to eq('/brands/new')
 		fill_in 'Name', with: @brand.name
-		click_button 'Create Brand'
+		click_on 'Create Brand'
 		expect(current_path).to eq("/brands")
 		expect(page).to have_content "#{@brand.name}"
 	end
@@ -15,7 +23,7 @@ feature 'Brand Management' do
 		scenario 'User updates a brand' do
 			visit edit_brand_path(@original_brand)
 			fill_in 'Name', with: @brand.name
-			click_button 'Update Brand'
+			click_on 'Update Brand'
 			expect(current_path).to eq("/brands")
 			expect(page).to have_content "#{@brand.name}"
 		end

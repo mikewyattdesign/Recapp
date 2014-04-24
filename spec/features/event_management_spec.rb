@@ -5,6 +5,11 @@ feature 'Event Management' do
 		@brand = create(:brand)
 		@program = create(:program, brand_id: @brand.id)
 		@event = build(:event)
+		@user = create(:user, role: 0)
+		visit new_user_session_path
+		fill_in 'Email', with: @user.email
+		fill_in 'Password', with: @user.password
+		click_button 'Login'
 	}
 	scenario 'User creates an event' do
 		visit program_events_path(@program)
@@ -20,8 +25,10 @@ feature 'Event Management' do
 		fill_in 'City', with: @event.city
 		fill_in 'State', with: @event.state
 		fill_in 'Postal Code', with: @event.postal_code
-		fill_in 'Country', with: @event.country
+		fill_in 'Venue', with: @event.venue
+		save_and_open_page
 		click_button 'Create Event'
+		save_and_open_page
 		expect(page).to have_content @event.name
 		expect(page).to have_content @event.city
 		expect(page).to have_content @event.state
@@ -46,7 +53,7 @@ feature 'Event Management' do
 			fill_in 'City', with: @event.city
 			fill_in 'State', with: @event.state
 			fill_in 'Postal Code', with: @event.postal_code
-			fill_in 'Country', with: @event.country
+			fill_in 'Venue', with: @event.venue
 			click_button 'Update Event'
 			expect(page).to have_content @event.city
 			expect(page).to have_content @event.state
