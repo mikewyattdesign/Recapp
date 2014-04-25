@@ -10,14 +10,22 @@ class PhotosController < ApplicationController
       @event = Event.find(params[:event_id])
       @photos = @event.photos
       @descriptor = @event.name
-    elsif params[:tag]
-      @photos = Photo.with_event.tagged_with(params[:tag])
-      @descriptor = params[:tag]
+    elsif params[:program_id] && Program.where(id: params[:program_id]).count > 0
+      @program = Program.find(params[:program_id])
+      @photos = @program.photos
+      @descriptor = @program.name
+    elsif params[:brand_id] && Brand.where(id: params[:brand_id]).count > 0
+      @brand = Brand.find(params[:brand_id])
+      @photos = @brand.photos
+      @descriptor = @brand.name
     else
       @photos = Photo.with_event
       @descriptor = "All"
       # @tags = tag_cloud
     end
+
+    @photos = photo_tag_filter(@photos)
+    @photos = photo_date_filter(@photos)
   end
 
   # GET /photos/1
@@ -81,6 +89,34 @@ class PhotosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
       @photo = Photo.find(params[:id])
+    end
+
+    def photo_date_filter(photos)
+      if params[:start_date].present? && params[:end_date].present?
+        photos.where("created_at >= :start_date AND created_at <= :end_date", 
+          { start_date: Time.strptime(params[:start_date], "%m/%d/%Y"), end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
+      elsif params[:start_date].present?
+        photos.where("created_at >= :start_date", 
+          { start_date: Time.strptime(params[:start_date], "%m/%d/%Y")})
+      elsif params[:end_date].present?
+        photos.where("created_at <= :end_date", 
+          { end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
+      else
+        photos
+      end
+    end
+
+    def photo_tag_filter(photos)
+      if params[:tag].present?
+        if @descriptor == 'All'
+          @descriptor = params[:tag]
+        else
+          @descriptor += " #{params[:tag]}"
+        end
+        photos.tagged_with(params[:tag])
+      else
+        photos
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -17,13 +17,17 @@ G360EventApplication::Application.routes.draw do
     resources :giveaways
     resources :event_giveaways
 
-    resources :photos
+    resources :photos do
+    end
     resources :videos
     resources :documents
 
     # Because viewing photos by tag is even better with a route for it 
-    get 'photos/tags/:tag' => 'photos#index'
+    get 'photos/tags/:tag' => 'photos#index', as: :tag_photos
 
+    get 'photos/programs/:program_id' => 'photos#index', as: :program_photos
+
+    get 'photos/brands/:brand_id' => 'photos#index', as: :brand_photos
     
     resources :tags
 

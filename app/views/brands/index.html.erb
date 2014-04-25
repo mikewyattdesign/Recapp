@@ -27,6 +27,11 @@
                     <span class="glyphicon glyphicon-list-alt"></span> Programs
                     <% end %>
                 </div>
+                <div>
+                    <%= link_to brand_photos_path(brand), class: "btn btn-default info-button" do %>
+                    <span class="glyphicon glyphicon-camera"></span> Photos
+                    <% end %>
+                </div>
                 <% if can? :update, brand %>
                     <div>
                         <%= link_to edit_brand_path(brand), class: "btn btn-default info-button" do %>
