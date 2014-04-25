@@ -12,14 +12,14 @@ describe Video do
     expect(Video.new(media: File.new(Dir.pwd + '/spec/support/01_LoggingIn.mov'))).to be_invalid
   end
   it "responds to event" do
-  	expect(Video.new).to respond_to(:event)
+    expect(Video.new).to respond_to(:event)
   end
   it "responds to media" do
-  	expect(Video.new).to respond_to(:media)
+    expect(Video.new).to respond_to(:media)
   end
   # The following test works in the scope of the actual application
   xit "responds to thumb" do
-  	@video = Video.create(media: File.new(Dir.pwd + '/spec/support/01_LoggingIn.mov'))
-  	expect(@video.media).to respond_to(:thumb)
+    @video = Video.create(media: File.new(Dir.pwd + '/spec/support/01_LoggingIn.mov'))
+    expect(@video.media).to respond_to(:thumb)
   end
 end
