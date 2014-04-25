@@ -11,7 +11,7 @@ class Photo < ActiveRecord::Base
     end
 
     def event
-    	if imageable_type == Event.name 
+    	if imageable_type == Event.name
     		Event.find(imageable_id) if Event.where(id: imageable_id).count > 0
     	end
     end

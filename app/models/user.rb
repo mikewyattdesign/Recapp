@@ -7,18 +7,20 @@ class User < ActiveRecord::Base
          validates :role, presence: true
 
   has_many :assignments, -> {where "assignments.assignable_id IS NOT NULL"}
-  # has_many :events, 
-  # 			through: :assignments, 
-  # 			source: :event, 
+  # has_many :events,
+  # 			through: :assignments,
+  # 			source: :event,
   # 			conditions: "assignments.assignable_type = 'Event'"
-  has_many :programs, 
+  has_many :programs,
   			-> { where "assignments.assignable_type = 'Program'" },
-        through: :assignments, 
+        through: :assignments,
         source: :program
-  has_many :brands, 
+  has_many :brands,
   			-> {where "assignments.assignable_type = 'Brand'"},
-        through: :assignments, 
+        through: :assignments,
         source: :brand
+
+  has_many :api_keys
 
   def assign_to_brand(brand)
     brand.assignments.create!(user_id: id)
