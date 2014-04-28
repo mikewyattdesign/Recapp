@@ -51,6 +51,9 @@ gem 'remotipart', '1.2.1'
 # Use Amazon S3 for production file storage
 gem 'aws-sdk', '1.33.0'
 
+# Direct Upload to S3
+gem 's3_direct_upload', '0.1.7'
+
 # Use acts-as-taggable-on for tagging
 gem 'acts-as-taggable-on', '3.0.1'
 
