@@ -10,13 +10,24 @@ module Api
             def tags
                 @photos = Photo.with_event.tagged_with(params[:tag])
                 # render @photos.to_json
+                if @photos.empty?
+                    render(
+                        json: { error: 'No photos found.' },
+                        status: :not_found
+                    )
+                end
             end
 
             # Probably not the safest thing ever, but we can lock this
             # down with José Valim's suggestion later:
             # https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
             def authenticate_user_from_token!
-                head :unauthorized unless valid_access_token?
+                unless valid_access_token?
+                    render(
+                        json: { error: 'Invalid access token.' },
+                        status: :unauthorized
+                    )
+                end
             end
 
             def valid_access_token?

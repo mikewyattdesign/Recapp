@@ -28,11 +28,21 @@ describe Api::V1::PhotosController do
             expect(json.first['url']).to have_key 'medium'
             expect(json.first['url']).to have_key 'small'
         end
+
+        it 'GET #tags sets 404 if no photos found' do
+            get :tags, tag: 'ofdjkljjj'
+            expect(response.status).to eq(404)
+        end
     end
 
     context 'without valid access_token' do
         before(:each) { request.headers['X-ACCESS-TOKEN'] = nil }
-        after(:each) { expect(response.status).to eq(401) }
+
+        after(:each) do
+            expect(response.status).to eq(401)
+            expect(json).to have_key 'error'
+            expect(json['error']).to match(/invalid access token/i)
+        end
 
         it 'GET #tags is unauthorized' do
             get :tags, tag: 'Dude'
