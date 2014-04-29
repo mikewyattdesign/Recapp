@@ -35,4 +35,14 @@ G360EventApplication::Application.configure do
 
   # Specify Paperclip option
   Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  # Add Paperclip configuration
+  Paperclip::Attachment.default_options.merge!(
+    url:                  ':s3_domain_url',
+    path:                 ':class/:attachment/:id/:style/:filename',
+    storage:              :s3,
+    s3_credentials:       "#{::Rails.root}/config/aws.yml",
+    s3_permissions:       :private,
+    s3_protocol:          'https'
+  )
 end
