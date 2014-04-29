@@ -35,8 +35,23 @@
 
 <%= render "location_fields", l: f  %>
 
-<div class="col-md-6 form-cont-box">
-    <%= f.label :note, "Note", class: "control-label col-md-12" %>
+<div class="col-md-12 form-header-label">
+    <h3>Notes</h3>
+</div>
+<% if @details %>
+    <div class="col-md-12 form-cont-box">
+        <%= f.label :overview, "Overview" %>
+        <%= f.text_area :overview, class: "form-control", placeholder: "Event overview" %>
+        <span class="help-block">Summarize how the event went.</span>
+    </div>
+    <div class="col-md-12 form-cont-box">
+        <%= f.label :kpis, "Key Performance Indicators" %>
+        <%= f.text_area :kpis, class: "form-control", placeholder: "Key Performance Indicators" %>
+        <span class="help-block">What, if any, key performance indicators did the client provide?</span>
+    </div>
+<% end %>
+<div class="col-md-12 form-cont-box">
+    <%= f.label :note, "Note", class: "control-label" %>
     <%= f.text_area :note, class: "form-control", placeholder: "Event notes" %>
     <span class="help-block">Is there any special information we should know?</span>
 </div>

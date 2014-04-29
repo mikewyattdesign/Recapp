@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
     accepts_nested_attributes_for :links, allow_destroy: true
     accepts_nested_attributes_for :giveaways
     accepts_nested_attributes_for :weather
+    accepts_nested_attributes_for :comments, allow_destroy: true
 
     validates :start_date_time, presence: true
     validates :end_date_time, presence: true
@@ -44,7 +45,11 @@ class Event < ActiveRecord::Base
 
     def start_time=(time)
         t = Time.strptime(time, "%I:%M %p", start_date_time)
-        d = self.start_date_time
+        if self.start_date_time.present?
+            d = self.start_date_time.to_time
+        else
+            d = DateTime.now.to_time
+        end
 
         self.start_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end
@@ -55,7 +60,11 @@ class Event < ActiveRecord::Base
 
     def end_time=(time)
         t = Time.strptime(time, "%I:%M %p", end_date_time)
-        d = self.end_date_time
+        if self.end_date_time.present?
+            d = self.end_date_time.to_time
+        else
+            d = DateTime.now.to_time
+        end
 
         self.end_date_time = DateTime.new(d.year, d.month, d.day, t.gmtime.hour, t.gmtime.min, t.gmtime.sec)
     end

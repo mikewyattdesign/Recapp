@@ -1,11 +1,15 @@
 require 'spec_helper'
 
 describe User do
+    subject { create :user }
+
+    it { should respond_to :api_keys }
+
 	it "is invalid without a role" do
 		expect(build(:user, role: nil)).to be_invalid
 	end
 
-	it "responds to events" do 
+	it "responds to events" do
 		expect(build(:user)).to respond_to(:events)
 	end
 	it "responds to programs" do
@@ -95,8 +99,18 @@ describe User do
 		u = create(:user, role: 4)
 		expect(u.is_admin?).to be_false
 	end
-	it "knows if it's a social media manager"
-	it "knows if it's an event manager"
-	it "knows if it's a base user"
+	it "knows if it's a manager" do
+		u = create(:user, role: 3)
+		expect(u.is_manager?).to be_true
+	end
+	it "knows if it's field staff" do
+		u = create(:user, role: 1)
+		expect(u.is_field_staff?).to be_true
+	end
+	it "knows if it's a client" do
+		u = create(:user, role: 2)
+		expect(u.is_client?).to be_true
+	end
+
 
 end

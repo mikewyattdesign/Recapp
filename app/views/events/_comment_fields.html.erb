@@ -1,0 +1,37 @@
+<% event_comment = f.object %>
+	<% if event_comment.new_record? %>
+		<div class="col-md-12">
+			<fieldset>
+				<div class="row">	
+					<%= f.label :content, "content:", class: 'sr-only' %>
+				    <div class="col-md-7 form-cont-box">
+						<%= f.text_field :content, class: "form-control", placeholder: "Comment" %>
+				    </div>
+				    <div class="col-md-3 form-cont-box">
+						<%= f.select :comment_type, options_for_select(Comment.comment_types, event_comment.comment_type), {}, class: "form-control" %>
+				    </div>
+				    <div class="col-md-2 form-cont-box">
+			    		<%= f.hidden_field :_destroy %>
+				    	<%= link_to 'Cancel', '#', class: 'remove_fields btn btn-danger btn-block' %>
+				    </div>
+				</div>
+			</fieldset>
+		</div>
+	<% else %>
+		<div class="col-md-12">
+			<fieldset>
+				<div class="row">	
+					<div class="col-md-7 form-cont-box">
+				    	<%= f.label :comment_id, event_comment.content, class: "control-label" %>
+				    </div>
+				    <div class="col-md-3 form-cont-box">
+						<%= f.select :comment_type, options_for_select(Comment.comment_types, event_comment.comment_type), {}, class: "form-control" %>
+				    </div>
+				    <div class="col-md-2 form-cont-box">	
+				    	<%= f.hidden_field :_destroy %>
+						<%= link_to 'Remove', '#', class: 'remove_fields btn btn-danger btn-block', title: "Remove #{event_comment.content}" %>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	<% end %>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418161628) do
+ActiveRecord::Schema.define(version: 20140425160437) do
+
+  create_table "api_keys", force: true do |t|
+    t.string   "name"
+    t.string   "access_token"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -40,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140418161628) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_testimonial", default: false
+    t.integer  "comment_type",   default: 1
   end
 
   create_table "documents", force: true do |t|
@@ -81,11 +90,14 @@ ActiveRecord::Schema.define(version: 20140418161628) do
     t.string   "state"
     t.string   "street"
     t.string   "postal_code"
-    t.string   "country"
     t.integer  "extended_engagements",        default: 0
     t.integer  "estimated_number_of_samples"
     t.decimal  "cost_per_sample"
     t.integer  "tier"
+    t.text     "overview"
+    t.string   "kpis"
+    t.string   "venue"
+    t.string   "suite"
   end
 
   create_table "events_photos", id: false, force: true do |t|

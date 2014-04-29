@@ -37,5 +37,7 @@
 //= require assignments
 //= require documents
 
+//= require lightbox2/js/lightbox.min
+
 //= require_tree .
 

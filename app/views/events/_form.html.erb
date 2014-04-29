@@ -15,13 +15,13 @@
         <% if @details %>
             <div class="detail<%= " hidden" unless @details %>">
 
-                <%= render 'impression_fields', f: f %>
-                <%= render 'stella_fields', f: f if @event.program.brand.name == 'Stella Artois' %>
+                <%= render 'impression_fields', f: f %> 
                 <%= render 'giveaways_fields', f: f %>
                 <%= render 'photos_fields', f: f %>
                 <%= render 'videos_fields', f: f %>
                 <%= render 'documents_fields', f: f %>
                 <%= render 'links_fields', f: f %>
+                <%= render 'comments_fields', f: f %>
                 <div class="col-md-12 form-header-label">
                     <h3>Tags (separated by commas)</h3>
                 </div>

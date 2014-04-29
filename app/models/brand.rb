@@ -11,4 +11,9 @@ class Brand < ActiveRecord::Base
     	program_ids = programs.pluck(:id)
     	Event.where(program_id: program_ids)
     end
+
+    def photos
+        event_ids = events.pluck(:id)
+        Photo.where(imageable_type: "Event", imageable_id: event_ids)
+    end
 end

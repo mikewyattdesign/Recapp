@@ -134,6 +134,7 @@ class EventsController < ApplicationController
         :end_time,
         :end_date,
         :location_id,
+        :suite,
         :street,
         :city,
         :state,
@@ -156,9 +157,13 @@ class EventsController < ApplicationController
         :estimated_number_of_samples,
         :tier,
         :wholesaler_or_local_support,
+        :overview,
+        :kpis,
+        :venue,
         :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id, :wholesaler_or_local_support, :_destroy],
         :links_attributes => [:url, :linkable_id, :linkable_type, :id, :_destroy],
         :giveaways_attributes => [:id, :name],
+        :comments_attributes => [:id, :comment_id, :content, :comment_type, :_destroy],
         :weather_attributes => [:id])
     end
 end

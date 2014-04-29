@@ -3,7 +3,38 @@
         <div class="event-header">
             <h1><span class="glyphicon glyphicon-camera"></span> <%= @descriptor %> Photos</h1>
         </div>
+        <div class="event-background">
+            <div data-spy="affix" data-offset-top="135" class="date-filters-container hidden-xs">
 
+                <div class="date-filters col-sm-12 col-md-12">
+                    <%= form_tag request.path, method: 'get', class: '' do %>
+                        <div class="col-sm-2 col-md-2 filter-group">
+                            <h2><span class="glyphicon glyphicon-filter"></span> Filters</h2>
+                        </div>
+                        <div class="form-group col-sm-4 col-md-4">
+                            <%= label_tag :tag, 'Tag:', class: 'control-label' %>
+                            <%= select_tag :tag, options_from_collection_for_select(Photo.tag_counts, :name, :name, params[:tag]), class: 'form-control', prompt: '' %>
+                        </div>
+                        <div class="form-group col-sm-2 col-md-2">
+                            <%= label_tag :start_date, 'From:', class: 'control-label' %>
+                            <%= text_field_tag :start_date, params[:start_date], class: 'form-control', placeholder: 'Start Date', data: {behavior: "datepicker"} %>
+                        </div>
+                        <div class="form-group col-sm-2 col-md-2">
+                            <%= label_tag :end_date, 'To:', class: 'control-label' %>
+                            <%= text_field_tag :end_date,  params[:end_date], class: 'form-control', placeholder: 'End Date', data: {behavior: "datepicker"} %>
+                        </div>
+                        <div class="col-sm-2 col-md-2 filter-group">
+                            <%= submit_tag 'Filter', class: 'btn btn-default btn-block' %>
+                            <button class="btn btn-info btn-block" type="reset">Clear</button>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="filter-triangles">
+                    <div class="left-triangle"></div>
+                    <div class="right-triangle"></div>
+                </div>
+            </div>
+        </div>
         <div class="form-box">
           <% if @tags.present? %>
             <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
@@ -14,7 +45,7 @@
             <% @photos.each do |photo| %>
               <div class="col-sm-6 col-md-4">
                 <div class="photo">
-                  <div class="list-photo-container"><%= image_tag photo.image(:small), class: 'img-responsive list-photos' %></div>
+                  <div class="list-photo-container">  <a href="<%= photo.image.url %>" data-lightbox="<%= @descriptor %>"><%= image_tag photo.image(:small), class: 'img-responsive list-photos' %></a></div>
                   <ul class="tag-list">
                     <% photo.tags.each do |tag| %>
                       <li><%= link_to tag, "/photos/tags/#{tag}" %></li>
