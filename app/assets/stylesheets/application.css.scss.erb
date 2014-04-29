@@ -416,12 +416,6 @@ body {
     }
 }
 
-.photo {
-    @extend .event-info;
-    border: 1px solid $light-grey;
-    border-radius: 8px;
-}
-
 .event-details {
     @extend .clearfix;
 
@@ -437,7 +431,6 @@ body {
         }
     }
 }
-
 
 .event-photos {
     .event-photo {
@@ -527,7 +520,7 @@ body {
     box-shadow: 0px 0px 10px $lightMediumGrey;
 }
 
-.brand-icon-container, .event-giveaway-container,.comments-container, .document-contaner {
+.brand-icon-container, .event-giveaway-container, .comments-container, .document-contaner, .photo {
     padding: 15px;
     margin-bottom: 30px;
     border: 1px solid $lightMediumGrey;
@@ -544,8 +537,8 @@ body {
     }
 }
 
-.comments-container, .event-giveaway-container, .document-contaner {
-    border-radius: 10px;
+.comments-container, .event-giveaway-container, .document-contaner, .photo {
+    border-radius: 8px;
     border: 2px solid $lightMediumGrey;
     margin-bottom: 15px;
 }
@@ -621,6 +614,17 @@ body {
     border: 2px solid #e6e6e6;
     > tbody > tr > td {
         vertical-align: middle;
+    }
+}
+
+.current-photo-container {
+    img {
+        box-shadow: 0 0 5px #58585a;
+    }
+
+    p {
+        font-weight: bold;
+        font-size: 16px;
     }
 }
 
