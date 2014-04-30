@@ -17,13 +17,21 @@
           <div class="text-center current-photo-container"><%= image_tag @photo.image, class: 'img-responsive photo-preview' %><p>Current Photo</p></div>
         <% end %>
         <div class="text-center photo-preview-container"><img src="" alt="" id="photo-preview" class="img-responsive photo-preview" style="display: none;"><p class="photo-preview-text">Preview</p></div>
-        <%= f.file_field :image, class: "control-label container-full", data: {image_upload_preview: '#photo-preview'} %>
-        <div class="input-button btn btn-default container-full">Choose File</div>
+        <div class="js-progress-bars">
+          <script id="template-upload" type="text/x-tmpl">
+          <div id="file-{%=o.unique_id%}" class="upload">
+            {%=o.name%}
+            <div class="progress"><div class="bar" style="width: 0%"></div></div>
+          </div>
+          </script>
+        </div>
+        <div class="input-button btn btn-default container-full" data-s3-trigger=".s3-photo-upload input[type='file']">Choose File</div>
         <%= f.label :tag_list, "Tags (separated by commas)", class: "control-label" %>
         <%= f.text_field :tag_list, data: {tag_list: "", pre: @photo.tags}, class: "form-control" %>
         <% if @event.present? %>
           <%= f.hidden_field :imageable_id, value: @event.id %>
           <%= f.hidden_field :imageable_type, value: @event.class.name %>
+          <%= f.hidden_field :direct_upload_url %>
         <% end %>
     </div>
 
@@ -37,4 +45,7 @@
         <% end %>
     </div>
 </div>
+<% end %>
+<%= s3_uploader_form callback_url: s3_upload_complete_url(format: :js), callback_param: "photo[direct_upload_url]", bucket: "nutshell-360-temp", id: "s3_uploader", class: "s3-photo-upload hidden" do %>
+  <%= file_field_tag :file, multiple: false, data: {image_upload_preview: '#photo-preview'} %>
 <% end %>

@@ -26,6 +26,8 @@ G360EventApplication::Application.routes.draw do
     get 'photos/programs/:program_id' => 'photos#index', as: :program_photos
 
     get 'photos/brands/:brand_id' => 'photos#index', as: :brand_photos
+
+    post 'photos/s3-upload-complete' => 'photos#s3_upload_complete', as: :s3_upload_complete
     
     resources :tags
 

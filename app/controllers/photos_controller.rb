@@ -53,6 +53,7 @@ class PhotosController < ApplicationController
       if @photo.save
         format.html { redirect_to event_photos_url(@photo.event), notice: 'Photo was successfully created.' }
         format.json { render action: 'show', status: :created, location: @photo }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
@@ -83,6 +84,10 @@ class PhotosController < ApplicationController
       format.html { redirect_to event_photos_url(@event) }
       format.json { head :no_content }
     end
+  end
+
+  def s3_upload_complete
+    
   end
 
   private
