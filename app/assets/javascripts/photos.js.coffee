@@ -6,7 +6,8 @@ jQuery ->
     $('#s3_uploader').bind 's3_upload_failed', (e, content) ->
         alert(content.filename + ' failed to upload')
     $('#s3_uploader').bind 's3_upload_complete', (e, content) ->
-        $('#photo_direct_upload_url').val(content.url)
+        $('#direct_upload_url').val(content.url)
+        window.uploadContent = content
     $(document).on 'click', '[data-s3-trigger]', ->
     	$targetEl = $($(this).data('s3-trigger'))
     	$targetEl.click()

@@ -31,4 +31,22 @@ class Photo < ActiveRecord::Base
     def image_url
         image.url if image.present?
     end
+
+    def self.transfer_and_cleanup(id)
+        # Get the photo to be processed
+        photo = Photo.find(id)
+
+        s3 = AWS::S3.new
+
+        # Process the phto at the direct url
+        photo.image = photo.direct_upload_url
+
+        photo.processed = true
+        photo.save
+
+    end
+
+    def queue_processing
+        Photo.delay.transfer_and_cleanup(id)
+    end
 end

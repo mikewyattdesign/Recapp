@@ -129,6 +129,7 @@ class PhotosController < ApplicationController
       params.require(:photo).permit(:image,
         :imageable_id, 
         :imageable_type,
+        :direct_upload_url,
         :tag_list )
     end
 

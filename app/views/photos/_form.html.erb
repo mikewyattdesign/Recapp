@@ -25,13 +25,14 @@
           </div>
           </script>
         </div>
+        <div class="temp"></div>
         <div class="input-button btn btn-default container-full" data-s3-trigger=".s3-photo-upload input[type='file']">Choose File</div>
         <%= f.label :tag_list, "Tags (separated by commas)", class: "control-label" %>
         <%= f.text_field :tag_list, data: {tag_list: "", pre: @photo.tags}, class: "form-control" %>
         <% if @event.present? %>
           <%= f.hidden_field :imageable_id, value: @event.id %>
           <%= f.hidden_field :imageable_type, value: @event.class.name %>
-          <%= f.hidden_field :direct_upload_url %>
+          <%= f.hidden_field :direct_upload_url, id: 'direct_upload_url' %>
         <% end %>
     </div>
 
