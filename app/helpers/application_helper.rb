@@ -11,4 +11,5 @@ module ApplicationHelper
     def number_to_abbreviated(number)
     	number_to_human(number, units: {thousand: "k", million: "MM", billion: "B"})
     end
+
 end

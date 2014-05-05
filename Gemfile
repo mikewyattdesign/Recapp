@@ -51,6 +51,12 @@ gem 'remotipart', '1.2.1'
 # Use Amazon S3 for production file storage
 gem 'aws-sdk', '1.33.0'
 
+# Direct Upload to S3
+gem 's3_direct_upload', '0.1.7'
+
+# Use Delayed Job for background processing
+gem 'delayed_job_active_record', '4.0.1'
+
 # Use acts-as-taggable-on for tagging
 gem 'acts-as-taggable-on', '3.0.1'
 
@@ -84,6 +90,11 @@ group :development, :test do
     gem 'meta_request', '0.2.8'
 
     gem 'sqlite3'
+end
+
+group :development do
+    # Use daemons for delayed job in development
+    gem 'daemons', '1.1.9'
 end
 
 group :test do
