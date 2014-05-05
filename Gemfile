@@ -92,6 +92,11 @@ group :development, :test do
     gem 'sqlite3'
 end
 
+group :development do
+    # Use daemons for delayed job in development
+    gem 'daemons', '1.1.9'
+end
+
 group :test do
     # Use faker for fake data generation
     gem 'faker', '~> 1.1.2'

@@ -4,8 +4,8 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'envi
 require 'delayed/command'
 Delayed::Command.new(ARGV).daemonize
 
-RAILS_ENV=production bin/delayed_job start
-RAILS_ENV=production bin/delayed_job stop
+# RAILS_ENV=production bin/delayed_job start
+# RAILS_ENV=production bin/delayed_job stop
 
 # Runs two workers in separate processes.
 # RAILS_ENV=production bin/delayed_job -n 2 start

@@ -36,17 +36,38 @@ class Photo < ActiveRecord::Base
         # Get the photo to be processed
         photo = Photo.find(id)
 
-        s3 = AWS::S3.new
+        
 
-        # Process the phto at the direct url
-        photo.image = photo.direct_upload_url
+        # final destination with the leading slashed sliced off
+        paperclip_file_path = photo.image.path.slice(1..-1) 
+        # temp source
+        source = photo.direct_upload_file_path
+        Photo.copy_and_delete paperclip_file_path, source
+
+        photo.image.reprocess!
 
         photo.processed = true
         photo.save
 
     end
 
+    def self.copy_and_delete(paperclip_file_path, raw_source)
+        bucket = Rails.env
+        s3 = AWS::S3.new
+        destination = s3.buckets[S3DirectUpload.config.bucket].objects[paperclip_file_path]
+        source = s3.buckets['nutshell-360-temp'].objects[raw_source]
+        source.copy_to(destination, acl: :public_read)
+    end
+
     def queue_processing
         Photo.delay.transfer_and_cleanup(id)
+    end
+
+    def process
+        Photo.transfer_and_cleanup(id)
+    end
+
+    def direct_upload_file_path
+        CGI.unescape direct_upload_url.gsub("https://s3.amazonaws.com/nutshell-360-temp/","")
     end
 end

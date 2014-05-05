@@ -32,6 +32,9 @@
         <% if @event.present? %>
           <%= f.hidden_field :imageable_id, value: @event.id %>
           <%= f.hidden_field :imageable_type, value: @event.class.name %>
+          <%= f.hidden_field :image_file_name %>
+          <%= f.hidden_field :image_content_type %>
+          <%= f.hidden_field :image_file_size %>
           <%= f.hidden_field :direct_upload_url, id: 'direct_upload_url' %>
         <% end %>
     </div>

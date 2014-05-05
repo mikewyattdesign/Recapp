@@ -130,6 +130,9 @@ class PhotosController < ApplicationController
         :imageable_id, 
         :imageable_type,
         :direct_upload_url,
+        :image_file_name,
+        :image_file_size,
+        :image_content_type,
         :tag_list )
     end
 
