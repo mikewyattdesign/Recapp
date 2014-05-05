@@ -45,7 +45,15 @@
             <% @photos.each do |photo| %>
               <div class="col-sm-6 col-md-4">
                 <div class="photo">
-                  <div class="list-photo-container">  <a href="<%= photo.image.url %>" data-lightbox="<%= @descriptor %>"><%= image_tag photo.image(:small), class: 'img-responsive list-photos' %></a></div>
+                  <div class="list-photo-container">  
+                  <a href="<%= photo.image.url %>" data-lightbox="<%= @descriptor %>">
+                    <% if photo.processed && photo.image(:small).present? %>
+                      <%= image_tag photo.image(:small), class: 'img-responsive list-photos' %>
+                    <% else %>
+                      <p class="image-processing">Your image is processing.</p>
+                    <% end %>
+                    </a>
+                  </div>
                   <ul class="tag-list">
                     <% photo.tags.each do |tag| %>
                       <li><%= link_to tag, "/photos/tags/#{tag}" %></li>

@@ -1,4 +1,7 @@
 class Photo < ActiveRecord::Base
+
+    after_create :queue_processing
+
     # TODO: Add paperclip relationships and validation
     has_attached_file :image, styles: {large: '700x700', medium: '500x500', small: '300x300'}
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\z/
@@ -36,8 +39,6 @@ class Photo < ActiveRecord::Base
         # Get the photo to be processed
         photo = Photo.find(id)
 
-        
-
         # final destination with the leading slashed sliced off
         paperclip_file_path = photo.image.path.slice(1..-1) 
         # temp source
@@ -52,11 +53,11 @@ class Photo < ActiveRecord::Base
     end
 
     def self.copy_and_delete(paperclip_file_path, raw_source)
-        bucket = Rails.env
         s3 = AWS::S3.new
         destination = s3.buckets[S3DirectUpload.config.bucket].objects[paperclip_file_path]
         source = s3.buckets['nutshell-360-temp'].objects[raw_source]
         source.copy_to(destination, acl: :public_read)
+        source.delete
     end
 
     def queue_processing
