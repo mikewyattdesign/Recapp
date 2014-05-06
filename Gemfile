@@ -90,7 +90,9 @@ group :development, :test do
     gem 'meta_request', '0.3.0'
 
     # Use hologram to create style guide
-    gem 'hologram', '1.0.1'
+    gem 'hologram', github: 'trulia/hologram'
+
+    gem 'guard-hologram', require: false
 
 
     gem 'sqlite3'
