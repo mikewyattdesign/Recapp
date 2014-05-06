@@ -87,9 +87,14 @@ group :development, :test do
     gem 'sprockets_better_errors', '0.0.4'
 
     # add RailsPanel Chrome Extension
-    gem 'meta_request', '0.2.8'
+    gem 'meta_request', '0.3.0'
+
+    # Use hologram to create style guide
+    gem 'hologram', '1.0.1'
+
 
     gem 'sqlite3'
+
 end
 
 group :development do
