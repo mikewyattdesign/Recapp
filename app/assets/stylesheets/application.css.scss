@@ -12,6 +12,8 @@
 
 @import "bootstrap";
 @import "bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker";
+@import "s3_direct_upload_progress_bars";
+@import "progress";
 @import "tags";
 @import "jquery-tokeninput/styles/token-input-facebook";
 
@@ -23,16 +25,35 @@
 @import "lightbox2/css/lightbox";
 
 
+
 // Global
 .container-full {
     width: 100%;
 }
 
+
+/*doc
+---
+title: Buttons
+name: buttons
+category: basics
+---
+
+Who doesn't love buttons?
+
+```html_example
+    <a class="btn btn-default">Default</a>
+    <a class="btn btn-primary">Primary</a>
+    <a class="btn btn-success">Success</a>
+    <a class="btn btn-danger">Danger</a>
+```
+*/
+
 .btn-primary {
     background-color: $orange;
     border-color: $light-orange;
 
-    &:hover {
+    &:hover, &:active, &:focus {
         background-color: $dark-orange;
         border-color: $orange;
     }
@@ -64,6 +85,21 @@ body {
 //     from {opacity: 0;}
 //     to {opacity: 1;}
 // }
+
+/*doc
+---
+title: An Event Background
+name: event_bg
+category: basics
+---
+
+I'm an event background.
+
+```html_example
+    <div class="event-background">I'm inside an event background.</div>
+```
+*/
+
 
 .event-background {
 
@@ -638,6 +674,7 @@ body {
 
 @import "assignments";
 @import "events";
+@import "photos";
 @import "errors";
 // Mobile styles
 @media only screen

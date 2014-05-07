@@ -36,8 +36,12 @@
 //= require events
 //= require assignments
 //= require documents
+//= require photos
 
 //= require lightbox2/js/lightbox.min
+
+//= require s3_direct_upload
+// require s3-direct-upload-inline
 
 //= require_tree .
 

@@ -35,4 +35,10 @@ G360EventApplication::Application.configure do
 
   # Specify Paperclip option
   Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  # Add Paperclip configuration
+  config.paperclip_defaults = {
+    storage:              :s3,
+    s3_credentials:       "#{::Rails.root}/config/aws.yml"
+  }
 end

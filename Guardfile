@@ -22,3 +22,10 @@ guard :rspec, cmd: 'bundle exec rspec', all_on_start: true do
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
+
+guard "hologram", config_path: "hologram_config.yml", cmd: 'bundle exec hologram' do
+  watch(%r{app/assets/stylesheets/.*css})
+  watch(%r{app/assets/javascripts/.*js})
+  watch(%r{doc_assets/*})
+  watch('hologram_config.yml')
+end

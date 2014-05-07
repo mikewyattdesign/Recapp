@@ -34,6 +34,8 @@ class Ability
     
     can :manage, :all if user.is_admin?
 
+    can :s3_upload_complete, Photo
+
     if user.is_manager?
         can :crud, Assignment
         can :update_role, Assignment
