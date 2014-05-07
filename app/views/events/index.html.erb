@@ -6,7 +6,7 @@
                 <%= link_to new_event_path, class: "pull-right new-event-btn btn btn-primary" do %>
                 <span class="visible-md visible-lg visible-sm .hidden-xs">New Event</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span>
                 <% end %>
-            <% end %>   
+            <% end %>
                 <% if @events.present? && can?(:export, Event) %>
                     <%= link_to 'Export to Excel', "#{request.path}.xls", class: 'btn btn-default hidden-xs'%>
                 <% end %>
@@ -14,7 +14,7 @@
         </div>
 
         <div class="event-background">
-            <div data-spy="affix" data-offset-top="135" class="date-filters-container hidden-xs">
+            <div data-spy="affix" data-offset-top="80" class="date-filters-container hidden-xs">
 
                 <div class="date-filters col-sm-12 col-md-12">
                     <%= form_tag request.path, method: 'get', class: '' do %>
