@@ -112,7 +112,6 @@ class Event < ActiveRecord::Base
                 "<Cell><Data ss:Type=" + '"String"' + ">#{city}</Data></Cell>",
                 "<Cell><Data ss:Type=" + '"String"' + ">#{state}</Data></Cell>",
                 "<Cell><Data ss:Type=" + '"String"' + ">#{postal_code}</Data></Cell>",
-                "<Cell><Data ss:Type=" + '"String"' + ">#{country}</Data></Cell>",
                 "<Cell><Data ss:Type=" + '"String"' + ">#{total_attendance}</Data></Cell>",
                 "<Cell><Data ss:Type=" + '"String"' + ">#{mileage_impressions}</Data></Cell>",
                 "<Cell><Data ss:Type=" + '"String"' + ">#{walk_by_impressions}</Data></Cell>",

@@ -44,14 +44,14 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { 
+        format.html {
           case params[:commit]
           when 'Create Event'
-            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully created. " 
+            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully created. "
           when 'Create Event and View Recap'
-            redirect_to @event, notice: "#{@event.name} was successfully created." 
+            redirect_to @event, notice: "#{@event.name} was successfully created."
           when 'Create Event and Add Another'
-            redirect_to new_event_url, notice: "#{@event.name} was successfully created." 
+            redirect_to new_event_url, notice: "#{@event.name} was successfully created."
           end }
         format.json { render action: 'show', status: :created, location: @event }
       else
@@ -66,14 +66,14 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { 
+        format.html {
           case params[:commit]
           when 'Update Event'
-            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. " 
+            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. "
           when 'Update Event and View Recap'
-            redirect_to @event, notice: "#{@event.name} was successfully updated." 
+            redirect_to @event, notice: "#{@event.name} was successfully updated."
           when 'Update Event and Add Another'
-            redirect_to new_event_url, notice: "#{@event.name} was successfully updated." 
+            redirect_to new_event_url, notice: "#{@event.name} was successfully updated."
           end
         }
         format.json { head :no_content }
@@ -103,13 +103,13 @@ class EventsController < ApplicationController
 
     def event_date_filter(events)
       if params[:start_date].present? && params[:end_date].present?
-        events.where("start_date_time >= :start_date AND start_date_time <= :end_date", 
+        events.where("start_date_time >= :start_date AND start_date_time <= :end_date",
           { start_date: Time.strptime(params[:start_date], "%m/%d/%Y"), end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
       elsif params[:start_date].present?
-        events.where("start_date_time >= :start_date", 
+        events.where("start_date_time >= :start_date",
           { start_date: Time.strptime(params[:start_date], "%m/%d/%Y")})
       elsif params[:end_date].present?
-        events.where("end_date_time <= :end_date", 
+        events.where("end_date_time <= :end_date",
           { end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
       else
         events
@@ -138,7 +138,6 @@ class EventsController < ApplicationController
         :street,
         :city,
         :state,
-        :country,
         :program_id,
         :note,
         :brand_demo_fit,
