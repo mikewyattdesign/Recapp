@@ -11,7 +11,7 @@ jQuery ->
         $('#photo_image_file_size').val(content.filesize)
         $('#photo_image_content_type').val(content.filetype)
         window.uploadContent = content
-    $(document).on 'click', '[data-s3-trigger]', ->
+    $('[data-s3-trigger]').on 'click', ->
     	$targetEl = $($(this).data('s3-trigger'))
     	$targetEl.click()
 
