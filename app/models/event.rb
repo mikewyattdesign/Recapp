@@ -17,10 +17,13 @@ class Event < ActiveRecord::Base
     accepts_nested_attributes_for :weather
     accepts_nested_attributes_for :comments, allow_destroy: true
 
+    before_save :ensure_not_nil
+
     validates :start_date_time, presence: true
     validates :end_date_time, presence: true
     validates :name, presence: true
     validates :program_id, presence: true
+
     validates_with DateValidator
 
     # Virtual Attributes to simplify Start and End Date Time Entry
@@ -123,5 +126,18 @@ class Event < ActiveRecord::Base
                 "<Cell><Data ss:Type=" + '"String"' + ">#{note}</Data></Cell>",
             "</Row>"
         ].join('')
+    end
+
+    private
+
+    # Each of these properties has a NOT NULL designation in the
+    # database
+    def ensure_not_nil
+        self.digital_engagements = 0 if digital_engagements.blank?
+        self.mileage_impressions = 0 if mileage_impressions.blank?
+        self.footprint_impressions = 0 if footprint_impressions.blank?
+        self.walk_by_impressions = 0 if walk_by_impressions.blank?
+        self.total_attendance = 0 if total_attendance.blank?
+        self.extended_engagements = 0 if extended_engagements.blank?
     end
 end

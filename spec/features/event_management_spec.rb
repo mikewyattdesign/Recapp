@@ -27,7 +27,7 @@ feature 'Event Management' do
         fill_in 'Postal Code', with: @event.postal_code
         fill_in 'Venue', with: @event.venue
         click_button 'Create Event'
-        
+
         expect(find_field('Name').value).to eq @event.name
         expect(find_field('City').value).to eq @event.city
         expect(find_field('State').value).to eq @event.state
@@ -75,7 +75,7 @@ feature 'Event Management' do
             fill_in 'Digital Engagements', with: 0
 
             click_button 'Update Event'
-            
+
             expect(find_field('Total Event Attendance').value).to eq total_attendance.to_s
             expect(find_field('Miles Traveled from Last Event').value).to eq miles_traveled.to_s
             expect(find_field('Walk By Impressions').value).to eq (total_attendance*2/3).to_s
@@ -83,6 +83,20 @@ feature 'Event Management' do
             expect(find_field('Extended Engagements').value).to eq (total_attendance/6).to_s
             expect(find_field('Digital Engagements').value).to eq '0'
         end
+
+        scenario "User removes an event's impression values" do
+            visit edit_event_path(@original_event)
+            fill_in 'Walk By Impressions', with: 23
+            click_button 'Update Event'
+            visit edit_event_path(@original_event)
+            expect(find_field('Walk By Impressions').value).to eq '23'
+
+            fill_in 'Walk By Impressions', with: ''
+            click_button 'Update Event'
+            visit edit_event_path(@original_event)
+            expect(find_field('Walk By Impressions').value).to eq '0'
+        end
+
         scenario 'User deletes an event' do
             visit program_events_path(@program)
             expect(page).to have_css("[href='/events/#{@original_event.id}']")
