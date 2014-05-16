@@ -8,6 +8,9 @@ gem 'rails', '4.0.2'
 # Error monitoring service
 gem 'rollbar', '0.12.17'
 
+# Application monitoring service
+gem 'newrelic_rpm', '3.8.1.221'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -94,9 +97,7 @@ group :development, :test do
 
     gem 'guard-hologram', require: false
 
-
     gem 'sqlite3'
-
 end
 
 group :development do
