@@ -87,6 +87,7 @@ G360EventApplication::Application.configure do
         }
     }
 
+    config.action_mailer.default_url_options = { :host => 'recapp.io' }
     ActionMailer::Base.smtp_settings = {
         port:           '587',
         address:        'smtp.mandrillapp.com',
