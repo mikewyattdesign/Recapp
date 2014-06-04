@@ -479,16 +479,61 @@ I'm an event background.
 
 .list-photos {
     min-height: 100%;
-    min-width: 100%;
+    min-width: 101%;
 }
 
 .list-photo-container {
-    margin: 2px 0 10px 0;
     width: 100%;
-    border: 1px solid $dark-grey;
     border-radius: 5px;
     height: 150px;
     overflow: hidden;
+}
+
+.edit-box {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 3px dotted $orange;
+        color: $orange;
+        font-size: 14px;
+        padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+            color: red;
+            border: 3px dotted red;
+        }
+    }
+}
+
+.delete-box {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+
+    button {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        background-color: white;
+        border: 2px solid $lightMediumGrey;
+        font-size: 22px;
+        color: $orange;
+        padding: 0;
+
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+.giveaway-box {
+    position: relative;
 }
 
 .photo-preview {
@@ -564,6 +609,10 @@ I'm an event background.
     box-shadow: 0px 0px 10px $lightMediumGrey;
 }
 
+.brand-icon-container {
+    position: relative;
+}
+
 .brand-icon-container, .event-giveaway-container, .comments-container, .document-contaner, .photo {
     padding: 15px;
     margin-bottom: 30px;
@@ -585,6 +634,11 @@ I'm an event background.
     border-radius: 8px;
     border: 2px solid $lightMediumGrey;
     margin-bottom: 15px;
+}
+
+.photo {
+    position: relative;
+    padding: 0;
 }
 
 .brand-icon {
@@ -670,6 +724,11 @@ I'm an event background.
         font-weight: bold;
         font-size: 16px;
     }
+}
+
+// Style Guide
+.style-guide-body {
+    padding-top: 0;
 }
 
 @import "assignments";
