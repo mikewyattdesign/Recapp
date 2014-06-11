@@ -363,7 +363,7 @@ I'm an event background.
     }
 
     &:hover {
-        background-color: $lightGrey;
+        // background-color: $lightGrey;
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
@@ -445,12 +445,13 @@ I'm an event background.
     padding: 5%;
     margin: 5% 0;
     border-radius: 5px;
-    border: 2px dotted;
+    border: 2px dotted $orange;
+    color: $orange;
     font-family: TrendSansOne, sans-serif;
     &:hover {
         background-color: white;
-        border: 2px dotted $orange;
-        color: $orange;
+        border: 2px dotted $light-orange;
+        color: $light-orange;
     }
 }
 
@@ -487,6 +488,10 @@ I'm an event background.
     border-radius: 5px;
     height: 150px;
     overflow: hidden;
+
+    @media screen and (max-width : 1200px)  {
+        height: 130px;
+    }
 }
 
 .edit-box {
@@ -505,8 +510,8 @@ I'm an event background.
         border-radius: 10px;
 
         &:hover {
-            color: red;
-            border: 3px dotted red;
+            color: $light-orange;
+            border: 3px dotted $light-orange;
         }
     }
 }
@@ -527,7 +532,7 @@ I'm an event background.
         padding: 0;
 
         &:hover {
-            color: red;
+            color: $light-orange;
         }
     }
 }
@@ -565,6 +570,18 @@ I'm an event background.
 
 .form-box {
     padding: 30px;
+}
+
+.main-edit-box {
+    top: 10px;
+    right: 20px;
+    left: auto;
+
+    button {
+        width: 70px;
+        height: 65px;
+        font-size: 18px;
+    }
 }
 
 .control-label {
@@ -622,7 +639,7 @@ I'm an event background.
     box-shadow: 0px 0px 10px $lightMediumGrey;
 
     &:hover {
-        background-color: $lightGrey;
+        // background-color: $lightGrey;
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
