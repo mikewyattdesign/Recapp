@@ -510,8 +510,8 @@ I'm an event background.
         border-radius: 10px;
 
         &:hover {
-            color: $light-orange;
-            border: 3px dotted $light-orange;
+            color: red;
+            border: 3px dotted red;
         }
     }
 }
@@ -532,7 +532,7 @@ I'm an event background.
         padding: 0;
 
         &:hover {
-            color: $light-orange;
+            color: red;
         }
     }
 }
@@ -717,6 +717,18 @@ I'm an event background.
 }
 
 .comments {
+    font-size: 18px;
+}
+
+.comment-dropdown {
+    background-color: #f7f7f7;
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
+    border-left: 5px solid #c3c2c3;
+}
+
+.comment-dropdown-text {
+    color: #c3c2c3;
     font-size: 18px;
 }
 

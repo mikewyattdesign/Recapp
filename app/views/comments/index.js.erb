@@ -1,0 +1,4 @@
+// $()
+//     $("comment-dropdown-content").html("<div><%= j render @comments %></div>")
+
+$("<div><%= j render @comments %></div>").insertAfter('[data-event-id="<%= @event.id%>"] .quick-info');

@@ -29,6 +29,9 @@
 		<% if can? :read, Photo %>
 			<li class="<%= 'active' if request.path == '/photos' %>"><%= link_to "Photos", "/photos" %></li>
 		<% end %>
+        <% if can? :read, Comment %>
+            <li class="<%= 'active' if request.path == '/comments' %>"><%= link_to "Comments", "/comments" %></li>
+        <% end %>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<% if user_signed_in? %>
