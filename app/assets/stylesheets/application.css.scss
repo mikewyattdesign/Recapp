@@ -445,13 +445,13 @@ I'm an event background.
     padding: 5%;
     margin: 5% 0;
     border-radius: 5px;
-    border: 2px dotted $orange;
-    color: $orange;
+    border: 2px dotted $dark-grey;
+    color: $dark-grey;
     font-family: TrendSansOne, sans-serif;
     &:hover {
         background-color: white;
-        border: 2px dotted $light-orange;
-        color: $light-orange;
+        border: 2px dotted $orange;
+        color: $orange;
     }
 }
 
@@ -503,15 +503,15 @@ I'm an event background.
         width: 40px;
         height: 40px;
         background-color: rgba(255,255,255, 0.85);
-        border: 3px dotted $orange;
-        color: $orange;
+        border: 2px dotted $dark-grey;
+        color: $dark-grey;
         font-size: 14px;
         padding: 0;
         border-radius: 10px;
 
         &:hover {
-            color: red;
-            border: 3px dotted red;
+            color: $orange;
+            border: 2px dotted $orange;
         }
     }
 }
@@ -528,11 +528,11 @@ I'm an event background.
         background-color: white;
         border: 2px solid $lightMediumGrey;
         font-size: 22px;
-        color: $orange;
+        color: $dark-grey;
         padding: 0;
 
         &:hover {
-            color: red;
+            color: $orange;
         }
     }
 }
@@ -720,20 +720,62 @@ I'm an event background.
     font-size: 18px;
 }
 
-.comment-dropdown {
+.event-dropdown {
     background-color: #f7f7f7;
     margin: 10px 0px 0px 0px;
     padding: 10px;
     border-left: 5px solid #c3c2c3;
 }
 
-.comment-dropdown-text {
+.event-dropdown-text {
     color: #c3c2c3;
     font-size: 18px;
 }
 
 .giveaway-image {
     height: 100%;
+}
+
+.edit-box-dropdown, .delete-box-dropdown {
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 1px solid $light-grey;
+        color: $grey;
+        padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+            color: $orange;
+            border: 1px solid $orange;
+        }
+    }
+}
+
+.edit-box-dropdown {
+    position: absolute;
+    right: 60px;
+    top: 3px;
+
+    button {
+        font-size: 14px;
+    }
+}
+
+.delete-box-dropdown {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+
+    button {
+        font-size: 22px;
+
+        span {
+            padding-top: 5px;
+        }
+    }
 }
 
 .document-table {
