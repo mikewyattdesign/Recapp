@@ -459,6 +459,7 @@ I'm an event background.
     @extend .clearfix;
 
     .quick-info {
+        position: relative;
         clear: left;
         margin-top: 10px;
 
@@ -775,6 +776,37 @@ I'm an event background.
         span {
             padding-top: 5px;
         }
+    }
+}
+
+.giveaway-add, .comment-add {
+    position: absolute;
+
+    .event-dropdown-add-btn {
+        background-color: $dark-grey;
+        color: white;
+
+        &:hover {
+            background-color: $orange;
+        }
+    }
+}
+
+.giveaway-add {
+    right: -3px;
+    top: -8px;
+}
+
+.comment-add {
+    right: -3px;
+    top: -8px;
+}
+
+.event-dropdown-add-btn {
+    padding: 3px 4px 0px 4px;
+    border-radius: 15px;
+    span {
+        font-size: 18px;
     }
 }
 
