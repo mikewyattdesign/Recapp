@@ -66,6 +66,9 @@ gem 'acts-as-taggable-on', '3.0.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# XML parser, added to prevent build breaking on Mavericks
+gem 'nokogiri', '1.6.1'
+
 group :development, :test do
     # Add testing via rspec
     gem 'rspec-rails', '2.14.0'
