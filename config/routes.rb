@@ -15,11 +15,10 @@ G360EventApplication::Application.routes.draw do
     resources :giveaways
     resources :event_giveaways
     resources :comments
-
-    resources :photos do
-    end
     resources :videos
     resources :documents
+    resources :photos do
+    end
 
     # Because viewing photos by tag is even better with a route for it
     get 'photos/tags/:tag' => 'photos#index', as: :tag_photos

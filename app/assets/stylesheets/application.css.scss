@@ -725,7 +725,6 @@ I'm an event background.
     background-color: #f7f7f7;
     margin: 10px 0px 0px 0px;
     padding: 10px;
-    border-left: 5px solid #c3c2c3;
 }
 
 .event-dropdown-text {
@@ -826,6 +825,21 @@ I'm an event background.
     p {
         font-weight: bold;
         font-size: 16px;
+    }
+}
+
+.open, .dropdown{
+    #resources-drop:focus, #resources-drop:hover {
+        background-color: $orange;
+    }
+}
+
+.dropdown-menu {
+    background-color: $dark-grey;
+    li {
+        a:hover {
+            background-color: $orange;
+        }
     }
 }
 
