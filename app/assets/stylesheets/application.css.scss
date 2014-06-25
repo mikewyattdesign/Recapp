@@ -363,7 +363,7 @@ I'm an event background.
     }
 
     &:hover {
-        background-color: $lightGrey;
+        // background-color: $lightGrey;
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
@@ -445,7 +445,8 @@ I'm an event background.
     padding: 5%;
     margin: 5% 0;
     border-radius: 5px;
-    border: 2px dotted;
+    border: 2px dotted $dark-grey;
+    color: $dark-grey;
     font-family: TrendSansOne, sans-serif;
     &:hover {
         background-color: white;
@@ -458,6 +459,7 @@ I'm an event background.
     @extend .clearfix;
 
     .quick-info {
+        position: relative;
         clear: left;
         margin-top: 10px;
 
@@ -479,16 +481,65 @@ I'm an event background.
 
 .list-photos {
     min-height: 100%;
-    min-width: 100%;
+    min-width: 101%;
 }
 
 .list-photo-container {
-    margin: 2px 0 10px 0;
     width: 100%;
-    border: 1px solid $dark-grey;
     border-radius: 5px;
     height: 150px;
     overflow: hidden;
+
+    @media screen and (max-width : 1200px)  {
+        height: 130px;
+    }
+}
+
+.edit-box {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 2px dotted $dark-grey;
+        color: $dark-grey;
+        font-size: 14px;
+        padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+            color: $orange;
+            border: 2px dotted $orange;
+        }
+    }
+}
+
+.delete-box {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+
+    button {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        background-color: white;
+        border: 2px solid $lightMediumGrey;
+        font-size: 22px;
+        color: $dark-grey;
+        padding: 0;
+
+        &:hover {
+            color: $orange;
+        }
+    }
+}
+
+.giveaway-box {
+    position: relative;
 }
 
 .photo-preview {
@@ -520,6 +571,18 @@ I'm an event background.
 
 .form-box {
     padding: 30px;
+}
+
+.main-edit-box {
+    top: 10px;
+    right: 20px;
+    left: auto;
+
+    button {
+        width: 70px;
+        height: 65px;
+        font-size: 18px;
+    }
 }
 
 .control-label {
@@ -564,6 +627,10 @@ I'm an event background.
     box-shadow: 0px 0px 10px $lightMediumGrey;
 }
 
+.brand-icon-container {
+    position: relative;
+}
+
 .brand-icon-container, .event-giveaway-container, .comments-container, .document-contaner, .photo {
     padding: 15px;
     margin-bottom: 30px;
@@ -573,7 +640,7 @@ I'm an event background.
     box-shadow: 0px 0px 10px $lightMediumGrey;
 
     &:hover {
-        background-color: $lightGrey;
+        // background-color: $lightGrey;
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
@@ -585,6 +652,11 @@ I'm an event background.
     border-radius: 8px;
     border: 2px solid $lightMediumGrey;
     margin-bottom: 15px;
+}
+
+.photo {
+    position: relative;
+    padding: 0;
 }
 
 .brand-icon {
@@ -649,8 +721,92 @@ I'm an event background.
     font-size: 18px;
 }
 
+.event-dropdown {
+    background-color: #f7f7f7;
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
+}
+
+.event-dropdown-text {
+    color: #c3c2c3;
+    font-size: 18px;
+}
+
 .giveaway-image {
     height: 100%;
+}
+
+.edit-box-dropdown, .delete-box-dropdown {
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 1px solid $light-grey;
+        color: $grey;
+        padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+            color: $orange;
+            border: 1px solid $orange;
+        }
+    }
+}
+
+.edit-box-dropdown {
+    position: absolute;
+    right: 60px;
+    top: 3px;
+
+    button {
+        font-size: 14px;
+    }
+}
+
+.delete-box-dropdown {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+
+    button {
+        font-size: 22px;
+
+        span {
+            padding-top: 5px;
+        }
+    }
+}
+
+.giveaway-add, .comment-add {
+    position: absolute;
+
+    .event-dropdown-add-btn {
+        background-color: $dark-grey;
+        color: white;
+
+        &:hover {
+            background-color: $orange;
+        }
+    }
+}
+
+.giveaway-add {
+    right: -3px;
+    top: -8px;
+}
+
+.comment-add {
+    right: -3px;
+    top: -8px;
+}
+
+.event-dropdown-add-btn {
+    padding: 3px 4px 0px 4px;
+    border-radius: 15px;
+    span {
+        font-size: 18px;
+    }
 }
 
 .document-table {
@@ -670,6 +826,26 @@ I'm an event background.
         font-weight: bold;
         font-size: 16px;
     }
+}
+
+.open, .dropdown{
+    #resources-drop:focus, #resources-drop:hover {
+        background-color: $orange;
+    }
+}
+
+.dropdown-menu {
+    background-color: $dark-grey;
+    li {
+        a:hover {
+            background-color: $orange;
+        }
+    }
+}
+
+// Style Guide
+.style-guide-body {
+    padding-top: 0;
 }
 
 @import "assignments";

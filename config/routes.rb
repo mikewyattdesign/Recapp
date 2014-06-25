@@ -14,13 +14,13 @@ G360EventApplication::Application.routes.draw do
     resources :locations
     resources :giveaways
     resources :event_giveaways
-
-    resources :photos do
-    end
+    resources :comments
     resources :videos
     resources :documents
+    resources :photos do
+    end
 
-    # Because viewing photos by tag is even better with a route for it 
+    # Because viewing photos by tag is even better with a route for it
     get 'photos/tags/:tag' => 'photos#index', as: :tag_photos
 
     get 'photos/programs/:program_id' => 'photos#index', as: :program_photos
@@ -28,7 +28,7 @@ G360EventApplication::Application.routes.draw do
     get 'photos/brands/:brand_id' => 'photos#index', as: :brand_photos
 
     post 'photos/s3-upload-complete' => 'photos#s3_upload_complete', as: :s3_upload_complete
-    
+
     resources :tags
 
     # Because viewing events by tag is even better with a route for it

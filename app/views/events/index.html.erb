@@ -55,24 +55,31 @@
 
                         <div class="col-sm-10 col-md-10">
                             <div class="event-info">
-                                <div class="event-info-text col-sm-10 col-md-10">
+                                <div class="event-info-text">
                                     <%= image_tag event_decorator.brand.logo, class: "event-logo pull-left" %>
                                     <div class="event-name"><%= link_to event_decorator.name, event %></div>
                                     <div class="event-start"><%= event_decorator.start_date %></div>
                                 </div>
-                                <div class="event-info-button col-sm-2 col-md-2">
-                                    <% if can? :update, event %>
-                                        <%= link_to edit_event_path(event) do %>
-                                        <button type="button" class="btn btn-default info-button glyphicon glyphicon glyphicon-pencil">
+
+                                <% if can? :update, event %>
+                                    <%= link_to edit_event_path(event) do %>
+                                    <div class="edit-box main-edit-box">
+                                        <button type="button">
+                                            <span class="glyphicon glyphicon glyphicon-pencil"><br>Edit</span>
                                         </button>
-                                        <% end %>
+                                    </div>
                                     <% end %>
-                                    <% if can? :destroy, event %>
-                                        <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default info-button glyphicon glyphicon-trash" do %>
-                                        <% end %>
+                                <% end %>
+                                <% if can? :destroy, event %>
+                                    <div class="delete-box">
+                                    <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                        <button type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
                                     <% end %>
-                                </div>
+                                    </div>
+                                <% end %>
+
                                 <%= render 'event_details', event: event, event_decorator: event_decorator %>
+
                                 <div class="event-circle"></div>
                                 <div class="event-timeline"></div>
                                 <div class="event-arrow"></div>
