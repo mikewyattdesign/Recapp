@@ -14,3 +14,6 @@ module Paperclip
     end
   end
 end
+
+ # Stop jQuery File Upload Middleware from jacking up remotipart
+G360EventApplication::Application.config.middleware.delete "JQuery::FileUpload::Rails::Middleware"
