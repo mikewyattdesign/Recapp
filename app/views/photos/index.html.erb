@@ -46,7 +46,7 @@
               <div class="col-sm-6 col-md-4">
                 <div class="photo">
                   <div class="list-photo-container">
-                  <a href="<%= photo.image.url %>" data-lightbox="<%= @descriptor %>">
+                  <a href="<%= photo.image.url(:large) %>" data-lightbox="<%= @descriptor %>">
                     <% if photo.processed && photo.image(:small).present? %>
                       <%= image_tag photo.image(:small), class: 'img-responsive list-photos' %>
                     <% else %>
