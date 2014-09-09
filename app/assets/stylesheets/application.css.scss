@@ -848,10 +848,16 @@ I'm an event background.
     padding-top: 0;
 }
 
+.color-box {
+    width: 20px;
+    height: 20px;
+}
+
 @import "assignments";
 @import "events";
 @import "photos";
 @import "errors";
+
 // Mobile styles
 @media only screen
 and (max-width : 768px)
