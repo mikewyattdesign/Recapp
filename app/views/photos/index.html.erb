@@ -54,11 +54,16 @@
                     <% end %>
                     </a>
                   </div>
-                  <ul class="tag-list">
+                  <ul class="tag-list inactive">
                     <% photo.tags.each do |tag| %>
                       <li><%= link_to tag, "/photos/tags/#{tag}" %></li>
                     <% end %>
                   </ul>
+
+                <div class="tags-box">
+                    <button class="tags-button"><span class="glyphicon glyphicon-tags"> Tags</span></button>
+                </div>
+
                   <div class="edit-box">
                     <%= link_to edit_photo_path(photo) do %>
                       <button type="button" class=""><span class="glyphicon glyphicon glyphicon-pencil"> Edit</span></button>

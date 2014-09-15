@@ -16,6 +16,31 @@
 	}
 }
 
+.tags-button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 2px dotted #58585a;
+    color: #58585a;
+    font-size: 14px;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.tags-box {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+}
+
+.inactive {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
 .token-input-list-facebook.token-list-display {
 	border: none;
 	background-color: transparent;

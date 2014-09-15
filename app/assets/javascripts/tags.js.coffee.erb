@@ -7,3 +7,10 @@ jQuery ->
 		theme: "facebook"
 		allowFreeTagging: true
 		})
+
+jQuery ->
+    $(".tags-button").on "click", ->
+        $(this).parent().prev(".tag-list").toggleClass("inactive")
+        .toggleClass("active")
+
+
