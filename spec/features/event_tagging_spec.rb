@@ -1,17 +1,17 @@
 require 'rails_helper'
 
 feature 'Event Tagging' do
-    before {
+    before do
         @brand = create(:brand)
         @program = create(:program, brand_id: @brand.id)
         @event = create(:event, program_id: @program.id)
-        @tag_array = ["super", "cali", "fragilistic", "expia lidocious"]
+        @tag_array = ['super', 'cali', 'fragilistic', 'expia lidocious']
         @user = create(:user, role: 0)
         visit new_user_session_path
         fill_in 'Email', with: @user.email
         fill_in 'Password', with: @user.password
         click_button 'Login'
-    }
+    end
 
     scenario "An event's tags are displayed on the event index" do
         @event.tag_list = @tag_array.join(',')

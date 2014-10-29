@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Program Management' do
-    before {
+    before do
         @brand = create(:brand)
         @program = build(:program)
         @user = create(:user, role: 0)
@@ -9,7 +9,7 @@ feature 'Program Management' do
         fill_in 'Email', with: @user.email
         fill_in 'Password', with: @user.password
         click_button 'Login'
-    }
+    end
     scenario 'User creates a program' do
         visit brand_programs_path(@brand)
         click_link 'New Program'
@@ -19,7 +19,7 @@ feature 'Program Management' do
         expect(page).to have_content @program.name
     end
     context 'User alters existing program' do
-        before { @original_program = create(:program, brand_id: @brand.id)}
+        before { @original_program = create(:program, brand_id: @brand.id) }
         scenario 'User edits a program' do
             visit edit_program_path(@original_program)
             fill_in 'Name', with: @program.name
