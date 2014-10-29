@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Photo Uploading' do
     scenario 'User Uploads a photo to an event' do

@@ -3,7 +3,8 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :assignment do
-    user nil
-  end
+    factory :assignment do
+        user
+        assignable { |a| a.association(:brand) }
+    end
 end

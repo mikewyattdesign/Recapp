@@ -2,17 +2,29 @@ require 'spec_helper'
 
 describe Program do
 	it "is valid with a name, and brand_id" do
-		program = Program.new(name: 'Heroes', brand_id: 1)
+		brand = create(:brand)
+		program = Program.new(name: 'Heroes', brand_id: brand.id)
 		expect(program).to be_valid
 	end
 	it "is invalid without a name" do
-		expect(Program.new(name: nil)).to have(1).errors_on(:name)
+		expect {
+			Program.create!(name: nil)
+		}.to raise_error(
+			ActiveRecord::RecordInvalid,
+			/name can't be blank/i
+		)
 	end
 	it "is invalid without a brand_id" do
-		expect(Program.new(brand_id: nil)).to have(1).errors_on(:brand_id)
+		expect {
+			Program.create!(brand_id: nil)
+		}.to raise_error(
+			ActiveRecord::RecordInvalid,
+			/brand can't be blank/i
+		)
 	end
 	it "responds to brand" do
-		expect(Program.new(name: 'Heroes', brand_id: 1)).to respond_to(:brand)
+		brand = create(:brand)
+		expect(Program.new(name: 'Heroes', brand_id: brand.id)).to respond_to(:brand)
 	end
 	it "returns its brand" do
 		busch = create(:brand)
@@ -20,6 +32,7 @@ describe Program do
 		expect(program.brand).to eq busch
 	end
 	it "responds to events" do
-		expect(Program.new(name: 'Heroes', brand_id: 1)).to respond_to(:events)
+		brand = create(:brand)
+		expect(Program.new(name: 'Heroes', brand_id: brand.id)).to respond_to(:events)
 	end
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Api::V1::PhotosController do
     # WTF, why do I have to do this to render anything?:

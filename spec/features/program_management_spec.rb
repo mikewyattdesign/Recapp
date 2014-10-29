@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Program Management' do
     before {
         @brand = create(:brand)
-        @program = build(:program)      
+        @program = build(:program)
         @user = create(:user, role: 0)
         visit new_user_session_path
         fill_in 'Email', with: @user.email

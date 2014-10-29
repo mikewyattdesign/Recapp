@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Event Management' do
-    before {
+    before do
         @brand = create(:brand)
         @program = create(:program, brand_id: @brand.id)
         @event = build(:event)
@@ -10,12 +10,12 @@ feature 'Event Management' do
         fill_in 'Email', with: @user.email
         fill_in 'Password', with: @user.password
         click_button 'Login'
-    }
+    end
     scenario 'User creates an event' do
-        visit program_events_path(@program)
+        visit program_events_path(@program.id)
         click_link 'New Event'
         fill_in 'Name', with: @event.name
-        expect(find_field('Program').value).to eq @program.id.to_s
+        select(@program.name, from: 'Program')
         fill_in 'Name', with: @event.name
         fill_in 'Start Date', with: @event.start_date
         fill_in 'End Date', with: @event.end_date
@@ -28,6 +28,7 @@ feature 'Event Management' do
         fill_in 'Venue', with: @event.venue
         click_button 'Create Event'
 
+        expect(find_field('Program').value).to eq @program.id.to_s
         expect(find_field('Name').value).to eq @event.name
         expect(find_field('City').value).to eq @event.city
         expect(find_field('State').value).to eq @event.state

@@ -93,23 +93,23 @@ describe User do
 
 	it "knows if it's an admin" do
 		u = create(:user, role: 0)
-		expect(u.is_admin?).to be_true
+		expect(u.is_admin?).to be_truthy
 	end
 	it "knows if it's not an admin" do
 		u = create(:user, role: 4)
-		expect(u.is_admin?).to be_false
+		expect(u.is_admin?).to be_falsey
 	end
 	it "knows if it's a manager" do
 		u = create(:user, role: 3)
-		expect(u.is_manager?).to be_true
+		expect(u.is_manager?).to be_truthy
 	end
 	it "knows if it's field staff" do
 		u = create(:user, role: 1)
-		expect(u.is_field_staff?).to be_true
+		expect(u.is_field_staff?).to be_truthy
 	end
 	it "knows if it's a client" do
 		u = create(:user, role: 2)
-		expect(u.is_client?).to be_true
+		expect(u.is_client?).to be_truthy
 	end
 
 

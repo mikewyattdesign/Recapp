@@ -1,27 +1,49 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Event do
 	before { @event = build(:event)}
 	it "is valid with name, start_date_time, end_date_time, and program_id" do
 		expect(build(:event)).to be_valid
 	end
-	it "is invalid without name" do 
-		expect(build(:event, name: nil)).to have(1).errors_on(:name)
+	it "is invalid without name" do
+		expect {
+			Event.create!(name: nil)
+		}.to raise_error(ActiveRecord::RecordInvalid, /name can't be blank/i)
 	end
 	it "is invalid without start_date_time" do
-		expect(build(:event, start_date_time: nil)).to have(1).errors_on(:start_date_time)
+		expect {
+			Event.create!(start_date_time: nil)
+		}.to raise_error(
+			ActiveRecord::RecordInvalid,
+			/start date time can't be blank/i
+		)
 	end
 	it "is invalid without end_date_time" do
-		expect(build(:event, end_date_time: nil)).to have(1).errors_on(:end_date_time)
+		expect {
+			Event.create!(end_date_time: nil)
+		}.to raise_error(
+			ActiveRecord::RecordInvalid,
+			/end date time can't be blank/i
+		)
 	end
 	it "is invalid without program_id" do
-		expect(build(:event, program_id: nil)).to have(1).errors_on(:program_id)
+		expect {
+			Event.create!(program_id: nil)
+		}.to raise_error(
+			ActiveRecord::RecordInvalid,
+			/program can't be blank/i
+		)
 	end
 	it "is invalid with start_date_time after end_date_time" do
-		event = build(:event,
-			start_date_time: Date.today,
-			end_date_time: Date.yesterday)
-		expect(event).to have(1).errors_on(:end_date_time)
+		expect {
+			Event.create!(
+				start_date_time: Date.today,
+				end_date_time: Date.yesterday
+			)
+		}.to raise_error(
+			ActiveRecord::RecordInvalid,
+			/end date time comes before start date time/i
+		)
 	end
 	it "responds to program" do
 		expect(build(:event)).to respond_to(:program)

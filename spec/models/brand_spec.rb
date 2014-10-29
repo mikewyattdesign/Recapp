@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Brand do
 	it "is valid with a name" do
@@ -6,17 +6,20 @@ describe Brand do
 		expect(brand).to be_valid
 	end
 	it "is invalid without a name" do
-		expect(Brand.new(name: nil)).to have(1).errors_on(:name)
+		expect {
+			Brand.create!(name: nil)
+		}.to raise_error(ActiveRecord::RecordInvalid, /name can't be blank/i)
 	end
-	it "is invalid with a duplicate name" do 
-		Brand.create(name: 'Busch')
-		brand = Brand.new(name: 'Busch')
-		expect(brand).to have(1).errors_on(:name)
+	it "is invalid with a duplicate name"  do
+		expect {
+			Brand.create(name: 'Busch')
+			Brand.create!(name: 'Busch')
+		}.to raise_error(ActiveRecord::RecordInvalid, /name has already been taken/i)
 	end
 	it "responds to programs" do
 		expect(Brand.new(name: 'Busch')).to respond_to(:programs)
 	end
-	it "responds to events" do 
+	it "responds to events" do
 		expect(build(:brand)).to respond_to(:events)
 	end
 
