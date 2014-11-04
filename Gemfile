@@ -72,6 +72,12 @@ gem 'nokogiri', '1.6.3.1'
 # JavaScript charts in one line of Ruby
 gem 'chartkick', '1.3.2'
 
+# HTML to PDF converter
+gem 'wicked_pdf', '0.11.0'
+
+# Binary that wicked_pdf wraps to do the HTML to PDF conversion
+gem 'wkhtmltopdf-binary', '0.9.9.3'
+
 group :development, :test do
     # Add testing via rspec
     gem 'rspec-rails', '3.1.0'

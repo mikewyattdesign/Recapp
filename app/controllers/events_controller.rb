@@ -25,6 +25,13 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do 
+        render pdf: "#{@event.id}_#{@event.name}"
+      end
+    end
   end
 
   # GET /events/new
