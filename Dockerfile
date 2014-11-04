@@ -4,6 +4,8 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 RUN apt-get update
+
+# We need libav-tools to run Paperclip-ffmpeg
 RUN apt-get install -y nodejs libav-tools \
     --no-install-recommends \
     --fix-missing
