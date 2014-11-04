@@ -367,6 +367,12 @@ I'm an event background.
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
+
+        a {
+            .edit-box {
+                opacity: 1;
+            }
+        }
     }
 
     .active {
@@ -499,6 +505,12 @@ I'm an event background.
     position: absolute;
     top: 8px;
     left: 8px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
 
     button {
         width: 40px;
@@ -629,6 +641,12 @@ I'm an event background.
 
 .brand-icon-container {
     position: relative;
+
+    &:hover {
+        .edit-box {
+            opacity: 1;
+        }
+    }
 }
 
 .brand-icon-container, .event-giveaway-container, .comments-container, .document-contaner, .photo {
@@ -654,9 +672,27 @@ I'm an event background.
     margin-bottom: 15px;
 }
 
+.event-giveaway-container {
+    &:hover {
+        .edit-box {
+            opacity: 1;
+        }
+    }
+}
+
 .photo {
     position: relative;
     padding: 0;
+
+    &:hover {
+        .tags-box {
+            opacity: 1;
+        }
+
+        .edit-box {
+            opacity: 1;
+        }
+    }
 }
 
 .brand-icon {
