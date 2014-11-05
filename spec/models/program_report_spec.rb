@@ -1,0 +1,37 @@
+require 'spec_helper'
+
+describe ProgramReport, focus: true do
+    let(:program) { create(:program) }
+
+    subject { described_class.new program }
+
+    it { is_expected.to respond_to :name }
+    it { is_expected.to respond_to :events }
+    it { is_expected.to respond_to :total_impressions }
+    it { is_expected.to respond_to :start_date }
+    it { is_expected.to respond_to :end_date }
+
+    it 'has the correct name' do
+        expect(subject.name).to eq program.name
+    end
+
+    context 'when reporting on a Program' do
+        let!(:events) { create_list(:event, 3, program_id: program.id) }
+
+        it 'has the correct events' do
+            expect(subject.events).to eq events
+        end
+
+        it 'gives the start date of the Program' do
+            one_year_ago = 1.year.ago
+            events[0].update_attribute :start_date_time, one_year_ago
+            expect(subject.start_date).to eq one_year_ago.to_date
+        end
+
+        it 'gives the end date of the Program' do
+            one_year_from_now = 1.year.since
+            events[0].update_attribute :end_date_time, one_year_from_now
+            expect(subject.end_date).to eq one_year_from_now.to_date
+        end
+    end
+end

@@ -1,2 +1,15 @@
+<h1><%= @program.name %></h1>
+
 <%= link_to 'Edit', edit_program_path(@program) %> |
 <%= link_to 'Back', brand_programs_path(@program.brand) %>
+
+<h2>Events</h2>
+<ul class="list-group">
+    <% @program.events.each do |event| %>
+        <li class="list-group-item">
+            <%= link_to event.name, event_path(event) %>
+        </li>
+    <% end %>
+</ul>
+
+<p><strong>Total Impressions</strong>: <%= @report.total_impressions %></p>
