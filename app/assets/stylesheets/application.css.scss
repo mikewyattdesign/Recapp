@@ -717,6 +717,10 @@ I'm an event background.
     overflow: hidden;
     background-color: $lightGrey;
     border: 1px solid #dddddd;
+
+    a {
+        margin-left: -15px;
+    }
 }
 
 .brand-name {
