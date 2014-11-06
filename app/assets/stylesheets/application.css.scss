@@ -22,6 +22,7 @@
 @import "colors";
 @import "fonts";
 @import "navigation";
+@import "style-guide";
 @import "lightbox2/css/lightbox";
 
 
@@ -65,7 +66,7 @@ Who doesn't love buttons?
 
 table {
     th {
-        background-color: $lightGrey;
+        background-color: $white-grey;
     }
 }
 
@@ -329,7 +330,7 @@ I'm an event background.
 .event-img {
     margin: 10px 0;
     width: 100%;
-    border: 1px solid $lightMediumGrey;
+    border: 1px solid $light-grey;
     border-radius: 5px;
 }
 
@@ -337,7 +338,7 @@ I'm an event background.
     padding: 5px 20px;
     font-size: 18px;
     width: 100%;
-    background-color: $lightGrey;
+    background-color: $white-grey;
     border-bottom: 1px solid #e1e1e1;
 }
 
@@ -363,7 +364,7 @@ I'm an event background.
     }
 
     &:hover {
-        // background-color: $lightGrey;
+        // background-color: $white-grey;
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
@@ -376,7 +377,7 @@ I'm an event background.
     }
 
     .active {
-        background-color: $lightGrey;
+        background-color: $white-grey;
         border-left: 5px solid #7f7f7f;
     }
 }
@@ -539,7 +540,7 @@ I'm an event background.
         height: 30px;
         border-radius: 15px;
         background-color: white;
-        border: 2px solid $lightMediumGrey;
+        border: 2px solid $light-grey;
         font-size: 22px;
         color: $dark-grey;
         padding: 0;
@@ -563,7 +564,7 @@ I'm an event background.
 }
 
 .form-header-label {
-    border-bottom: 1px solid $lightMediumGrey;
+    border-bottom: 1px solid $light-grey;
     margin-bottom: 10px;
     h3 {
         margin: 10px 0 5px 0;
@@ -633,10 +634,10 @@ I'm an event background.
 }
 
 .event-logo {
-    border: 1px solid $lightMediumGrey;
-    -webkit-box-shadow: 0px 0px 10px $lightMediumGrey;
-    -moz-box-shadow: 0px 0px 10px $lightMediumGrey;
-    box-shadow: 0px 0px 10px $lightMediumGrey;
+    border: 1px solid $light-grey;
+    -webkit-box-shadow: 0px 0px 10px $light-grey;
+    -moz-box-shadow: 0px 0px 10px $light-grey;
+    box-shadow: 0px 0px 10px $light-grey;
 }
 
 .brand-icon-container {
@@ -652,13 +653,13 @@ I'm an event background.
 .brand-icon-container, .event-giveaway-container, .comments-container, .document-contaner, .photo {
     padding: 15px;
     margin-bottom: 30px;
-    border: 1px solid $lightMediumGrey;
-    -webkit-box-shadow: 0px 0px 10px $lightMediumGrey;
-    -moz-box-shadow: 0px 0px 10px $lightMediumGrey;
-    box-shadow: 0px 0px 10px $lightMediumGrey;
+    border: 1px solid $light-grey;
+    -webkit-box-shadow: 0px 0px 10px $light-grey;
+    -moz-box-shadow: 0px 0px 10px $light-grey;
+    box-shadow: 0px 0px 10px $light-grey;
 
     &:hover {
-        // background-color: $lightGrey;
+        // background-color: $white-grey;
         -webkit-box-shadow: 0px 0px 15px #b6b6b6;
         -moz-box-shadow: 0px 0px 15px #b6b6b6;
         box-shadow: 0px 0px 15px #b6b6b6;
@@ -668,7 +669,7 @@ I'm an event background.
 
 .comments-container, .event-giveaway-container, .document-contaner, .photo {
     border-radius: 8px;
-    border: 2px solid $lightMediumGrey;
+    border: 2px solid $light-grey;
     margin-bottom: 15px;
 }
 
@@ -697,7 +698,7 @@ I'm an event background.
 
 .brand-icon {
     height: 250px;
-    background-color: $lightGrey;
+    background-color: $white-grey;
     overflow: hidden;
 }
 
@@ -708,14 +709,14 @@ I'm an event background.
 
 .prize-icon {
     height: 150px;
-    background-color: $lightGrey;
+    background-color: $white-grey;
 }
 
 .event-giveaway-icon {
     height: 70px;
     text-align: center;
     overflow: hidden;
-    background-color: $lightGrey;
+    background-color: $white-grey;
     border: 1px solid #dddddd;
     padding: 0;
 }
@@ -883,14 +884,6 @@ I'm an event background.
 }
 
 // Style Guide
-.style-guide-body {
-    padding-top: 0;
-}
-
-.color-box {
-    width: 20px;
-    height: 20px;
-}
 
 @import "assignments";
 @import "events";
