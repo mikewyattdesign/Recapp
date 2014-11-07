@@ -44,7 +44,7 @@
           <div class="row">
             <% @photos.each do |photo| %>
               <div class="col-sm-6 col-md-4">
-                <div class="photo">
+                <div class="card-stack card-round photo">
                   <div class="list-photo-container">
                   <a href="<%= photo.image.url(:large) %>" data-lightbox="<%= @descriptor %>">
                     <% if photo.processed && photo.image(:small).present? %>

@@ -650,7 +650,7 @@ I'm an event background.
     }
 }
 
-.brand-icon-container, .event-giveaway-container, .comments-container, .document-contaner, .photo {
+.card-stack {
     padding: 15px;
     margin-bottom: 30px;
     border: 1px solid $light-grey;
@@ -667,7 +667,7 @@ I'm an event background.
     }
 }
 
-.comments-container, .event-giveaway-container, .document-contaner, .photo {
+.card-round {
     border-radius: 8px;
     border: 2px solid $light-grey;
     margin-bottom: 15px;

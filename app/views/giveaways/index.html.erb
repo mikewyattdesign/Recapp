@@ -13,7 +13,7 @@
             <div class="row">
             <% @giveaways.each do |giveaway| %>
               <div class="col-sm-6 col-md-6">
-                <div class="event-giveaway-container col-md-12">
+                <div class="card-stack card-round event-giveaway-container col-md-12">
                     <div class="event-giveaway-icon col-md-3">
                         <%= link_to image_tag giveaway.image, class: "giveaway-image" if giveaway.image.present? %>
                     </div>
