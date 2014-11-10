@@ -87,7 +87,7 @@ class PhotosController < ApplicationController
   end
 
   def s3_upload_complete
-    
+
   end
 
   private
@@ -98,13 +98,13 @@ class PhotosController < ApplicationController
 
     def photo_date_filter(photos)
       if params[:start_date].present? && params[:end_date].present?
-        photos.where("created_at >= :start_date AND created_at <= :end_date", 
+        photos.where("photos.created_at >= :start_date AND photos.created_at <= :end_date",
           { start_date: Time.strptime(params[:start_date], "%m/%d/%Y"), end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
       elsif params[:start_date].present?
-        photos.where("created_at >= :start_date", 
+        photos.where("photos.created_at >= :start_date",
           { start_date: Time.strptime(params[:start_date], "%m/%d/%Y")})
       elsif params[:end_date].present?
-        photos.where("created_at <= :end_date", 
+        photos.where("photos.created_at <= :end_date",
           { end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
       else
         photos
@@ -127,7 +127,7 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:image,
-        :imageable_id, 
+        :imageable_id,
         :imageable_type,
         :direct_upload_url,
         :image_file_name,
