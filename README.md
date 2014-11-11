@@ -21,3 +21,13 @@
   gems with `$ fig run web bundle install`.
 * In general, you can prefix commands with `$ fig run web`, and they
   will run in the application container.
+
+## Issues
+
+When your computer sleeps, it's possible for the docker container to get
+out of sync with your operating system clock.  To fix this (and prevent
+delayed jobs from failing, you may need to periodically run
+
+    $ boot2docker ssh sudo ntpclient -s -h pool.ntp.org
+
+to ensure your boot2docker vm has the correct time.

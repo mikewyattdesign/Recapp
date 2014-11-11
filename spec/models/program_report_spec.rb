@@ -1,13 +1,20 @@
 require 'spec_helper'
 
-describe ProgramReport, focus: true do
+describe ProgramReport do
     let(:program) { create(:program) }
 
     subject { described_class.new program }
 
     it { is_expected.to respond_to :name }
     it { is_expected.to respond_to :events }
+    it { is_expected.to respond_to :photos }
     it { is_expected.to respond_to :total_impressions }
+    it { is_expected.to respond_to :mileage_impressions }
+    it { is_expected.to respond_to :footprint_impressions }
+    it { is_expected.to respond_to :walk_by_impressions }
+    it { is_expected.to respond_to :digital_engagements }
+    it { is_expected.to respond_to :extended_engagements }
+    it { is_expected.to respond_to :total_attendance }
     it { is_expected.to respond_to :start_date }
     it { is_expected.to respond_to :end_date }
 
