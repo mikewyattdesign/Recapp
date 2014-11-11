@@ -48,14 +48,16 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(photo_params)
-
+    if @photo.imageable_type == 'event'
+        @event = @photo.event
+    end
     respond_to do |format|
       if @photo.save
         format.html { redirect_to event_photos_url(@photo.event), notice: 'Photo was successfully created.' }
         format.json { render action: 'show', status: :created, location: @photo }
         format.js
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to new_event_photo_path(@photo.event), notice: 'Photo was not successfully created' }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
@@ -87,7 +89,7 @@ class PhotosController < ApplicationController
   end
 
   def s3_upload_complete
-    
+
   end
 
   private
@@ -98,13 +100,13 @@ class PhotosController < ApplicationController
 
     def photo_date_filter(photos)
       if params[:start_date].present? && params[:end_date].present?
-        photos.where("created_at >= :start_date AND created_at <= :end_date", 
+        photos.where("created_at >= :start_date AND created_at <= :end_date",
           { start_date: Time.strptime(params[:start_date], "%m/%d/%Y"), end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
       elsif params[:start_date].present?
-        photos.where("created_at >= :start_date", 
+        photos.where("created_at >= :start_date",
           { start_date: Time.strptime(params[:start_date], "%m/%d/%Y")})
       elsif params[:end_date].present?
-        photos.where("created_at <= :end_date", 
+        photos.where("created_at <= :end_date",
           { end_date: Time.strptime(params[:end_date], "%m/%d/%Y")})
       else
         photos
@@ -127,7 +129,7 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:image,
-        :imageable_id, 
+        :imageable_id,
         :imageable_type,
         :direct_upload_url,
         :image_file_name,

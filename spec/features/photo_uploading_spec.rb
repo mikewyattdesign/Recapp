@@ -16,6 +16,13 @@ feature 'Photo Uploading' do
         click_on 'Manage Event Photos'
         expect(current_path).to eq event_photos_path(@event)
 
+        click_on 'New Photo'
+        expect(current_path).to eq new_event_photo_path(@event)
+
+        click_on 'Create Photo'
+        # If no photo is uploaded, it should go back to the upload page
+        expect(current_path).to eq new_event_photo_path(@event)
+
         # TODO: Testing this has become impossible.  For some reason,
         # I can't get Capybara and selenium to cooperate with file
         # attachment.  I tried looking into adjusting the file_detector
