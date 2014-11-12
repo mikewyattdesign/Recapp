@@ -46,7 +46,7 @@
               <div class="col-sm-6 col-md-4">
                 <div class="card-stack card-round photo">
                   <div class="list-photo-container">
-                  <a href="<%= photo.image.url(:large) %>" data-lightbox="<%= @descriptor %>" data-title="<a href='<%= photo.image.url %>' download>Download</a>">
+                    <a href="<%= photo.image.url(:large) %>" data-lightbox="<%= @descriptor %>" data-title="<a href='<%= photo.image.url %>' download>Download</a>">
                     <% if photo.processed && photo.image(:small).present? %>
                       <%= image_tag photo.image(:small), class: 'img-responsive list-photos' %>
                     <% else %>
