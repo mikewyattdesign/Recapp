@@ -19,7 +19,6 @@
 // Load moment for bootstrap datetimepicker
 //= require moment/moment
 
-
 // Load all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap3-datetimepicker/build/js/bootstrap-datetimepicker.min
@@ -44,4 +43,3 @@
 // require s3-direct-upload-inline
 
 //= require_tree .
-
