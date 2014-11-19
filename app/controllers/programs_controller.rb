@@ -17,6 +17,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+      @report = ProgramReport.new(@program)
   end
 
   # GET /programs/new

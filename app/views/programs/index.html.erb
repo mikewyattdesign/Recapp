@@ -19,7 +19,7 @@
                     <!-- Prize Picture -->
                 </div>
                 <div class="brand-name">
-                    <%= program.name %>
+                    <%= link_to program.name, program_path(program) %>
                 </div>
                 <div>
                     <%= link_to program_events_path(program), class: "btn btn-primary info-button" do %>

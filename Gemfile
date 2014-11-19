@@ -69,6 +69,9 @@ gem 'jbuilder', '2.2.4'
 # XML parser, added to prevent build breaking on Mavericks
 gem 'nokogiri', '1.6.3.1'
 
+# JavaScript charts in one line of Ruby
+gem 'chartkick', '1.3.2'
+
 group :development, :test do
     # Add testing via rspec
     gem 'rspec-rails', '3.1.0'
