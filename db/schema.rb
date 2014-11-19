@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141029170006) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "api_keys", force: true do |t|
     t.string   "name"
     t.string   "access_token"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.string   "assignable_type"
   end
 
-  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "documents", force: true do |t|
     t.integer  "documentable_id"
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.string   "documentable_type"
   end
 
-  add_index "documents", ["documentable_id"], name: "index_documents_on_documentable_id"
+  add_index "documents", ["documentable_id"], name: "index_documents_on_documentable_id", using: :btree
 
   create_table "event_giveaways", force: true do |t|
     t.integer "event_id"
@@ -157,7 +160,7 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.integer  "event_id"
   end
 
-  add_index "locations", ["event_id"], name: "index_locations_on_event_id"
+  add_index "locations", ["event_id"], name: "index_locations_on_event_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.datetime "created_at"
@@ -172,9 +175,9 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.string   "direct_upload_url"
   end
 
-  add_index "photos", ["imageable_id"], name: "index_photos_on_imageable_id"
-  add_index "photos", ["imageable_type"], name: "index_photos_on_imageable_type"
-  add_index "photos", ["processed"], name: "index_photos_on_processed"
+  add_index "photos", ["imageable_id"], name: "index_photos_on_imageable_id", using: :btree
+  add_index "photos", ["imageable_type"], name: "index_photos_on_imageable_type", using: :btree
+  add_index "photos", ["processed"], name: "index_photos_on_processed", using: :btree
 
   create_table "programs", force: true do |t|
     t.string   "name"
@@ -194,15 +197,15 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -221,8 +224,8 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: true do |t|
     t.string   "media_file_name"
@@ -234,7 +237,7 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.integer  "event_id"
   end
 
-  add_index "videos", ["event_id"], name: "index_videos_on_event_id"
+  add_index "videos", ["event_id"], name: "index_videos_on_event_id", using: :btree
 
   create_table "weathers", force: true do |t|
     t.integer  "temperature"
@@ -247,6 +250,6 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.integer  "event_id"
   end
 
-  add_index "weathers", ["event_id"], name: "index_weathers_on_event_id"
+  add_index "weathers", ["event_id"], name: "index_weathers_on_event_id", using: :btree
 
 end
