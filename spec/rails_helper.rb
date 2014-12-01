@@ -44,8 +44,10 @@ RSpec.configure do |config|
     config.infer_spec_type_from_file_location!
 
     config.before(:suite) do
-        DatabaseCleaner.clean_with(:truncation)
-        FactoryGirl.lint
+        # Use the :deletion strategy, as postgres was throwing primary
+        # key violations under the :truncation strategy.
+        DatabaseCleaner.clean_with(:deletion)
+        # FactoryGirl.lint
     end
 
     config.before(:each) do
@@ -53,7 +55,7 @@ RSpec.configure do |config|
     end
 
     config.before(:each, js: true) do
-        DatabaseCleaner.strategy = :truncation
+        DatabaseCleaner.strategy = :deletion
     end
 
     config.before(:each) do
@@ -64,6 +66,7 @@ RSpec.configure do |config|
         DatabaseCleaner.clean
     end
 
+    Paperclip.options[:log] = false
     config.include FactoryGirl::Syntax::Methods
     config.include Paperclip::Shoulda::Matchers
     config.include JsonHelpers

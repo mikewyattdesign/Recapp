@@ -50,6 +50,6 @@
     </div>
 </div>
 <% end %>
-<%= s3_uploader_form callback_url: s3_upload_complete_url(format: :js), callback_param: "photo[direct_upload_url]", bucket: "nutshell-360-temp", id: "s3_uploader", class: "s3-photo-upload hidden" do %>
+<%= s3_uploader_form callback_url: s3_upload_complete_url(format: :js), callback_param: "photo[direct_upload_url]", bucket: "nutshell-360-temp", expiration: 1.day.from_now.utc.iso8601, id: "s3_uploader", class: "s3-photo-upload hidden" do %>
   <%= file_field_tag :file, multiple: false, data: {image_upload_preview: '#photo-preview'} %>
 <% end %>
