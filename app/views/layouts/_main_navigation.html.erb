@@ -23,8 +23,14 @@
     		<% if can? :read, Brand %>
     			<li class="<%= 'active' if request.path == '/brands' %>"><%= link_to "Brands", "/brands" %></li>
     		<% end %>
-    		<% if can? :read, Giveaway %>
-    			<li class="<%= 'active' if request.path == '/giveaways' %>"><%= link_to "Giveaways", "/giveaways" %></li>
+
+            <% if can? :read, Giveaway %>
+            <li class="dropdown">
+                <a id="giveaways-drop" href="#" class="dropdown-toggle" data-toggle="dropdown">Giveaways <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li class="<%= 'active' if request.path == '/giveaways' %>"><%= link_to "Chosen", "/giveaways" %></li>
+                </ul>
+            </li>
     		<% end %>
 
             <li class="dropdown">
