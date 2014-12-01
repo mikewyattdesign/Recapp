@@ -2,9 +2,9 @@
 	<% if event_giveaway.new_record? %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">	
+				<div class="row">
 				    <div class="col-md-5 form-cont-box">
-						<%= f.select :giveaway_id, options_from_collection_for_select(Giveaway.all, :id, :name, event_giveaway.giveaway_id), {}, class: "form-control" %>
+						<%= f.select :giveaway_id, options_from_collection_for_select(Giveaway.all, :id, :name, event_giveaway.giveaway_id), {}, class: "form-control chosen-select" %>
 				    </div>
 				    <div class="col-md-5 form-cont-box">
 				        <%= f.number_field :count_given_away, min: 0, class: "form-control" %>
@@ -19,14 +19,14 @@
 	<% else %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">	
+				<div class="row">
 					<div class="col-md-5 form-cont-box">
 				    	<%= f.label :giveaway_id, event_giveaway.giveaway.name, class: "control-label" %>
 				    </div>
 				    <div class="col-md-5 form-cont-box">
 				        <%= f.number_field :count_given_away, min: 0, class: "form-control" %>
 				    </div>
-				    <div class="col-md-2 form-cont-box">	
+				    <div class="col-md-2 form-cont-box">
 				    	<%= f.hidden_field :_destroy %>
 						<%= link_to 'Remove', '#', class: 'remove_fields btn btn-danger btn-block', title: "Remove #{event_giveaway.giveaway.name}" %>
 					</div>

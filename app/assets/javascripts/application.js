@@ -39,6 +39,8 @@
 
 //= require lightbox2/js/lightbox.min
 
+//= require chosen/chosen.jquery.min
+
 //= require s3_direct_upload
 // require s3-direct-upload-inline
 
