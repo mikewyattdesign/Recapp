@@ -3,7 +3,7 @@ require 'api_constraints'
 G360EventApplication::Application.routes.draw do
     devise_for :users
 
-    root to: redirect('/events')
+    root to: redirect('/brands')
 
     resources :assignments
 
