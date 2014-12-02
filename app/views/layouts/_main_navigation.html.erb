@@ -17,17 +17,15 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav navbar-left">
-    		<% if can? :read, Event %>
-    			<li class="<%= 'active' if request.path == '/events' %>"><%= link_to "Events", "/events" %></li>
-    		<% end %>
     		<% if can? :read, Brand %>
     			<li class="<%= 'active' if request.path == '/brands' %>"><%= link_to "Brands", "/brands" %></li>
     		<% end %>
-
+            <% if can? :read, Event %>
+                <li class="<%= 'active' if request.path == '/events' %>"><%= link_to "Events", "/events" %></li>
+            <% end %>
             <% if can? :read, Giveaway %>
                 <li class="<%= 'active' if request.path == '/giveaways' %>"><%= link_to "Giveaways", "/giveaways" %></li>
     		<% end %>
-
             <li class="dropdown">
               <a id="resources-drop" href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
               <ul class="dropdown-menu">
