@@ -1,12 +1,12 @@
 class ProgramsController < ApplicationController
   load_and_authorize_resource
-  
+
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
   # GET /brands/:brand_id/programs
   # GET /brands/:brand_id/programs.json
   def index
-    @brand = Brand.find(params[:brand_id]) 
+    @brand = Brand.find(params[:brand_id])
     if current_user.is_admin?
       @programs = @brand.programs
     else
@@ -17,6 +17,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+      @report = ProgramReport.new(@program)
   end
 
   # GET /programs/new

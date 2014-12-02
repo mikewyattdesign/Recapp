@@ -22,11 +22,4 @@ feature 'Photo Management', focus: true do
         expect(page).to have_selector('.list-photo-container', count: 1)
     end
 
-    scenario 'User downloads photos' do
-        visit photos_path
-        save_and_open_page
-        first('.list-photo-container').click
-        # expect(page).to have_link('Download') # There are no photos to load in the rake test
-    end
-
 end

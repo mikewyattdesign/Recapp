@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe Assignment do
+    let(:user) { create(:user) }
+
     it 'is valid with a user_id, an assignable_id, and an assignable_type' do
-        user = create(:user)
         event = create(:event)
         a = Assignment.new(
             user_id: user.id,
@@ -11,6 +12,7 @@ describe Assignment do
         )
         expect(a).to be_valid
     end
+
     it 'is invalid without a user' do
         expect do
             Assignment.create!(user_id: nil)
@@ -19,6 +21,7 @@ describe Assignment do
             /user can't be blank/i
         )
     end
+
     it 'is invalid without an assignable_type' do
         expect do
             Assignment.create!(assignable_type: nil)
@@ -27,6 +30,7 @@ describe Assignment do
             /assignable type can't be blank/i
         )
     end
+
     it 'is invalid without an assignable_id' do
         expect do
             Assignment.create!(assignable_id: nil)
@@ -35,22 +39,22 @@ describe Assignment do
             /assignable can't be blank/i
         )
     end
+
     it 'responds to user' do
-        u = User.create(email: 'Mike', password: '00000000')
         a = Assignment.new(
-            user_id: u.id,
-            assignable_id: u.id,
+            user_id: user.id,
+            assignable_id: user.id,
             assignable_type: 'Event'
         )
         expect(a).to respond_to(:user)
     end
+
     it 'responds with its user' do
-        u = User.create(email: 'mike@mikewyattdesign.com', password: '00000000')
         a = Assignment.create(
-            user_id: u.id,
-            assignable_id: u.id,
+            user_id: user.id,
+            assignable_id: user.id,
             assignable_type: 'Event'
         )
-        expect(a.user).to eq(u)
+        expect(a.user).to eq(user)
     end
 end
