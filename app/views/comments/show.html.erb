@@ -1,2 +1,6 @@
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', event_comments_path(@comment.event) %>
+<% if @comment.commentable_type == "Event" %>
+    <%= link_to 'Back', event_comments_path(Event.find(@comment.commentable_id)) %>
+<% elsif @comment.commentable_type == "Photo" %>
+    <%= link_to 'Back', photo_comments_path(Photo.find(@comment.commentable_id)) %>
+<% end %>

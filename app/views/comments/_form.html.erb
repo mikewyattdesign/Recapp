@@ -1,4 +1,4 @@
-<%= form_for [@event,@comment], html: {class: "form-horizontal"} do |f| %>
+<%= form_for [@commentable,@comment], html: {class: "form-horizontal"} do |f| %>
     <% if @comment.errors.any? %>
         <div id="error_explanation">
                 <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -17,16 +17,26 @@
                 <%= f.label :content, "Content", class: "control-label" %>
                 <%= f.text_area :content, class: "form-control" %>
             </div>
-            <div class="col-md-10 col-md-offset-1 form-cont-box">
-                <%= f.label :is_testimonial, "Testimonial", class: "control-label" %>
-                <%= f.check_box :is_testimonial %>
-            </div>
+            <% if @commentable.class.name == "Event" %>
+                <div class="col-md-10 col-md-offset-1 form-cont-box">
+                    <%= f.label :is_testimonial, "Testimonial", class: "control-label" %>
+                    <%= f.check_box :is_testimonial %>
+                </div>
+            <% end %>
+            <% if @commentable.present? %>
+              <%= f.hidden_field :commentable_id, value: @commentable.id %>
+              <%= f.hidden_field :commentable_type, value: @commentable.class.name %>
+            <% end %>
         </div>
 
         <div class="col-md-10 col-md-offset-1 form-header-label"></div>
         <div class="col-md-10 col-md-offset-1 submit-container">
             <%= f.submit class: "btn btn-primary pull-right" %>
-            <%= link_to 'Back', event_comments_path(@comment.event.id), class: "btn btn-default pull-right back-button" %>
+            <% if @commentable.class.name == "Event" %>
+                <%= link_to 'Back', event_comments_path(@comment.commentable_id), class: "btn btn-default pull-right back-button" %>
+            <% elsif @commentable.class.name == "Photo" %>
+                <%= link_to 'Back', photo_comments_path(@comment.commentable_id), class: "btn btn-default pull-right back-button" %>
+            <% end %>
         </div>
     </div>
 

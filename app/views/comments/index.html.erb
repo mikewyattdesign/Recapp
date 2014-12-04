@@ -30,11 +30,14 @@
                 <% end %>
 
                 <div class="col-md-10 col-md-offset-1 form-header-label"></div>
-                <% if @event.present? %>
+                <% if @commentable.present? %>
                 <div class="col-md-10 col-md-offset-1 submit-container">
-                    <%= link_to 'New Comment', new_event_comment_path, class: "btn btn-primary pull-right" %>
-
-                    <%= link_to_unless @event.nil?, 'Back', event_path(@event), class: "btn btn-default pull-right back-button" %>
+                    <% if @commentable.class.name == "Event" %>
+                        <%= link_to 'New Comment', new_event_comment_path(@commentable), class: "btn btn-primary pull-right" %>
+                    <% elsif @commentable.class.name == "Photo" %>
+                        <%= link_to 'New Comment', new_photo_comment_path(@commentable), class: "btn btn-primary pull-right" %>
+                    <% end %>
+                    <%= link_to_unless @commentable.nil?, 'Back', event_path(@commentable), class: "btn btn-default pull-right back-button" %>
                 </div>
                 <% end %>
             </div>

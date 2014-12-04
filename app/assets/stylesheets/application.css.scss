@@ -530,6 +530,29 @@ I'm an event background.
     }
 }
 
+.comments-box {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+
+    button {
+        width: 70px;
+        height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 2px dotted $dark-grey;
+        color: $dark-grey;
+        font-size: 14px;
+        padding: 0;
+        border-radius: 10px;
+    }
+}
+
 .delete-box {
     position: absolute;
     top: -12px;
@@ -689,7 +712,9 @@ I'm an event background.
         .tags-box {
             opacity: 1;
         }
-
+        .comments-box {
+            opacity: 1;
+        }
         .edit-box {
             opacity: 1;
         }

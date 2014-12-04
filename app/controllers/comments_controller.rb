@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-  before_filter :load_commentable
+  before_filter :load_commentable, only: [:index, :show, :new, :create, :update]
 
   # GET /comments
   # GET /comments.json
@@ -20,8 +20,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @event = Event.find(params[:event_id])
-    @comment = Comment.new(event_id: @event.id)
+    @comment = Comment.new(commentable_id: @commentable.id)
   end
 
   # GET /comments/1/edit
@@ -31,9 +30,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @event = Event.find(params[:event_id])
     @comment = Comment.new(comment_params)
-    @comment.event_id = @event.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -77,12 +74,12 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:content, :event_id, :is_testimonial)
+      params.require(:comment).permit(:content, :commentable_id, :commentable_type, :is_testimonial)
     end
 
     # Determines which class the comment is associated with
     def load_commentable
         klass = [Event, Photo].detect { |c| params["#{c.name.underscore}_id"] }
-        @commentable = klass.find_by_id(params["#{klass.name.underscore}_id"])
+        @commentable = klass.find_by_id(params["#{klass.name.underscore}_id"]) if klass
     end
 end

@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Comments', photos_comments_path(@photo.event) %> |
 <%= link_to 'Back', event_photos_path(@photo.event) %>
