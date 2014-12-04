@@ -32,11 +32,7 @@
         <div class="col-md-10 col-md-offset-1 form-header-label"></div>
         <div class="col-md-10 col-md-offset-1 submit-container">
             <%= f.submit class: "btn btn-primary pull-right" %>
-            <% if @commentable.class.name == "Event" %>
-                <%= link_to 'Back', event_comments_path(@comment.commentable_id), class: "btn btn-default pull-right back-button" %>
-            <% elsif @commentable.class.name == "Photo" %>
-                <%= link_to 'Back', photo_comments_path(@comment.commentable_id), class: "btn btn-default pull-right back-button" %>
-            <% end %>
+            <%= link_to 'Back', [@commentable, :comments], class: "btn btn-default pull-right back-button" %>
         </div>
     </div>
 

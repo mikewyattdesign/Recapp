@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @commentable = @comment.commentable_type.singularize.classify.constantize.find(@comment.commentable_id)
   end
 
   # GET /comments/new
@@ -33,7 +34,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to [@commentable, :comments], notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @comment }
       else
         format.html { render action: 'new' }
@@ -47,7 +48,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to [@commentable, :comments], notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
