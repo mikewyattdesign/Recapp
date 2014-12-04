@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
     belongs_to :program
-    has_many :comments, inverse_of: :event
+    has_many :comments, as: :commentable
     has_many :photos, as: :imageable
     has_many :event_giveaways, inverse_of: :event
     has_many :giveaways, through: :event_giveaways

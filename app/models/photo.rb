@@ -1,11 +1,11 @@
 class Photo < ActiveRecord::Base
-
     after_create :queue_processing
 
     # TODO: Add paperclip relationships and validation
     has_attached_file :image, styles: {large: '700x700', medium: '500x500', small: '300x300'}
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\z/
 
+    has_many :comments, as: :commentable
     belongs_to :imageable, polymorphic: true
     acts_as_taggable
 
@@ -40,7 +40,7 @@ class Photo < ActiveRecord::Base
         photo = Photo.find(id)
 
         # final destination with the leading slashed sliced off
-        paperclip_file_path = photo.image.path.slice(1..-1) 
+        paperclip_file_path = photo.image.path.slice(1..-1)
         # temp source
         source = photo.direct_upload_file_path
         Photo.copy_and_delete paperclip_file_path, source

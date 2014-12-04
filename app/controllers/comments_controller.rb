@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
+  before_filter :load_commentable
+
   # GET /comments
   # GET /comments.json
   def index
-    if params[:event_id]
-      @event = Event.find(params[:event_id])
-      @comments = @event.comments
+    if @commentable
+      @comments = @commentable.comments
     else
       @comments = Comment.all
     end
@@ -77,5 +78,11 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:content, :event_id, :is_testimonial)
+    end
+
+    # Determines which class the comment is associated with
+    def load_commentable
+        klass = [Event, Photo].detect { |c| params["#{c.name.underscore}_id"] }
+        @commentable = klass.find_by_id(params["#{klass.name.underscore}_id"])
     end
 end

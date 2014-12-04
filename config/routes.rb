@@ -18,6 +18,9 @@ G360EventApplication::Application.routes.draw do
     resources :videos
     resources :documents
     resources :photos do
+        shallow do
+            resources :comments
+        end
     end
 
     # Because viewing photos by tag is even better with a route for it
