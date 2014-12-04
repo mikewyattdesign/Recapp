@@ -31,6 +31,9 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @photo = Photo.find(params[:id])
+    @commentable = @photo
+    @comments = @commentable.comments
   end
 
   # GET /photos/new
@@ -53,7 +56,7 @@ class PhotosController < ApplicationController
     end
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to event_photos_url(@photo.event), notice: 'Photo was successfully created.' }
+        format.html { redirect_to photo_path(@photo), notice: 'Photo was successfully created.' }
         format.json { render action: 'show', status: :created, location: @photo }
         format.js
       else
@@ -68,7 +71,7 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to event_photos_url(@photo.event), notice: 'Photo was successfully updated.' }
+        format.html { redirect_to photo_path(@photo), notice: 'Photo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -63,7 +63,7 @@
                     <button class="tags-button"><span class="glyphicon glyphicon-tags"> Tags</span></button>
                   </div>
                   <div class="comments-box">
-                    <%= link_to photo_comments_path(photo) do %>
+                    <%= link_to photo_path(photo.id) do %>
                       <button type="button" class=""><span class="glyphicon glyphicon-comment"> Comments</span></button>
                     <% end %>
                   </div>

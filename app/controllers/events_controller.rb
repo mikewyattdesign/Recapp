@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      format.pdf do 
+      format.pdf do
         render pdf: "#{@event.id}_#{@event.name}"
       end
     end

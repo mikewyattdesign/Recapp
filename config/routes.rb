@@ -17,6 +17,9 @@ G360EventApplication::Application.routes.draw do
     resources :comments
     resources :videos
     resources :documents
+
+    get 'photos/:photo_id/comments', to: redirect('photos/%{photo_id}')
+
     resources :photos do
         shallow do
             resources :comments
