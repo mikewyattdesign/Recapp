@@ -6,7 +6,11 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    if @commentable
+    if @commentable.class.name == "Event" && params[:event_id]
+      @event = Event.find(params[:event_id])
+      @comments = @commentable.comments
+    elsif @commentable.class.name == "Photo" && params[:photo_id]
+      @photo = Photo.find(params[:photo_id])
       @comments = @commentable.comments
     else
       @comments = Comment.all
