@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.1.4'
+ruby '2.1.5'
 
 gem 'unicorn', '4.8.3'
 
 gem 'rails', '4.1.6'
-
-# Use postgresql as the database for Active Record
-gem 'pg', '0.17.1'
 
 # Error monitoring service
 gem 'rollbar', '1.2.7'
@@ -94,6 +91,8 @@ group :development, :test do
     # Use FactoryGirl to create stubs, test models, etc
     gem 'factory_girl_rails', '4.5.0'
 
+    # Add sqlite as database for development and testing
+    gem 'sqlite3'
 
     # add RailsPanel Chrome Extension
     gem 'meta_request', '0.3.4'
@@ -134,6 +133,9 @@ group :test do
 end
 
 group :production do
+    # Use postgresql as the database for Active Record
+    gem 'pg', '0.17.1'
+
     gem 'rails_12factor', '0.0.3'
 end
 
