@@ -168,6 +168,11 @@ class Event < ActiveRecord::Base
         XLS
     end
 
+    def update(params)
+        completed_at.present? ? false : super
+    end
+
+
     private
 
     # Each of these properties has a NOT NULL designation in the

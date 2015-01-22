@@ -31,7 +31,7 @@ class Ability
     user ||= User.new
 
     alias_action :create, :read, :update, :destroy, to: :crud
-    
+
     can :manage, :all if user.is_admin?
 
     can :s3_upload_complete, Photo
@@ -46,19 +46,19 @@ class Ability
         can :update, Program
         can :create, Event
         can :read, Event
-        can :update, Event
+        can :update, Event, completed_at: nil
         can :export, Event
         can :crud, Photo
         can :crud, Video
         can :create, Giveaway
         can :read, Giveaway
-        can :update, Giveaway   
+        can :update, Giveaway
     end
-    
+
     if user.is_field_staff?
         can :create, Event
         can :read, Event
-        can :update, Event
+        can :update, Event, completed_at: nil
         can :crud, Photo
         can :crud, Video
         can :create, Giveaway

@@ -15,7 +15,7 @@
         <% if @details %>
             <div class="detail<%= " hidden" unless @details %>">
 
-                <%= render 'impression_fields', f: f %> 
+                <%= render 'impression_fields', f: f %>
                 <%= render 'giveaways_fields', f: f %>
                 <%= render 'photos_fields', f: f %>
                 <%= render 'videos_fields', f: f %>
@@ -30,23 +30,28 @@
                 </div>
             </div>
         <% end %>
-
         <div class="col-md-12 form-header-label"></div>
+        <% if current_user.is_admin? || @event.completed_at.nil? %>
+            <div class="col-md-12 text-right">
+                <%= f.label(:completed_at) do %>
+                    <%= f.check_box(:completed_at, {checked: @event.completed_at.present?}, DateTime.now(), nil) %> Checking this box locks and prohibits future editing of the Recap information for this event.
+                <% end %>
+            </div>
+        <% end %>
         <div class="col-md-12 submit-container">
-            <div class="row">
-                
+            <div class="row add_top_margin">
                 <div class="col-md-2 col-sm-6 col-xs-6"><%= link_to 'Back', events_path, class: "btn btn-default back-button" %></div>
                 <div class="col-md-10 col-md-push-0 col-sm-3 col-sm-push-3 col-xs-5 col-xs-push-1">
                     <div class="row">
                         <div class="col-md-2 col-md-push-10 col-sm-12 col-xs-12">
                             <%= f.submit @event.new_record? ? 'Create Event' : 'Update Event', class: "btn btn-primary" %>
-                        </div>   
+                        </div>
                         <div class="col-md-10 col-md-pull-2 hidden-sm hidden-xs">
                             <p class="pull-right ">
                                 <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-default" %>
                                 <%= f.submit @event.new_record? ? 'Create Event and View Recap' : 'Update Event and View Recap', class: "btn btn-default" %>
                             </p>
-                        </div>   
+                        </div>
                     </div>
                 </div>
             </div>
