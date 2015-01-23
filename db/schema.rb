@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029170006) do
+ActiveRecord::Schema.define(version: 20150123173723) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -183,6 +183,19 @@ ActiveRecord::Schema.define(version: 20141029170006) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "requests", force: true do |t|
+    t.integer  "requestor_id"
+    t.integer  "requestable_id"
+    t.string   "requestable_type"
+    t.integer  "request_type"
+    t.boolean  "complete",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "requests", ["requestable_id", "requestable_type"], name: "index_requests_on_requestable_id_and_requestable_type"
+  add_index "requests", ["requestor_id"], name: "index_requests_on_requestor_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

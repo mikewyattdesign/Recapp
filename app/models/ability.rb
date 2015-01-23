@@ -31,6 +31,7 @@ class Ability
     user ||= User.new
 
     alias_action :create, :read, :update, :destroy, to: :crud
+    alias_action :create, :read, :update, to: :cru
     
     can :manage, :all if user.is_super_admin?
 
@@ -39,20 +40,17 @@ class Ability
     if user.is_admin?
         can :crud, Assignment
         can :update_role, Assignment
-        can :crud, User
+        can :create, User
+        can :read, User
+        can :update, User
         can :read, Brand
-        can :create, Program
-        can :read, Program
-        can :update, Program
-        can :create, Event
-        can :read, Event
-        can :update, Event
+        can :cru, Program
+        can :cru, Event
         can :export, Event
-        can :crud, Photo
-        can :crud, Video
-        can :create, Giveaway
-        can :read, Giveaway
-        can :update, Giveaway   
+        can :cru, Photo
+        can :cru, Video
+        can :cru, Giveaway
+        can :crud, Request  
     end
     
     if user.is_field_staff?
