@@ -29,10 +29,26 @@
             <%= render 'photo_carousel' %>
 
             <div class="event-impressions panel panel-default">
-                <div class="panel-heading">Impressions</div>
+                <div class="panel-heading">Impressions Graph</div>
+                <div class="panel-body">
+                    <%= column_chart [
+                        ['Total Impressions',     number_to_abbreviated(@event_decorator.estimated_total_impressions)],
+                        ['Mileage Impressions',   number_to_abbreviated(@event_decorator.mileage_impressions)],
+                        ['Footprint Impressions', number_to_abbreviated(@event_decorator.footprint_impressions)],
+                        ['Walk by Impressions',   number_to_abbreviated(@event_decorator.walk_by_impressions)],
+                        ['Digital Engagements',   number_to_abbreviated(@event_decorator.digital_engagements)],
+                        ['Extended Engagements',  number_to_abbreviated(@event_decorator.extended_engagements)],
+                        ['Total Attendance',      number_to_abbreviated(@event_decorator.total_attendance)]
+                    ] %>
+                </div>
+            </div>
+
+
+            <div class="event-impressions panel panel-default">
+                <div class="panel-heading">Impressions Details</div>
                 <div class="panel-body">
                     <div class="row">
-                        
+
                         <div class="col-md-4 estimated-total-impressions impressions"><%= number_to_abbreviated(@event_decorator.estimated_total_impressions) %>
                             <span class="heading">Total</span>
                         </div>
@@ -55,7 +71,7 @@
                     </div>
 
                 </div>
-            </div>            
+            </div>
             <div class="event-engagements panel panel-default">
                 <div class="panel-heading">Engagements</div>
                 <div class="panel-body">
