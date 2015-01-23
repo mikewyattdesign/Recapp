@@ -56,4 +56,21 @@ class ProgramReport
 
         maximum.to_date if maximum
     end
+
+    def aggregate_impression_data
+        events.map{ |event|
+            {name: event.name,
+                data: [
+                        ['Total Impressions',     event.estimated_total_impressions],
+                        ['Mileage Impressions',   event.mileage_impressions],
+                        ['Footprint Impressions', event.footprint_impressions],
+                        ['Walk by Impressions',   event.walk_by_impressions],
+                        ['Digital Engagements',   event.digital_engagements],
+                        ['Extended Engagements',  event.extended_engagements],
+                        ['Total Attendance',      event.total_attendance]
+                    ]
+                }
+            }
+
+    end
 end

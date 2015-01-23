@@ -32,13 +32,13 @@
                 <div class="panel-heading">Impressions Graph</div>
                 <div class="panel-body">
                     <%= column_chart [
-                        ['Total Impressions',     number_to_abbreviated(@event_decorator.estimated_total_impressions)],
-                        ['Mileage Impressions',   number_to_abbreviated(@event_decorator.mileage_impressions)],
-                        ['Footprint Impressions', number_to_abbreviated(@event_decorator.footprint_impressions)],
-                        ['Walk by Impressions',   number_to_abbreviated(@event_decorator.walk_by_impressions)],
-                        ['Digital Engagements',   number_to_abbreviated(@event_decorator.digital_engagements)],
-                        ['Extended Engagements',  number_to_abbreviated(@event_decorator.extended_engagements)],
-                        ['Total Attendance',      number_to_abbreviated(@event_decorator.total_attendance)]
+                        ['Total Impressions',     @event_decorator.estimated_total_impressions],
+                        ['Mileage Impressions',   @event_decorator.mileage_impressions],
+                        ['Footprint Impressions', @event_decorator.footprint_impressions],
+                        ['Walk by Impressions',   @event_decorator.walk_by_impressions],
+                        ['Digital Engagements',   @event_decorator.digital_engagements],
+                        ['Extended Engagements',  @event_decorator.extended_engagements],
+                        ['Total Attendance',      @event_decorator.total_attendance]
                     ] %>
                 </div>
             </div>
