@@ -7,7 +7,7 @@ class ProgramsController < ApplicationController
   # GET /brands/:brand_id/programs.json
   def index
     @brand = Brand.find(params[:brand_id])
-    if current_user.is_admin?
+    if current_user.is_super_admin?
       @programs = @brand.programs
     else
       @programs = current_user.programs.where(brand_id: @brand.id)

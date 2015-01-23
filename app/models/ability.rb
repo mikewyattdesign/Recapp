@@ -32,11 +32,11 @@ class Ability
 
     alias_action :create, :read, :update, :destroy, to: :crud
     
-    can :manage, :all if user.is_admin?
+    can :manage, :all if user.is_super_admin?
 
     can :s3_upload_complete, Photo
 
-    if user.is_manager?
+    if user.is_admin?
         can :crud, Assignment
         can :update_role, Assignment
         can :crud, User
