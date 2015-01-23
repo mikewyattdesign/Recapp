@@ -71,7 +71,14 @@ class Ability
         can :read, Photo
         can :create, Video
         can :read, Video
+    end
 
+    if user.is_client?
+        can :read, Brand
+        can :read, Program
+        can :read, Event
+        can :read, Photo
+        can :read, Video
     end
   end
 end
