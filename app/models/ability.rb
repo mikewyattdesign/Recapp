@@ -59,9 +59,8 @@ class Ability
         can :update, Event
         can :crud, Photo
         can :crud, Video
-        can :create, Giveaway
-        can :read, Giveaway
-        can :update, Giveaway
+        can :cru, Giveaway
+        can :cru, Program
     end
   end
 end
