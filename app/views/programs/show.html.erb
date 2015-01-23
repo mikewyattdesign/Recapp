@@ -27,8 +27,11 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">Total Impressions by Event</div>
-            <div class="panel-body">
+            <!-- <div class="panel-body">
                 <%= pie_chart @program.events.map { |event| [event.name, event.estimated_total_impressions] } %>
+            </div> -->
+            <div class="panel-body">
+                <%= column_chart @program.events.map { |event| [event.name, event.estimated_total_impressions] } %>
             </div>
         </div>
     </div>
