@@ -62,5 +62,16 @@ class Ability
         can :cru, Giveaway
         can :cru, Program
     end
+
+    if user.is_g360?
+        can :read, Brand
+        can :read, Program
+        can :read, Event
+        can :create, Photo
+        can :read, Photo
+        can :create, Video
+        can :read, Video
+
+    end
   end
 end
