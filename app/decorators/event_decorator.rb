@@ -27,6 +27,10 @@ class EventDecorator
         "#{event.city}, #{event.state}" unless event.city.blank? || event.state.blank?
     end
 
+    def venue
+        "#{event.venue}" unless event.venue.blank?
+    end
+
     def photo
         if event.photos.last.present?
             image_tag event.photos.last.image(:large), class: 'event-img'
