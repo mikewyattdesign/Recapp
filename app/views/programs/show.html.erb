@@ -3,24 +3,19 @@
 <%= link_to 'Edit', edit_program_path(@program) %> |
 <%= link_to 'Back', brand_programs_path(@program.brand) %>
 
-<h2>Overview</h2>
-<div class="row">
-    <div class="col-md-12">
-        <div class="well"><%= @program.overview %></div>
-    </div>
-</div>
-
 <h2>Events</h2>
 <ul class="list-group">
     <% @program.events.each do |event| %>
+        <% event_decorator = EventDecorator.new(event) %>
         <li class="list-group-item">
-            <%= link_to event.name, event_path(event) %>
+            <%= link_to event.name, event_path(event) %><span class="pull-right"><%= event_decorator.location %></span>
         </li>
     <% end %>
 </ul>
 
 
 <% unless @report.photos.empty? %>
+    <h2>Photos</h2>
     <div class="row">
         <% @report.photos[0..11].each do |photo| %>
             <div class="<%= photo_grid_class(@report.photos) %>">
@@ -29,6 +24,13 @@
         <% end %>
     </div>
 <% end %>
+
+<h2>Overview</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="well"><%= @program.overview %></div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-4">
