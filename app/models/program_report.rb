@@ -13,6 +13,10 @@ class ProgramReport
         @program.events
     end
 
+    def overview
+        @program.overview
+    end
+
     def photos
         @program.photos
     end
