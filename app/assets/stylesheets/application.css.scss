@@ -530,7 +530,7 @@ I'm an event background.
     }
 }
 
-.delete-box {
+.delete-box, .collapse-box {
     position: absolute;
     top: -12px;
     right: -12px;
@@ -549,6 +549,9 @@ I'm an event background.
             color: $orange;
         }
     }
+}
+.collapse-box {
+    right: 24px;
 }
 
 .giveaway-box {
@@ -587,13 +590,13 @@ I'm an event background.
 }
 
 .main-edit-box {
-    top: 10px;
-    right: 20px;
+    top: 20px;
+    right: 2px;
     left: auto;
 
     button {
-        width: 70px;
-        height: 65px;
+        width: 55px;
+        height: 55px;
         font-size: 18px;
     }
 }

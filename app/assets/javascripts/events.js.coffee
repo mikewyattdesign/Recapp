@@ -10,3 +10,8 @@ jQuery ->
     $(this).before($(this).data('fields').replace(regexp, time))
     $('.chosen-select').chosen() // Add Chosen jQuery
     event.preventDefault()
+
+  $(".collapse-box").on "click", (event) ->
+    $(this).find("span").toggleClass("glyphicon-plus-sign").toggleClass "glyphicon-minus-sign" 
+    $(this).siblings(".event-details").toggleClass "collapse"
+    return
