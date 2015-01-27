@@ -61,6 +61,10 @@ class ProgramReport
         maximum.to_date if maximum
     end
 
+    def comments
+        comments = events.map(&:comments)
+    end
+
     def aggregate_impression_data
         events.map{ |event|
             {name: event.name,
