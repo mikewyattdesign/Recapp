@@ -72,14 +72,12 @@
                         <th>Type</th>
                         <th>Event</th>
                     </tr>
-                    <% @report.comments.each do |collection| %>
-                        <% collection.each do |comment| %>
-                            <tr>
-                                <td><%= comment.content %></td>
-                                <td><%= comment.type_in_words %></td>
-                                <td><%= Event.find(comment.event_id).name %></td>
-                            </tr>
-                        <% end %>
+                    <% @report.comments.each do |comment| %>
+                        <tr>
+                            <td><%= comment.content %></td>
+                            <td><%= comment.type_in_words %></td>
+                            <td><%= Event.find(comment.event_id).name %></td>
+                        </tr>
                     <% end %>
                 </table>
             </div>

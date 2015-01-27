@@ -62,7 +62,7 @@ class ProgramReport
     end
 
     def comments
-        comments = events.map(&:comments)
+        comments = events.map(&:comments).flatten(1)
     end
 
     def aggregate_impression_data
