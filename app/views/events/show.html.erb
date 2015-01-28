@@ -87,16 +87,18 @@
                 </div>
             </div>
             <div class="event-giveaways panel panel-default">
-                <div class="panel-heading">Giveaways</div>
-                <div class="panel-body">
-                    <% @event_decorator.event_giveaways.each do | event_giveaway| %>
-                        <div class="event-giveaway impressions col-md-3">
-                            <div class="giveaway-image"><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %></div>
-                            <span class="giveaway-count"><%= event_giveaway.count_given_away || 0 %></span>
-                            <span class="giveaway-name heading"><%= event_giveaway.giveaway.name %></span>
-                        </div>
+                <table class="table">
+                    <tr>
+                        <th>Giveaway</th>
+                        <th class='text-right'>Amount Distributed</th>
+                    </tr>
+                    <% @event_decorator.event_giveaways.each do |event_giveaway| %>
+                        <tr class="event-giveaway">
+                            <td><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %><%= event_giveaway.giveaway.name %></td>
+                            <td class='text-right'><%= event_giveaway.count_given_away || 0 %></td>
+                        </tr>
                     <% end %>
-                </div>
+                </table>
             </div>
         </div>
     </div>
