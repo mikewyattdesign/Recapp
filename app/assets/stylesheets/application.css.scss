@@ -409,14 +409,14 @@ I'm an event background.
 .event-arrow {
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
     border-right:15px solid $light-grey;
 
     position: absolute;
     top: 50%;
-    margin-top: -50px;
-    left: -2.7%;
+    margin-top: -40px;
+    left: -2.9%;
     z-index: 4;
 
     @media screen and (max-width : 768px)  {
