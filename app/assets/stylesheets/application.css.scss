@@ -399,7 +399,7 @@ I'm an event background.
     width: 3px;
     background-color: $light-grey;
     top: -15%;
-    bottom: -15%;
+    bottom: -26%;
     position: absolute;
     left: -10%;
     margin-left: 13px;
@@ -409,14 +409,14 @@ I'm an event background.
 .event-arrow {
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
     border-right:15px solid $light-grey;
 
     position: absolute;
     top: 50%;
-    margin-top: -50px;
-    left: -2.7%;
+    margin-top: -40px;
+    left: -2.9%;
     z-index: 4;
 
     @media screen and (max-width : 768px)  {
@@ -530,7 +530,7 @@ I'm an event background.
     }
 }
 
-.delete-box {
+.delete-box, .collapse-box {
     position: absolute;
     top: -12px;
     right: -12px;
@@ -549,6 +549,9 @@ I'm an event background.
             color: $orange;
         }
     }
+}
+.collapse-box {
+    right: 24px;
 }
 
 .giveaway-box {
@@ -587,13 +590,13 @@ I'm an event background.
 }
 
 .main-edit-box {
-    top: 10px;
-    right: 20px;
+    top: 20px;
+    right: 2px;
     left: auto;
 
     button {
-        width: 70px;
-        height: 65px;
+        width: 55px;
+        height: 55px;
         font-size: 18px;
     }
 }
