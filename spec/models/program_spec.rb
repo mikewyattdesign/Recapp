@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Program do
-    it 'is valid with a name, and brand_id' do
+    it 'is valid with a name, brand_id, and overview' do
         brand = create(:brand)
-        program = Program.new(name: 'Heroes', brand_id: brand.id)
+        program = Program.new(name: 'Heroes', brand_id: brand.id, overview: 'Heroes are great!')
         expect(program).to be_valid
     end
     it 'is invalid without a name' do
@@ -22,6 +22,14 @@ describe Program do
             /brand can't be blank/i
         )
     end
+    it 'is invalid without an overview' do
+        expect do
+            Program.create(overview: nil)
+        end.to raise_error(
+            ActiveRecord::RecordInvalid,
+            /overview can't be blank/i
+        )
+    end
     it 'responds to brand' do
         brand = create(:brand)
         expect(Program.new(
@@ -31,7 +39,7 @@ describe Program do
     end
     it 'returns its brand' do
         busch = create(:brand)
-        program = Program.new(name: 'Heroes', brand_id: busch.id)
+        program = Program.new(name: 'Heroes', brand_id: busch.id, overview: 'Heroes are great!')
         expect(program.brand).to eq busch
     end
     it 'responds to events' do

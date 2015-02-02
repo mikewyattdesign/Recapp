@@ -13,6 +13,10 @@ class ProgramReport
         @program.events
     end
 
+    def overview
+        @program.overview
+    end
+
     def photos
         @program.photos
     end
@@ -55,6 +59,10 @@ class ProgramReport
         maximum = events.map(&:end_date_time).max
 
         maximum.to_date if maximum
+    end
+
+    def comments
+        comments = events.map(&:comments).flatten(1)
     end
 
     def aggregate_impression_data
