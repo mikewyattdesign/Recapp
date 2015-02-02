@@ -7,6 +7,7 @@
                         <h2 class="event-name"><%= @event_decorator.name %></h2>
                         <div class="event-program">part of <%= @event_decorator.program.name %></div>
                         <div class="event-date"><%= "#{@event_decorator.start_date} #{@event_decorator.start_time}" %> to <%= "#{@event_decorator.end_date} #{@event_decorator.end_time}" %> </div>
+                        <div class="event-venue"><%= @event_decorator.venue %></div>
                         <div class="event-location"><%= @event_decorator.location %></div>
                     </div>
                     <div class="col-md-2">
