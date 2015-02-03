@@ -1,3 +1,112 @@
-<div>   
-<%= @event.name %>
+<div class="event">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="show-header">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2 class="event-name"><%= @event_decorator.name %></h2>
+                        <div class="event-program">part of <%= @event_decorator.program.name %></div>
+                        <div class="event-date"><%= "#{@event_decorator.start_date} #{@event_decorator.start_time}" %> to <%= "#{@event_decorator.end_date} #{@event_decorator.end_time}" %> </div>
+                        <div class="event-venue"><%= @event_decorator.venue %></div>
+                        <div class="event-location"><%= @event_decorator.location %></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="event-impressions panel panel-default">
+                <div class="panel-heading">Impression Statistics</div>
+                <div class="panel-body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Total Impressions</th>
+                                <td><%= @event_decorator.estimated_total_impressions %></td>
+                            </tr>
+                            <% if @event_decorator.mileage_impressions > 0 %>
+                                <tr>
+                                    <th>Mileage Impressions</th>
+                                    <td><%= @event_decorator.mileage_impressions %></td>
+                                </tr>
+                            <% end %>
+                            <% if @event_decorator.footprint_impressions > 0 %>
+                                <tr>
+                                    <th>Footprint Impressions</th> 
+                                    <td><%= @event_decorator.footprint_impressions %></td>
+                                </tr>
+                            <% end %>
+                            <% if @event_decorator.walk_by_impressions > 0 %>
+                                <tr>
+                                    <th>Walk by Impressions</th>   
+                                    <td><%= @event_decorator.walk_by_impressions %></td>
+                                </tr>
+                            <% end %>
+                            <% if @event_decorator.digital_engagements > 0 %>
+                                <tr>
+                                    <th>Digital Engagements</th>   
+                                    <td><%= @event_decorator.digital_engagements %></td>
+                                </tr>
+                            <% end %>
+                            <% if @event_decorator.extended_engagements > 0 %>
+                                <tr>
+                                    <th>Extended Engagements</th>  
+                                    <td><%= @event_decorator.extended_engagements %></td>
+                                </tr>
+                            <% end %>
+                            <% if @event_decorator.total_attendance > 0 %>
+                                <tr>
+                                    <th>Total Attendance</th>      
+                                    <td><%= @event_decorator.total_attendance %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="event-giveaways panel panel-default">
+                <div class="panel-heading">Giveaways</div>
+                <div class="panel-body">
+                    
+                    <table class="table">
+                        <% @event_decorator.event_giveaways.each do |event_giveaway| %>
+                            <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
+                                <tr class="event-giveaway">
+                                    <td class='text-right'><%= event_giveaway.count_given_away %></td>
+                                    <td><%= event_giveaway.giveaway.name %></td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+            <div class="event-comments panel panel-default">
+                <div class="panel-heading">Comments</div>
+                <div class="panel-body">
+                    <ul>
+                        <% @event_decorator.comments.each do |comment| %>
+                            <li><%= comment.content %></li>
+                        <% end %>                    
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Impressions Graph</div>
+                <div class="panel-body">
+                    <%= column_chart [
+                        ['Total Impressions',     @event_decorator.estimated_total_impressions],
+                        ['Mileage Impressions',   @event_decorator.mileage_impressions],
+                        ['Footprint Impressions', @event_decorator.footprint_impressions],
+                        ['Walk by Impressions',   @event_decorator.walk_by_impressions],
+                        ['Digital Engagements',   @event_decorator.digital_engagements],
+                        ['Extended Engagements',  @event_decorator.extended_engagements],
+                        ['Total Attendance',      @event_decorator.total_attendance]
+                    ] %>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
