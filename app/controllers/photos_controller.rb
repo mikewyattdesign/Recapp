@@ -9,17 +9,21 @@ class PhotosController < ApplicationController
     if params[:event_id] && Event.where(id: params[:event_id]).count > 0
       @event = Event.find(params[:event_id])
       @photos = @event.photos
+      @favorite_photos = @event.favorite_photos
       @descriptor = @event.name
     elsif params[:program_id] && Program.where(id: params[:program_id]).count > 0
       @program = Program.find(params[:program_id])
       @photos = @program.photos
+      @favorite_photos = @program.favorite_photos
       @descriptor = @program.name
     elsif params[:brand_id] && Brand.where(id: params[:brand_id]).count > 0
       @brand = Brand.find(params[:brand_id])
       @photos = @brand.photos
+      @favorite_photos = @brand.favorite_photos
       @descriptor = @brand.name
     else
       @photos = Photo.with_event
+      @favorite_photos = @photos.where('event_favorite = ? OR program_favorite = ? OR brand_favorite = ?', true, true, true)
       @descriptor = "All"
       # @tags = tag_cloud
     end
