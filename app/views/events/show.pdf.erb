@@ -3,94 +3,99 @@
         <div class="col-md-12">
             <div class="show-header">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="brand-info col-md-10">
                         <h2 class="event-name"><%= @event_decorator.name %></h2>
                         <div class="event-program">part of <%= @event_decorator.program.name %></div>
-                        <div class="event-date"><%= "#{@event_decorator.start_date} #{@event_decorator.start_time}" %> to <%= "#{@event_decorator.end_date} #{@event_decorator.end_time}" %> </div>
+                        <div class="event-date"><%= "#{@event_decorator.start_date}" %> to <%= "#{@event_decorator.end_date}" %> </div>
                         <div class="event-venue"><%= @event_decorator.venue %></div>
                         <div class="event-location"><%= @event_decorator.location %></div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="brand-logo col-md-2">
                         <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
                     </div>
                 </div>
             </div>
             <div class="clearfix"></div>
+            <div class="top-container">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+            </div>
 
-            <div class="event-impressions panel panel-default">
-                <div class="panel-heading">Impression Statistics</div>
-                <div class="panel-body">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Total Impressions</th>
-                                <td><%= @event_decorator.estimated_total_impressions %></td>
-                            </tr>
-                            <% if @event_decorator.mileage_impressions > 0 %>
+            <div class="middle-container">
+                <img class="event-fav-img" src="" alt="">
+                <div class="event-impressions panel panel-default">
+                    <div class="panel-heading">Impression Statistics</div>
+                    <div class="panel-body">
+                        <table>
+                            <tbody>
                                 <tr>
-                                    <th>Mileage Impressions</th>
-                                    <td><%= @event_decorator.mileage_impressions %></td>
+                                    <th class="col-md-11">Total Impressions</th>
+                                    <td class="col-md-1"><%= @event_decorator.estimated_total_impressions %></td>
                                 </tr>
-                            <% end %>
-                            <% if @event_decorator.footprint_impressions > 0 %>
-                                <tr>
-                                    <th>Footprint Impressions</th> 
-                                    <td><%= @event_decorator.footprint_impressions %></td>
-                                </tr>
-                            <% end %>
-                            <% if @event_decorator.walk_by_impressions > 0 %>
-                                <tr>
-                                    <th>Walk by Impressions</th>   
-                                    <td><%= @event_decorator.walk_by_impressions %></td>
-                                </tr>
-                            <% end %>
-                            <% if @event_decorator.digital_engagements > 0 %>
-                                <tr>
-                                    <th>Digital Engagements</th>   
-                                    <td><%= @event_decorator.digital_engagements %></td>
-                                </tr>
-                            <% end %>
-                            <% if @event_decorator.extended_engagements > 0 %>
-                                <tr>
-                                    <th>Extended Engagements</th>  
-                                    <td><%= @event_decorator.extended_engagements %></td>
-                                </tr>
-                            <% end %>
-                            <% if @event_decorator.total_attendance > 0 %>
-                                <tr>
-                                    <th>Total Attendance</th>      
-                                    <td><%= @event_decorator.total_attendance %></td>
-                                </tr>
-                            <% end %>
-                        </tbody>
-                    </table>
+                                <% if @event_decorator.mileage_impressions > 0 %>
+                                    <tr>
+                                        <th class="col-md-11">Mileage Impressions</th>
+                                        <td class="col-md-1"><%= @event_decorator.mileage_impressions %></td>
+                                    </tr>
+                                <% end %>
+                                <% if @event_decorator.footprint_impressions > 0 %>
+                                    <tr>
+                                        <th>Footprint Impressions</th>
+                                        <td><%= @event_decorator.footprint_impressions %></td>
+                                    </tr>
+                                <% end %>
+                                <% if @event_decorator.walk_by_impressions > 0 %>
+                                    <tr>
+                                        <th>Walk by Impressions</th>
+                                        <td><%= @event_decorator.walk_by_impressions %></td>
+                                    </tr>
+                                <% end %>
+                                <% if @event_decorator.digital_engagements > 0 %>
+                                    <tr>
+                                        <th>Digital Engagements</th>
+                                        <td><%= @event_decorator.digital_engagements %></td>
+                                    </tr>
+                                <% end %>
+                                <% if @event_decorator.extended_engagements > 0 %>
+                                    <tr>
+                                        <th>Extended Engagements</th>
+                                        <td><%= @event_decorator.extended_engagements %></td>
+                                    </tr>
+                                <% end %>
+                                <% if @event_decorator.total_attendance > 0 %>
+                                    <tr>
+                                        <th>Total Attendance</th>
+                                        <td><%= @event_decorator.total_attendance %></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <div class="event-giveaways panel panel-default">
                 <div class="panel-heading">Giveaways</div>
                 <div class="panel-body">
-                    
-                    <table class="table">
-                        <% @event_decorator.event_giveaways.each do |event_giveaway| %>
-                            <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
-                                <tr class="event-giveaway">
-                                    <td class='text-right'><%= event_giveaway.count_given_away %></td>
-                                    <td><%= event_giveaway.giveaway.name %></td>
-                                </tr>
-                            <% end %>
+
+                    <% @event_decorator.event_giveaways.each do |event_giveaway| %>
+                        <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
+                            <div class="event-giveaway">
+                                <div class='giveaway-count'><%= event_giveaway.count_given_away %></div>
+                                <div class="giveaway-item"><%= event_giveaway.giveaway.name %></div>
+                            </div>
                         <% end %>
-                    </table>
+                    <% end %>
                 </div>
             </div>
             <div class="event-comments panel panel-default">
                 <div class="panel-heading">Comments</div>
                 <div class="panel-body">
-                    <ul>
+                    <div>
                         <% @event_decorator.comments.each do |comment| %>
-                            <li><%= comment.content %></li>
-                        <% end %>                    
-                    </ul>
+                            <div class="comment-text"><%= comment.content %></div>
+                        <% end %>
+                    </div>
                 </div>
             </div>
             <div class="panel panel-default">

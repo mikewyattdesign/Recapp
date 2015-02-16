@@ -1,0 +1,77 @@
+.event-name, .program-name, .event-program, .event-date, .event-venue, .event-location {
+	font-family: arial;
+}
+.event-name {
+    margin-top: 10px;
+}
+
+.event-brand {
+	width: 100px;
+}
+
+.show-header {
+	border-radius: 0;
+}
+
+body {
+	padding: 0;
+    background-color: white;
+}
+
+.container {
+	width: 100%;
+}
+
+.top-container {
+    width: 100%;
+}
+
+.panel {
+	margin-bottom: 5px;
+	box-shadow: none;
+    border-radius: 0;
+}
+
+.panel-heading {
+	border-bottom: 0;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+.brand-info {
+    float: left;
+}
+
+.brand-logo {
+    float: right;
+}
+
+.event-fav-image {
+
+}
+
+.event-impressions {
+    width: 50%;
+}
+
+.event-giveaway {
+    border-top: 1px solid #e0e0e0;
+}
+
+.giveaway-count {
+    width: 4%;
+    padding: 8px 20px 8px 20px;
+    display: inline-block;
+}
+
+.giveaway-item {
+    width: 90%;
+    display: inline-block;
+}
+
+.comment-text {
+    padding: 8px 20px 8px 20px;
+    border-top: 1px solid #e0e0e0;
+}
