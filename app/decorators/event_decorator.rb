@@ -42,10 +42,14 @@ class EventDecorator
     end
 
     def favorite_photo_main
-        event.favorite_photos.first.image
+        if event.favorite_photos.first.present?
+            image_tag event.favorite_photos.first.image(:medium), class: 'img-responsive'
+        end
     end
 
     def favorite_photo_sub(index)
-        event.favorite_photos[(event.favorite_photos.length > 0 && index < event.favorite_photos.length) ? index : (index % event.favorite_photos.length)].image
+        if event.favorite_photos.length > 0
+            image_tag event.favorite_photos[(event.favorite_photos.length > 0 && index < event.favorite_photos.length) ? index : (index % event.favorite_photos.length)].image(:medium), class: 'img-responsive'
+        end
     end
 end

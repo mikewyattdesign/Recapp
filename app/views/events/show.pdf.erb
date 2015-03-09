@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-xs-6">
-            <%= image_tag @event_decorator.favorite_photo_main, class: "img-responsive" %>
+            <%= @event_decorator.favorite_photo_main %>
         </div>
 
         <div class="col-xs-6">
@@ -81,7 +81,7 @@
 
         <% for i in 1..4 %>
             <div class="col-xs-3">
-                <%= image_tag @event_decorator.favorite_photo_sub(i), class: "img-responsive" %>
+                <%= @event_decorator.favorite_photo_sub(i) %>
             </div>
         <% end %>
 
