@@ -21,7 +21,7 @@
 
 // Load all Bootstrap javascripts
 //= require bootstrap
-//= require bootstrap3-datetimepicker/build/js/bootstrap-datetimepicker.min
+//= require bootstrap-datepicker
 
 // Load jquery token input for tags
 //= require jquery-tokeninput/src/jquery.tokeninput
