@@ -100,8 +100,8 @@
                     <% @event_decorator.event_giveaways.each do |event_giveaway| %>
                         <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
                             <div class="event-giveaway">
-                                <div class="giveaway-item col-xs-9"><%= event_giveaway.giveaway.name %></div>
-                                <div class='giveaway-count col-xs-3'><%= number_with_delimiter event_giveaway.count_given_away %></div>
+                                <div class='giveaway-count col-xs-2'><%= number_with_delimiter event_giveaway.count_given_away %></div>
+                                <div class="giveaway-item col-xs-10"><%= event_giveaway.giveaway.name %></div>
                             </div>
                         <% end %>
                     <% end %>
