@@ -28,12 +28,13 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      format.pdf do 
-        render  pdf: "#{@event.id}_#{@event.name}", 
+      format.pdf do
+        render  pdf: "#{@event.id}_#{@event.name}",
                 layout: "pdf.html",
                 redirect_delay: 200,
                 disable_javascript: false,
-                show_as_html: params[:debug].present?
+                show_as_html: params[:debug].present?,
+                footer: {html: {template: "/events/footer.pdf.erb"}}
       end
     end
   end
