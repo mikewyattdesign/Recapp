@@ -18,7 +18,10 @@ class ProgramReport
     end
 
     def photos
-        # @program.photos
+        @program.photos
+    end
+
+    def favorite_photos
         @program.favorite_photos
     end
 
