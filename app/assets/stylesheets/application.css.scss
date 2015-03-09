@@ -504,7 +504,7 @@ I'm an event background.
 
 .edit-box {
     position: absolute;
-    top: 8px;
+    top: 41px;
     left: 8px;
     opacity: 0;
     -webkit-transition: opacity 0.3s ease-in;
@@ -516,6 +516,34 @@ I'm an event background.
     button {
         width: 40px;
         height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 2px dotted $dark-grey;
+        color: $dark-grey;
+        font-size: 14px;
+        padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+            color: $orange;
+            border: 2px dotted $orange;
+        }
+    }
+}
+
+.favorite-box {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+
+    button {
+        width: 40px;
+        height: 32px;
         background-color: rgba(255,255,255, 0.85);
         border: 2px dotted $dark-grey;
         color: $dark-grey;
@@ -690,6 +718,10 @@ I'm an event background.
 
     &:hover {
         .tags-box {
+            opacity: 1;
+        }
+
+        .favorite-box {
             opacity: 1;
         }
 
