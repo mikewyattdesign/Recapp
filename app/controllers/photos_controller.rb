@@ -72,6 +72,7 @@ class PhotosController < ApplicationController
     # end
     @photo.event_favorite = !@photo.event_favorite
     @photo.save
+    render nothing: true
   end
 
 
