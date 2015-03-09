@@ -28,8 +28,18 @@ class PhotosController < ApplicationController
       # @tags = tag_cloud
     end
 
+    if params[:commit] == 'Clear'
+        params[:favorites] = ''
+        params[:tag] = ''
+        params[:start_date] = ''
+        params[:date_date] = ''
+    end
+
+    puts params
+
     @photos = photo_tag_filter(@photos)
     @photos = photo_date_filter(@photos)
+    @photos = photo_favorite_filter(@photos)
   end
 
   # GET /photos/1
@@ -128,6 +138,15 @@ class PhotosController < ApplicationController
       else
         photos
       end
+    end
+
+    def photo_favorite_filter(photos)
+        if params[:favorites].present? && params[:favorites] == 'on'
+            @descriptor += " Favorited"
+            photos = @favorite_photos
+        else
+            photos
+        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
