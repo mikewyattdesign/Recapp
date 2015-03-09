@@ -42,15 +42,10 @@ class EventDecorator
     end
 
     def favorite_photo_main
-        event.favorite_photos.first
+        event.favorite_photos.first.image
     end
 
     def favorite_photo_sub(index)
-        if index < event.favorite_photos.length
-            event.favorite_photos[index]
-        else
-            event.favorite_photos[index % event.favorite_photos.length]
-        end
-        # event.favorite_photos[(index < event.favorite_photos.length) ? index : (index % event.favorite_photos.length)](:medium)
+        event.favorite_photos[(event.favorite_photos.length > 0 && index < event.favorite_photos.length) ? index : (index % event.favorite_photos.length)].image
     end
 end
