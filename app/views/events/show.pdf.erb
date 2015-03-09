@@ -11,7 +11,7 @@
                         <div class="event-location"><%= @event_decorator.location %></div>
                     </div>
                     <div class="brand-logo col-md-2">
-                        <div class="event-brand"><%= wicked_pdf_image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
+                        <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-xs-6">
-            <img class="event-fav-img" src="" alt="">
+            <%= image_tag @event_decorator.brand.logo, class: "img-responsive" %>
         </div>
 
         <div class="col-xs-6">
@@ -80,16 +80,16 @@
         </div>
 
         <div class="col-xs-3">
-            <img class="event-sub-img" src="" alt="">
+            <%= image_tag @event_decorator.brand.logo, class: "img-responsive" %>
         </div>
         <div class="col-xs-3">
-            <img class="event-sub-img" src="" alt="">
+            <%= image_tag @event_decorator.brand.logo, class: "img-responsive" %>
         </div>
         <div class="col-xs-3">
-            <img class="event-sub-img" src="" alt="">
+            <%= image_tag @event_decorator.brand.logo, class: "img-responsive" %>
         </div>
         <div class="col-xs-3">
-            <img class="event-sub-img" src="" alt="">
+            <%= image_tag @event_decorator.brand.logo, class: "img-responsive" %>
         </div>
 
         <div class="col-xs-12">
