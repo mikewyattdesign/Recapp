@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :favorite, :update, :destroy]
 
   # GET /photos
   # GET /photos.json
@@ -35,8 +35,6 @@ class PhotosController < ApplicationController
         params[:date_date] = ''
     end
 
-    puts params
-
     @photos = photo_tag_filter(@photos)
     @photos = photo_date_filter(@photos)
     @photos = photo_favorite_filter(@photos)
@@ -57,6 +55,13 @@ class PhotosController < ApplicationController
   def edit
     @event = @photo.event
   end
+
+  # POST /photos/1/favorite
+  def favorite
+    @photo.event_favorite = !@photo.event_favorite
+    @photo.save
+  end
+
 
   # POST /photos
   # POST /photos.json

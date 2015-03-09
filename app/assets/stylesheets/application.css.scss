@@ -556,6 +556,13 @@ I'm an event background.
             border: 2px dotted $orange;
         }
     }
+    &.active {
+        opacity: 1;
+        button {
+            color: $orange;
+            border: 2px dotted $orange;
+        }
+    }
 }
 
 .delete-box, .collapse-box {
