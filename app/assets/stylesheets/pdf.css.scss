@@ -57,21 +57,36 @@ body {
 }
 
 .event-giveaway {
-    border-top: 1px solid #e0e0e0;
+
 }
 
 .giveaway-count {
-    width: 4%;
-    padding: 8px 20px 8px 20px;
-    display: inline-block;
+    border-top: 1px solid #e0e0e0;
+    padding: 8px 0px 8px 10px;
 }
 
 .giveaway-item {
-    width: 90%;
-    display: inline-block;
+    border-top: 1px solid #e0e0e0;
+    padding: 8px 15px 8px 15px;
+    background-color: #f8f8f8;
 }
 
 .comment-text {
     padding: 8px 20px 8px 20px;
     border-top: 1px solid #e0e0e0;
+}
+
+.group360-footer {
+    width: 100%;
+}
+
+.impressions-table {
+    width: 100%;
+    tr {
+        border-top: 1px solid #e0e0e0;
+    }
+}
+
+.impressions-label {
+    padding: 8px 15px 8px 15px;
 }

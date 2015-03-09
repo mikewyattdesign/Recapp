@@ -34,7 +34,10 @@ class EventsController < ApplicationController
                 redirect_delay: 200,
                 disable_javascript: false,
                 show_as_html: params[:debug].present?,
-                footer: {html: {template: "/events/footer.pdf.erb"}}
+                margin: { bottom: 50 },
+                footer: {
+                    html: {template: "/events/footer.pdf.erb"},
+                }
       end
     end
   end
