@@ -21,6 +21,10 @@ class ProgramReport
         @program.photos
     end
 
+    def favorite_photos
+        @program.favorite_photos
+    end
+
     def total_impressions
         events.map(&:estimated_total_impressions).reduce(:+)
     end

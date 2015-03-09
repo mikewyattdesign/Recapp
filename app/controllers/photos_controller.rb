@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :favorite, :update, :destroy]
 
   # GET /photos
   # GET /photos.json
@@ -9,23 +9,38 @@ class PhotosController < ApplicationController
     if params[:event_id] && Event.where(id: params[:event_id]).count > 0
       @event = Event.find(params[:event_id])
       @photos = @event.photos
+      @favorite_photos = @event.favorite_photos
       @descriptor = @event.name
+      @favoritable_type = "event"
     elsif params[:program_id] && Program.where(id: params[:program_id]).count > 0
       @program = Program.find(params[:program_id])
       @photos = @program.photos
+      @favorite_photos = @program.favorite_photos
       @descriptor = @program.name
+      @favoritable_type = "program"
     elsif params[:brand_id] && Brand.where(id: params[:brand_id]).count > 0
       @brand = Brand.find(params[:brand_id])
       @photos = @brand.photos
+      @favorite_photos = @brand.favorite_photos
       @descriptor = @brand.name
+      @favoritable_type = "brand"
     else
       @photos = Photo.with_event
+      @favorite_photos = @photos.where('event_favorite = ? OR program_favorite = ? OR brand_favorite = ?', true, true, true)
       @descriptor = "All"
       # @tags = tag_cloud
     end
 
+    if params[:commit] == 'Clear'
+        params[:favorites] = ''
+        params[:tag] = ''
+        params[:start_date] = ''
+        params[:date_date] = ''
+    end
+
     @photos = photo_tag_filter(@photos)
     @photos = photo_date_filter(@photos)
+    @photos = photo_favorite_filter(@photos)
   end
 
   # GET /photos/1
@@ -43,6 +58,23 @@ class PhotosController < ApplicationController
   def edit
     @event = @photo.event
   end
+
+  # POST /photos/1/favorite
+  def favorite
+    # if params[:favoritable_type].present? && params[:favoritable_type] == "event"
+    #     @photo.event_favorite = !@photo.event_favorite
+    # elsif params[:favoritable_type].present? && params[:favoritable_type] == "program"
+    #     @photo.program_favorite = !@photo.program_favorite
+    # elsif params[:favoritable_type].present? && params[:favoritable_type] == "brand"
+    #     @photo.brand_favorite = !@photo.brand_favorite
+    # else
+
+    # end
+    @photo.event_favorite = !@photo.event_favorite
+    @photo.save
+    render nothing: true
+  end
+
 
   # POST /photos
   # POST /photos.json
@@ -124,6 +156,15 @@ class PhotosController < ApplicationController
       else
         photos
       end
+    end
+
+    def photo_favorite_filter(photos)
+        if params[:favorites].present? && params[:favorites] == 'on'
+            @descriptor += " Favorited"
+            photos = @favorite_photos
+        else
+            photos
+        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

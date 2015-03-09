@@ -40,4 +40,8 @@ class EventDecorator
             nil
         end
     end
+
+    def favorite_photo
+        event.favorite_photos
+    end
 end
