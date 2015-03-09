@@ -18,7 +18,8 @@ class Program < ActiveRecord::Base
     end
 
     def favorite_photos
-        photos.where(program_favorite: true)
+        # photos.where(program_favorite: true) # Currently just favorite as event photos.
+        photos.where(event_favorite: true)
     end
 
     after_create do |program|

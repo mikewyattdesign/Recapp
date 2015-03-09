@@ -61,18 +61,17 @@ class PhotosController < ApplicationController
 
   # POST /photos/1/favorite
   def favorite
-    puts params
-    if params[:favoritable_type].present? && params[:favoritable_type] == "event"
-        @photo.event_favorite = !@photo.event_favorite
-        @photo.save
-    elsif params[:favoritable_type].present? && params[:favoritable_type] == "program"
-        @photo.program_favorite = !@photo.program_favorite
-        @photo.save
-    elsif params[:favoritable_type].present? && params[:favoritable_type] == "brand"
-        @photo.brand_favorite = !@photo.brand_favorite
-        @photo.save
-    else
-    end
+    # if params[:favoritable_type].present? && params[:favoritable_type] == "event"
+    #     @photo.event_favorite = !@photo.event_favorite
+    # elsif params[:favoritable_type].present? && params[:favoritable_type] == "program"
+    #     @photo.program_favorite = !@photo.program_favorite
+    # elsif params[:favoritable_type].present? && params[:favoritable_type] == "brand"
+    #     @photo.brand_favorite = !@photo.brand_favorite
+    # else
+
+    # end
+    @photo.event_favorite = !@photo.event_favorite
+    @photo.save
   end
 
 

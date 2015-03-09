@@ -18,6 +18,7 @@ class Brand < ActiveRecord::Base
     end
 
     def favorite_photos
-        photos.where(brand_favorite: true)
+        # photos.where(brand_favorite: true) # Currently just favorite as event photos.
+        photos.where(event_favorite: true)
     end
 end
