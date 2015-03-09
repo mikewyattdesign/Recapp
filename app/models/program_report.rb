@@ -18,7 +18,8 @@ class ProgramReport
     end
 
     def photos
-        @program.photos
+        # @program.photos
+        @program.favorite_photos
     end
 
     def total_impressions
