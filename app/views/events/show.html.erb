@@ -109,5 +109,6 @@
         <li><%= link_to 'Back', events_path, class: "btn btn-default" %></li>
         <li><%= link_to 'Edit Event Recap', edit_event_path(@event), class: "btn btn-primary" %></li>
         <li><%= link_to 'Comments', event_comments_path(@event), class: "btn btn-default" %></li>
+        <li><%= link_to 'Report', event_path(@event, format: :pdf), class: "btn btn-info", target: "_blank" %></li>
     </ul>
 </div>
