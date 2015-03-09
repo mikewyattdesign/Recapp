@@ -32,7 +32,7 @@ class Ability
 
     alias_action :create, :read, :update, :destroy, to: :crud
     alias_action :create, :read, :update, to: :cru
-    
+
     can :manage, :all if user.is_super_admin?
 
     can :s3_upload_complete, Photo
@@ -48,11 +48,12 @@ class Ability
         can :cru, Event
         can :export, Event
         can :cru, Photo
+        can :favorite, Photo
         can :cru, Video
         can :cru, Giveaway
-        can :crud, Request  
+        can :crud, Request
     end
-    
+
     if user.is_field_staff?
         can :create, Event
         can :read, Event
@@ -69,6 +70,7 @@ class Ability
         can :read, Event
         can :create, Photo
         can :read, Photo
+        can :favorite, Photo
         can :create, Video
         can :read, Video
     end

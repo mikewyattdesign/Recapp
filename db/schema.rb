@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126202401) do
+ActiveRecord::Schema.define(version: 20150206224459) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -170,6 +170,9 @@ ActiveRecord::Schema.define(version: 20150126202401) do
     t.datetime "image_updated_at"
     t.boolean  "processed",          default: false, null: false
     t.string   "direct_upload_url"
+    t.boolean  "event_favorite",     default: false
+    t.boolean  "program_favorite",   default: false
+    t.boolean  "brand_favorite",     default: false
   end
 
   add_index "photos", ["imageable_id"], name: "index_photos_on_imageable_id"

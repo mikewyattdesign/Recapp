@@ -35,12 +35,16 @@ class Photo < ActiveRecord::Base
         image.url if image.present?
     end
 
+    def favorited
+        event_favorite || program_favorite || brand_favorite
+    end
+
     def self.transfer_and_cleanup(id)
         # Get the photo to be processed
         photo = Photo.find(id)
 
         # final destination with the leading slashed sliced off
-        paperclip_file_path = photo.image.path.slice(1..-1) 
+        paperclip_file_path = photo.image.path.slice(1..-1)
         # temp source
         source = photo.direct_upload_file_path
         Photo.copy_and_delete paperclip_file_path, source

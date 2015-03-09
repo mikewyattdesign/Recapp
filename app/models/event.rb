@@ -168,6 +168,10 @@ class Event < ActiveRecord::Base
         XLS
     end
 
+    def favorite_photos
+        photos.where(event_favorite: true)
+    end
+
     private
 
     # Each of these properties has a NOT NULL designation in the
