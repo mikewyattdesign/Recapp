@@ -36,7 +36,7 @@ class Photo < ActiveRecord::Base
     end
 
     def favorited
-        self.event_favorite || self.program_favorite || self.brand_favorite
+        event_favorite || program_favorite || brand_favorite
     end
 
     def self.transfer_and_cleanup(id)
