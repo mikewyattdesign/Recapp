@@ -72,8 +72,8 @@
                     <button class="tags-button"><span class="glyphicon glyphicon-tags"> Tags</span></button>
                 </div>
 
-                <div class="favorite-box <%= 'active' if photo.favorited %>">
-                    <%= button_to favorite_photo_path(photo), class: 'favorite-button', remote: true do %>
+                <div class="favorite-box <%= 'active' if @favorite_photos.include?(photo) %>">
+                    <%= button_to favorite_photo_path(photo), params: {favoritable_type: @favoritable_type}, class: 'favorite-button', remote: true do %>
                     <span class="glyphicon glyphicon-star"></span>
                     <% end %>
                 </div>
