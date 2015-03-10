@@ -49,7 +49,7 @@ class EventDecorator
 
     def favorite_photo_sub(index)
         if (event.favorite_photos.length > 0) && (index < event.favorite_photos.length)
-            image_tag event.favorite_photos[index].image(:medium), class: 'img-responsive'
+            image_tag event.favorite_photos[index].image(:small), class: 'img-responsive'
         else
             nil # don't show any more than the number of favorited photos
         end
