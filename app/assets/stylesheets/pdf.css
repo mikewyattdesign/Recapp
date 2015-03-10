@@ -28,6 +28,10 @@ body {
 	width: 100%;
 }
 
+.row {
+    margin-bottom: 10px;
+}
+
 .top-container {
     width: 100%;
 }
