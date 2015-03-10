@@ -98,3 +98,9 @@ body {
 .impressions-label {
     padding: 8px 15px 8px 15px;
 }
+
+.page-break {
+    page-break-after: always;
+    clear:both;
+    display: block;
+}
