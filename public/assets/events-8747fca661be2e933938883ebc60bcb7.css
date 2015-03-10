@@ -1,0 +1,34 @@
+/* line 1, /Users/michaelliu/src/g360/recapp.io/app/assets/stylesheets/events.css.scss */
+.impressions {
+  float: left;
+  font-family: TrendSansOne, sans-serif;
+  text-align: center;
+  font-size: 200%;
+}
+/* line 6, /Users/michaelliu/src/g360/recapp.io/app/assets/stylesheets/events.css.scss */
+.impressions.estimated-total-impressions {
+  font-size: 300%;
+}
+/* line 10, /Users/michaelliu/src/g360/recapp.io/app/assets/stylesheets/events.css.scss */
+.impressions .heading {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: block;
+  line-height: 1;
+}
+/* line 15, /Users/michaelliu/src/g360/recapp.io/app/assets/stylesheets/events.css.scss */
+.impressions.event-giveaway .giveaway-image {
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 20, /Users/michaelliu/src/g360/recapp.io/app/assets/stylesheets/events.css.scss */
+.impressions.event-giveaway .giveaway-image img {
+  margin: 0 auto;
+  max-height: 100%;
+}
+
+/* line 27, /Users/michaelliu/src/g360/recapp.io/app/assets/stylesheets/events.css.scss */
+.event-venue, .event-location {
+  color: #fc9f4c;
+}
