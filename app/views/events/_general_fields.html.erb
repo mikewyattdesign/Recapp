@@ -21,7 +21,7 @@
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :start_time, "Start Time", class: "control-label" %>
-    <%= f.text_field :start_time, class: "form-control", placeholder: "Start time", data: {behavior: "timepicker", defaultDate: @event.start_time}, required: true %>
+    <%= f.text_field :start_time, class: "form-control timepicker", placeholder: "Start time", data: {behavior: "timepicker", defaultDate: @event.start_time}, required: true %>
     <span class="help-block">What time does the event start?</span>
 </div>
 <div class="col-md-6 form-cont-box">
@@ -31,7 +31,7 @@
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :end_time, "End Time", class: "control-label" %>
-    <%= f.text_field :end_time, class: "form-control", placeholder: "End time", data: {behavior: "timepicker", defaultDate: @event.end_time}, required: true %>
+    <%= f.text_field :end_time, class: "form-control timepicker", placeholder: "End time", data: {behavior: "timepicker", defaultDate: @event.end_time}, required: true %>
     <span class="help-block">What time does the event end?</span>
 </div>
 

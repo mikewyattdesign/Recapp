@@ -12,6 +12,7 @@
 
 @import "bootstrap";
 @import "bootstrap-datepicker3";
+@import "bootstrap-timepicker/css/bootstrap-timepicker.css";
 @import "s3_direct_upload_progress_bars";
 @import "progress";
 @import "tags";
@@ -669,6 +670,13 @@ I'm an event background.
 
 .input-button {
     z-index: -1;
+}
+
+.bootstrap-timepicker-widget.dropdown-menu {
+    background-color: #FFF;
+    a {
+        text-decoration: none;
+    }
 }
 
 .event-logo {
