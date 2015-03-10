@@ -21,8 +21,5 @@
     "modernizr": "~2.7.2",
     "lightbox2": "~2.7.1",
     "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.2.0/chosen_v1.2.0.zip"
-  },
-  "resolutions": {
-    "bootstrap": ">= 3.0"
   }
 }

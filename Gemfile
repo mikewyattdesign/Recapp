@@ -12,10 +12,10 @@ gem 'rollbar', '1.2.7'
 gem 'newrelic_rpm', '3.9.6.257'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '4.0.3'
+gem 'sass-rails', '5.0.1'
 
 # Use bootstrap for styling
-gem 'bootstrap-sass', '3.2.0.2'
+gem 'bootstrap-sass', '3.3.3'
 
 # Use bootstrap datepicker
 gem 'bootstrap-datepicker-rails', '1.3.1.1'
