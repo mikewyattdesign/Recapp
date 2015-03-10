@@ -20,6 +20,7 @@ module G360EventApplication
         config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
         config.assets.precompile += %w( .svg .eot .woff .ttf )
         config.assets.precompile += %w(*.js *.scss)
+        config.assets.precompile += %w(pdf.css)
 
         ActsAsTaggableOn.remove_unused_tags
     end
