@@ -39,7 +39,7 @@
                                     <td class="col-md-1"><%= number_with_delimiter @event_decorator.estimated_total_impressions %></td>
                                 </tr>
                                 <% if @event_decorator.mileage_impressions > 0 %>
-                                    <tr>
+                                    <tr class="impressions-row">
                                         <th class="col-md-11 impressions-label">Mileage Impressions</th>
                                         <td class="col-md-1"><%= number_with_delimiter @event_decorator.mileage_impressions %></td>
                                     </tr>

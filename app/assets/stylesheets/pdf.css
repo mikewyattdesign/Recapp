@@ -28,10 +28,6 @@ body {
 	width: 100%;
 }
 
-.row {
-    margin-bottom: 10px;
-}
-
 .top-container {
     width: 100%;
 }
@@ -94,17 +90,12 @@ body {
 
 .impressions-table {
     width: 100%;
-    tr {
+}
+
+    .impressions-table tr {
         border-top: 1px solid #e0e0e0;
     }
-}
 
 .impressions-label {
     padding: 8px 15px 8px 15px;
-}
-
-.page-break {
-    page-break-after: always;
-    clear:both;
-    display: block;
 }
