@@ -31,6 +31,10 @@ class EventDecorator
         "#{event.venue}" unless event.venue.blank?
     end
 
+    def overview
+        "#{event.overview}" unless event.overview.blank?
+    end
+
     def photo
         if event.photos.last.present?
             image_tag event.photos.last.image(:large), class: 'event-img'
