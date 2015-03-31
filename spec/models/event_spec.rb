@@ -105,6 +105,6 @@ describe Event do
 
     it 'calculates mileage impressions based on miles' do
         @event.miles = 1
-        expect(@event.mileage_impressions).to eq(82)
+        expect(@event.mileage_impressions).to eq(101)
     end
 end

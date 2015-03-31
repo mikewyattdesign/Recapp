@@ -128,12 +128,12 @@ class Event < ActiveRecord::Base
     end
 
     def miles
-        mileage_rate =  82
+        mileage_rate =  101
         mileage_impressions / mileage_rate
     end
 
     def miles=(mileage)
-        mileage_rate = 82
+        mileage_rate = 101
         self.mileage_impressions = mileage_rate * mileage.to_f
     end
 
