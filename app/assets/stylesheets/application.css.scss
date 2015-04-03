@@ -489,7 +489,8 @@ I'm an event background.
 
 .list-photos {
     min-height: 100%;
-    min-width: 101%;
+    min-width: 100%;
+    border-radius: 5px;
 }
 
 .list-photo-container {
@@ -500,6 +501,23 @@ I'm an event background.
 
     @media screen and (max-width : 1200px)  {
         height: 130px;
+    }
+}
+
+.photo-container {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.tag-item {
+    padding: 5px;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid #c3c2c3;
+    box-shadow: 0px 0px 10px #c3c2c3;
+    &:hover {
+        box-shadow: 0px 0px 15px #b6b6b6;
+        border-left: 1px solid #e1e1e1;
     }
 }
 

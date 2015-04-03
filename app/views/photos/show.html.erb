@@ -1,32 +1,38 @@
 <div class="col-md-10 col-md-offset-1">
     <div class="card-stack card-round photo">
-      <div class="list-photo-container">
+      <div class="photo-container">
         <a href="<%= @photo.image.url(:large) %>" data-lightbox="<%= @descriptor %>" data-title="<a href='<%= @photo.image.url %>' download>Download</a>">
-        <% if @photo.processed && @photo.image(:small).present? %>
-          <%= image_tag @photo.image(:small), class: 'img-responsive list-photos' %>
+        <% if @photo.processed && @photo.image(:large).present? %>
+          <%= image_tag @photo.image(:large), class: 'img-responsive list-photos' %>
         <% else %>
           <p class="image-processing">Your image is processing.</p>
         <% end %>
         </a>
-      </div>
-      <ul class="tag-list inactive">
-        <% @photo.tags.each do |tag| %>
-          <li><%= link_to tag, "/photos/tags/#{tag}" %></li>
-        <% end %>
-      </ul>
-      <div class="tags-box">
-        <button class="tags-button"><span class="glyphicon glyphicon-tags"> Tags</span></button>
       </div>
       <div class="edit-box">
         <%= link_to edit_photo_path(@photo) do %>
           <button type="button" class=""><span class="glyphicon glyphicon-pencil"> Edit</span></button>
         <% end %>
       </div>
-      <div class="delete-box">
-        <%= link_to @photo, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <button type="button" class=""><span class="glyphicon glyphicon-remove"></span></button>
-          <% end %>
-      </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Tags</h1>
+        </div>
+        <div class="form-box">
+            <div class="row">
+                <div class="col-md-10 col-md-offset1">
+                    <ul class="list-inline">
+                    <% @photo.tags.each do |tag| %>
+                        <li><%= link_to tag, "/photos/tags/#{tag}", class: "tag-item" %></li>
+                    <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <%= render "comments/comments" %>
