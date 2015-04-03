@@ -16,9 +16,12 @@ module G360EventApplication
         config.i18n.enforce_available_locales = true
 
         config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
-        config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
         config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-        config.assets.precompile += %w( .svg .eot .woff .ttf )
+        config.assets.paths << Rails.root.join('app', 'assets', 'images')
+        config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+        config.assets.precompile += %w(*.svg *.eot *.woff *.ttf)
+        config.assets.precompile += %w(*.js *.scss)
+        config.assets.precompile += %w(pdf.css)
 
         ActsAsTaggableOn.remove_unused_tags
     end

@@ -35,6 +35,10 @@ class Photo < ActiveRecord::Base
         image.url if image.present?
     end
 
+    def favorited
+        event_favorite || program_favorite || brand_favorite
+    end
+
     def self.transfer_and_cleanup(id)
         # Get the photo to be processed
         photo = Photo.find(id)

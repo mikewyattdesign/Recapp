@@ -6,6 +6,7 @@ class Program < ActiveRecord::Base
 
     validates :name, presence: true
     validates :brand_id, presence: true
+    validates :overview, presence: true
 
     def program_plus_brand
         "#{self.name} (#{self.brand.name})"
@@ -14,6 +15,11 @@ class Program < ActiveRecord::Base
     def photos
         event_ids = events.pluck(:id)
         Photo.where(imageable_type: "Event", imageable_id: event_ids)
+    end
+
+    def favorite_photos
+        # photos.where(program_favorite: true) # Currently just favorite as event photos.
+        photos.where(event_favorite: true)
     end
 
     after_create do |program|

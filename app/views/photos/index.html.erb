@@ -11,21 +11,29 @@
                         <div class="col-sm-2 col-md-2 filter-group">
                             <h2><span class="glyphicon glyphicon-filter"></span> Filters</h2>
                         </div>
-                        <div class="form-group col-sm-4 col-md-4">
+                        <div class="form-group col-sm-2 col-md-2">
                             <%= label_tag :tag, 'Tag:', class: 'control-label' %>
                             <%= select_tag :tag, options_from_collection_for_select(Photo.tag_counts, :name, :name, params[:tag]), class: 'form-control', prompt: '' %>
                         </div>
                         <div class="form-group col-sm-2 col-md-2">
                             <%= label_tag :start_date, 'From:', class: 'control-label' %>
-                            <%= text_field_tag :start_date, params[:start_date], class: 'form-control', placeholder: 'Start Date', data: {behavior: "datepicker"} %>
+                            <%= text_field_tag :start_date, params[:start_date], class: 'form-control datepicker', placeholder: 'Start Date', data: {behavior: "datepicker"} %>
                         </div>
                         <div class="form-group col-sm-2 col-md-2">
                             <%= label_tag :end_date, 'To:', class: 'control-label' %>
-                            <%= text_field_tag :end_date,  params[:end_date], class: 'form-control', placeholder: 'End Date', data: {behavior: "datepicker"} %>
+                            <%= text_field_tag :end_date,  params[:end_date], class: 'form-control datepicker', placeholder: 'End Date', data: {behavior: "datepicker"} %>
+                        </div>
+                        <div class="form-group col-sm-2 col-md-2">
+                            <%= label_tag :favorites, 'Show Favorites', class: 'control-label' %>
+                            <% if params[:favorites] == '' %>
+                                <%= check_box_tag :favorites, 'on' %>
+                            <% else %>
+                                <%= check_box_tag :favorites, 'on', params[:favorites] %>
+                            <% end %>
                         </div>
                         <div class="col-sm-2 col-md-2 filter-group">
                             <%= submit_tag 'Filter', class: 'btn btn-default btn-block' %>
-                            <button class="btn btn-info btn-block" type="reset">Clear</button>
+                            <%= submit_tag 'Clear', class: 'btn btn-info btn-block clear-filter' %>
                         </div>
                     <% end %>
                 </div>
@@ -61,12 +69,13 @@
                   </ul>
                   <div class="tags-box">
                     <button class="tags-button"><span class="glyphicon glyphicon-tags"> Tags</span></button>
-                  </div>
-                  <div class="comments-box">
-                    <%= link_to photo_path(photo.id) do %>
-                      <button type="button" class=""><span class="glyphicon glyphicon-comment"> Comments</span></button>
+                </div>
+
+                <div class="favorite-box <%= 'active' if @favorite_photos.include?(photo) %>">
+                    <%= button_to favorite_photo_path(photo), params: {favoritable_type: @favoritable_type}, class: 'favorite-button', remote: true do %>
+                    <span class="glyphicon glyphicon-star"></span>
                     <% end %>
-                  </div>
+                </div>
                   <div class="edit-box">
                     <%= link_to edit_photo_path(photo) do %>
                       <button type="button" class=""><span class="glyphicon glyphicon-pencil"> Edit</span></button>

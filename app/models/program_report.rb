@@ -13,8 +13,16 @@ class ProgramReport
         @program.events
     end
 
+    def overview
+        @program.overview
+    end
+
     def photos
         @program.photos
+    end
+
+    def favorite_photos
+        @program.favorite_photos
     end
 
     def total_impressions
@@ -55,5 +63,26 @@ class ProgramReport
         maximum = events.map(&:end_date_time).max
 
         maximum.to_date if maximum
+    end
+
+    def comments
+        comments = events.map(&:comments).flatten(1)
+    end
+
+    def aggregate_impression_data
+        events.map{ |event|
+            {name: event.name,
+                data: [
+                        ['Total Impressions',     event.estimated_total_impressions],
+                        ['Mileage Impressions',   event.mileage_impressions],
+                        ['Footprint Impressions', event.footprint_impressions],
+                        ['Walk by Impressions',   event.walk_by_impressions],
+                        ['Digital Engagements',   event.digital_engagements],
+                        ['Extended Engagements',  event.extended_engagements],
+                        ['Total Attendance',      event.total_attendance]
+                    ]
+                }
+            }
+
     end
 end

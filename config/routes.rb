@@ -26,6 +26,8 @@ G360EventApplication::Application.routes.draw do
         end
     end
 
+    post 'photos/:id/favorite' => 'photos#favorite', as: :favorite_photo
+
     # Because viewing photos by tag is even better with a route for it
     get 'photos/tags/:tag' => 'photos#index', as: :tag_photos
 

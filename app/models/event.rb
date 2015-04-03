@@ -128,12 +128,12 @@ class Event < ActiveRecord::Base
     end
 
     def miles
-        mileage_rate =  82
+        mileage_rate =  101
         mileage_impressions / mileage_rate
     end
 
     def miles=(mileage)
-        mileage_rate = 82
+        mileage_rate = 101
         self.mileage_impressions = mileage_rate * mileage.to_f
     end
 
@@ -172,6 +172,9 @@ class Event < ActiveRecord::Base
         completed_at.present? ? false : super
     end
 
+    def favorite_photos
+        photos.where(event_favorite: true)
+    end
 
     private
 

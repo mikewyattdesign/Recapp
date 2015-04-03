@@ -32,27 +32,29 @@ class Ability
 
     alias_action :create, :read, :update, :destroy, to: :crud
 
-    can :manage, :all if user.is_admin?
+    alias_action :create, :read, :update, to: :cru
+
+    can :manage, :all if user.is_super_admin?
 
     can :s3_upload_complete, Photo
 
-    if user.is_manager?
+    if user.is_admin?
         can :crud, Assignment
         can :update_role, Assignment
-        can :crud, User
+        can :create, User
+        can :read, User
+        can :update, User
         can :read, Brand
-        can :create, Program
-        can :read, Program
-        can :update, Program
+        can :cru, Program
         can :create, Event
         can :read, Event
         can :update, Event, completed_at: nil
         can :export, Event
-        can :crud, Photo
-        can :crud, Video
-        can :create, Giveaway
-        can :read, Giveaway
-        can :update, Giveaway
+        can :cru, Photo
+        can :favorite, Photo
+        can :cru, Video
+        can :cru, Giveaway
+        can :crud, Request
     end
 
     if user.is_field_staff?
@@ -61,9 +63,27 @@ class Ability
         can :update, Event, completed_at: nil
         can :crud, Photo
         can :crud, Video
-        can :create, Giveaway
-        can :read, Giveaway
-        can :update, Giveaway
+        can :cru, Giveaway
+        can :cru, Program
+    end
+
+    if user.is_g360?
+        can :read, Brand
+        can :read, Program
+        can :read, Event
+        can :create, Photo
+        can :read, Photo
+        can :favorite, Photo
+        can :create, Video
+        can :read, Video
+    end
+
+    if user.is_client?
+        can :read, Brand
+        can :read, Program
+        can :read, Event
+        can :read, Photo
+        can :read, Video
     end
   end
 end

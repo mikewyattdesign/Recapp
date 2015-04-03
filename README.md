@@ -1,4 +1,4 @@
-# GROUP360 Events Application
+<!-- # GROUP360 Events Application
 
 ## Dependencies
 
@@ -31,3 +31,9 @@ delayed jobs from failing, you may need to periodically run
     $ boot2docker ssh sudo ntpclient -s -h pool.ntp.org
 
 to ensure your boot2docker vm has the correct time.
+ -->
+
+ Development
+
+ * Run `$ foreman start` to spin up the server for development. The
+   application should be available via http://localhost:5000

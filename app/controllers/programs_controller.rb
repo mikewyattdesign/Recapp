@@ -7,7 +7,7 @@ class ProgramsController < ApplicationController
   # GET /brands/:brand_id/programs.json
   def index
     @brand = Brand.find(params[:brand_id])
-    if current_user.is_admin?
+    if current_user.is_super_admin? || current_user.is_admin? || current_user.is_g360?
       @programs = @brand.programs
     else
       @programs = current_user.programs.where(brand_id: @brand.id)
@@ -79,6 +79,6 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:name, :brand_id)
+      params.require(:program).permit(:name, :brand_id, :overview)
     end
 end

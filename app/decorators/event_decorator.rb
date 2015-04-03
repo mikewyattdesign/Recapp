@@ -27,6 +27,14 @@ class EventDecorator
         "#{event.city}, #{event.state}" unless event.city.blank? || event.state.blank?
     end
 
+    def venue
+        "#{event.venue}" unless event.venue.blank?
+    end
+
+    def overview
+        "#{event.overview}" unless event.overview.blank?
+    end
+
     def photo
         if event.photos.last.present?
             image_tag event.photos.last.image(:large), class: 'event-img'
@@ -34,6 +42,20 @@ class EventDecorator
             link_to 'Add an event photo', "/events/#{event.id}/photos/new", class: 'no-event-photos'
         else
             nil
+        end
+    end
+
+    def favorite_photo_main
+        if event.favorite_photos[0].present?
+            image_tag event.favorite_photos[0].image(:medium), class: 'img-responsive'
+        end
+    end
+
+    def favorite_photo_sub(index)
+        if (event.favorite_photos.length > 0) && (index < event.favorite_photos.length)
+            image_tag event.favorite_photos[index].image(:small), class: 'img-responsive'
+        else
+            nil # don't show any more than the number of favorited photos
         end
     end
 end

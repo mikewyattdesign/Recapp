@@ -65,19 +65,26 @@ class User < ActiveRecord::Base
   end
 
   def events
-    return Event.all if is_admin?
+    return Event.all if is_super_admin? || is_admin? || is_g360?
     program_ids = programs.pluck(:id)
     Event.where(program_id: program_ids)
   end
 
   def self.roles
-    [["Administrator",0],["Field Staff",1],["Client",2],["Program Manager",3],["Guest",-1]]
+    [
+      ["Guest",-1],
+      ["Client",2],
+      ["G360",4],
+      ["Field Staff",1],
+      ["Administrator",3],
+      ["Super Administrator",0]
+    ]
   end
-  def is_admin?
+  def is_super_admin?
     role == 0
   end
 
-  def is_manager?
+  def is_admin?
     role == 3
   end
 
@@ -89,20 +96,26 @@ class User < ActiveRecord::Base
     role == 1
   end
 
+  def is_g360?
+    role == 4
+  end
+
   def is_guest?
-    !(is_admin? || is_manager? || is_client? || is_field_staff?)
+    !(is_super_admin? || is_admin? || is_client? || is_field_staff? || is_g360?)
   end
 
   def role_in_words
     case role
     when 0
-      'Administrator'
+      'Super Administrator'
     when 3
-      'Program Manager'
+      'Administrator'
     when 2
       'Client'
     when 1
       'Field Staff'
+    when 4
+      'GROUP360'
     else
       'Guest'
     end

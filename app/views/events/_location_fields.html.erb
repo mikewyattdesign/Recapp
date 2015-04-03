@@ -9,12 +9,12 @@
 </div>
 <div class="col-md-6 form-cont-box">
 	<%= l.label :city, "City", class: "control-label" %>
-	<%= l.text_field :city , class: "form-control" %>
+	<%= l.text_field :city , class: "form-control", required: true %>
 	<span class="help-block">What city is the event in?</span>
 </div>
 <div class="col-md-6 form-cont-box">
 	<%= l.label :state, "State", class: "control-label" %>
-	<%= l.text_field :state , class: "form-control" %>
+	<%= l.text_field :state , class: "form-control", required: true %>
 	<span class="help-block">What state is the event in?</span>
 </div>
 <div class="col-md-6 form-cont-box">
@@ -24,7 +24,7 @@
 </div>
 <div class="col-md-6 form-cont-box">
     <%= l.label :venue, "Venue", class: "control-label" %>
-    <%= l.text_field :venue, class: "form-control"  %>
+    <%= l.text_field :venue, class: "form-control", required: true %>
     <span class="help-block">What venue is the event at?</span>
 </div>
 <div class="col-md-6 form-cont-box">

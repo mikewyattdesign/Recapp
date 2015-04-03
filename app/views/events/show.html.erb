@@ -7,6 +7,7 @@
                         <h2 class="event-name"><%= @event_decorator.name %></h2>
                         <div class="event-program">part of <%= @event_decorator.program.name %></div>
                         <div class="event-date"><%= "#{@event_decorator.start_date} #{@event_decorator.start_time}" %> to <%= "#{@event_decorator.end_date} #{@event_decorator.end_time}" %> </div>
+                        <div class="event-venue"><%= @event_decorator.venue %></div>
                         <div class="event-location"><%= @event_decorator.location %></div>
                     </div>
                     <div class="col-md-2">
@@ -29,10 +30,26 @@
             <%= render 'photo_carousel' %>
 
             <div class="event-impressions panel panel-default">
-                <div class="panel-heading">Impressions</div>
+                <div class="panel-heading">Impressions Graph</div>
+                <div class="panel-body">
+                    <%= column_chart [
+                        ['Total Impressions',     @event_decorator.estimated_total_impressions],
+                        ['Mileage Impressions',   @event_decorator.mileage_impressions],
+                        ['Footprint Impressions', @event_decorator.footprint_impressions],
+                        ['Walk by Impressions',   @event_decorator.walk_by_impressions],
+                        ['Digital Engagements',   @event_decorator.digital_engagements],
+                        ['Extended Engagements',  @event_decorator.extended_engagements],
+                        ['Total Attendance',      @event_decorator.total_attendance]
+                    ] %>
+                </div>
+            </div>
+
+
+            <div class="event-impressions panel panel-default">
+                <div class="panel-heading">Impressions Details</div>
                 <div class="panel-body">
                     <div class="row">
-                        
+
                         <div class="col-md-4 estimated-total-impressions impressions"><%= number_to_abbreviated(@event_decorator.estimated_total_impressions) %>
                             <span class="heading">Total</span>
                         </div>
@@ -55,7 +72,7 @@
                     </div>
 
                 </div>
-            </div>            
+            </div>
             <div class="event-engagements panel panel-default">
                 <div class="panel-heading">Engagements</div>
                 <div class="panel-body">
@@ -71,16 +88,18 @@
                 </div>
             </div>
             <div class="event-giveaways panel panel-default">
-                <div class="panel-heading">Giveaways</div>
-                <div class="panel-body">
-                    <% @event_decorator.event_giveaways.each do | event_giveaway| %>
-                        <div class="event-giveaway impressions col-md-3">
-                            <div class="giveaway-image"><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %></div>
-                            <span class="giveaway-count"><%= event_giveaway.count_given_away || 0 %></span>
-                            <span class="giveaway-name heading"><%= event_giveaway.giveaway.name %></span>
-                        </div>
+                <table class="table">
+                    <tr>
+                        <th>Giveaway</th>
+                        <th class='text-right'>Amount Distributed</th>
+                    </tr>
+                    <% @event_decorator.event_giveaways.each do |event_giveaway| %>
+                        <tr class="event-giveaway">
+                            <td><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %><%= event_giveaway.giveaway.name %></td>
+                            <td class='text-right'><%= event_giveaway.count_given_away || 0 %></td>
+                        </tr>
                     <% end %>
-                </div>
+                </table>
             </div>
         </div>
     </div>
@@ -90,5 +109,6 @@
         <li><%= link_to 'Back', events_path, class: "btn btn-default" %></li>
         <li><%= link_to 'Edit Event Recap', edit_event_path(@event), class: "btn btn-primary" %></li>
         <li><%= link_to 'Comments', event_comments_path(@event), class: "btn btn-default" %></li>
+        <li><%= link_to 'Report', event_path(@event, format: :pdf), class: "btn btn-info", target: "_blank" %></li>
     </ul>
 </div>

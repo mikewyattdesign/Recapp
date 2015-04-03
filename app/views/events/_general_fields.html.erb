@@ -14,29 +14,31 @@
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :start_date, "Start Date", class: "control-label" %>
-    <%= f.text_field :start_date, class: "form-control", placeholder: "Start date", data: {behavior: "datepicker"}, required: true %>
+    <%= f.text_field :start_date, class: "form-control datepicker", placeholder: "Start date", data: {behavior: "datepicker"}, required: true do %>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    <% end %>
     <span class="help-block">What day does the event begin?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :start_time, "Start Time", class: "control-label" %>
-    <%= f.text_field :start_time, class: "form-control", placeholder: "Start time", data: {behavior: "timepicker", defaultDate: @event.start_time}, required: true %>
+    <%= f.text_field :start_time, class: "form-control timepicker", placeholder: "Start time", data: {behavior: "timepicker", defaultDate: @event.start_time}, required: true %>
     <span class="help-block">What time does the event start?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :end_date, "End Date", class: "control-label" %>
-    <%= f.text_field :end_date, class: "form-control", placeholder: "End date", data: {behavior: "datepicker"}, required: true %>
+    <%= f.text_field :end_date, class: "form-control datepicker", placeholder: "End date", data: {behavior: "datepicker"}, required: true %>
     <span class="help-block">What day does the event end?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :end_time, "End Time", class: "control-label" %>
-    <%= f.text_field :end_time, class: "form-control", placeholder: "End time", data: {behavior: "timepicker", defaultDate: @event.end_time}, required: true %>
+    <%= f.text_field :end_time, class: "form-control timepicker", placeholder: "End time", data: {behavior: "timepicker", defaultDate: @event.end_time}, required: true %>
     <span class="help-block">What time does the event end?</span>
 </div>
 
 <%= render "location_fields", l: f  %>
 
 <div class="col-md-12 form-header-label">
-    <h3>Notes</h3>
+    <h3>Event Details</h3>
 </div>
 <% if @details %>
     <div class="col-md-12 form-cont-box">
@@ -51,7 +53,7 @@
     </div>
 <% end %>
 <div class="col-md-12 form-cont-box">
-    <%= f.label :note, "Note", class: "control-label" %>
+    <%= f.label :note, "Event Notes", class: "control-label" %>
     <%= f.text_area :note, class: "form-control", placeholder: "Event notes" %>
-    <span class="help-block">Is there any special information we should know?</span>
+    <span class="help-block">Is there any special information or additional event comments we should know?</span>
 </div>

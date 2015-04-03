@@ -6,60 +6,79 @@
 <h2>Events</h2>
 <ul class="list-group">
     <% @program.events.each do |event| %>
+        <% event_decorator = EventDecorator.new(event) %>
         <li class="list-group-item">
-            <%= link_to event.name, event_path(event) %>
+            <%= link_to event.name, event_path(event) %><span class="pull-right"><%= event_decorator.location %></span>
         </li>
     <% end %>
 </ul>
 
 
 <% unless @report.photos.empty? %>
+    <h2>Photos</h2>
     <div class="row">
-        <% @report.photos[0..11].each do |photo| %>
-            <div class="<%= photo_grid_class(@report.photos) %>">
+        <% @report.favorite_photos[0..11].each do |photo| %>
+            <div class="<%= photo_grid_class(@report.favorite_photos) %>">
                 <span class="thumbnail"><%= image_tag photo.image(:small) %></span>
             </div>
         <% end %>
     </div>
 <% end %>
 
+<h2>Overview</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="well"><%= @program.overview %></div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
-            <div class="panel-heading">Total Impressions by Event</div>
-            <div class="panel-body">
-                <%= pie_chart @program.events.map { |event| [event.name, event.estimated_total_impressions] } %>
-            </div>
+            <div class="panel-heading">Impressions Statistics</div>
+            <table class="table">
+                <tr><th>Total Impressions</th>      <td><%= @report.total_impressions %></td></tr>
+                <tr><th>Mileage Impressions</th>    <td><%= @report.mileage_impressions %></td></tr>
+                <tr><th>Footprint Impressions</th>  <td><%= @report.footprint_impressions %></td></tr>
+                <tr><th>Walk by Impressions</th>    <td><%= @report.walk_by_impressions %></td></tr>
+                <tr><th>Digital Engagements</th>    <td><%= @report.digital_engagements %></td></tr>
+                <tr><th>Extended Engagements</th>   <td><%= @report.extended_engagements %></td></tr>
+                <tr><th>Total Attendance</th>       <td><%= @report.total_attendance %></td></tr>
+                <tr><th>Start Date</th>             <td><%= @report.start_date %></td></tr>
+                <tr><th>End Date</th>               <td><%= @report.end_date %></td></tr>
+            </table>
         </div>
     </div>
     <div class="col-md-8">
         <div class="panel panel-default">
-            <div class="panel-heading">Impressions</div>
+            <div class="panel-heading">Impressions Graph</div>
             <div class="panel-body">
-                <%= column_chart [
-                    ['Total Impressions',     @report.total_impressions],
-                    ['Mileage Impressions',   @report.mileage_impressions],
-                    ['Footprint Impressions', @report.footprint_impressions],
-                    ['Walk by Impressions',   @report.walk_by_impressions],
-                    ['Digital Engagements',   @report.digital_engagements],
-                    ['Extended Engagements',  @report.extended_engagements],
-                    ['Total Attendance',      @report.total_attendance]
-                ] %>
+                <%= column_chart @report.aggregate_impression_data, stacked: true %>
             </div>
         </div>
     </div>
 </div>
 
-<div class="panel panel-default">
-    <table class="table">
-        <tr><th>Total Impressions</th><td><%= @report.total_impressions %></td></tr>
-        <tr><th>Mileage Impressions</th><td><%= @report.mileage_impressions %></td></tr>
-        <tr><th>Footprint Impressions</th><td><%= @report.footprint_impressions %></td></tr>
-        <tr><th>Walk by Impressions</th><td><%= @report.walk_by_impressions %></td></tr>
-        <tr><th>Digital Engagements</th><td><%= @report.digital_engagements %></td></tr>
-        <tr><th>Extended Engagements</th><td><%= @report.extended_engagements %></td></tr>
-        <tr><th>Total Attendance</th><td><%= @report.total_attendance %></td></tr>
-        <tr><th>Start Date</th><td><%= @report.start_date %></td></tr>
-        <tr><th>End Date</th><td><%= @report.end_date %></td></tr>
-    </table>
-</div>
+<% unless @report.comments.empty? %>
+    <h2>Comments</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <table class="table">
+                    <tr>
+                        <th>Comment</th>
+                        <th>Type</th>
+                        <th>Event</th>
+                    </tr>
+                    <% @report.comments.each do |comment| %>
+                        <tr>
+                            <td><%= comment.content %></td>
+                            <td><%= comment.type_in_words %></td>
+                            <td><%= Event.find(comment.event_id).name %></td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+<% end %>

@@ -7,6 +7,7 @@ describe ProgramReport do
 
     it { is_expected.to respond_to :name }
     it { is_expected.to respond_to :events }
+    it { is_expected.to respond_to :overview }
     it { is_expected.to respond_to :photos }
     it { is_expected.to respond_to :total_impressions }
     it { is_expected.to respond_to :mileage_impressions }
@@ -17,6 +18,7 @@ describe ProgramReport do
     it { is_expected.to respond_to :total_attendance }
     it { is_expected.to respond_to :start_date }
     it { is_expected.to respond_to :end_date }
+    it { is_expected.to respond_to :comments }
 
     it 'has the correct name' do
         expect(subject.name).to eq program.name

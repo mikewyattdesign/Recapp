@@ -45,6 +45,31 @@ describe Event do
             /end date time comes before start date time/i
         )
     end
+    it 'is invalid without city' do
+        expect do
+            Event.create(city: nil)
+        end.to raise error(
+            ActiveRecord::RecordInvalid,
+            /city can't be blank/i
+        )
+    end
+    it 'is invalid without state' do
+        expect do
+            Event.create(state: nil)
+        end.to raise error(
+            ActiveRecord::RecordInvalid,
+            /state can't be blank/i
+        )
+    end
+    it 'is invalid without venue' do
+        expect do
+            Event.create(venue: nil)
+        end.to raise error(
+            ActiveRecord::RecordInvalid,
+            /venue can't be blank/i
+        )
+    end
+
     it 'responds to program' do
         expect(build(:event)).to respond_to(:program)
     end
@@ -80,6 +105,6 @@ describe Event do
 
     it 'calculates mileage impressions based on miles' do
         @event.miles = 1
-        expect(@event.mileage_impressions).to eq(82)
+        expect(@event.mileage_impressions).to eq(101)
     end
 end

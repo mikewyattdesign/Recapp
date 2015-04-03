@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.1.4'
+ruby '2.1.5'
 
 gem 'unicorn', '4.8.3'
 
 gem 'rails', '4.1.6'
-
-# Use postgresql as the database for Active Record
-gem 'pg', '0.17.1'
 
 # Error monitoring service
 gem 'rollbar', '1.2.7'
@@ -15,10 +12,13 @@ gem 'rollbar', '1.2.7'
 gem 'newrelic_rpm', '3.9.6.257'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '4.0.3'
+gem 'sass-rails', '5.0.1'
 
 # Use bootstrap for styling
-gem 'bootstrap-sass', '3.2.0.2'
+gem 'bootstrap-sass', '3.3.3'
+
+# Use bootstrap datepicker
+gem 'bootstrap-datepicker-rails', '1.3.1.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '2.5.3'
@@ -94,6 +94,8 @@ group :development, :test do
     # Use FactoryGirl to create stubs, test models, etc
     gem 'factory_girl_rails', '4.5.0'
 
+    # Add sqlite as database for development and testing
+    gem 'sqlite3'
 
     # add RailsPanel Chrome Extension
     gem 'meta_request', '0.3.4'
@@ -134,6 +136,9 @@ group :test do
 end
 
 group :production do
+    # Use postgresql as the database for Active Record
+    gem 'pg', '0.17.1'
+
     gem 'rails_12factor', '0.0.3'
 end
 

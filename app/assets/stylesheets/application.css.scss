@@ -11,7 +11,8 @@
 //= depend_on_asset "group360-logo.png"
 
 @import "bootstrap";
-@import "bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker";
+@import "bootstrap-datepicker3";
+@import "bootstrap-timepicker/css/bootstrap-timepicker";
 @import "s3_direct_upload_progress_bars";
 @import "progress";
 @import "tags";
@@ -24,7 +25,7 @@
 @import "navigation";
 @import "style-guide";
 @import "lightbox2/css/lightbox";
-@import "chosen/chosen.min.css";
+@import "chosen/chosen.min";
 
 
 // Global
@@ -399,7 +400,7 @@ I'm an event background.
     width: 3px;
     background-color: $light-grey;
     top: -15%;
-    bottom: -15%;
+    bottom: -26%;
     position: absolute;
     left: -10%;
     margin-left: 13px;
@@ -409,14 +410,14 @@ I'm an event background.
 .event-arrow {
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
     border-right:15px solid $light-grey;
 
     position: absolute;
     top: 50%;
-    margin-top: -50px;
-    left: -2.7%;
+    margin-top: -40px;
+    left: -2.9%;
     z-index: 4;
 
     @media screen and (max-width : 768px)  {
@@ -530,10 +531,11 @@ I'm an event background.
     }
 }
 
-.comments-box {
+
+.favorite-box, .comments-box {
     position: absolute;
     bottom: 8px;
-    right: 8px;
+    left: 8px;
     opacity: 0;
     -webkit-transition: opacity 0.3s ease-in;
     -moz-transition: opacity 0.3s ease-in;
@@ -542,18 +544,32 @@ I'm an event background.
     transition: opacity 0.3s ease-in;
 
     button {
-        width: 70px;
-        height: 40px;
+        width: 40px;
+        height: 32px;
         background-color: rgba(255,255,255, 0.85);
         border: 2px dotted $dark-grey;
         color: $dark-grey;
         font-size: 14px;
         padding: 0;
         border-radius: 10px;
+        &:hover {
+            color: $orange;
+            border: 2px dotted $orange;
+        }
+    }
+    &.active {
+        opacity: 1;
+        button {
+            color: $orange;
+            border: 2px dotted $orange;
+        }
     }
 }
+.comments-box {
+    right: 8px;
+}
 
-.delete-box {
+.delete-box, .collapse-box {
     position: absolute;
     top: -12px;
     right: -12px;
@@ -572,6 +588,9 @@ I'm an event background.
             color: $orange;
         }
     }
+}
+.collapse-box {
+    right: 24px;
 }
 
 .giveaway-box {
@@ -610,13 +629,13 @@ I'm an event background.
 }
 
 .main-edit-box {
-    top: 10px;
-    right: 20px;
+    top: 20px;
+    right: 2px;
     left: auto;
 
     button {
-        width: 70px;
-        height: 65px;
+        width: 55px;
+        height: 55px;
         font-size: 18px;
     }
 }
@@ -654,6 +673,13 @@ I'm an event background.
 
 .input-button {
     z-index: -1;
+}
+
+.bootstrap-timepicker-widget.dropdown-menu {
+    background-color: #FFF;
+    a {
+        text-decoration: none;
+    }
 }
 
 .event-logo {
@@ -713,6 +739,9 @@ I'm an event background.
             opacity: 1;
         }
         .comments-box {
+            opacity: 1;
+        }
+        .favorite-box {
             opacity: 1;
         }
         .edit-box {
