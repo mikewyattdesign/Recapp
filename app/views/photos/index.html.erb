@@ -76,6 +76,11 @@
                     <span class="glyphicon glyphicon-star"></span>
                     <% end %>
                 </div>
+                <div class="comments-box">
+                    <%= link_to photo_comments_path(photo) do %>
+                        <button type="button" class=""><span class="glyphicon glyphicon-list-alt"> Comments</span></button>
+                    <% end %>
+                </div>
                   <div class="edit-box">
                     <%= link_to edit_photo_path(photo) do %>
                       <button type="button" class=""><span class="glyphicon glyphicon-pencil"> Edit</span></button>
