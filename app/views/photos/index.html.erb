@@ -57,8 +57,10 @@
                     <a href="<%= photo.image.url(:large) %>" data-lightbox="<%= @descriptor %>" data-title="<a href='<%= photo.image.url %>' download>Download</a>">
                     <% if photo.processed && photo.image(:small).present? %>
                       <%= image_tag photo.image(:small), class: 'img-responsive list-photos' %>
+                    <% elsif photo.direct_upload_url.present? %>
+                      <%= image_tag photo.direct_upload_url, class: 'img-responsive list-photos' %>
                     <% else %>
-                      <p class="image-processing">Your image is processing.</p>
+                      <p class="image-processing">Your image is processing. <%= photo.processed %></p>
                     <% end %>
                     </a>
                   </div>

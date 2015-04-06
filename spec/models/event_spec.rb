@@ -48,7 +48,7 @@ describe Event do
     it 'is invalid without city' do
         expect do
             Event.create(city: nil)
-        end.to raise error(
+        end.to raise_error(
             ActiveRecord::RecordInvalid,
             /city can't be blank/i
         )
@@ -56,7 +56,7 @@ describe Event do
     it 'is invalid without state' do
         expect do
             Event.create(state: nil)
-        end.to raise error(
+        end.to raise_error(
             ActiveRecord::RecordInvalid,
             /state can't be blank/i
         )
@@ -64,7 +64,7 @@ describe Event do
     it 'is invalid without venue' do
         expect do
             Event.create(venue: nil)
-        end.to raise error(
+        end.to raise_error(
             ActiveRecord::RecordInvalid,
             /venue can't be blank/i
         )
