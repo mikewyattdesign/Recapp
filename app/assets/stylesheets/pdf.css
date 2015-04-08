@@ -1,3 +1,26 @@
+.row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.pdf-photo {
+    margin: 0 auto;
+}
+
+.pdf-photo-main {
+    max-height: 300px;
+    width: auto;
+    overflow: hidden;
+}
+
+.pdf-photo-sub {
+    max-height: 200px;
+}
+
+.page-break-after {
+    page-break-after: always;
+}
+
 .event-name, .program-name, .event-program, .event-date, .event-venue, .event-location {
 	font-family: arial;
 }
