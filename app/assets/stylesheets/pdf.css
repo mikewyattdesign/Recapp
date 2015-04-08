@@ -94,10 +94,24 @@ body {
     width: 100%;
 }
 
-    .impressions-table tr {
-        border-top: 1px solid #e0e0e0;
-    }
+.impressions-table tr {
+    border-top: 1px solid #e0e0e0;
+}
 
 .impressions-label {
     padding: 8px 15px 8px 15px;
 }
+
+.brand-primary {
+    color: #fc9f4c;
+}
+
+.contact {
+    color: #9D99A8;
+}
+.contact .name {
+    font-weight: bold;
+}
+.contact .position {}
+.contact .location {}
+.contact .phone {}
