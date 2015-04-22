@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   	if current_user.is_guest?
   		render 'errors/account_setup'
   	else
-  		redirect_to main_app.root_url, alert: exception.message
+  		if current_user.is_field_staff?
+        redirect_to events_path
+      else
+        redirect_to main_app.root_url, alert: exception.message
+      end 
   	end
   end
 
