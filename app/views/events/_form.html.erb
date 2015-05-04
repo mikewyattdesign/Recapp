@@ -11,6 +11,7 @@
     <% end %>
 
     <div class="row">
+        <p>NOTE: Fields marked with an asterisk (*) are client facing. Please use proper grammar.</p>
         <%= render 'general_fields', f: f %>
         <% if @details %>
             <div class="detail<%= " hidden" unless @details %>">

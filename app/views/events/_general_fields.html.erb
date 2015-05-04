@@ -3,17 +3,17 @@
 </div>
 
 <div class="col-md-6 form-cont-box">
-    <%= f.label :name, "Name", class: "control-label" %>
+    <%= f.label :name, "Name*", class: "control-label" %>
     <%= f.text_field :name, class: "form-control input-lg", placeholder: "Event name", required: true %>
     <span class="help-block">What&apos;s the name of the event?</span>
 </div>
 <div class="col-md-6 form-cont-box">
-    <%= f.label :program_id, "Program", class: "control-label" %>
+    <%= f.label :program_id, "Program*", class: "control-label" %>
     <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand, @event.program.present? ? @event.program.id : nil),{} ,class: "form-control" %>
     <span class="help-block">What program is the event part of?</span>
 </div>
 <div class="col-md-6 form-cont-box">
-    <%= f.label :start_date, "Start Date", class: "control-label" %>
+    <%= f.label :start_date, "Start Date*", class: "control-label" %>
     <%= f.text_field :start_date, class: "form-control datepicker", placeholder: "Start date", data: {behavior: "datepicker"}, required: true do %>
         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
     <% end %>
@@ -25,7 +25,7 @@
     <span class="help-block">What time does the event start?</span>
 </div>
 <div class="col-md-6 form-cont-box">
-    <%= f.label :end_date, "End Date", class: "control-label" %>
+    <%= f.label :end_date, "End Date*", class: "control-label" %>
     <%= f.text_field :end_date, class: "form-control datepicker", placeholder: "End date", data: {behavior: "datepicker"}, required: true %>
     <span class="help-block">What day does the event end?</span>
 </div>
@@ -42,7 +42,7 @@
 </div>
 <% if @details %>
     <div class="col-md-12 form-cont-box">
-        <%= f.label :overview, "Overview" %>
+        <%= f.label :overview, "Overview*" %>
         <%= f.text_area :overview, class: "form-control", placeholder: "Event overview", maxlength: 500 %>
         <span class="help-block">Summarize how the event went (500 character maximum).</span>
     </div>
