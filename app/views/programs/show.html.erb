@@ -74,7 +74,7 @@
                         <tr>
                             <td><%= comment.content %></td>
                             <td><%= comment.type_in_words %></td>
-                            <td><%= Event.find(comment.event_id).name %></td>
+                            <td><%= Event.find(comment.commentable_id).name %></td>
                         </tr>
                     <% end %>
                 </table>
