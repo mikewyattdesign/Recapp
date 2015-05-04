@@ -100,7 +100,7 @@
 
         <br>
         <% if @event.present? %>
-          <%= link_to "Back to #{@event.name}", edit_event_path(@event), class: 'btn btn-default back-button' %>
+          <%= link_to "Back to #{@event.name}", edit_event_path(@event), class: 'btn btn-primary back-button' %>
           <%= link_to 'New Photo', new_event_photo_path, class: "btn btn-primary" %>
         <% end %>
         </div>
