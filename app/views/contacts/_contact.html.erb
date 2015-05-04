@@ -3,12 +3,16 @@
         <span class="glyphicon glyphicon-user"></span>
     </div>
     <div class="col-xs-8 col-sm-8 col-md-9 contact-dropdown-content">
-        <div class="name"><%= contact.first_name %> <%= contact.last_name %> <span class="brand-primary">|</span> <%= contact.title %></div>
+        <div class="name"><%= contact.first_name %> <%= contact.last_name %> <span class="brand-primary">|</span> <%= contact.title if contact.title.present? %></div>
         <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city %>, <%= contact.state %> <%= contact.zip %></div>
-        <div class="email"><%= contact.email %></div>
+        <div class="email"><%= contact.email if contact.email.present? %></div>
         <div class="phone">
-            <span class="brand-primary">M</span> <%= contact.mobile_phone %>
-            <span class="brand-primary">D</span> <%= contact.desk_phone %>
+            <% if contact.mobile_phone.present? %>
+                <span class="brand-primary">M</span> <%= contact.mobile_phone %>
+            <% end %>
+            <% if contact.desk_phone.present? %>
+                <span class="brand-primary">D</span> <%= contact.desk_phone %>
+            <% end %>
         </div>
     </div>
 
