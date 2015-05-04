@@ -29,6 +29,9 @@
             <li class="dropdown">
               <a id="resources-drop" href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
               <ul class="dropdown-menu">
+                <% if can? :read, Contact %>
+                    <li class="<%= 'active' if request.path == '/contacts' %>"><%= link_to "Contacts", "/contacts" %></li>
+                <% end %>
                 <% if can? :read, Photo %>
                     <li class="<%= 'active' if request.path == '/photos' %>"><%= link_to "Photos", "/photos" %></li>
                 <% end %>

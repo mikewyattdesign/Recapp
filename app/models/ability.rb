@@ -55,6 +55,7 @@ class Ability
         can :cru, Video
         can :cru, Giveaway
         can :crud, Request
+        can :crud, Contact
     end
 
     if user.is_field_staff?
@@ -65,6 +66,7 @@ class Ability
         can :crud, Video
         can :cru, Giveaway
         can :cru, Program
+        can :cru, Contact
     end
 
     if user.is_g360?
@@ -76,6 +78,7 @@ class Ability
         can :favorite, Photo
         can :create, Video
         can :read, Video
+        can :read, Contact
     end
 
     if user.is_client?

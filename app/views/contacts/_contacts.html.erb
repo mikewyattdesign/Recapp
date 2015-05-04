@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1>Contacts</h1>
+        </div>
+
+        <div class="form-box">
+            <%= link_to 'New Contact', [:new, :contact], class: "btn btn-primary pull-right" %>
+            <div class="row">
+                <% @contacts.each do |contact| %>
+                    <%= render contact %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
