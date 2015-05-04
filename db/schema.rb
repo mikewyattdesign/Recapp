@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206224459) do
+ActiveRecord::Schema.define(version: 20150504194420) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(version: 20150206224459) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+
+  create_table "contacts", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "title"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "email"
+    t.string   "mobile_phone"
+    t.string   "desk_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -118,6 +133,11 @@ ActiveRecord::Schema.define(version: 20150206224459) do
     t.string   "venue"
     t.string   "suite"
     t.datetime "completed_at"
+  end
+
+  create_table "events_contacts", force: true do |t|
+    t.integer "event_id"
+    t.integer "contact_id"
   end
 
   create_table "events_photos", id: false, force: true do |t|

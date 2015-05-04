@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
     has_many :videos
     has_many :documents, as: :documentable
     has_many :links, as: :linkable
+    has_and_belongs_to_many :contacts
     acts_as_taggable
 
     accepts_nested_attributes_for :event_giveaways, allow_destroy: true
