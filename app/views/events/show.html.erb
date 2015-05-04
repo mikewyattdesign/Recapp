@@ -102,7 +102,7 @@
                     </tr>
                     <% @event_decorator.event_giveaways.each do |event_giveaway| %>
                         <tr class="event-giveaway">
-                            <td><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %><%= event_giveaway.giveaway.name %></td>
+                            <td class="event-giveaway-image"><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %><%= event_giveaway.giveaway.name %></td>
                             <td class='text-right'><%= event_giveaway.count_given_away || 0 %></td>
                         </tr>
                     <% end %>
