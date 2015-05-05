@@ -175,6 +175,7 @@ class EventsController < ApplicationController
         :kpis,
         :venue,
         :completed_at,
+        :contact_ids => [],
         :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id, :wholesaler_or_local_support, :_destroy],
         :links_attributes => [:url, :linkable_id, :linkable_type, :id, :_destroy],
         :giveaways_attributes => [:id, :name],

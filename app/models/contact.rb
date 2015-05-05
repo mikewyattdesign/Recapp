@@ -7,4 +7,12 @@ class Contact < ActiveRecord::Base
     validates :email, format: { with: /@/, message: "Please use valid email" }, allow_blank: true
     validates :mobile_phone, format: { with: /\d{3} \d{3} \d{4}/, message: "Please use the 'xxx xxx xxxx' format" }, allow_blank: true
     validates :desk_phone, format: { with: /\d{3} \d{3} \d{4}/, message: "Please use the 'xxx xxx xxxx' format" }, allow_blank: true
+
+    def full_name
+        "#{first_name} #{last_name}"
+    end
+
+    def city_state_zip
+        "#{city}, #{state} #{zip}"
+    end
 end
