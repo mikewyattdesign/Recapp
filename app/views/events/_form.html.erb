@@ -17,7 +17,7 @@
             <h3>Contacts</h3>
         </div>
         <div class="col-md-12 form-cont-box">
-            <%= f.collection_select :contact_ids, Contact.all, :id, :full_name, {}, { multiple: true, class: "form-control chosen-select"} %>
+            <%= f.collection_select :contact_ids, Contact.all, :id, :full_name, {selected: @event.contact_ids}, { multiple: true, class: "form-control chosen-select"} %>
         </div>
         <% if @details %>
             <div class="detail<%= " hidden" unless @details %>">
@@ -50,10 +50,10 @@
                 <div class="col-md-2 col-sm-6 col-xs-6"><%= link_to 'Back', events_path, class: "btn btn-primary back-button" %></div>
                 <div class="col-md-10 col-md-push-0 col-sm-3 col-sm-push-3 col-xs-5 col-xs-push-1">
                     <div class="row">
-                        <div class="col-md-2 col-md-push-10 col-sm-12 col-xs-12">
+                        <div class="col-md-3 col-md-push-9 col-sm-12 col-xs-12">
                             <%= f.submit @event.new_record? ? 'Create Event' : 'Update Event', class: "btn btn-primary" %>
                         </div>
-                        <div class="col-md-10 col-md-pull-2 hidden-sm hidden-xs">
+                        <div class="col-md-9 col-md-pull-3 hidden-sm hidden-xs">
                             <p class="pull-right ">
                                 <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-primary" %>
                                 <%= f.submit @event.new_record? ? 'Create Event and View Recap' : 'Update Event and View Recap', class: "btn btn-primary" %>

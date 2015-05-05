@@ -108,6 +108,20 @@
                     <% end %>
                 </table>
             </div>
+            <div class="event-contacts panel panel-default">
+                <div class="panel-heading">Contacts</div>
+                <div class="panel-body">
+                    <% @event_decorator.contacts.each do |contact| %>
+                        <div class="col-xs-6 contact">
+                            <div class="name"><%= contact.full_name %></div>
+
+                            <div class="position brand-primary"><%= contact.title %></div>
+                            <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
+                            <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
         </div>
     </div>
 </div>

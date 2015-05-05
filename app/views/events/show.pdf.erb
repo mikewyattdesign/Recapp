@@ -144,17 +144,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6 contact">
-            <div class="name">Denise Weik</div>
-            <div class="position brand-primary">Sr. Director of Experiential Marketing</div>
-            <div class="location">1227 Washington Ave. <span class="brand-primary">|</span> St. Louis, MO 63103</div>
-            <div class="phone"><span class="brand-primary">M</span> 314 517 8408 <span class="brand-primary">D</span> 314 884 4751</div>
-        </div>
-        <div class="col-xs-6 contact">
-            <div class="name">Michelle Thomas</div>
-            <div class="position brand-primary">Director of Experiential Marketing</div>
-            <div class="location">234 James St. <span class="brand-primary">|</span> Barrington, IL 60010</div>
-            <div class="phone"><span class="brand-primary">M</span> 847 404 8987</div>
-        </div>
+        <% @event_decorator.contacts.each do |contact| %>
+            <div class="col-xs-6 contact">
+                <div class="name"><%= contact.full_name %></div>
+
+                <div class="position brand-primary"><%= contact.title %></div>
+                <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
+                <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
+            </div>
+        <% end %>
     </div>
 </div>
