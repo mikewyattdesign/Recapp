@@ -549,6 +549,13 @@ I'm an event background.
     }
 }
 
+.comments-container, .contacts-container {
+    &:hover {
+        .edit-box {
+            opacity: 1
+        }
+    }
+}
 
 .favorite-box, .comments-box {
     position: absolute;
