@@ -10,7 +10,6 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     $('.chosen-select').chosen() # Add Chosen jQuery
-    console.log('addfields')
     event.preventDefault()
 
   $(".collapse-box").on "click", (event) ->
