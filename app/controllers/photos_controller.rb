@@ -75,6 +75,13 @@ class PhotosController < ApplicationController
     # end
     @photo.event_favorite = !@photo.event_favorite
     @photo.save
+    if @photo.event_favorite == true
+        favorite_photo = EventsFavoritePhotos.create!(event_id: @photo.event_id, photo_id: @photo.id)
+        favorite_photo.save
+    else
+        EventsFavoritePhotos.where(event_id: @photo.event_id, photo_id: @photo.id).delete_all
+    end
+
     render nothing: true
   end
 
