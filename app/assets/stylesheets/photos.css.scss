@@ -10,3 +10,17 @@
 	display: table-cell;
 
 }
+
+li.sortable-photo {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    list-style-type: none;
+}
+
+#sortable_photos {
+    float: right;
+}
+#sortable_favorites {
+    float: left;
+}

@@ -136,7 +136,13 @@ class PhotosController < ApplicationController
 
   # GET /events/1/photos/favorite_order
   def favorite_order
-
+    if params[:id] && Event.where(id: params[:id]).count > 0
+      @event = Event.find(params[:id])
+      @favorite_photos = @event.favorite_photos
+      @other_photos = @event.photos.where(event_favorite: false);
+      @descriptor = @event.name
+      @favoritable_type = "event"
+    end
   end
 
   private

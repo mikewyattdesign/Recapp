@@ -1,1 +1,47 @@
-favorite_order.erb
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Photos</h3>
+        <ul class="connectedSortable droptrue" id="sortable_photos">
+        <% @other_photos.each do |photo| %>
+            <li class="card-stack card-round photo sortable-photo ui-state-default">
+                <div class="list-photo-container">
+                <% if photo.processed && photo.image(:small).present? %>
+                <%= image_tag photo.image(:small), class: 'img-responsive list-photos' %>
+                <% elsif photo.direct_upload_url.present? %>
+                <%= image_tag photo.direct_upload_url, class: 'img-responsive list-photos' %>
+                <% else %>
+                <p class="image-processing">Your image is processing. <%= photo.processed %></p>
+                <% end %>
+                </div>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+    <div class="col-xs-6">
+        <h3>Favorite Photos</h3>
+        <ul class="connectedSortable droptrue" id="sortable_favorites">
+        <% @favorite_photos.each do |photo| %>
+            <li class="card-stack card-round photo sortable-photo ui-state-default">
+                <div class="list-photo-container">
+                <% if photo.processed && photo.image(:small).present? %>
+                <%= image_tag photo.image(:small), class: 'img-responsive list-photos' %>
+                <% elsif photo.direct_upload_url.present? %>
+                <%= image_tag photo.direct_upload_url, class: 'img-responsive list-photos' %>
+                <% else %>
+                <p class="image-processing">Your image is processing. <%= photo.processed %></p>
+                <% end %>
+                </div>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $( "#sortable_photos, #sortable_favorites" ).sortable({
+            connectWith: ".connectedSortable",
+            placeholder: "ui-state-highlight"
+        }).disableSelection();
+    });
+</script>
