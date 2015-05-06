@@ -11,16 +11,17 @@
 
 }
 
-li.sortable-photo {
-    height: 200px;
-    width: 200px;
-    overflow: hidden;
+#sortable1, #sortable2 {
     list-style-type: none;
-}
-
-#sortable_photos {
-    float: right;
-}
-#sortable_favorites {
-    float: left;
+    margin: 0 auto;
+    background: #eee;
+    padding: 1%;
+    width: 80%;
+    li {
+        margin: 2.5% auto;
+        padding: 2.5%;
+        font-size: 1.2em;
+        width: 80%;
+        border: 0;
+    }
 }
