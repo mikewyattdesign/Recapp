@@ -141,6 +141,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (5.0.3)
+      railties (>= 3.2.16)
     json (1.8.2)
     kgio (2.9.3)
     launchy (2.4.2)
@@ -329,6 +331,7 @@ DEPENDENCIES
   jbuilder (= 2.2.4)
   jquery-rails (= 3.1.2)
   jquery-turbolinks (= 2.1.0)
+  jquery-ui-rails (= 5.0.3)
   launchy (= 2.4.2)
   meta_request (= 0.3.4)
   newrelic_rpm (= 3.9.6.257)

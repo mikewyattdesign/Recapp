@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require jquery-ui
 //= require turbolinks
 
 // Load moment for bootstrap datetimepicker

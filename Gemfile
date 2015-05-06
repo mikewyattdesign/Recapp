@@ -36,6 +36,9 @@ gem 'turbolinks', '2.5.1'
 # Turbolinks also makes you mad when event binding doesn't work as expected
 gem 'jquery-turbolinks', '2.1.0'
 
+# Add Jquery UI to allow sortable and draggable
+gem 'jquery-ui-rails', '5.0.3'
+
 # Add devise for user authentication
 gem 'devise', '3.4.1'
 
