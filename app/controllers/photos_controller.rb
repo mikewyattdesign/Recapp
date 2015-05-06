@@ -134,6 +134,11 @@ class PhotosController < ApplicationController
 
   end
 
+  # GET /events/1/photos/favorite_order
+  def favorite_order
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo

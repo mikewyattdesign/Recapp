@@ -54,6 +54,8 @@ G360EventApplication::Application.routes.draw do
         end
     end
 
+    get 'events/:id/photos/favorite_order' => 'photos#favorite_order', as: :favorite_order_photos
+
     resources :brands do
         shallow do
             resources :programs do
