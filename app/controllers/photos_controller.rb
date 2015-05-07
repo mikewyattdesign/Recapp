@@ -161,6 +161,7 @@ class PhotosController < ApplicationController
         event_favorite_photo.save
     end
     @photo.save
+    render nothing: true
   end
 
   private
