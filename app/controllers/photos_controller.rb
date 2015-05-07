@@ -169,6 +169,7 @@ class PhotosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
+      puts "MAGIKA", params[:id]
       @photo = Photo.where(id: params[:id])
     end
 
