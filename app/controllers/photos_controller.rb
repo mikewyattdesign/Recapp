@@ -1,8 +1,6 @@
 class PhotosController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_photo, only: [:show, :edit, :favorite, :update, :destroy]
-
   # GET /photos
   # GET /photos.json
   def index
@@ -46,7 +44,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
-    @photo = Photo.find(params[:id])
+    set_photo
     @commentable = @photo
     @comments = @commentable.comments
   end
@@ -59,11 +57,13 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    set_photo
     @event = @photo.event
   end
 
   # POST /photos/1/favorite
   def favorite
+    set_photo
     # if params[:favoritable_type].present? && params[:favoritable_type] == "event"
     #     @photo.event_favorite = !@photo.event_favorite
     # elsif params[:favoritable_type].present? && params[:favoritable_type] == "program"
@@ -108,6 +108,7 @@ class PhotosController < ApplicationController
   # PATCH/PUT /photos/1
   # PATCH/PUT /photos/1.json
   def update
+    set_photo
     respond_to do |format|
       if @photo.update(photo_params)
         format.html { redirect_to photo_path(@photo), notice: 'Photo was successfully updated.' }
@@ -122,6 +123,7 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    set_photo
     @event = @photo.event
     @photo.destroy
     respond_to do |format|
