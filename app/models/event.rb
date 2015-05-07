@@ -175,13 +175,13 @@ class Event < ActiveRecord::Base
 
     def favorite_photos
         photos.where(event_favorite: true)
-        # .map { |photo|
-        #     {order: EventsFavoritePhoto.where(photo_id: photo.id).pluck(:order)[0], photo: photo}
-        # }.sort_by {|hsh|
-        #     hsh[:order]
-        # }.map {|hsh|
-        #     hsh[:photo]
-        # }
+        .map { |photo|
+            {order: EventsFavoritePhoto.where(photo_id: photo.id).pluck(:order)[0], photo: photo}
+        }.sort_by {|hsh|
+            hsh[:order]
+        }.map {|hsh|
+            hsh[:photo]
+        }
     end
 
     private
