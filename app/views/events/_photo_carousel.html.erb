@@ -1,13 +1,13 @@
 <div class="event-photos panel panel-default">
     <div class="panel-heading">Photos</div>
     <div class="panel-body">
-                <% @event_decorator.favorite_photos.limit(3).each_index do |photo_index| %>
-                    <div class="col-md-4 text-center">
-                        <%= image_tag @event_decorator.favorite_photos[photo_index].image(:medium), class: 'img-responsive event-photo' %>
-                    </div>
-                <% end %>
-                <% if @event_decorator.favorite_photos.count == 0 %>
-                    <p class="lead text-center">No Event Photos Have been Added Yet</p>
-                <% end %>
+        <% @event_decorator.favorite_photos[0..2].each_index do |photo_index| %>
+            <div class="col-md-4 text-center">
+                <%= image_tag @event_decorator.favorite_photos[photo_index].image(:medium), class: 'img-responsive event-photo' %>
+            </div>
+        <% end %>
+        <% if @event_decorator.favorite_photos.count == 0 %>
+            <p class="lead text-center">No Event Photos Have been Added Yet</p>
+        <% end %>
     </div>
 </div>
