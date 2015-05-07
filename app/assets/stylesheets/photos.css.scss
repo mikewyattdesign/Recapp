@@ -11,17 +11,22 @@
 
 }
 
-#sortable1, #sortable2 {
+#sortable_favorites, #sortable_other {
     list-style-type: none;
     margin: 0 auto;
     background: #eee;
     padding: 1%;
     width: 80%;
     li {
+        background-color: none;
         margin: 2.5% auto;
         padding: 2.5%;
         font-size: 1.2em;
         width: 80%;
         border: 0;
     }
+}
+
+.drop-placeholder {
+    min-height: 100px;
 }

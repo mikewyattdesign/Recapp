@@ -38,6 +38,7 @@
 //= require assignments
 //= require documents
 //= require photos
+//= require photos_sortable
 
 //= require lightbox2/js/lightbox.min
 

@@ -55,6 +55,7 @@ G360EventApplication::Application.routes.draw do
     end
 
     get 'events/:id/photos/favorite_order' => 'photos#favorite_order', as: :favorite_order_photos
+    post 'events/:id/photos/set_favorite_photo_order' => 'photos#set_favorite_order'
 
     resources :brands do
         shallow do
