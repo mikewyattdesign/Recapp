@@ -10,8 +10,8 @@ $ ->
       return
     return
 
-  $('ul.sortable').sortable
-    connectWith: 'ul'
+  $('.sortable').sortable
+    connectWith: '.sortable'
     placeholder: 'drop-placeholder'
     forcePlaceholderSize: true
 

@@ -6,7 +6,7 @@
         <div class="event-background">
         <div class="col-sm-6">
             <h3 class="text-center">Favorite Photos</h3>
-            <ul id="sortable_favorites" class="sortable">
+            <ol id="sortable_favorites" class="sortable">
                 <% @favorite_photos.each do |photo| %>
                 <li data-photo-id="<%= photo.id %>" data-event-id="<%= @event.id %>">
                     <% if photo.processed && photo.image(:small).present? %>
@@ -18,7 +18,7 @@
                     <% end %>
                 </li>
                 <% end %>
-            </ul>
+            </ol>
         </div>
         <div class="col-sm-6">
             <h3 class="text-center">Other Photos</h3>
