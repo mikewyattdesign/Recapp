@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
 
   # GET /photos
   # GET /photos.json
@@ -140,12 +140,9 @@ class PhotosController < ApplicationController
   def favorite_order
     if params[:id] && Event.where(id: params[:id]).count > 0
       @event = Event.find(params[:id])
-
       @favorite_photos = @event.favorite_photos
-
       @other_photos = @event.photos.where(event_favorite: false);
       @descriptor = @event.name
-      @favoritable_type = "event"
     end
   end
 
@@ -169,8 +166,7 @@ class PhotosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
-      puts "MAGIKA", params[:id]
-      @photo = Photo.where(id: params[:id])
+      @photo =  Photo.where(id: params[:id]).length > 0 ? Photo.find(params[:id]) : Photo.new
     end
 
     def photo_date_filter(photos)
