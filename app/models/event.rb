@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
     has_many :videos
     has_many :documents, as: :documentable
     has_many :links, as: :linkable
+    has_many :event_favorite_photos, inverse_of: :event
+    has_many :favorite_photos, -> { order('"event_favorite_photos"."order" ASC') } ,through: :event_favorite_photos, source: :photo
     has_and_belongs_to_many :contacts
     acts_as_taggable
 
@@ -171,17 +173,6 @@ class Event < ActiveRecord::Base
 
     def update(params)
         completed_at.present? ? false : super
-    end
-
-    def favorite_photos
-        photos.where(event_favorite: true)
-        .map { |photo|
-            {order: EventsFavoritePhoto.where(photo_id: photo.id).pluck(:order)[0], photo: photo}
-        }.sort_by {|hsh|
-            hsh[:order]
-        }.map {|hsh|
-            hsh[:photo]
-        }
     end
 
     private

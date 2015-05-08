@@ -76,10 +76,10 @@ class PhotosController < ApplicationController
     @photo.event_favorite = !@photo.event_favorite
     @photo.save
     if @photo.event_favorite == true
-        favorite_photo = EventsFavoritePhoto.create!(event_id: @photo.event_id, photo_id: @photo.id)
+        favorite_photo = EventFavoritePhoto.create!(event_id: @photo.event_id, photo_id: @photo.id)
         favorite_photo.save
     else
-        EventsFavoritePhoto.where(event_id: @photo.event_id, photo_id: @photo.id).delete_all
+        EventFavoritePhoto.where(event_id: @photo.event_id, photo_id: @photo.id).delete_all
     end
 
     render nothing: true
@@ -150,10 +150,10 @@ class PhotosController < ApplicationController
   def set_favorite_order
     @photo = Photo.find(params[:photo_id])
     if params[:event_type] == 'sortremove'
-        EventsFavoritePhoto.where(event_id: params[:event_id], photo_id: params[:photo_id]).delete_all
+        EventFavoritePhoto.where(event_id: params[:event_id], photo_id: params[:photo_id]).delete_all
         @photo.event_favorite = false
     elsif ['sortreceive', 'sortupdate'].include? params[:event_type]
-        event_favorite_photo = EventsFavoritePhoto.find_or_create_by(event_id: params[:event_id], photo_id: params[:photo_id])
+        event_favorite_photo = EventFavoritePhoto.find_or_create_by(event_id: params[:event_id], photo_id: params[:photo_id])
         event_favorite_photo[:order] = params[:order]
         @photo.event_favorite = true
 

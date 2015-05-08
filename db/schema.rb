@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505211731) do
+ActiveRecord::Schema.define(version: 20150508184943) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -103,6 +103,12 @@ ActiveRecord::Schema.define(version: 20150505211731) do
 
   add_index "documents", ["documentable_id"], name: "index_documents_on_documentable_id"
 
+  create_table "event_favorite_photos", force: true do |t|
+    t.integer "event_id"
+    t.integer "photo_id"
+    t.integer "order"
+  end
+
   create_table "event_giveaways", force: true do |t|
     t.integer "event_id"
     t.integer "giveaway_id"
@@ -138,12 +144,6 @@ ActiveRecord::Schema.define(version: 20150505211731) do
     t.string   "venue"
     t.string   "suite"
     t.datetime "completed_at"
-  end
-
-  create_table "events_favorite_photos", force: true do |t|
-    t.integer "event_id"
-    t.integer "photo_id"
-    t.integer "order"
   end
 
   create_table "giveaways", force: true do |t|
