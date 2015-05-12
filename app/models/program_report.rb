@@ -10,7 +10,7 @@ class ProgramReport
     end
 
     def events
-        @program.events
+        @program.events.order(start_date_time: :desc)
     end
 
     def overview
