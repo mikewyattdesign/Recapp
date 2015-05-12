@@ -153,6 +153,7 @@ class EventsController < ApplicationController
         :street,
         :city,
         :state,
+        :postal_code,
         :program_id,
         :note,
         :brand_demo_fit,

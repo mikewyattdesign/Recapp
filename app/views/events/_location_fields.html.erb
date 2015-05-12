@@ -14,12 +14,12 @@
 </div>
 <div class="col-md-6 form-cont-box">
 	<%= l.label :state, "State*", class: "control-label" %>
-	<%= l.text_field :state , class: "form-control", required: true %>
+	<%= l.text_field :state , class: "form-control", required: true, maxlength: 2 %>
 	<span class="help-block">What state is the event in?</span>
 </div>
 <div class="col-md-6 form-cont-box">
 	<%= l.label :postal_code, "Postal Code", class: "control-label" %>
-	<%= l.text_field :postal_code, class: "form-control"  %>
+	<%= l.text_field :postal_code, class: "form-control", maxlength: 5  %>
 	<span class="help-block">What&apos;s the postal or ZIP code?</span>
 </div>
 <div class="col-md-6 form-cont-box">

@@ -27,6 +27,10 @@ class Event < ActiveRecord::Base
     validates :name, presence: true
     validates :program_id, presence: true
 
+    validates :city, presence: true
+    validates :state, length: { is: 2 }, format: { with: /[A-Z]{2}/, message: "- State abbreviation only"}, presence: true
+    validates :postal_code, length: { is: 5}, format: { with: /[0-9]{5}/, message: "- Five digit postal code"}, allow_blank: true
+
     validates_with DateValidator
 
     # Virtual Attributes to simplify Start and End Date Time Entry
