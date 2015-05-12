@@ -4,6 +4,7 @@
             <h1><span class="glyphicon glyphicon-camera"></span> <%= @descriptor %> Photos</h1>
         </div>
         <div class="favorite-photo-background">
+            <p>Drag and drop your photos into the favorite photos column arrange the photos in the order you want them to appear. The first photo shown in favorite photos will be your main event picture in the report and the next four will follow. Click here to see the <%= link_to 'report', event_path(@event, format: :pdf), target: "_blank" %>.</p>
             <div class="col-sm-6">
                 <h3 class="text-center">Favorite Photos</h3>
                 <ol id="sortable_favorites" class="sortable">
