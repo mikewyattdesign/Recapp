@@ -11,6 +11,14 @@
 
 }
 
+.favorite-photo-background {
+    padding: 15px;
+}
+
+.favorite-photo-back-btns {
+    margin: 15px;
+}
+
 #sortable_favorites, #sortable_other {
     margin: 0 auto;
     background: #eee;
@@ -27,6 +35,10 @@
 }
 
 #sortable_other {
+    list-style-type: none;
+}
+
+.ui-sortable-helper {
     list-style-type: none;
 }
 
