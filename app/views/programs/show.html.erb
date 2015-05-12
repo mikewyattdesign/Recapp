@@ -1,4 +1,4 @@
-<h1><%= @program.name %></h1>
+<h1><%= @program.name %><%= link_to 'Report', program_path(@program, format: :pdf), class: "btn btn-info pull-right", target: "_blank" %></h1>
 
 <%= link_to 'Edit', edit_program_path(@program) %> |
 <%= link_to 'Back', brand_programs_path(@program.brand) %>

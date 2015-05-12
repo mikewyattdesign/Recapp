@@ -18,6 +18,24 @@ class ProgramsController < ApplicationController
   # GET /programs/1.json
   def show
       @report = ProgramReport.new(@program)
+      respond_to do |format|
+        format.html
+        format.json
+        format.pdf do
+            render  pdf: "#{@program.id}_#{@program.name}",
+                    layout: "pdf.html",
+                    redirect_delay: 200,
+                    disable_javascript: false,
+                    show_as_html: params[:debug].present?,
+                    margin: { top: 65, bottom: 50 },
+                    header: {
+                        html: {template: '/programs/header.pdf.erb'}
+                    },
+                    footer: {
+                        html: {template: "/programs/footer.pdf.erb"}
+                    }
+        end
+      end
   end
 
   # GET /programs/new

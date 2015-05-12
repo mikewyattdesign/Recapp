@@ -56,13 +56,13 @@ class ProgramReport
     def start_date
         minimum = events.map(&:start_date_time).min
 
-        minimum.to_date if minimum
+        minimum.to_date.strftime('%m/%d/%Y') if minimum
     end
 
     def end_date
         maximum = events.map(&:end_date_time).max
 
-        maximum.to_date if maximum
+        maximum.to_date.strftime('%m/%d/%Y') if maximum
     end
 
     def comments
@@ -83,6 +83,9 @@ class ProgramReport
                     ]
                 }
             }
+    end
 
+    def contacts
+        events.map(&:contacts).flatten(1).uniq
     end
 end

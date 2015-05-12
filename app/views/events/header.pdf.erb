@@ -1,0 +1,21 @@
+<div class="event">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="show-header">
+                <div class="row">
+                    <div class="brand-info col-md-9">
+                        <h2 class="event-name"><%= @event_decorator.name %></h2>
+                        <div class="event-program"><%= @event_decorator.program.name %></div>
+                        <div class="event-date"><%= "#{@event_decorator.start_date}" %> to <%= "#{@event_decorator.end_date}" %> </div>
+                        <div class="event-venue"><%= @event_decorator.venue %></div>
+                        <div class="event-location"><%= @event_decorator.location %></div>
+                    </div>
+                    <div class="brand-logo col-md-3">
+                        <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

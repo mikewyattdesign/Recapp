@@ -17,18 +17,22 @@
     max-height: 200px;
 }
 
+.page-break-before {
+    page-break-before: always;
+}
+
 .page-break-after {
     page-break-after: always;
 }
 
-.event-name, .program-name, .event-program, .event-date, .event-venue, .event-location {
+.event-name, .event-program, .event-date, .event-venue, .event-location, .program-name, .program-date {
 	font-family: arial;
 }
-.event-name {
+.event-name, .program-name {
     margin-top: 10px;
 }
 
-.event-brand {
+.event-brand, .program-brand {
     margin-top: 10px;
 	width: 125px;
     background-color: #FFF;

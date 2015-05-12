@@ -1,0 +1,18 @@
+<div class="program">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="show-header">
+                <div class="row">
+                    <div class="brand-info col-md-9">
+                        <h2 class="program-name"><%= @report.name %></h2>
+                        <div class="program-date"><%= "#{@report.start_date}" %> to <%= "#{@report.end_date}" %> </div>
+                    </div>
+                    <div class="brand-logo col-md-3">
+                        <div class="program-brand"><%= image_tag @program.brand.logo, class: "img-responsive" %></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
