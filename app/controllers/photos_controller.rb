@@ -160,6 +160,7 @@ class PhotosController < ApplicationController
         event_favorite_photo.save
     end
     @photo.save
+    Delayed::Job.enqueue GeneratePdfJob.new(params[:event_id], 'Event')
     render nothing: true
   end
 

@@ -29,18 +29,7 @@ class EventsController < ApplicationController
       format.html
       format.json
       format.pdf do
-        render  pdf: "#{@event.id}_#{@event.name}",
-                layout: "pdf.html",
-                redirect_delay: 200,
-                disable_javascript: false,
-                show_as_html: params[:debug].present?,
-                margin: { top: 65, bottom: 50 },
-                header: {
-                    html: {template: '/events/header.pdf.erb'}
-                },
-                footer: {
-                    html: {template: "/events/footer.pdf.erb"}
-                }
+        render @event.report.report
       end
     end
   end
@@ -71,6 +60,12 @@ class EventsController < ApplicationController
           when 'Create Event and Add Another'
             redirect_to new_event_url, notice: "#{@event.name} was successfully created."
           end }
+        # enqueue our custom job object that uses delayed_job methods
+        Delayed::Job.enqueue GeneratePdfJob.new(params[:id], "Event")
+        # # update the status so nobody generates a PDF twice
+        # @event.update_attribute(:status, 'queued')
+        puts 'queued'
+
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -94,6 +89,11 @@ class EventsController < ApplicationController
             redirect_to new_event_url, notice: "#{@event.name} was successfully updated."
           end
         }
+        # enqueue our custom job object that uses delayed_job methods
+        Delayed::Job.enqueue GeneratePdfJob.new(params[:id], "Event")
+        # # update the status so nobody generates a PDF twice
+        # @event.update_attribute(:status, 'queued')
+        puts 'queued'
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
