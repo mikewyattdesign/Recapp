@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
     has_many :links, as: :linkable
     has_many :event_favorite_photos, inverse_of: :event
     has_many :favorite_photos, -> { order('"event_favorite_photos"."order" ASC') } ,through: :event_favorite_photos, source: :photo
+    has_one :report, as: :reportable
     has_and_belongs_to_many :contacts
     acts_as_taggable
 

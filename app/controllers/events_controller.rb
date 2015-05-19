@@ -29,7 +29,7 @@ class EventsController < ApplicationController
       format.html
       format.json
       format.pdf do
-        render @event.report.report
+        render @event.report.doc
       end
     end
   end

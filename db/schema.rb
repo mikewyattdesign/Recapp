@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508184943) do
+ActiveRecord::Schema.define(version: 20150519232446) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -212,6 +212,19 @@ ActiveRecord::Schema.define(version: 20150508184943) do
     t.datetime "updated_at"
     t.text     "overview"
   end
+
+  create_table "reports", force: true do |t|
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.string   "doc_file_name"
+    t.string   "doc_content_type"
+    t.integer  "doc_file_size"
+    t.datetime "doc_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reports", ["reportable_id", "reportable_type"], name: "index_reports_on_reportable_id_and_reportable_type"
 
   create_table "requests", force: true do |t|
     t.integer  "requestor_id"
