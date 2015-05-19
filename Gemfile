@@ -6,7 +6,7 @@ gem 'unicorn', '4.8.3'
 gem 'rails', '4.1.6'
 
 # Error monitoring service
-gem 'rollbar', '1.2.7'
+gem 'rollbar', '1.5.3'
 
 # Application monitoring service
 gem 'newrelic_rpm', '3.9.6.257'
