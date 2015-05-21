@@ -1,8 +1,7 @@
 class Report < ActiveRecord::Base
   belongs_to :reportable, polymorphic: true
-  has_attached_file :doc
-  validates_attachment_content_type :doc, content_type: /\Apdf/
-  validates_attachment_presence :doc
+  has_attached_file :report
+  validates_attachment_content_type :report, content_type: /application\/pdf/
 
     def self.with_event
         Report.where(id: (Report.where(reportable_type: 'Event').reject{|p| p.event.nil?}.map{|p|p.id}))

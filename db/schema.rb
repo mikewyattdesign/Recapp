@@ -216,10 +216,10 @@ ActiveRecord::Schema.define(version: 20150519232446) do
   create_table "reports", force: true do |t|
     t.integer  "reportable_id"
     t.string   "reportable_type"
-    t.string   "doc_file_name"
-    t.string   "doc_content_type"
-    t.integer  "doc_file_size"
-    t.datetime "doc_updated_at"
+    t.string   "report_file_name"
+    t.string   "report_content_type"
+    t.integer  "report_file_size"
+    t.datetime "report_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

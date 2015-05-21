@@ -22,18 +22,12 @@ class ProgramsController < ApplicationController
         format.html
         format.json
         format.pdf do
-            render  pdf: "#{@program.id}_#{@program.name}",
-                    layout: "pdf.html",
-                    redirect_delay: 200,
-                    disable_javascript: false,
-                    show_as_html: params[:debug].present?,
-                    margin: { top: 65, bottom: 50 },
-                    header: {
-                        html: {template: '/programs/header.pdf.erb'}
-                    },
-                    footer: {
-                        html: {template: "/programs/footer.pdf.erb"}
-                    }
+            if (@program.report.present? && @program.report.report.present?)
+              send_file Paperclip.io_adapters.for(@program.report.report).path
+            else
+              Delayed::Job.enqueue GeneratePdfJob.new(@program.id, Program.name)
+              redirect_to @program, alert: 'Report Being Generated'
+            end
         end
       end
   end
@@ -87,6 +81,34 @@ class ProgramsController < ApplicationController
       format.html { redirect_to brand_programs_path(@brand) }
       format.json { head :no_content }
     end
+  end
+
+  def render_PDF(id)
+    @program = Program.find(id)
+    @report = ProgramReport.new(@program)
+    doc_pdf = render_to_string  pdf: "#{@program.id}_#{@program.name}",
+                        template: '/programs/show.pdf.erb',
+                        layout: "/layouts/pdf.html.erb",
+                        redirect_delay: 200,
+                        disable_javascript: false,
+                        margin: { top: 65, bottom: 50 },
+                        header: {
+                            html: {template: '/programs/header.pdf.erb', locals: {report: @report, program: @program}}
+                        },
+                        footer: {
+                            html: {template: "/programs/footer.pdf.erb"}
+                        },
+                        locals: {report: @report, program: @program}
+
+    # save PDF to disk
+    pdf_path = Rails.root.join('tmp', "#{@program.id}_#{@program.name}.pdf")
+    File.open(pdf_path, 'wb') do |file|
+      file << doc_pdf
+    end
+
+    @program.report = Report.new(reportable_type: Program.name, reportable_id: id)
+    @program.report.report = File.open(pdf_path, 'r')
+    @program.report.save
   end
 
   private

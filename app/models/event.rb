@@ -180,6 +180,10 @@ class Event < ActiveRecord::Base
         completed_at.present? ? false : super
     end
 
+    def generate_report
+       EventsController.new().render_PDF(id) 
+    end
+
     private
 
     # Each of these properties has a NOT NULL designation in the

@@ -29,7 +29,12 @@ class EventsController < ApplicationController
       format.html
       format.json
       format.pdf do
-        render @event.report.doc
+        if (@event.report.present? && @event.report.report.present?)
+          send_file Paperclip.io_adapters.for(@event.report.report).path
+        else
+          Delayed::Job.enqueue GeneratePdfJob.new(@event.id, Event.name)
+          redirect_to @event, alert: 'Report Being Generated'
+        end
       end
     end
   end
@@ -112,6 +117,37 @@ class EventsController < ApplicationController
     end
   end
 
+  def render_PDF(id)
+    @event = Event.find(id)
+    @event_decorator = EventDecorator.new(@event)
+    doc_pdf = render_to_string pdf: "#{@event.id}_#{@event.name}",
+                    template: '/events/show.pdf.erb',
+                    layout: "/layouts/pdf.html.erb",
+                    redirect_delay: 200,
+                    disable_javascript: false,
+                    margin: { top: 65, bottom: 50 },
+                    encoding: "UTF-8",
+                    header: {
+                        html: {template: '/events/header.pdf.erb', locals: {event_decorator: @event_decorator}}
+                    },
+                    footer: {
+                        html: {template: "/events/footer.pdf.erb"}
+                    },
+                    locals: {event_decorator: @event_decorator}
+
+
+    # save PDF to disk
+    pdf_path = Rails.root.join('tmp', "#{@event.id}_#{@event.name}.pdf")
+    File.open(pdf_path, 'wb') do |file|
+      file << doc_pdf
+    end
+
+    @event.report = Report.new(reportable_type: Event.name, reportable_id: id)
+    @event.report.report = File.open(pdf_path, 'r')
+    @event.report.save
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -141,6 +177,8 @@ class EventsController < ApplicationController
         events
       end
     end
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
