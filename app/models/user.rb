@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
          validates :role, presence: true
 
-  has_many :assignments, -> {where "assignments.assignable_id IS NOT NULL"}
+  has_many :assignments, -> {where "assignments.assignable_id IS NOT NULL"}, dependent: :destroy
   # has_many :events,
   # 			through: :assignments,
   # 			source: :event,

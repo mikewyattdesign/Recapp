@@ -1,7 +1,7 @@
 class Program < ActiveRecord::Base
     has_many :events, -> {order('"events"."start_date_time" DESC') }
     belongs_to :brand
-    has_many :assignments, as: :assignable
+    has_many :assignments, as: :assignable, dependent: :destroy
     has_many :users, through: :assignments
 
     validates :name, presence: true
