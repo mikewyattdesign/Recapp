@@ -3,6 +3,7 @@ class Program < ActiveRecord::Base
     belongs_to :brand
     has_many :assignments, as: :assignable, dependent: :destroy
     has_many :users, through: :assignments
+    has_one :report, as: :reportable
 
     validates :name, presence: true
     validates :brand_id, presence: true
