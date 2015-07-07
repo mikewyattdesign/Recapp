@@ -85,8 +85,6 @@ class Ability
         can :read, Brand
         can :read, Program
         can :read, Event
-        can :read, Photo
-        can :read, Video
     end
   end
 end

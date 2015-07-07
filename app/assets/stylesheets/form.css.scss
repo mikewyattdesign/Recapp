@@ -1,0 +1,49 @@
+.form-header-label {
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 10px;
+    h3 {
+        margin: 10px 0 5px 0;
+    }
+}
+
+.counter {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.form-box {
+    padding: 30px;
+}
+
+.control-label {
+    text-align: left !important;
+}
+
+.form-control {
+    height: 40px;
+}
+
+.form-row, .form-cont-box {
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    padding-top: 0 !important;
+}
+
+.checkbox input[type="checkbox"] {
+    position: relative;
+    margin-left: 0;
+}
+
+.submit-container {
+    margin-top: 20px;
+}
+
+.add_fields {
+    margin: 5px 15px; // Act like it's in the row
+
+    // Put onto it's own line w/o additional markup
+    float: left;
+    clear: both;
+}

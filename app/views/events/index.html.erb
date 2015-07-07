@@ -63,9 +63,9 @@
 
                                 <% if can? :update, event %>
                                     <%= link_to edit_event_path(event) do %>
-                                    <div class="edit-box main-edit-box">
+                                    <div class="edit-circle main-edit-box">
                                         <button type="button">
-                                            <span class="glyphicon glyphicon glyphicon-pencil"><br>Edit</span>
+                                            <span class="glyphicon glyphicon glyphicon-pencil"></span>
                                         </button>
                                     </div>
                                     <% end %>
@@ -73,15 +73,10 @@
                                 <% if can? :destroy, event %>
                                     <div class="delete-box">
                                     <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                                        <button type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                                        <button type="button"><span class="glyphicon glyphicon-trash"></span></button>
                                     <% end %>
                                     </div>
                                 <% end %>
-                                <!-- <div class="collapse-box">
-                                    <button type="button">
-                                        <span class="glyphicon glyphicon-plus-sign"></span>
-                                    </button>
-                                </div> -->
                                 <%= render 'event_details', event: event, event_decorator: event_decorator %>
 
                                 <div class="event-circle">

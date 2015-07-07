@@ -7,15 +7,19 @@
         <div class="col-xs-8= col-sm-8 col-md-8"><%= event_giveaway.giveaway.name %></div>
     </div>
 
+    <% if can? :update, event_giveaway %>
     <div class="edit-box-dropdown">
         <%= link_to edit_event_giveaway_path(event_giveaway) do %>
         <button type="button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
         <% end %>
     </div>
+    <% end %>
 
+    <% if can? :destroy, event_giveaway %>
     <div class="delete-box-dropdown">
         <%= link_to event_giveaway, method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <button type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
+        <button type="button"><span class="glyphicon glyphicon-trash"></span></button>
         <% end %>
     </div>
+    <% end %>
 </div>

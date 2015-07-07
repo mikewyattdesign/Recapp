@@ -1,11 +1,11 @@
 .tag-list {
-	position: absolute;
-	right: 10%;
-	top: 10%;
-	list-style: none;
-	text-align: center;
-	padding: 0;
-	margin: 0;
+  	position: absolute;
+  	left: 150%;
+  	top: 0%;
+  	list-style: none;
+  	text-align: center;
+  	padding: 0;
+  	margin: 0;
 
 	& > li {
 		background: #fff;
@@ -17,20 +17,22 @@
 }
 
 .tags-button {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background-color: rgba(255, 255, 255, 0.85);
-    border: 2px dotted #58585a;
+    border: 1px solid #58585a;
     color: #58585a;
     font-size: 14px;
     padding: 0;
-    border-radius: 10px;
+    border-radius: 50px;
+    &:hover {
+        color: #fc9f4c;
+        border: 1px solid #fc9f4c;
+    }
 }
 
 .tags-box {
-    position: absolute;
-    bottom: 8px;
-    left: 140px;
+    position: relative;
     opacity: 0;
     -webkit-transition: opacity 0.3s ease-in;
     -moz-transition: opacity 0.3s ease-in;
@@ -48,7 +50,7 @@
 }
 
 .token-input-list-facebook.token-list-display {
-	border: none;
-	background-color: transparent;
-	padding-top: 10px;
+  	border: none;
+  	background-color: transparent;
+  	padding-top: 10px;
 }

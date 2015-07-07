@@ -11,11 +11,13 @@
         <% end %>
         </a>
       </div>
-      <div class="edit-box">
-        <%= link_to edit_photo_path(@photo) do %>
-          <button type="button" class=""><span class="glyphicon glyphicon-pencil"> Edit</span></button>
-        <% end %>
-      </div>
+      <% if can? :update, @photo %>
+        <div class="edit-box">
+          <%= link_to edit_photo_path(@photo) do %>
+            <button type="button" class=""><span class="glyphicon glyphicon-pencil"> Edit</span></button>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 </div>
 <div class="row">
@@ -25,7 +27,7 @@
         </div>
         <div class="form-box">
             <div class="row">
-                <div class="col-md-10 col-md-offset1">
+                <div class="col-md-10 col-md-offset-1">
                     <ul class="list-inline">
                     <% @photo.tags.each do |tag| %>
                         <li><%= link_to tag, "/photos/tags/#{tag}", class: "tag-item" %></li>

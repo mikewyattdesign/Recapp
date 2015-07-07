@@ -1,0 +1,51 @@
+.prize-icon {
+    height: 150px;
+    background-color: $white-grey;
+}
+
+.event-giveaway-icon {
+    height: 70px;
+    text-align: center;
+    overflow: hidden;
+    background-color: $white-grey;
+    border: 1px solid #dddddd;
+    padding: 0;
+}
+
+#event-giveaways {
+    clear: both;
+    // overflow: hidden;
+
+    fieldset {
+        position: relative;
+        padding-bottom: 20px;
+
+        .remove-label {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            text-decoration: none;
+        }
+    }
+}
+
+.event-giveaway-name {
+    height: 70px;
+}
+
+.giveaway-image {
+    height: 100%;
+}
+
+.giveaway-add, .comment-add {
+    position: absolute;
+
+    .event-dropdown-add-btn {
+        background-color: $dark-grey;
+        color: white;
+
+        &:hover {
+            background-color: $orange;
+        }
+    }
+}

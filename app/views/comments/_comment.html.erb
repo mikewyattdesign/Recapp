@@ -1,24 +1,29 @@
-<!-- <div class="col-xs-12 col-sm-12 col-md-12 event-dropdown">
-    <div class="col-xs-1 col-sm-1 col-md-1 event-dropdown-text">
-        <span class="glyphicon glyphicon-comment"></span>
-    </div>
-    <div class="col-xs-8 col-sm-8 col-md-9 comment-dropdown-content">
-       <%= comment.content %>
-    </div>
+<div class="col-xs-12 col-sm-12 col-md-12 event-dropdown">
+  <div class="col-xs-1 col-sm-1 col-md-1 event-dropdown-text">
+      <span class="glyphicon glyphicon-comment"></span>
+  </div>
+  <div class="col-xs-8 col-sm-8 col-md-9 comment-dropdown-content">
+     <%= comment.content %>
+  </div>
 
-    <div class="edit-box-dropdown">
-        <%= link_to edit_comment_path(comment) do %>
-        <button type="button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
-        <% end %>
-    </div>
+  <% if can? :update, comment %>
+  <div class="edit-box-dropdown">
+      <%= link_to edit_comment_path(comment) do %>
+      <button type="button"><span class="glyphicon glyphicon glyphicon-pencil"></span></button>
+      <% end %>
+  </div>
+  <% end %>
 
-    <div class="delete-box-dropdown">
-        <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <button type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
-        <% end %>
-    </div>
+  <% if can? :destroy, comment %>
+  <div class="delete-box-dropdown">
+      <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <button type="button"><span class="glyphicon glyphicon-trash"></span></button>
+      <% end %>
+  </div>
+  <% end %>
 </div>
- -->
+
+<!--
  <div class="col-md-10 col-md-offset-1">
     <div class="card-stack card-round comments-container row">
         <div class="col-md-10 col-md-offset-1">
@@ -26,6 +31,7 @@
                 <%= comment.content %>
             </div>
         </div>
+        <% if can? :destroy, comment %>
         <div class="edit-box">
             <%= link_to edit_comment_path(comment) do %>
             <button type="button"><span class="glyphicon glyphicon glyphicon-pencil"> Edit</span></button>
@@ -36,5 +42,7 @@
             <button type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
             <% end %>
         </div>
+        <% end %>
     </div>
   </div>
+-->

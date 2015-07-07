@@ -1,0 +1,212 @@
+.btn-primary {
+    background-color: $orange;
+    border-color: $light-orange;
+
+    &:hover, &:active, &:focus {
+        background-color: $dark-orange;
+        border-color: $orange;
+    }
+}
+
+.edit-circle, .delete-box {
+    position: absolute;
+    background-color: white;
+    top: -12px;
+    border-radius: 50px;
+
+    button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        padding: 0;
+        font-size: 14px;
+        color: $dark-grey;
+        border: 3px solid $dark-grey;
+        background-color: rgba(255,255,255, 0.85);
+
+        &:hover {
+            color: $orange;
+            border: 3px solid $orange;
+        }
+    }
+}
+
+.edit-circle {
+    right: 22px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+.delete-box {
+    right: -12px;
+
+    button {
+        font-size: 15px;
+    }
+}
+
+.edit-box {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 1px solid $dark-grey;
+        color: $dark-grey;
+        font-size: 14px;
+        padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+            color: $orange;
+            border: 1px solid $orange;
+        }
+    }
+}
+
+.edit-box-dropdown, .delete-box-dropdown {
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 1px solid $light-grey;
+        color: $grey;
+        padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+            color: $orange;
+            border: 1px solid $orange;
+        }
+    }
+}
+
+.edit-box-dropdown {
+    position: absolute;
+    right: 60px;
+    top: 3px;
+
+    button {
+        font-size: 14px;
+    }
+}
+
+.delete-box-dropdown {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+
+    button {
+        font-size: 22px;
+
+        span {
+            padding-top: 5px;
+        }
+    }
+}
+
+.photo-btn-group {
+    position: absolute;
+    z-index: 10;
+    top: 10%;
+    left: 5%;
+}
+
+.favorite-box, .comments-box {
+    position: relative;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+
+    button {
+        width: 35px;
+        height: 35px;
+        background-color: rgba(255,255,255, 0.85);
+        border: 1px solid $dark-grey;
+        color: $dark-grey;
+        font-size: 14px;
+        padding: 0;
+        border-radius: 50px;
+        &:hover {
+            color: $orange;
+            border: 1px solid $orange;
+        }
+    }
+    &.active {
+        opacity: 1;
+        button {
+            color: $orange;
+            border: 1px solid $orange;
+        }
+    }
+}
+
+.favorite-box, .tags-box {
+    margin-bottom: 5px;
+}
+
+.giveaway-box {
+    position: relative;
+}
+
+.comments-container, .contacts-container, .event-giveaway-container {
+    &:hover {
+        .edit-circle {
+            opacity: 1;
+        }
+    }
+}
+
+.brand-icon-container {
+    position: relative;
+
+    &:hover {
+        .edit-circle {
+            opacity: 1;
+        }
+    }
+}
+
+.open, .dropdown {
+    #resources-drop:focus, #resources-drop:hover {
+        background-color: $orange;
+    }
+}
+
+.dropdown-menu {
+    background-color: $dark-grey;
+    li {
+        a:hover {
+            background-color: $orange;
+        }
+    }
+}
+
+.back-button, .btn-right-space {
+    margin-right: 20px;
+}
+
+.input-button {
+    z-index: -1;
+}
+
+.assign-btn {
+    margin-right: 5px;
+}

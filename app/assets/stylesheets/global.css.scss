@@ -1,0 +1,52 @@
+// BOOTSTRAP OVERRIDE
+.glyphicon-trash {
+    left: -0.9% !important;
+}
+
+.bootstrap-timepicker-widget.dropdown-menu {
+    background-color: #FFF;
+    a {
+        text-decoration: none;
+    }
+}
+
+// Global
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.container-full {
+    width: 100%;
+}
+
+table {
+    th {
+        background-color: $white-grey;
+    }
+}
+
+body {
+    background-color: $lightest-grey;
+    padding-top: 70px;
+}
+
+.card-stack {
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 1px solid $light-grey;
+    -webkit-box-shadow: 0px 0px 6px $lightest-grey;
+    -moz-box-shadow: 0px 0px 6px $lightest-grey;
+    box-shadow: 0px 0px 6px $lightest-grey;
+
+    &:hover {
+        // background-color: $white-grey;
+        -webkit-box-shadow: 0px 0px 8px $light-grey;
+        -moz-box-shadow: 0px 0px 8px $light-grey;
+        box-shadow: 0px 0px 8px $light-grey;
+    }
+}
+
+.card-round {
+    border-radius: 8px;
+    margin-bottom: 15px;
+}

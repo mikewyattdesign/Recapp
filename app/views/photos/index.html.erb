@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+
         <div id="photos-form-box" class="form-box">
           <% if @tags.present? %>
             <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
@@ -64,35 +65,43 @@
                     <% end %>
                     </a>
                   </div>
+
+                <div class="photo-btn-group">
+                  <div class="favorite-box <%= 'active' if @favorite_photos.include?(photo) %>">
+                      <%= button_to favorite_photo_path(photo), params: {favoritable_type: @favoritable_type}, class: 'favorite-button', remote: true do %>
+                      <span class="glyphicon glyphicon-star"></span>
+                      <% end %>
+                  </div>
+
                   <ul class="tag-list inactive">
                     <% photo.tags.each do |tag| %>
                       <li><%= link_to tag, "/photos/tags/#{tag}" %></li>
                     <% end %>
                   </ul>
                   <div class="tags-box">
-                    <button class="tags-button"><span class="glyphicon glyphicon-tags"> Tags</span></button>
-                </div>
-
-                <div class="favorite-box <%= 'active' if @favorite_photos.include?(photo) %>">
-                    <%= button_to favorite_photo_path(photo), params: {favoritable_type: @favoritable_type}, class: 'favorite-button', remote: true do %>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <% end %>
-                </div>
-                <div class="comments-box">
-                    <%= link_to photo_comments_path(photo) do %>
-                        <button type="button" class=""><span class="glyphicon glyphicon-list-alt"> Comments</span></button>
-                    <% end %>
-                </div>
-                  <div class="edit-box">
-                    <%= link_to edit_photo_path(photo) do %>
-                      <button type="button" class=""><span class="glyphicon glyphicon-pencil"> Edit</span></button>
-                    <% end %>
+                    <button class="tags-button"><span class="glyphicon glyphicon-tags"></span></button>
                   </div>
-                  <div class="delete-box">
-                    <%= link_to photo, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <button type="button" class=""><span class="glyphicon glyphicon-remove"></span></button>
+
+                  <div class="comments-box">
+                      <%= link_to photo_comments_path(photo) do %>
+                          <button type="button" class=""><span class="glyphicon glyphicon-list-alt"></span></button>
                       <% end %>
                   </div>
+                </div>
+                <% if can? :update, photo %>
+                  <div class="edit-circle media-edit-box">
+                    <%= link_to edit_photo_path(photo) do %>
+                      <button type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if can? :destroy, photo %>
+                  <div class="delete-box">
+                    <%= link_to photo, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <button type="button" class=""><span class="glyphicon glyphicon-trash"></span></button>
+                      <% end %>
+                  </div>
+                  <% end %>
                 </div>
               </div>
             <% end %>
@@ -101,8 +110,12 @@
         <br>
         <% if @event.present? %>
           <%= link_to "Back to #{@event.name}", edit_event_path(@event), class: 'btn btn-primary back-button' %>
+          <% if can? :destroy, Photo %>
           <%= link_to "Manage Photo Order", favorite_order_photos_path(@event), class: 'btn btn-primary back-button' %>
+          <% end %>
+          <% if can? :create, Photo %>
           <%= link_to 'New Photo', new_event_photo_path, class: "btn btn-primary" %>
+          <% end %>
         <% end %>
         </div>
     </div>
