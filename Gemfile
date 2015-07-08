@@ -81,6 +81,11 @@ gem 'wicked_pdf', '0.11.0'
 # Binary that wicked_pdf wraps to do the HTML to PDF conversion
 gem 'wkhtmltopdf-binary', '0.9.9.3'
 
+# Pagination for Events
+gem 'will_paginate', '~> 3.0.5'
+gem 'betterlorem', '~> 0.1.2'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
+
 group :development, :test do
     # Add testing via rspec
     gem 'rspec-rails', '3.1.0'

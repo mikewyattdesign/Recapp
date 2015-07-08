@@ -25,7 +25,7 @@
             border-radius: 5px;
             box-shadow: 0 0 4px grey;
 
-            z-index: 10;
+            z-index: 15;
             position: fixed;
             top: 145px;
             left: 50%;
@@ -381,6 +381,7 @@
 
 .event-info-text {
     padding-left: 0;
+    cursor: pointer;
 }
 
 .event-info-button {

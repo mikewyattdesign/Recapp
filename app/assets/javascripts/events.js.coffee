@@ -12,12 +12,14 @@ jQuery ->
     $('.chosen-select').chosen() # Add Chosen jQuery
     event.preventDefault()
 
-  $(".collapse-box").on "click", (event) ->
-    $(this).find("span").toggleClass("glyphicon-plus-sign").toggleClass "glyphicon-minus-sign"
+  $(".event-circle").on "click", (event) ->
+    $(this).parent().find(".event-circle span").toggleClass("glyphicon-plus-sign").toggleClass "glyphicon-minus-sign"
     $(this).siblings(".event-details").toggleClass "collapse"
     return
 
-  $(".event-circle").on "click", (event) ->
-    $(this).find("span").toggleClass("glyphicon-plus-sign").toggleClass "glyphicon-minus-sign"
+  $(".event-info-text").on "click", (event) ->
     $(this).siblings(".event-details").toggleClass "collapse"
+    $(this).parent().find(".event-circle span").toggleClass("glyphicon-plus-sign").toggleClass "glyphicon-minus-sign"
     return
+
+  return
