@@ -30,7 +30,7 @@
                 <li class="<%= 'active' if request.path == '/comments' %>"><%= link_to "Comments", "/comments" %></li>
             <% end %>
 
-            <% if can? :read, Photo %>
+            <% if can? :create, Photo %>
             <li class="dropdown">
               <a id="resources-drop" href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
               <ul class="dropdown-menu">
