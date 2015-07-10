@@ -25,12 +25,11 @@
     </div>
 
     <div class="col-md-10 col-md-offset-1 form-cont-box">
-        <%= f.submit class: "btn btn-primary" %>
-    </div>
+        <%= f.submit "Create", class: "btn btn-success pull-right" %>
 
-    <div class="col-md-10 col-md-offset-1 form-cont-box">
-        <%= link_to 'Show', @event_giveaway %> |
-        <%= link_to 'Back', event_event_giveaways_path(@event_giveaway.event) %>
+        <%= link_to @event_giveaway, class: "btn btn-primary" do %><span class="glyphicon glyphicon-list"></span> &nbsp;View All Giveaways<% end %>
+
+        <%= link_to event_event_giveaways_path(@event_giveaway.event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-list"></span> &nbsp;View <%= "#{@event.name}" %> Giveaways<% end %>
     </div>
 </div>
 

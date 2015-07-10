@@ -22,4 +22,8 @@ jQuery ->
     $(this).parent().find(".event-circle span").toggleClass("glyphicon-plus-sign").toggleClass "glyphicon-minus-sign"
     return
 
+  $(".event-name a").on "click", (event) ->
+    event.stopPropagation()
+    return
+
   return

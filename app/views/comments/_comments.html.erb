@@ -41,7 +41,7 @@
               <% if @commentable.present? %>
               <div class="col-md-10 col-md-offset-1">
                 </br>
-                  <%= link_to 'New Comment', [:new, @commentable, :comment], class: "btn btn-primary pull-right" %>
+                  <%= link_to [:new, @commentable, :comment], class: "btn btn-primary pull-right" do %><span class="glyphicon glyphicon-plus"></span> &nbsp;New Comment<% end %>
                   <% if @commentable.class.name == "Photo" %>
                       <%= link_to_unless @commentable.nil?, 'Back', event_photos_path(@commentable.event), class: "btn btn-default pull-right back-button" %>
                   <% else %>

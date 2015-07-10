@@ -39,6 +39,9 @@
     -o-transition: opacity 0.3s ease-in;
     -ms-transition: opacity 0.3s ease-in;
     transition: opacity 0.3s ease-in;
+    @media (max-width : 400px) {
+        opacity: 1;
+    }
 }
 
 .delete-box {
@@ -158,8 +161,12 @@
     }
 }
 
-.favorite-box, .tags-box {
+.favorite-box, .tags-box, .comments-box {
     margin-bottom: 5px;
+
+    @media (max-width : 400px) {
+        opacity: 1;
+    }
 }
 
 .giveaway-box {
@@ -209,4 +216,18 @@
 
 .assign-btn {
     margin-right: 5px;
+}
+
+input.btn {
+    @media (max-width : 400px) {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+}
+
+.list-inline .btn {
+    @media (max-width : 400px) {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
 }

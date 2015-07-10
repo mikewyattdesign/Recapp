@@ -1,7 +1,15 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1 container-box">
         <div class="event-header">
-            <h1><span class="glyphicon glyphicon-facetime-video"></span> <%= @descriptor %> Videos</h1>
+            <h1><span class="glyphicon glyphicon-facetime-video"></span> <%= @descriptor %> Videos
+              <% if can? :update, @event %>
+                <% if @event.present? %>
+                    <%= link_to new_event_video_path do %>
+                        <button type="button" class="pull-right new-event-btn btn btn-primary"><span class="visible-md visible-lg visible-sm .hidden-xs">New Video</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span></button>
+                    <% end %>
+                <% end %>
+              <% end %>
+            </h1>
         </div>
 <!--
         <div class="event-background">
@@ -84,13 +92,13 @@
             <% end %>
           </div>
           <br>
+<!--
           <% if can? :update, @event %>
           <% if @event.present? %>
-              <%= link_to "Back to #{@event.name}", edit_event_path(@event), class: 'btn btn-default back-button' %>
-              <%= link_to new_event_video_path do %>
-                  <button type="button" class="pull-right new-event-btn btn btn-primary"><span class="visible-md visible-lg visible-sm .hidden-xs">New Video</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span></button>
+              <%= link_to edit_event_path(@event), class: 'btn btn-default back-button' do %><span class="glyphicon glyphicon-pencil"></span> &nbsp;Edit Current Event
               <% end %>
           <% end %>
           <% end %>
+ -->
     </div>
 </div>

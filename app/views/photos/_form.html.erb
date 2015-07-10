@@ -41,11 +41,11 @@
 
     <div class="col-md-10 col-md-offset-1 form-header-label"></div>
     <div class="col-md-10 col-md-offset-1 submit-container">
-        <%= f.submit class: "btn btn-primary pull-right" %>
+        <%= f.submit class: "btn btn-success pull-right" %>
         <% if @event.present? %>
-          <%= link_to 'Back', event_photos_path(@event), class: 'btn btn-primary pull-right back-button' %>
+          <%= link_to event_photos_path(@event), class: 'btn btn-primary pull-right back-button' do %><span class="glyphicon glyphicon-camera"></span> &nbsp;<%= "#{@event.name}" %> Photos<% end %>
         <% else %>
-          <%= link_to 'Back', photos_path, class: 'btn btn-primary pull-right back-button' %>
+          <%= link_to photos_path, class: 'btn btn-primary pull-right back-button' do %><span class="glyphicon glyphicon-camera"></span> &nbsp;All Photos<% end %>
         <% end %>
     </div>
 </div>

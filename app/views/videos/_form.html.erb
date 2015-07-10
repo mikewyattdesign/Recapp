@@ -24,8 +24,8 @@
 
         <div class="col-md-10 col-md-offset-1 form-header-label"></div>
         <div class="col-md-10 col-md-offset-1 submit-container">
-            <%= f.submit class: "btn btn-primary pull-right"%>
-            <%= link_to 'Back', event_videos_path(@video.event), class: "btn btn-primary pull-right back-button" %>
+            <%= f.submit class: "btn btn-success pull-right"%>
+            <%= link_to event_videos_path(@video.event), class: "btn btn-primary pull-right back-button" do %><span class="glyphicon glyphicon-facetime-video"></span> &nbsp;Event Videos<% end %>
         </div>
     </div>
 
