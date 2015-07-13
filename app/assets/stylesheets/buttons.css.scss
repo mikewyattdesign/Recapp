@@ -8,7 +8,7 @@
     }
 }
 
-.edit-circle, .delete-box {
+.edit-circle, .delete-circle {
     position: absolute;
     background-color: white;
     top: -12px;
@@ -44,11 +44,17 @@
     }
 }
 
-.delete-box {
+.delete-circle {
     right: -12px;
 
     button {
         font-size: 15px;
+
+        .glyphicon-trash {
+            top: 0.5px;
+            font-size: 12px;
+            left: -0.9%;
+        }
     }
 }
 
@@ -104,7 +110,7 @@
     top: 3px;
 
     button {
-        font-size: 14px;
+        font-size: 18px;
     }
 }
 
@@ -114,7 +120,7 @@
     top: 3px;
 
     button {
-        font-size: 22px;
+        font-size: 18px;
 
         span {
             padding-top: 5px;

@@ -102,7 +102,7 @@
                   </div>
                 <% end %>
                 <% if can? :destroy, photo %>
-                  <div class="delete-box">
+                  <div class="delete-circle">
                     <%= link_to photo, method: :delete, data: { confirm: 'Are you sure?' } do %>
                         <button type="button" class=""><span class="glyphicon glyphicon-trash"></span></button>
                       <% end %>

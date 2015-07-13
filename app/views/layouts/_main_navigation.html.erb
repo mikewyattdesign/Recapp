@@ -46,6 +46,7 @@
                 <% if can? :read, Document %>
                     <li class="<%= 'active' if request.path == '/documents' %>"><%= link_to "Documents", "/documents" %></li>
                 <% end %>
+
               </ul>
             </li>
             <% end %>

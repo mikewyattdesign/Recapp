@@ -12,9 +12,9 @@
         </a>
       </div>
       <% if can? :update, @photo %>
-        <div class="edit-box">
+        <div class="edit-circle">
           <%= link_to edit_photo_path(@photo) do %>
-            <button type="button" class=""><span class="glyphicon glyphicon-pencil"> Edit</span></button>
+            <button type="button" class=""><span class="glyphicon glyphicon-pencil"></span></button>
           <% end %>
         </div>
       <% end %>
