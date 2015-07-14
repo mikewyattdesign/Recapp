@@ -28,6 +28,16 @@
                     <% end %>
                 </div>
                 <div>
+                    <%= link_to brand_giveaways_path(brand), class: "btn btn-default info-button" do %>
+                    <span class="glyphicon glyphicon-gift"></span> Giveaways
+                    <% end %>
+                </div>
+                <div>
+                    <%= link_to brand_comments_path(brand), class: "btn btn-default info-button" do %>
+                    <span class="glyphicon glyphicon-comment"></span> Comments
+                    <% end %>
+                </div>
+                <div>
                     <%= link_to brand_photos_path(brand), class: "btn btn-default info-button" do %>
                     <span class="glyphicon glyphicon-camera"></span> Photos
                     <% end %>

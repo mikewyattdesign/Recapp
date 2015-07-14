@@ -65,6 +65,11 @@ G360EventApplication::Application.routes.draw do
         end
     end
 
+    get 'brands/:brand_id/giveaways' => 'giveaways#index', as: :brand_giveaways
+    get 'brands/:brand_id/comments' => 'comments#index', as: :brand_comments
+
+    get 'programs/:program_id/comments' => 'comments#index', as: :program_comments
+
     get '/help' => 'static#index', as: :help
 
     namespace :api, defaults: { format: 'json' } do

@@ -12,6 +12,12 @@ class CommentsController < ApplicationController
     elsif @commentable.class.name == "Photo" && params[:photo_id]
       @photo = Photo.find(params[:photo_id])
       @comments = @commentable.comments
+    elsif params[:brand_id]
+      @event = Event.find(params[:brand_id])
+      @comments = @event.comments
+    elsif params[:program_id]
+      @event = Event.find(params[:program_id])
+      @comments = @event.comments
     else
       @comments = Comment.all
     end

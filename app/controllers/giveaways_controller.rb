@@ -4,7 +4,15 @@ class GiveawaysController < ApplicationController
   # GET /giveaways
   # GET /giveaways.json
   def index
-    @giveaways = Giveaway.all
+    if params[:brand_id]
+        @event = Event.find(params[:brand_id])
+        @giveaways = @event.giveaways
+    elsif params[:brand_id]
+        @event = Event.find(params[:brand_id])
+        @comments = @event.comments
+    else
+        @giveaways = Giveaway.all
+    end
   end
 
   # GET /giveaways/1
@@ -69,11 +77,11 @@ class GiveawaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def giveaway_params
-      params.require(:giveaway).permit(:name, 
-        :image, 
-        :unit_cost, 
-        :is_a_sample, 
-        :starting_inventory, 
+      params.require(:giveaway).permit(:name,
+        :image,
+        :unit_cost,
+        :is_a_sample,
+        :starting_inventory,
         :samples_per_unit)
     end
 end
