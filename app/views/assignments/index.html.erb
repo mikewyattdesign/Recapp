@@ -1,68 +1,230 @@
-<h1>Assignments</h1>
 <div class="row">
-  <div class="col-md-2">
-    <table class="table table-hover" id="assignable-select-table">
-      <thead>
-      <tr>
-        <th colspan="2" data-toggles-all="#assignable-select-table .assignable-select-checkbox[data-assignable-type='Brand']">Brands</th>
-      </tr>
-      </thead>
-      <tbody>
-        <% Brand.all.each do |brand| %>
-          <tr>
-            <td class="text-center"><input type="checkbox" class="assignable-select-checkbox" data-assignable-id="<%= brand.id %>" data-assignable-type="Brand"></td>
-            <td><%= brand.name %></td>
-          </tr>
-        <% end %>
-        <tr><th colspan="2" data-toggles-all="#assignable-select-table .assignable-select-checkbox[data-assignable-type='Program']">Programs</th></tr>
-        <% Program.all.each do |program| %>
-          <tr>
-            <td class="text-center"><input type="checkbox" class="assignable-select-checkbox" data-assignable-id="<%= program.id %>" data-assignable-type="Program"></td>
-            <td><%= program.name %></td>
-          </tr>
-        <% end %>
+    <div class="col-xs-12 col-sm-12 col-md-12 container-box">
+        <div class="event-header">
+            <h1><span class="glyphicon glyphicon-calendar"></span> Assignments
+            <button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#collapse-permissions" aria-expanded="false" aria-controls="collapse-permissions">
+              <span class="visible-md visible-lg visible-sm .hidden-xs">User Roles</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">Roles</span>
+            </button>
+            <button class="btn btn-primary pull-right btn-right-space" type="button" data-toggle="collapse" data-target="#collapse-user-accounts" aria-expanded="false" aria-controls="collapse-user-accounts">
+              <span class="visible-md visible-lg visible-sm .hidden-xs">Client Accounts</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">Client</span>
+            </button>
+            </h1>
+        </div>
 
-      </tbody>
-    </table>
-    <%= button_to 'Assign', '/assignments', class: 'btn btn-primary assign-btn', form_class: 'assign_form' %>
-    <%= button_to 'Unassign', '/assignments', class: 'btn btn-danger', form_class: 'unassign_form', method: :delete %>
-  </div>
-  <div class="col-md-10">
-    <table class="table table-hover" id="user-select-table">
-      <thead>
-        <tr>
-          <th class="text-center"><input type="checkbox" data-toggles-all="#user-select-table .user-select-checkbox"></th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Assignments</th>
-        </tr>
-      </thead>
+        <div class="event-background">
+            </br>
 
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td class="text-center"><input type="checkbox"  class="user-select-checkbox" data-user-id="<%= user.id %>"></td>
-            <td <%= "data-you" if user.id == current_user.id %>><%= link_to user.email, '#' %></td>
-            <td><%= form_for user, url: update_role_path  do |f| %>
-              <%= f.select  :role, options_for_select(User.roles,user.role) %>
-              <%= f.hidden_field :user_id, value: user.id %>
-            <% end -%></td>
-            <td class="user-assignments-cell">
-              <% if user.has_assignments? %>
-                <ul class="token-input-list-facebook token-list-display assignment-list">
-                  <% user.assignments.each do |assignment| %>
-                    <% if assignment.assignable_type == 'Brand' %>
-                      <li class="brand-assignment token-input-token-facebook"><%= assignment.brand.name %></li>
-                    <% else %>
-                      <li class="program-assignment token-input-token-facebook"><%= assignment.program.name %></li>
-                    <% end %>
+            <div class="collapse" id="collapse-permissions">
+              <div class="col-md-12">
+                <div class="card-stack card-round user-permission-chart">
+                <table class="table">
+                  <thead>
+                      <tr>
+                          <th>User</th>
+                          <th>Favorite</th>
+                          <th>Read</th>
+                          <th>Create</th>
+                          <th>Update</th>
+                          <th>Delete</th>
+                      </tr>
+                  </thead>
+                  <tbody class="user-permission-info">
+                      <tr>
+                          <td>Super Administrator</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                      </tr>
+                      <tr>
+                          <td>Administrator</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>User Roles & Contact</td>
+                      </tr>
+                      <tr>
+                          <td>Field Staff</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>Photo & Video</td>
+                      </tr>
+                      <tr>
+                          <td>G360</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>Photo & Video</td>
+                          <td>No</td>
+                          <td>No</td>
+                      </tr>
+                      <tr>
+                          <td>Client</td>
+                          <td>No</td>
+                          <td>Only Client's Content</td>
+                          <td>No</td>
+                          <td>No</td>
+                          <td>No</td>
+                      </tr>
+                      <tr>
+                          <td>Guest</td>
+                          <td>No</td>
+                          <td>No</td>
+                          <td>No</td>
+                          <td>No</td>
+                          <td>No</td>
+                      </tr>
+                  </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="collapse" id="collapse-user-accounts">
+              <div class="col-md-12">
+                <div class="card-stack card-round user-permission-chart">
+                <table class="table">
+                  <thead>
+                      <tr>
+                          <th>User</th>
+                          <th>Password</th>
+                      </tr>
+                  </thead>
+                  <tbody class="user-permission-info">
+                      <tr>
+                          <td>rollingrock@recapp.com</td>
+                          <td>rocknroll1029</td>
+                      </tr>
+                      <tr>
+                          <td>natty@recapp.com</td>
+                          <td>Benatural5678</td>
+                      </tr>
+                      <tr>
+                          <td>schweppes@recapp.com</td>
+                          <td>Waterfalldive2345</td>
+                      </tr>
+                      <tr>
+                          <td>stella@recapp.com</td>
+                          <td>Homerunday9264</td>
+                      </tr>
+                      <tr>
+                          <td>becks@recapp.com</td>
+                          <td>Deerjumpdive2987</td>
+                      </tr>
+                      <tr>
+                          <td>bassproshops@recapp.com</td>
+                          <td>Fishinginthetrack5498</td>
+                      </tr>
+                      <tr>
+                          <td>shocktop@recapp.com</td>
+                          <td>Yesfortheno6392</td>
+                      </tr>
+                      <tr>
+                          <td>budweiser@recapp.com</td>
+                          <td>Froglivingsky2093</td>
+                      </tr>
+                      <tr>
+                          <td>kirin@recapp.com</td>
+                          <td>Nicehomedog4928</td>
+                      </tr>
+                      <tr>
+                          <td>pureleaf@recapp.com</td>
+                          <td>Treeoflife8492</td>
+                      </tr>
+                      <tr>
+                          <td>stubbs@recapp.com</td>
+                          <td>Takethatvoo7382</td>
+                      </tr>
+                  </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card-stack card-round">
+              <table class="table table-hover" id="assignable-select-table">
+                <thead>
+                <tr>
+                  <th colspan="2" data-toggles-all="#assignable-select-table .assignable-select-checkbox[data-assignable-type='Brand']">Brands</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <% Brand.all.each do |brand| %>
+                    <tr>
+                      <td class="text-center"><input type="checkbox" class="assignable-select-checkbox" data-assignable-id="<%= brand.id %>" data-assignable-type="Brand"></td>
+                      <td><%= brand.name %></td>
+                    </tr>
                   <% end %>
-                </ul>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+
+                    <tr>
+                      <th colspan="2" data-toggles-all="#assignable-select-table .assignable-select-checkbox[data-assignable-type='Program']">Programs</th>
+                    </tr>
+                  <% Program.all.each do |program| %>
+                    <tr>
+                      <td class="text-center"><input type="checkbox" class="assignable-select-checkbox" data-assignable-id="<%= program.id %>" data-assignable-type="Program"></td>
+                      <td><%= program.name %></td>
+                    </tr>
+                  <% end %>
+
+                </tbody>
+              </table>
+              <%= button_to 'Assign', '/assignments', class: 'btn btn-primary assign-btn', form_class: 'assign_form' %>
+              <%= button_to 'Unassign', '/assignments', class: 'btn btn-danger', form_class: 'unassign_form', method: :delete %>
+              </div>
+            </div>
+
+            <div class="col-md-9">
+              <div class="card-stack card-round">
+              <table class="table table-hover" id="user-select-table">
+                <thead>
+                  <tr>
+                    <th class="text-center"><input type="checkbox" data-toggles-all="#user-select-table .user-select-checkbox"></th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Assignments</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <% @users.each do |user| %>
+                    <tr>
+                      <td class="text-center"><input type="checkbox"  class="user-select-checkbox" data-user-id="<%= user.id %>"></td>
+                      <td <%= "data-you" if user.id == current_user.id %>><%= link_to user.email, '#' %></td>
+                      <td><%= form_for user, url: update_role_path  do |f| %>
+                        <%= f.select  :role, options_for_select(User.roles,user.role) %>
+                        <%= f.hidden_field :user_id, value: user.id %>
+                      <% end -%></td>
+                      <td class="user-assignments-cell">
+                        <% if user.has_assignments? %>
+                          <ul class="token-input-list-facebook token-list-display assignment-list">
+                            <% user.assignments.each do |assignment| %>
+                              <% if assignment.assignable_type == 'Brand' %>
+                                <li class="brand-assignment token-input-token-facebook"><%= assignment.brand.name %></li>
+                              <% else %>
+                                <li class="program-assignment token-input-token-facebook"><%= assignment.program.name %></li>
+                              <% end %>
+                            <% end %>
+                          </ul>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
