@@ -11,6 +11,7 @@ G360EventApplication::Application.routes.draw do
     get '/assignments' => 'assignments#index', as: :user_management
     delete '/assignments' => 'assignments#destroy'
 
+    resources :users
     resources :locations
     resources :giveaways
     resources :event_giveaways

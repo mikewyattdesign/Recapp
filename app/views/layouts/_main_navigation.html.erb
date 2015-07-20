@@ -26,25 +26,25 @@
 
         <% if can? :create, Photo %>
         <li class="dropdown">
-          <a id="resources-drop" href="#" class="dropdown-toggle" data-toggle="dropdown">All Resources <b class="caret"></b></a>
+          <a id="resources-drop" href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <% if can? :read, Photo %>
-                <li class="<%= 'active' if request.path == '/photos' %>"><%= link_to "Photos", "/photos" %></li>
+                <li class="<%= 'active' if request.path == '/photos' %>"><%= link_to "All Photos", "/photos" %></li>
             <% end %>
             <% if can? :read, Video %>
-                <li class="<%= 'active' if request.path == '/videos' %>"><%= link_to "Videos", "/videos" %></li>
+                <li class="<%= 'active' if request.path == '/videos' %>"><%= link_to "All Videos", "/videos" %></li>
             <% end %>
             <% if can? :read, Giveaway %>
-                <li class="<%= 'active' if request.path == '/giveaways' %>"><%= link_to "Giveaways", "/giveaways" %></li>
+                <li class="<%= 'active' if request.path == '/giveaways' %>"><%= link_to "All Giveaways", "/giveaways" %></li>
             <% end %>
             <% if can? :read, Comment %>
-                <li class="<%= 'active' if request.path == '/comments' %>"><%= link_to "Comments", "/comments" %></li>
+                <li class="<%= 'active' if request.path == '/comments' %>"><%= link_to "All Comments", "/comments" %></li>
             <% end %>
             <% if can? :read, Contact %>
-                <li class="<%= 'active' if request.path == '/contacts' %>"><%= link_to "Contacts", "/contacts" %></li>
+                <li class="<%= 'active' if request.path == '/contacts' %>"><%= link_to "All Contacts", "/contacts" %></li>
             <% end %>
             <% if can? :read, Document %>
-                <li class="<%= 'active' if request.path == '/documents' %>"><%= link_to "Documents", "/documents" %></li>
+                <li class="<%= 'active' if request.path == '/documents' %>"><%= link_to "All Documents", "/documents" %></li>
             <% end %>
           </ul>
         </li>

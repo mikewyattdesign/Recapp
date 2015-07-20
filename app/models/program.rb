@@ -23,6 +23,10 @@ class Program < ActiveRecord::Base
         photos.where(event_favorite: true)
     end
 
+    def first_favorite_photos
+        photos.where(event_first_favorite: true)
+    end
+
     after_create do |program|
     	# Update the brand's users with the new program
     	program.brand.users.each {|user| user.assign_to_program(program)} unless program.brand.nil?

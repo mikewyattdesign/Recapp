@@ -25,6 +25,10 @@ class ProgramReport
         @program.favorite_photos
     end
 
+    def first_favorite_photos
+        @program.first_favorite_photos
+    end
+
     def total_impressions
         events.map(&:estimated_total_impressions).reduce(:+)
     end
@@ -73,13 +77,13 @@ class ProgramReport
         events.map{ |event|
             {name: event.name,
                 data: [
+                        ['',],
                         ['Total Impressions',     event.estimated_total_impressions],
                         ['Mileage Impressions',   event.mileage_impressions],
                         ['Footprint Impressions', event.footprint_impressions],
                         ['Walk by Impressions',   event.walk_by_impressions],
                         ['Digital Engagements',   event.digital_engagements],
-                        ['Extended Engagements',  event.extended_engagements],
-                        ['Total Attendance',      event.total_attendance]
+                        ['Extended Engagements',  event.extended_engagements]
                     ]
                 }
             }

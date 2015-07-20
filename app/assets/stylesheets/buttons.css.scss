@@ -224,6 +224,20 @@
     margin-right: 5px;
 }
 
+.assign-btn[disabled] {
+    background-color: $lightest-orange;
+    border-color: $lightest-orange;
+}
+
+.unassign-btn[disabled] {
+    background-color: #E59694;
+    border-color: #E59694;
+}
+
+.assign-btn, .unassign-btn {
+    width: 110px;
+}
+
 input.btn {
     @media (max-width : 400px) {
         width: 100% !important;

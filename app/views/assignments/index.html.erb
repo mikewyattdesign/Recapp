@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 container-box">
         <div class="event-header">
-            <h1><span class="glyphicon glyphicon-calendar"></span> Assignments
+            <h1><span class="glyphicon glyphicon-tower"></span> Admin Panel
             <button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#collapse-permissions" aria-expanded="false" aria-controls="collapse-permissions">
               <span class="visible-md visible-lg visible-sm .hidden-xs">User Roles</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">Roles</span>
             </button>
@@ -11,7 +11,7 @@
             </h1>
         </div>
 
-        <div class="event-background">
+        <div class="assignment-background">
             </br>
 
             <div class="collapse" id="collapse-permissions">
@@ -63,7 +63,7 @@
                       </tr>
                       <tr>
                           <td>Client</td>
-                          <td>No</td>
+                          <td>Only Client's Content</td>
                           <td>Only Client's Content</td>
                           <td>No</td>
                           <td>No</td>
@@ -172,8 +172,12 @@
 
                 </tbody>
               </table>
-              <%= button_to 'Assign', '/assignments', class: 'btn btn-primary assign-btn', form_class: 'assign_form' %>
-              <%= button_to 'Unassign', '/assignments', class: 'btn btn-danger', form_class: 'unassign_form', method: :delete %>
+              <%= button_to '/assignments', class: 'btn btn-primary assign-btn', form_class: 'assign_form' do %>
+                <span class="glyphicon glyphicon-plus"></span> Assign
+              <% end %>
+              <%= button_to '/assignments', class: 'btn btn-danger unassign-btn', form_class: 'unassign_form', method: :delete do %>
+                <span class="glyphicon glyphicon-minus"></span> Unassign
+              <% end %>
               </div>
             </div>
 
@@ -193,11 +197,11 @@
                   <% @users.each do |user| %>
                     <tr>
                       <td class="text-center"><input type="checkbox"  class="user-select-checkbox" data-user-id="<%= user.id %>"></td>
-                      <td <%= "data-you" if user.id == current_user.id %>><%= link_to user.email, '#' %></td>
+                      <td <%= "data-you" if user.id == current_user.id %>><%= link_to  user.email, "/users/#{user.id}" %></td>
                       <td><%= form_for user, url: update_role_path  do |f| %>
                         <%= f.select  :role, options_for_select(User.roles,user.role) %>
                         <%= f.hidden_field :user_id, value: user.id %>
-                      <% end -%></td>
+                      <% end %></td>
                       <td class="user-assignments-cell">
                         <% if user.has_assignments? %>
                           <ul class="token-input-list-facebook token-list-display assignment-list">

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 container-box">
+        <div class="event-header">
+            <h1><span class="glyphicon glyphicon-tower"></span> Delete <%= @user.email %>
+            </h1>
+        </div>
+
+        <div class="delete-user-background">
+          <div class="col-md-10 col-md-offset-1 text-center">
+            </br>
+            <div class="card-stack card-round">
+            <h2>WARNING!</h2>
+            <h3>THE "DELETE USER" BUTTON WILL REMOVE </br><%= @user.email %></br>  USER ACCOUNT PERMANENTLY</h3>
+            </br>
+            <%= button_to "/users/#{@user.id}", method: :delete, data: { confirm: "ARE YOU SURE YOU WANT TO DELETE THIS USER?" }, class: 'btn btn-danger' do %> DELETE USER
+            <% end %>
+            </br>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
