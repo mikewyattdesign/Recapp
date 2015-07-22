@@ -9,7 +9,11 @@ module ApplicationHelper
     end
 
     def number_to_abbreviated(number)
-    	number_to_human(number, units: {thousand: "k", million: "MM", billion: "B"})
+      if number == 0
+        "N/A"
+      else
+    	   number_to_human(number, units: {thousand: "k", million: "MM", billion: "B"})
+      end
     end
 
 end

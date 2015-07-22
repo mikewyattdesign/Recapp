@@ -6,6 +6,15 @@
 .navbar .navbar-nav {
   display: inline-block;
   float: none;
+  max-height: 40px;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+    @media screen and (max-width : 768px)  {
+          max-height: 500px;
+          padding: 0;
+    }
 }
 
 .navbar {
@@ -18,10 +27,14 @@
     background-position: 20px 5px;
 }
 
-.navbar-header {
+.navbar-recapp {
     a {
         color: #FFF !important;
         font-family: TrendSansOne, sans-serif;
+    }
+
+    @media screen and (max-width : 768px)  {
+        display: none;
     }
 }
 
@@ -53,5 +66,9 @@
         &:hover {
             color: white !important;
         }
+    }
+
+    @media screen and (max-width : 768px)  {
+          width: 100%;
     }
 }

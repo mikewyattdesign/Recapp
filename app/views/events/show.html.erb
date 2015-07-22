@@ -1,6 +1,6 @@
 <div class="event">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 container-box">
             <div class="show-header">
                 <div class="row">
                     <div class="col-md-10">
@@ -15,126 +15,149 @@
                     </div>
                 </div>
             </div>
-            <div class="event-summary hidden clearfix">
-                <div class="event-weather col-md-3">
-                    <%= @event_decorator.try(:weather) %>
-                </div>
-                <div class="col-md-3 event-duration">
-                    <%= @event_decorator.duration %>
-                </div>
-                <div class="col-md-3 event-attendees"><%= @event_decorator.total_attendance %></div>
-                <div class="col-md-3 event-impressions"><%= @event_decorator.estimated_total_impressions %></div>
-            </div>
-            <div class="clearfix"></div>
 
-            <div class="event-overview panel panel-default">
-                <div class="panel-heading">Overview</div>
-                <div class="panel-body">
-                    <%= @event_decorator.overview %>
-                </div>
-            </div>
+            <div class="form-box">
+              <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <div class="card-stack brand-icon-container">
 
-            <%= render 'photo_carousel' %>
+                      <div class="event-summary hidden clearfix">
+                          <div class="event-weather col-md-3">
+                              <%= @event_decorator.try(:weather) %>
+                          </div>
+                          <div class="col-md-3 event-duration">
+                              <%= @event_decorator.duration %>
+                          </div>
+                          <div class="col-md-3 event-attendees"><%= @event_decorator.total_attendance %></div>
+                          <div class="col-md-3 event-impressions"><%= @event_decorator.estimated_total_impressions %></div>
+                      </div>
+                      <div class="clearfix"></div>
 
-            <div class="event-impressions panel panel-default">
-                <div class="panel-heading">Impressions Graph</div>
-                <div class="panel-body">
-                    <%= column_chart [
-                        ['Total Impressions',     @event_decorator.estimated_total_impressions],
-                        ['Mileage Impressions',   @event_decorator.mileage_impressions],
-                        ['Footprint Impressions', @event_decorator.footprint_impressions],
-                        ['Walk by Impressions',   @event_decorator.walk_by_impressions],
-                        ['Digital Engagements',   @event_decorator.digital_engagements],
-                        ['Extended Engagements',  @event_decorator.extended_engagements]
-                    ] %>
-                </div>
-            </div>
+                      <div class="event-overview panel panel-default">
+                          <div class="panel-heading">Overview</div>
+                          <div class="panel-body">
+                              <%= @event_decorator.overview %>
+                          </div>
+                      </div>
 
+                      <%= render 'photo_carousel' %>
 
-            <div class="event-impressions panel panel-default">
-                <div class="panel-heading">Impressions Details</div>
-                <div class="panel-body">
-                    <div class="row">
+                      <div class="event-impressions panel panel-default">
+                          <div class="panel-heading">Impressions Graph</div>
+                          <div class="panel-body">
+                              <%= column_chart [
+                                  ['Total Impressions',     @event_decorator.estimated_total_impressions],
+                                  ['Mileage Impressions',   @event_decorator.mileage_impressions],
+                                  ['Footprint Impressions', @event_decorator.footprint_impressions],
+                                  ['Walk by Impressions',   @event_decorator.walk_by_impressions],
+                                  ['Digital Engagements',   @event_decorator.digital_engagements],
+                                  ['Extended Engagements',  @event_decorator.extended_engagements]
+                              ] %>
+                          </div>
+                      </div>
 
-                        <div class="col-md-4 col-xs-12 estimated-total-impressions impressions">
-                            <span class="heading">Total</span>
-                            <%= number_to_abbreviated(@event_decorator.estimated_total_impressions) %>
-                        </div>
-                        <div class="col-md-2 col-xs-12 mileage-impressions impressions">
-                            <%= number_to_abbreviated(@event_decorator.mileage_impressions) %>
-                            <span class="heading">Mileage</span>
-                        </div>
-                        <div class="col-md-2 col-xs-12 footprint-attendance impressions">
-                            <%= number_to_abbreviated(@event_decorator.footprint_impressions) %>
-                            <span class="heading">Footprint</span>
-                        </div>
-                        <div class="col-md-2 col-xs-12 display-attendance impressions">
-                            <%= number_to_abbreviated(@event_decorator.walk_by_impressions) %>
-                            <span class="heading">Walk-by</span>
-                        </div>
-                        <div class="col-md-2 col-xs-12 total-attendance impressions">
-                            <%= number_to_abbreviated(@event_decorator.total_attendance) %>
-                            <span class="heading">Event</span>
-                        </div>
+                      <div class="event-impressions panel panel-default">
+                          <div class="panel-heading">Impressions Details</div>
+                          <div class="panel-body">
+                              <div class="row">
+
+                                  <div class="col-md-4 col-xs-12 estimated-total-impressions impressions">
+                                      <span class="heading">Total</span>
+                                      <%= number_to_abbreviated(@event_decorator.estimated_total_impressions) %>
+                                  </div>
+                                  <div class="col-md-2 col-xs-12 mileage-impressions impressions">
+                                      <%= number_to_abbreviated(@event_decorator.mileage_impressions) %>
+                                      <span class="heading">Mileage</span>
+                                  </div>
+                                  <div class="col-md-2 col-xs-12 footprint-attendance impressions">
+                                      <%= number_to_abbreviated(@event_decorator.footprint_impressions) %>
+                                      <span class="heading">Footprint</span>
+                                  </div>
+                                  <div class="col-md-2 col-xs-12 display-attendance impressions">
+                                      <%= number_to_abbreviated(@event_decorator.walk_by_impressions) %>
+                                      <span class="heading">Walk-by</span>
+                                  </div>
+                                  <div class="col-md-2 col-xs-12 total-attendance impressions">
+                                      <%= number_to_abbreviated(@event_decorator.total_attendance) %>
+                                      <span class="heading">Event</span>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+
+                      <div class="event-engagements panel panel-default">
+                          <div class="panel-heading">Engagements</div>
+                          <div class="panel-body">
+                              <div class="row">
+                              <div class="col-md-6 col-xs-12 extended-engagements impressions">
+                                  <%= number_to_abbreviated(@event_decorator.extended_engagements) %>
+                                  <span class="heading">Extended</span>
+
+                              </div>
+                              <div class="col-md-6 col-xs-12 digital-engagements impressions">
+                                  <%= number_to_abbreviated(@event_decorator.digital_engagements) %>
+                                  <span class="heading">Digital</span>
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="event-giveaways panel panel-default">
+                          <table class="table">
+                              <tr>
+                                  <th>Giveaway</th>
+                                  <th class='text-right'>Amount Distributed</th>
+                              </tr>
+                              <% @event_decorator.event_giveaways.each do |event_giveaway| %>
+                                  <tr class="event-giveaway">
+                                    <td>
+                                      <% if event_giveaway.giveaway.image.present? %>
+                                        <div class="event-giveaway-image">
+                                        <%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' %>
+                                        </div>
+                                      <% end %>
+                                      <%= event_giveaway.giveaway.name %>
+                                    </td>
+                                    <td class='text-right'>
+                                      <%= event_giveaway.count_given_away || 0 %>
+                                    </td>
+                                  </tr>
+                              <% end %>
+                          </table>
+                      </div>
+
+                      <div class="event-contacts panel panel-default">
+                          <div class="panel-heading">Contacts</div>
+                          <div class="panel-body">
+                              <% @event_decorator.contacts.each do |contact| %>
+                                  <div class="col-xs-6 contact">
+                                      <div class="name"><%= contact.full_name %></div>
+
+                                      <div class="position brand-primary"><%= contact.title %></div>
+                                      <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
+                                      <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
+                                  </div>
+                              <% end %>
+                          </div>
+                      </div>
                     </div>
-
+                  </div>
                 </div>
             </div>
-            <div class="event-engagements panel panel-default">
-                <div class="panel-heading">Engagements</div>
-                <div class="panel-body">
-                    <div class="row">
-                    <div class="col-md-6 col-xs-12 extended-engagements impressions">
-                        <%= number_to_abbreviated(@event_decorator.extended_engagements) %>
-                        <span class="heading">Extended</span>
 
-                    </div>
-                    <div class="col-md-6 col-xs-12 digital-engagements impressions">
-                        <%= number_to_abbreviated(@event_decorator.digital_engagements) %>
-                        <span class="heading">Digital</span>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="event-giveaways panel panel-default">
-                <table class="table">
-                    <tr>
-                        <th>Giveaway</th>
-                        <th class='text-right'>Amount Distributed</th>
-                    </tr>
-                    <% @event_decorator.event_giveaways.each do |event_giveaway| %>
-                        <tr class="event-giveaway">
-                            <td class="event-giveaway-image"><%= image_tag event_giveaway.giveaway.image, class: 'img-responsive' if event_giveaway.giveaway.image.present? %><%= event_giveaway.giveaway.name %></td>
-                            <td class='text-right'><%= event_giveaway.count_given_away || 0 %></td>
-                        </tr>
+            <div class="actions text-center">
+                <ul class="list-inline">
+                    <!-- <li><%= link_to 'Back', events_path, class: "btn btn-primary" %></li> -->
+                    <%= link_to event_photos_path(@event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-camera"></span> &nbsp;Photos<% end %>
+                    <%= link_to event_comments_path(@event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-comment"></span> &nbsp;Comments<% end %>
+                    <% if can? :update, @event %>
+                    <%= link_to edit_event_path(@event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-pencil"></span> &nbsp;Edit<% end %>
                     <% end %>
-                </table>
+                    <%= link_to event_path(@event, format: :pdf), class: "btn btn-info", target: "_blank" do %><span class="glyphicon glyphicon-file"></span> &nbsp;Report<% end %>
+                </ul>
             </div>
-            <div class="event-contacts panel panel-default">
-                <div class="panel-heading">Contacts</div>
-                <div class="panel-body">
-                    <% @event_decorator.contacts.each do |contact| %>
-                        <div class="col-xs-6 contact">
-                            <div class="name"><%= contact.full_name %></div>
 
-                            <div class="position brand-primary"><%= contact.title %></div>
-                            <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
-                            <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<div class="actions text-center">
-    <ul class="list-inline">
-        <!-- <li><%= link_to 'Back', events_path, class: "btn btn-primary" %></li> -->
-        <%= link_to event_photos_path(@event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-camera"></span> &nbsp;Photos<% end %>
-        <%= link_to event_comments_path(@event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-comment"></span> &nbsp;Comments<% end %>
-        <% if can? :update, @event %>
-        <%= link_to edit_event_path(@event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-pencil"></span> &nbsp;Edit<% end %>
-        <% end %>
-        <%= link_to event_path(@event, format: :pdf), class: "btn btn-info", target: "_blank" do %><span class="glyphicon glyphicon-file"></span> &nbsp;Report<% end %>
-    </ul>
 </div>

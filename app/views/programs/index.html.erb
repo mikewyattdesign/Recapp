@@ -14,15 +14,18 @@
             <% @programs.each do |program| %>
               <div class="col-md-4">
                 <div class="card-stack brand-icon-container">
-                <div class="prize-icon hidden">
-                    <!-- Prize Picture -->
+                <div class="program-icon">
+                    <!-- Program Picture -->
                 </div>
                 <div class="brand-name">
-                    <%= link_to program.name, program_path(program) %>
+                    <%= program.name %>
+                    <%= link_to program_path(program), class: "btn btn-info info-button" do %>
+                      <span class="glyphicon glyphicon-list"></span> Overview
+                    <% end %>
                 </div>
                 <div>
-                    <%= link_to program_events_path(program), class: "btn btn-primary info-button" do %>
-                    <span class="glyphicon glyphicon-calendar"></span> Show Events
+                    <%= link_to program_events_path(program), class: "btn btn-default info-button" do %>
+                    <span class="glyphicon glyphicon-calendar"></span> Events
                     <% end %>
                 </div>
 <!--
