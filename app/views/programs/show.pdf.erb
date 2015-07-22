@@ -28,7 +28,7 @@
         <div class="row page-break-before">
             <% @report.favorite_photos[0..11].each do |photo| %>
                 <div class="col-xs-4">
-                    <%= image_tag photo.image(:medium), class: "img-responsive pdf-photo pdf-photo-sub" %>
+                    <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
                 </div>
                 <!--
                 <div class="<%= photo_grid_class(@report.favorite_photos) %>">
