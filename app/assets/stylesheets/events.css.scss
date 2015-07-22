@@ -168,7 +168,8 @@
     padding: 10px 20px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    font-family: TrendSansOne, sans-serif;
+    font-family: Gotham, sans-serif;
+    text-transform: uppercase;
 
     @media screen and (max-width : 768px)  {
         border-radius: 0;
@@ -207,6 +208,7 @@
     box-shadow: 0px 3px 10px $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    font-family: Gotham, sans-serif;
 }
 
 .event-name {
@@ -282,29 +284,31 @@
 }
 
 .event-circle {
-    // width: 30px;
-    // height: 30px;
-    // border-radius: 50%;
-    // background: $lightest-orange;
-    // border: 3px solid $light-grey;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: $lightest-orange;
+    border: 3px solid $light-grey;
     position: absolute;
     top: 50%;
-    margin-top: -15px;
-    left: -10%;
+    margin-top: -10px;
+    left: -9.3%;
     z-index: 5;
+    cursor: pointer;
     button {
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
-        background-color: white;
-        border: 2px solid $light-grey;
-        font-size: 22px;
-        color: $dark-grey;
-        padding: 0;
+      display: none;
+        // width: 30px;
+        // height: 30px;
+        // border-radius: 15px;
+        // background-color: white;
+        // border: 2px solid $light-grey;
+        // font-size: 22px;
+        // color: $dark-grey;
+        // padding: 0;
 
-        &:hover {
-            color: $orange;
-        }
+        // &:hover {
+        //     color: $orange;
+        // }
     }
 }
 
@@ -331,7 +335,7 @@
 }
 
 .event-dropdown-add-btn {
-    padding: 3px 4px 0px 4px;
+    padding: 2px 3.8px 0px 4px;
     border-radius: 15px;
     span {
         font-size: 18px;
@@ -398,7 +402,6 @@
     border-radius: 5px;
     border: 2px dotted $dark-grey;
     color: $dark-grey;
-    font-family: TrendSansOne, sans-serif;
     &:hover {
         background-color: white;
         border: 2px dotted $orange;
@@ -436,8 +439,7 @@
 }
 
 .impressions {
-  	float: left;
-  	font-family: TrendSansOne, sans-serif;
+    text-transform: uppercase;
   	text-align: center;
   	font-size: 200%;
 	&.estimated-total-impressions {
@@ -445,10 +447,10 @@
 	}
 
 	.heading {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		display: block;
 		line-height: 1;
 	}
+
 	&.event-giveaway .giveaway-image {
 		height: 150px;
 		width: 150px;

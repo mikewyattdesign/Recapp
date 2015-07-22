@@ -30,7 +30,8 @@
 .navbar-recapp {
     a {
         color: #FFF !important;
-        font-family: TrendSansOne, sans-serif;
+        font-family: Gotham, sans-serif;
+        text-transform: uppercase;
     }
 
     @media screen and (max-width : 768px)  {
@@ -56,7 +57,8 @@
 
         a {
             color: white !important;
-            font-family: TrendSansOne, sans-serif;
+            font-family: Gotham, sans-serif;
+            text-transform: uppercase;
         }
     }
 
