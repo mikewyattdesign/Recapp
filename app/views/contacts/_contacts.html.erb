@@ -3,7 +3,7 @@
         <div class="event-header">
             <h1>
             <% if can? :create, Contact %>
-                Contacts
+                <span class="glyphicon glyphicon-phone-alt"></span> Contacts
                 <%= link_to [:new, :contact], class: "btn btn-primary pull-right" do %>
                 <span class="visible-md visible-lg visible-sm .hidden-xs">New Contact</span><span class=".hidden-md .hidden-lg .hidden-sm visible-xs">+</span>
                 <% end %>
