@@ -24,6 +24,9 @@ class Program < ActiveRecord::Base
     end
 
     def first_favorite_photos
+        events.each do |single|
+
+        end
         photos.where(event_favorite: true)
     end
 

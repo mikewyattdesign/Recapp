@@ -423,6 +423,11 @@
     }
 }
 
+.report-photo-container {
+    background-color: $white-grey;
+    border: 2px solid $lightest-grey;
+}
+
 .event-photos {
     .event-photo {
         max-height: 215px;
