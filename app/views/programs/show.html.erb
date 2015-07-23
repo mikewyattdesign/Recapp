@@ -30,8 +30,8 @@
                   <% unless @report.photos.empty? %>
                       <h2>Photos</h2>
                       <div class="row">
-                          <% @report.favorite_photos[0..11].each do |photo| %>
-                              <div class="<%= photo_grid_class(@report.favorite_photos) %>">
+                          <% @report.first_favorite_photos[0..11].each do |photo| %>
+                              <div class="<%= photo_grid_class(@report.first_favorite_photos) %>">
                                   <span class="thumbnail"><%= image_tag photo.image(:small) %></span>
                               </div>
                           <% end %>
