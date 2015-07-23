@@ -26,7 +26,7 @@
 
     <% unless @report.photos.empty? %>
         <div class="row page-break-before">
-            <% @report.favorite_photos[0..11].each do |photo| %>
+            <% @report.first_favorite_photos[0..11].each do |photo| %>
                 <div class="col-xs-4">
                     <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
                 </div>
