@@ -24,7 +24,7 @@ class Program < ActiveRecord::Base
     end
 
     def first_favorite_photos
-        events.map do |event|
+        events.select{|e| e.favorite_photos.count}.map do |event|
             event.favorite_photos.first
         end
     end

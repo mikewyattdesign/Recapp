@@ -5,11 +5,8 @@
         <%= wicked_pdf_stylesheet_link_tag "application" %>
         <%= wicked_pdf_stylesheet_link_tag "pdf" %>
         <%= wicked_pdf_javascript_include_tag "application" %>
-        <%= wicked_pdf_javascript_include_tag "jsapi", "chartkick" %>
     </head>
     <body>
-        <div class="container" id="content">
-            <%= yield %>
-        </div>
+       <%= yield %>
     </body>
 </html>

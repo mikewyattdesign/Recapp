@@ -1,118 +1,182 @@
 <% @event_decorator = event_decorator if @event_decorator.nil? && event_decorator.present? %>
 <div class="event">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="top-container">
-                <p><%= @event_decorator.overview %></p>
-            </div>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-11">
+          <div class="pdf-photo-main-container">
+          </div>
+        </div>
+        <%= @event_decorator.favorite_photo_main %>
+
+        <div class="col-xs-8">
+          <div class="brand-info">
+            <h2 class="event-name"><%= @event_decorator.name %></h2>
+            <div class="event-program"><%= @event_decorator.program.name %></div>
+            <div class="event-date"><%= "#{@event_decorator.start_date}" %> to <%= "#{@event_decorator.end_date}" %> </div>
+            <div class="event-venue"><%= @event_decorator.venue %></div>
+            <div class="event-location"><%= @event_decorator.location %></div>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="brand-logo">
+            <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
+          </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <%= @event_decorator.favorite_photo_main %>
+
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-11 ">
+            <div class="top-container">
+                <h2>Overview</h2>
+                <p class="overview-text"><%= @event_decorator.overview %></p>
+            </div>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-xs-4">
             <div class="middle-container">
+                <h2>Impressions</h2>
                 <div class="event-impressions panel panel-default">
-                    <div class="panel-heading">Impression Statistics</div>
                     <div class="panel-body">
                         <table class="impressions-table">
                             <tbody>
                                 <tr>
-                                    <th class="col-md-11 impressions-label">Total Impressions</th>
+                                    <th class="col-md-11 impressions-label">Total</th>
                                     <td class="col-md-1"><%= number_with_delimiter @event_decorator.estimated_total_impressions %></td>
                                 </tr>
                                 <% if @event_decorator.mileage_impressions > 0 %>
                                     <tr class="impressions-row">
-                                        <th class="col-md-11 impressions-label">Mileage Impressions</th>
+                                        <th class="col-md-11 impressions-label">Mileage</th>
                                         <td class="col-md-1"><%= number_with_delimiter @event_decorator.mileage_impressions %></td>
                                     </tr>
                                 <% end %>
                                 <% if @event_decorator.footprint_impressions > 0 %>
                                     <tr>
-                                        <th class="col-md-11 impressions-label">Footprint Impressions</th>
+                                        <th class="col-md-11 impressions-label">Footprint</th>
                                         <td class="col-md-1"><%= number_with_delimiter @event_decorator.footprint_impressions %></td>
                                     </tr>
                                 <% end %>
                                 <% if @event_decorator.walk_by_impressions > 0 %>
                                     <tr>
-                                        <th class="col-md-11 impressions-label">Walk by Impressions</th>
+                                        <th class="col-md-11 impressions-label">Walk by</th>
                                         <td class="col-md-1"><%= number_with_delimiter @event_decorator.walk_by_impressions %></td>
                                     </tr>
                                 <% end %>
-                                <% if @event_decorator.digital_engagements > 0 %>
-                                    <tr>
-                                        <th class="col-md-11 impressions-label">Digital Engagements</th>
-                                        <td class="col-md-1"><%= number_with_delimiter @event_decorator.digital_engagements %></td>
-                                    </tr>
-                                <% end %>
-                                <% if @event_decorator.extended_engagements > 0 %>
-                                    <tr>
-                                        <th class="col-md-11 impressions-label">Extended Engagements</th>
-                                        <td class="col-md-1"><%= number_with_delimiter @event_decorator.extended_engagements %></td>
-                                    </tr>
-                                <% end %>
+<!--
                                 <% if @event_decorator.total_attendance > 0 %>
                                     <tr>
                                         <th class="col-md-11 impressions-label">Total Attendance</th>
                                         <td class="col-md-1"><%= number_with_delimiter @event_decorator.total_attendance %></td>
                                     </tr>
                                 <% end %>
+ -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row page-break-after">
-        <% for i in 1..2 %>
-            <div class="col-xs-6">
-                <%= @event_decorator.favorite_photo_sub(i) %>
+        <div class="col-xs-4 col-xs-offset-2">
+            <div class="middle-container">
+              <h2>Engagements</h2>
+              <div class="event-impressions panel panel-default">
+                <div class="panel-body">
+                    <table class="impressions-table">
+                        <tbody>
+                            <% if @event_decorator.digital_engagements > 0 %>
+                                <tr>
+                                    <th class="col-md-11 impressions-label">Digital</th>
+                                    <td class="col-md-1"><%= number_with_delimiter @event_decorator.digital_engagements %></td>
+                                </tr>
+                            <% end %>
+                            <% if @event_decorator.extended_engagements > 0 %>
+                                <tr>
+                                    <th class="col-md-11 impressions-label">Extended</th>
+                                    <td class="col-md-1"><%= number_with_delimiter @event_decorator.extended_engagements %></td>
+                                </tr>
+                            <% end %>
+<!--
+                            <% if @event_decorator.total_attendance > 0 %>
+                                <tr>
+                                    <th class="col-md-11 impressions-label">Total Attendance</th>
+                                    <td class="col-md-1"><%= number_with_delimiter @event_decorator.total_attendance %></td>
+                                </tr>
+                            <% end %>
+-->
+                        </tbody>
+                    </table>
+                </div>
+              </div>
             </div>
-        <% end %>
+        </div>
     </div>
 
     <% unless @event_decorator.event_giveaways.empty? %>
-    <div class="row">
-        <div class="col-xs-12">
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-11">
+            <h2>Giveaways</h2>
             <div class="event-giveaways panel panel-default">
-                <div class="panel-heading">Giveaways</div>
                 <div class="panel-body">
-
+                  <table class="impressions-table">
+                    <tbody>
                     <% @event_decorator.event_giveaways.each do |event_giveaway| %>
                         <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
-                            <div class="event-giveaway">
-                                <div class='giveaway-count col-xs-2'><%= number_with_delimiter event_giveaway.count_given_away %></div>
-                                <div class="giveaway-item col-xs-10"><%= event_giveaway.giveaway.name %></div>
-                            </div>
+                            <tr class="event-giveaway">
+                                <td class="giveaway-item col-xs-10"><%= event_giveaway.giveaway.name %></td>
+                                <td class='giveaway-count col-xs-2'><%= number_with_delimiter event_giveaway.count_given_away %></td>
+                            </tr>
                         <% end %>
                     <% end %>
+                    </tbody>
+                  </table>
                 </div>
             </div>
         </div>
     </div>
     <% end %>
+
+    <div class="row pdf-page">
+      <div class="col-xs-1">
+          <%= wicked_pdf_image_tag('g360left.png') %>
+      </div>
+      <div class="col-xs-11">
+        <div class="col-xs-12">
+          <h2>Photos</h2>
+        </div>
+        <% for i in 1..4 %>
+            <div class="col-xs-4">
+                <%= @event_decorator.favorite_photo_sub(i) %>
+            </div>
+        <% end %>
+      </div>
+    </div>
 
     <% unless @event_decorator.comments.empty? %>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="event-comments panel panel-default">
-                <div class="panel-heading">Comments</div>
-                <div class="panel-body">
-                    <div>
-                        <% @event_decorator.comments.each do |comment| %>
-                            <div class="comment-text"><%= comment.content %></div>
-                        <% end %>
-                    </div>
-                </div>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-11">
+            <div class="col-xs-12">
+              <h2>Comments</h2>
+            </div>
+            <div>
+              <% @event_decorator.comments.each do |comment| %>
+                  <div class="comment-text"><%= comment.content %></div>
+              <% end %>
             </div>
         </div>
     </div>
     <% end %>
-
+<!--
     <% unless @event_decorator.favorite_photos.length < 4 %>
     <div class="row page-break-after">
         <% for i in 3..4 %>
@@ -122,7 +186,8 @@
         <% end %>
     </div>
     <% end %>
-
+ -->
+<!--
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <div class="panel panel-default">
@@ -140,15 +205,24 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <% @event_decorator.contacts.each do |contact| %>
-            <div class="col-xs-6 contact">
-                <div class="name"><%= contact.full_name %></div>
-
-                <div class="position brand-primary"><%= contact.title %></div>
-                <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
-                <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
+-->
+      <div class="row pdf-page">
+          <div class="col-xs-1">
+              <%= wicked_pdf_image_tag('g360left.png') %>
+          </div>
+          <div class="col-xs-11">
+            <div class="col-xs-12">
+              <h2>Contacts</h2>
             </div>
-        <% end %>
-    </div>
+          <% @event_decorator.contacts.each do |contact| %>
+            <div class="contact">
+              <div class="name"><%= contact.full_name %></div>
+
+              <div class="position brand-primary"><%= contact.title %></div>
+              <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
+              <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
+            </div>
+          <% end %>
+          </div>
+      </div>
 </div>

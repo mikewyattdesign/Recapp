@@ -469,21 +469,6 @@
   }
 }
 
-.event-giveaways {
-    .event-giveaway-image {
-        height: 150px;
-        width: 150px;
-        background-color: $white-grey;
-        border: 2px solid $lightest-grey;
-    }
-
-    .event-giveaway-image img {
-        width: auto;
-        height: 100%;
-        margin: auto;
-    }
-}
-
 .event-venue, .event-location {
     color: #fc9f4c;
 }

@@ -29,6 +29,21 @@ class EventsController < ApplicationController
       format.html
       format.json
       format.pdf do
+        return render pdf: "#{@event.id}_#{@event.name}",
+                        template: '/events/show.pdf.erb',
+                        layout: "/layouts/pdf.html.erb",
+                        redirect_delay: 200,
+                        disable_javascript: false,
+                        orientation: 'Landscape',
+                        encoding: "UTF-8",
+                        margin:  { top: 0, bottom: 7, left: 0, right: 0},
+                        page_size: 'Letter',
+                        footer: {
+                            html: {template: "/events/footer.pdf.erb"}
+                        },
+                        show_as_html: params[:debug].present?,
+                        locals: {event_decorator: @event_decorator}
+
         if (@event.report.present? && @event.report.report.present?)
           send_file Paperclip.io_adapters.for(@event.report.report).path
         else
@@ -120,20 +135,18 @@ class EventsController < ApplicationController
   def render_PDF(id)
     @event = Event.find(id)
     @event_decorator = EventDecorator.new(@event)
+
     doc_pdf = render_to_string pdf: "#{@event.id}_#{@event.name}",
-                    template: '/events/show.pdf.erb',
-                    layout: "/layouts/pdf.html.erb",
-                    redirect_delay: 200,
-                    disable_javascript: false,
-                    margin: { top: 65, bottom: 50 },
-                    encoding: "UTF-8",
-                    header: {
-                        html: {template: '/events/header.pdf.erb', locals: {event_decorator: @event_decorator}}
-                    },
-                    footer: {
-                        html: {template: "/events/footer.pdf.erb"}
-                    },
-                    locals: {event_decorator: @event_decorator}
+                        template: '/events/show.pdf.erb',
+                        layout: "/layouts/pdf.html.erb",
+                        redirect_delay: 200,
+                        disable_javascript: false,
+                        orientation: 'Landscape',
+                        encoding: "UTF-8",
+                        footer: {
+                            html: {template: "/events/footer.pdf.erb"}
+                        },
+                        locals: {event_decorator: @event_decorator}
 
 
     # save PDF to disk

@@ -1,16 +1,23 @@
-.row {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
 .pdf-photo {
     margin: 0 auto;
 }
 
+.pdf-page {
+    position: relative;
+}
+
+.pdf-photo-main-container {
+    position: relative;
+    height: 500px;
+}
+
 .pdf-photo-main {
-    max-height: 300px;
-    width: auto;
-    overflow: hidden;
+    position: absolute;
+    left: 25px;
+    top: 0px;
+    width: 100%;
+    height: 500px;
+    z-index: -10;
 }
 
 .pdf-photo-sub {
@@ -28,15 +35,27 @@
 .event-name, .event-program, .event-date, .event-venue, .event-location, .program-name, .program-date {
 	font-family: arial;
 }
+
+.event-program, .event-date, .event-venue, .event-location, .program-name, .program-date {
+  font-size: 18px;
+  font-weight: bold;
+  color: #494949;
+}
+
 .event-name, .program-name {
     margin-top: 10px;
 }
 
+.event-name {
+  color: #F89F4F;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
 .event-brand, .program-brand {
     margin-top: 10px;
-	width: 125px;
-    background-color: #FFF;
-    border: 2px solid #f69c52;
+    width: 100%;
 }
 
 .show-header {
@@ -48,9 +67,38 @@
     height: 20px;
 }
 
+.overview-text {
+  font-size: 18px;
+  color: #494949;
+}
+
 body {
 	padding: 0;
-    background-color: white;
+  background: transparent;
+  position: relative;
+}
+
+h2 {
+  color: #F89F4F;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 70px;
+  font-size: 40px;
+}
+
+td, th {
+  margin: 5px;
+  color: #494949;
+}
+
+.page-number {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #9c9c9c;
+    position: absolute;
+    right: 10px;
+    top: -5px;
 }
 
 .container {
@@ -76,14 +124,8 @@ body {
     padding: 0;
 }
 
-.brand-info {
-    float: left;
-    width: 75%;
-}
-
-.brand-logo {
-    float: left;
-    width: 25%;
+.brand-info, .brand-logo {
+    margin-top: 50px;
 }
 
 .event-fav-image {
@@ -99,23 +141,32 @@ body {
 }
 
 .giveaway-count {
+    height: 50px;
     border-top: 1px solid #e0e0e0;
     padding: 8px 10px 8px 20px;
+    font-size: 28px;
+    text-transform: uppercase;
 }
 
 .giveaway-item {
+    height: 50px;
     border-top: 1px solid #e0e0e0;
     padding: 8px 15px 8px 15px;
-    background-color: #f8f8f8;
+    background-color: #CCCCCC;
     font-weight: bold;
+    font-size: 28px;
+    text-transform: uppercase;
 }
 
 .comment-text {
     padding: 8px 20px 8px 20px;
-    border-top: 1px solid #e0e0e0;
+    font-size: 18px;
 }
 
 .group360-footer {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
 }
 
@@ -125,10 +176,14 @@ body {
 
 .impressions-table tr {
     border-top: 1px solid #e0e0e0;
+    height: 80px;
+    font-size: 28px;
+    text-transform: uppercase;
 }
 
 .impressions-label {
     padding: 8px 15px 8px 15px;
+    background-color: #CCCCCC;
 }
 
 .brand-primary {
@@ -138,6 +193,7 @@ body {
 .contact {
     color: #9D99A8;
     padding: 15px;
+    font-size: 22px;
 }
 .contact .name {
     font-weight: bold;
