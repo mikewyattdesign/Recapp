@@ -143,6 +143,7 @@
     </div>
     <% end %>
 
+    <% unless @event_decorator.photos.empty? %>
     <div class="row pdf-page">
       <div class="col-xs-1">
           <%= wicked_pdf_image_tag('g360left.png') %>
@@ -158,6 +159,7 @@
         <% end %>
       </div>
     </div>
+    <% end %>
 
     <% unless @event_decorator.comments.empty? %>
     <div class="row pdf-page">
@@ -206,23 +208,25 @@
         </div>
     </div>
 -->
-      <div class="row pdf-page">
-          <div class="col-xs-1">
-              <%= wicked_pdf_image_tag('g360left.png') %>
+    <% unless @event_decorator.contacts.empty? %>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-11">
+          <div class="col-xs-12">
+            <h2>Contacts</h2>
           </div>
-          <div class="col-xs-11">
-            <div class="col-xs-12">
-              <h2>Contacts</h2>
-            </div>
-          <% @event_decorator.contacts.each do |contact| %>
-            <div class="contact">
-              <div class="name"><%= contact.full_name %></div>
+        <% @event_decorator.contacts.each do |contact| %>
+          <div class="contact">
+            <div class="name"><%= contact.full_name %></div>
 
-              <div class="position brand-primary"><%= contact.title %></div>
-              <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
-              <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
-            </div>
-          <% end %>
+            <div class="position brand-primary"><%= contact.title %></div>
+            <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
+            <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
           </div>
-      </div>
+        <% end %>
+        </div>
+    </div>
+    <% end %>
 </div>
