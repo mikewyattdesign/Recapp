@@ -36,11 +36,8 @@ class EventsController < ApplicationController
                         disable_javascript: false,
                         orientation: 'Landscape',
                         encoding: "UTF-8",
-                        margin:  { top: 0, bottom: 7, left: 0, right: 0},
+                        margin:  { top: 0, bottom: 0, left: 0, right: 0},
                         page_size: 'Letter',
-                        footer: {
-                            html: {template: "/events/footer.pdf.erb"}
-                        },
                         show_as_html: params[:debug].present?,
                         locals: {event_decorator: @event_decorator}
 
@@ -143,9 +140,6 @@ class EventsController < ApplicationController
                         disable_javascript: false,
                         orientation: 'Landscape',
                         encoding: "UTF-8",
-                        footer: {
-                            html: {template: "/events/footer.pdf.erb"}
-                        },
                         locals: {event_decorator: @event_decorator}
 
 

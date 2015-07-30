@@ -5,10 +5,12 @@
             <%= wicked_pdf_image_tag('g360left.png') %>
         </div>
         <div class="col-xs-11">
-          <div class="pdf-photo-main-container">
+          <div class="pdf-photo-main-container-bg">
           </div>
         </div>
-        <%= @event_decorator.favorite_photo_main %>
+        <div class="pdf-photo-main-container">
+          <%= @event_decorator.favorite_photo_main %>
+        </div>
 
         <div class="col-xs-8">
           <div class="brand-info">
@@ -152,11 +154,22 @@
         <div class="col-xs-12">
           <h2>Photos</h2>
         </div>
-        <% for i in 1..4 %>
+          <div class="pdf-photo-sub-container">
+            <% for i in 1..9 %>
             <div class="col-xs-4">
-                <%= @event_decorator.favorite_photo_sub(i) %>
+              <%= @event_decorator.favorite_photo_sub(i) %>
             </div>
+            <% end %>
+          </div>
+<!--
+        <% unless @event_decorator.favorite_photos.length < 4 %>
+          <% for i in 3..6 %>
+              <div class="col-xs-6">
+                  <%= @event_decorator.favorite_photo_sub(i) %>
+              </div>
+          <% end %>
         <% end %>
+ -->
       </div>
     </div>
     <% end %>
@@ -178,17 +191,7 @@
         </div>
     </div>
     <% end %>
-<!--
-    <% unless @event_decorator.favorite_photos.length < 4 %>
-    <div class="row page-break-after">
-        <% for i in 3..4 %>
-            <div class="col-xs-6">
-                <%= @event_decorator.favorite_photo_sub(i) %>
-            </div>
-        <% end %>
-    </div>
-    <% end %>
- -->
+
 <!--
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
