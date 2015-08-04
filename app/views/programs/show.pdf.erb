@@ -1,20 +1,23 @@
 <% @report = report if @report.nil? && report.present? %>
 <% @program = program if @program.nil? && program.present? %>
 <div class="program">
-
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="top-container">
-                <p><%= @program.overview %></p>
-            </div>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-11">
+          <div class="programs-photo-main-container-bg">
+          </div>
+        </div>
+        <% @report.favorite_photos[0..0].each do |photo| %>
+            <div class="programs-photo-main-container">
+                <%= image_tag photo.image(:small), class: "programs-photo-main" %>
+            </div>
+        <% end %>
+        <div class="col-xs-10">
             <h2>Events</h2>
             <ul class="list-group">
-                <% @program.events.each do |event| %>
+                <% @program.events[0..1].each do |event| %>
                     <% event_decorator = EventDecorator.new(event) %>
                     <li class="list-group-item">
                         <%= event.name %><span class="pull-right"><%= event_decorator.location %></span>
@@ -24,9 +27,110 @@
         </div>
     </div>
 
+    <% if @program.events.count > 2 %>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-10">
+            <h2></h2>
+            <ul class="">
+                <% @program.events[2..20].each do |event| %>
+                    <% event_decorator = EventDecorator.new(event) %>
+                    <li class="">
+                        <%= event.name %><span class="pull-right"><%= event_decorator.location %></span>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <% end %>
+
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-10">
+            <div class="top-container">
+                <h2>Overview</h2>
+                <p class="overview-text"><%= @program.overview %></p>
+            </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="middle-container">
+            <h2>Impressions</h2>
+            <div class="event-impressions panel panel-default">
+              <div class="panel-body">
+                <table class="impressions-table">
+                  <tbody>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Total</th>
+                      <td class="col-md-1 impressions-count"><%= @report.total_impressions %></td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Mileage</th>
+                      <td class="col-md-1 impressions-count"><%= @report.mileage_impressions %></td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Footprint</th>
+                      <td class="col-md-1 impressions-count"><%= @report.footprint_impressions %></td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Walk by</th>
+                      <td class="col-md-1 impressions-count"><%= @report.walk_by_impressions %></td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Digital</th>
+                      <td class="col-md-1 impressions-count"><%= @report.digital_engagements %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4 col-xs-offset-2">
+          <div class="middle-container">
+            <h2>Engagements</h2>
+            <div class="event-impressions panel panel-default">
+              <div class="panel-body">
+                <table class="impressions-table">
+                  <tbody>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Extended</th>
+                      <td class="col-md-1 impressions-count"><%= @report.extended_engagements %></td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Total</th>
+                      <td class="col-md-1 impressions-count"><%= @report.total_attendance %></td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Start Date</th>
+                      <td class="col-md-1 impressions-count"><%= @report.start_date %></td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-11 impressions-label">End Date</th>
+                      <td class="col-md-1 impressions-count"><%= @report.end_date %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <% unless @report.photos.empty? %>
-        <div class="row page-break-before">
-            <% @report.first_favorite_photos[0..11].each do |photo| %>
+        <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-11">
+          <div class="col-xs-12">
+            <h2>Photos</h2>
+          </div>
+            <% @report.favorite_photos[1..11].each do |photo| %>
                 <div class="col-xs-4">
                     <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
                 </div>
@@ -35,53 +139,39 @@
                 <span class="thumbnail"><%= image_tag photo.image(:small) %></span>
                 </div> -->
             <% end %>
+          </div>
         </div>
     <% end %>
 
 
     <% unless @report.comments.empty? %>
-    <div class="row page-break-before">
-        <h2>Comments</h2>
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <table class="table">
-                    <tr>
-                        <th>Comment</th>
-                        <th>Type</th>
-                        <th>Event</th>
-                    </tr>
-                    <% @report.comments.each do |comment| %>
-                        <tr>
-                            <td><%= comment.content %></td>
-                            <td><%= comment.type_in_words %></td>
-                            <td><%= Event.find(comment.commentable_id).name %></td>
+        <div class="row pdf-page">
+            <div class="col-xs-1">
+                <%= wicked_pdf_image_tag('g360left.png') %>
+            </div>
+            <div class="col-xs-10">
+            <h2>Comments</h2>
+                <div class="program-comments panel panel-default">
+                    <table class="table">
+                        <tr class="program-comment">
+                            <th class="program-comment">COMMENT</th>
+                            <th class="program-comment-count">Type</th>
+                            <th class="program-comment-count">Event</th>
                         </tr>
-                    <% end %>
-                </table>
+                        <% @report.comments.each do |comment| %>
+                            <tr>
+                                <td class="program-comment"><%= comment.content %></td>
+                                <td class="program-comment-count"><%= comment.type_in_words %></td>
+                                <td class="program-comment-count"><%= Event.find(comment.commentable_id).name %></td>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-<% end %>
-
-    <div class="row page-break-before">
-        <div class="col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Impressions Statistics</div>
-                <table class="table">
-                    <tr><th>Total Impressions</th>      <td><%= @report.total_impressions %></td></tr>
-                    <tr><th>Mileage Impressions</th>    <td><%= @report.mileage_impressions %></td></tr>
-                    <tr><th>Footprint Impressions</th>  <td><%= @report.footprint_impressions %></td></tr>
-                    <tr><th>Walk by Impressions</th>    <td><%= @report.walk_by_impressions %></td></tr>
-                    <tr><th>Digital Engagements</th>    <td><%= @report.digital_engagements %></td></tr>
-                    <tr><th>Extended Engagements</th>   <td><%= @report.extended_engagements %></td></tr>
-                    <tr><th>Total Attendance</th>       <td><%= @report.total_attendance %></td></tr>
-                    <tr><th>Start Date</th>             <td><%= @report.start_date %></td></tr>
-                    <tr><th>End Date</th>               <td><%= @report.end_date %></td></tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="row page-break-before">
+    <% end %>
+<!--
+    <div class="row pdf-page">
         <div class="col-xs-8 col-xs-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Impressions Graph</div>
@@ -91,8 +181,15 @@
             </div>
         </div>
     </div>
-
-    <div class="row">
+ -->
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-11">
+          <div class="col-xs-11">
+            <h2>Contacts</h2>
+          </div>
         <% @report.contacts.each do |contact| %>
             <div class="col-xs-6 contact">
                 <div class="name"><%= contact.full_name %></div>
@@ -102,5 +199,6 @@
                 <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
             </div>
         <% end %>
+        </div>
     </div>
 </div>

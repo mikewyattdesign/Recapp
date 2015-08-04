@@ -22,6 +22,17 @@ class ProgramsController < ApplicationController
         format.html
         format.json
         format.pdf do
+            return render pdf: "#{@program.id}_#{@program.name}",
+                      template: '/programs/show.pdf.erb',
+                      layout: "/layouts/pdf.html.erb",
+                      redirect_delay: 200,
+                      disable_javascript: false,
+                      orientation: 'Landscape',
+                      encoding: "UTF-8",
+                      margin:  { top: 0, bottom: 0, left: 0, right: 0},
+                      page_size: 'Letter',
+                      show_as_html: params[:debug].present?,
+                      locals: {program_decorator: @program_decorator}
             if (@program.report.present? && @program.report.report.present?)
               send_file Paperclip.io_adapters.for(@program.report.report).path
             else
@@ -87,18 +98,16 @@ class ProgramsController < ApplicationController
     @program = Program.find(id)
     @report = ProgramReport.new(@program)
     doc_pdf = render_to_string  pdf: "#{@program.id}_#{@program.name}",
-                        template: '/programs/show.pdf.erb',
-                        layout: "/layouts/pdf.html.erb",
-                        redirect_delay: 200,
-                        disable_javascript: false,
-                        margin: { top: 65, bottom: 50 },
-                        header: {
-                            html: {template: '/programs/header.pdf.erb', locals: {report: @report, program: @program}}
-                        },
-                        footer: {
-                            html: {template: "/programs/footer.pdf.erb"}
-                        },
-                        locals: {report: @report, program: @program}
+                      template: '/programs/show.pdf.erb',
+                      layout: "/layouts/pdf.html.erb",
+                      redirect_delay: 200,
+                      disable_javascript: false,
+                      orientation: 'Landscape',
+                      encoding: "UTF-8",
+                      margin:  { top: 0, bottom: 0, left: 0, right: 0},
+                      page_size: 'Letter',
+                      show_as_html: params[:debug].present?,
+                      locals: {program_decorator: @program_decorator}
 
     # save PDF to disk
     pdf_path = Rails.root.join('tmp', "#{@program.id}_#{@program.name}.pdf")
