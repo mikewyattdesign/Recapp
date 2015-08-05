@@ -34,10 +34,10 @@
         </div>
         <div class="col-xs-10">
             <h2></h2>
-            <ul class="">
+            <ul class="list-group">
                 <% @program.events[2..20].each do |event| %>
                     <% event_decorator = EventDecorator.new(event) %>
-                    <li class="">
+                    <li class="list-group-item">
                         <%= event.name %><span class="pull-right"><%= event_decorator.location %></span>
                     </li>
                 <% end %>
