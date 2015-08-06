@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
     after_create :queue_processing
 
     # TODO: Add paperclip relationships and validation
-    has_attached_file :image, styles: {large: '700x700', medium: '500x500', small: '300x300'}
+    has_attached_file :image, styles: {large: '700x700', medium: '500x500', small: '300x300', hero: ['764x402^', :jpg]}
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\z/
 
     has_many :events_favorite_photos

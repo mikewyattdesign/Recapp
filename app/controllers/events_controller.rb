@@ -32,7 +32,7 @@ class EventsController < ApplicationController
         return render pdf: "#{@event.id}_#{@event.name}",
                       template: '/events/show.pdf.erb',
                       layout: "/layouts/pdf.html.erb",
-                      redirect_delay: 200,
+                      redirect_delay: 300,
                       disable_javascript: false,
                       orientation: 'Landscape',
                       encoding: "UTF-8",
@@ -98,12 +98,14 @@ class EventsController < ApplicationController
       if @event.update(event_params)
         format.html {
           case params[:commit]
-          when 'Update Event'
-            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. "
           when 'Update Event and View Recap'
             redirect_to @event, notice: "#{@event.name} was successfully updated."
           when 'Update Event and Add Another'
             redirect_to new_event_url, notice: "#{@event.name} was successfully updated."
+          when 'Update Event'
+            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. "
+          else 
+            redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. "
           end
         }
         # enqueue our custom job object that uses delayed_job methods
