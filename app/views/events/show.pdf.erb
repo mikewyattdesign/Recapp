@@ -1,4 +1,5 @@
 <% @event_decorator = event_decorator if @event_decorator.nil? && event_decorator.present? %>
+<!-- <p><%= ApplicationHelper.asset_data_base64('Gotham-Light.ttf') %></p> -->
 <div class="event">
     <div class="row pdf-page">
         <div class="col-xs-1">
@@ -68,14 +69,6 @@
                                         <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.walk_by_impressions %></td>
                                     </tr>
                                 <% end %>
-<!--
-                                <% if @event_decorator.total_attendance > 0 %>
-                                    <tr>
-                                        <th class="col-md-11 impressions-label">Total Attendance</th>
-                                        <td class="col-md-1"><%= number_with_delimiter @event_decorator.total_attendance %></td>
-                                    </tr>
-                                <% end %>
- -->
                             </tbody>
                         </table>
                     </div>
@@ -102,14 +95,6 @@
                                     <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.extended_engagements %></td>
                                 </tr>
                             <% end %>
-<!--
-                            <% if @event_decorator.total_attendance > 0 %>
-                                <tr>
-                                    <th class="col-md-11 impressions-label">Total Attendance</th>
-                                    <td class="col-md-1"><%= number_with_delimiter @event_decorator.total_attendance %></td>
-                                </tr>
-                            <% end %>
--->
                         </tbody>
                     </table>
                 </div>
@@ -161,15 +146,6 @@
             </div>
             <% end %>
           </div>
-<!--
-        <% unless @event_decorator.favorite_photos.length < 4 %>
-          <% for i in 3..6 %>
-              <div class="col-xs-6">
-                  <%= @event_decorator.favorite_photo_sub(i) %>
-              </div>
-          <% end %>
-        <% end %>
- -->
       </div>
     </div>
     <% end %>
@@ -191,26 +167,6 @@
         </div>
     </div>
     <% end %>
-
-<!--
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Impressions Graph</div>
-                <div class="panel-body">
-                    <%= column_chart [
-                        ['Total Impressions',     @event_decorator.estimated_total_impressions],
-                        ['Mileage Impressions',   @event_decorator.mileage_impressions],
-                        ['Footprint Impressions', @event_decorator.footprint_impressions],
-                        ['Walk by Impressions',   @event_decorator.walk_by_impressions],
-                        ['Digital Engagements',   @event_decorator.digital_engagements],
-                        ['Extended Engagements',  @event_decorator.extended_engagements]
-                    ] %>
-                </div>
-            </div>
-        </div>
-    </div>
--->
     <% unless @event_decorator.contacts.empty? %>
     <div class="row pdf-page">
         <div class="col-xs-1">
