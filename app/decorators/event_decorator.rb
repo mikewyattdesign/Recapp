@@ -47,7 +47,7 @@ class EventDecorator
 
     def favorite_photo_main
         if event.favorite_photos[0].present?
-            image_tag event.favorite_photos[0].image(:small), class: 'img-responsive pdf-photo pdf-photo-main'
+            image_tag event.favorite_photos[0].image(:hero), class: 'img-responsive pdf-photo pdf-photo-main'
         end
     end
 
