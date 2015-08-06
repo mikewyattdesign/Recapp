@@ -22,9 +22,9 @@ class ProgramReport
     end
 
     def favorite_photos
-        @program.favorite_photos
+        @program.events.select { |event| event.favorite_photos.length > 0 }.map { |event| event.favorite_photos.first }
     end
-
+    
     def first_favorite_photos
         @program.first_favorite_photos
     end
