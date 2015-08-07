@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProgramReport do
     let(:program) { create(:program) }
@@ -34,13 +34,13 @@ describe ProgramReport do
         it 'gives the start date of the Program' do
             one_year_ago = 1.year.ago
             events[0].update_attribute :start_date_time, one_year_ago
-            expect(subject.start_date).to eq one_year_ago.to_date
+            expect(subject.start_date.to_s).to eq one_year_ago.strftime('%m/%d/%Y')
         end
 
         it 'gives the end date of the Program' do
             one_year_from_now = 1.year.since
             events[0].update_attribute :end_date_time, one_year_from_now
-            expect(subject.end_date).to eq one_year_from_now.to_date
+            expect(subject.end_date.to_s).to eq one_year_from_now.strftime('%m/%d/%Y')
         end
     end
 end
