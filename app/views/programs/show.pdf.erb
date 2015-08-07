@@ -9,9 +9,9 @@
           <div class="programs-photo-main-container-bg">
           </div>
         </div>
-        <% @report.favorite_photos[0..0].each do |photo| %>
+        <% @report.favorite_photos.each do |photo| %>
             <div class="programs-photo-main-container">
-                <%= image_tag photo.image(:small), class: "programs-photo-main" %>
+                <%= image_tag photo.image(:hero), class: "programs-photo-main" %>
             </div>
         <% end %>
         <div class="col-xs-10">
@@ -130,14 +130,10 @@
           <div class="col-xs-12">
             <h2>Photos</h2>
           </div>
-            <% @report.favorite_photos[1..11].each do |photo| %>
+            <% @report.favorite_photos.each do |photo| %>
                 <div class="col-xs-4">
                     <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
                 </div>
-                <!--
-                <div class="<%= photo_grid_class(@report.favorite_photos) %>">
-                <span class="thumbnail"><%= image_tag photo.image(:small) %></span>
-                </div> -->
             <% end %>
           </div>
         </div>
