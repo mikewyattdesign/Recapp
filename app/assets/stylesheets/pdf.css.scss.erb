@@ -51,6 +51,13 @@
     overflow: hidden;
 }
 
+.pdf-photo-sub-container {
+    position: relative;
+    border: 1px solid #494949;
+    margin-bottom: 20px;
+    height: 214px;
+}
+
 .pdf-photo-main-container-bg {
     position: relative;
     height: 500px;
@@ -66,18 +73,23 @@
 
 .pdf-photo-main {
     position: absolute;
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
     left: 25px;
     top: 0px;
     z-index: -10;
 }
 
 .pdf-photo-sub {
-    margin-bottom: 30px;
     border: 2px solid #494949;
-    height: 161px;
-    width: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    margin: auto;
 }
 
 .page-break-before {

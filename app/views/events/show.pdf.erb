@@ -138,13 +138,15 @@
         <div class="col-xs-12">
           <h2>Photos</h2>
         </div>
-          <div class="pdf-photo-sub-container">
-            <% for i in 1..9 %>
-            <div class="col-xs-4">
-              <%= @event_decorator.favorite_photo_sub(i) %>
-            </div>
+          <% for i in 1..6 %>
+            <% unless @event_decorator.favorite_photo_sub(i).nil? %>
+              <div class="col-xs-4">
+                <div class="pdf-photo-sub-container">
+                <%= @event_decorator.favorite_photo_sub(i) %>
+                </div>
+              </div>
             <% end %>
-          </div>
+          <% end %>
       </div>
     </div>
     <% end %>
