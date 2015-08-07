@@ -26,6 +26,7 @@
             <div class="event-brand"><%= image_tag @event_decorator.brand.logo, class: "img-responsive" %></div>
           </div>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
     </div>
 
     <div class="row pdf-page">
@@ -100,6 +101,7 @@
               </div>
             </div>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
     </div>
 
     <% unless @event_decorator.event_giveaways.empty? %>
@@ -126,6 +128,7 @@
                 </div>
             </div>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
     </div>
     <% end %>
 
@@ -148,6 +151,7 @@
             <% end %>
           <% end %>
       </div>
+      <div class="pdf-footer">GROUP360 WORLDWIDE</div>
     </div>
     <% end %>
 
@@ -166,8 +170,10 @@
               <% end %>
             </div>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
     </div>
     <% end %>
+
     <% unless @event_decorator.contacts.empty? %>
     <div class="row pdf-page">
         <div class="col-xs-1">
@@ -187,6 +193,7 @@
           </div>
         <% end %>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
     </div>
     <% end %>
 </div>
