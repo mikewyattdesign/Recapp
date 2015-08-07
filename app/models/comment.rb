@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
     belongs_to :commentable, polymorphic: true
     has_many :comments, as: :commentable
 
+    validates :content, presence: true
+
     def self.comment_types
     	[["Consumer",1],["General",2],["Corporate",3],["Wholesaler/Field",4],["Retailer",5],["Other",6]]
     end
