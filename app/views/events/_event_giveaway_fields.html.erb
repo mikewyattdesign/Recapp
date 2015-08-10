@@ -6,7 +6,7 @@
 					<div class="col-md-1 form-cont-box">
 						<div class="favorite-box favorite-opaque-box <%= 'active' if event_giveaway.event_favorite%>">
 							<div class="btn-group" data-toggle="buttons">
-								<label class="btn btn-favorite <%= 'active' if event_giveaway.event_favorite%>">
+								<label class="btn btn-favorite <%= 'active' if event_giveaway.event_favorite%>" title="Star to include in report">
 									<span class="glyphicon glyphicon-star"></span>
 									<%= f.check_box :event_favorite, {checked: event_giveaway.event_favorite} %>
 								</label>
@@ -34,7 +34,7 @@
 					<div class="col-md-1 form-cont-box">
 						<div class="favorite-box favorite-opaque-box <%= 'active' if event_giveaway.event_favorite > 0%>">
 							<div class="btn-group" data-toggle="buttons">
-								<label class="btn btn-favorite <%= 'active' if event_giveaway.event_favorite > 0 %>">
+								<label class="btn btn-favorite <%= 'active' if event_giveaway.event_favorite > 0 %>" title="Star to include in report">
 									<span class="glyphicon glyphicon-star"></span>
 									<%= f.check_box :event_favorite, {checked: event_giveaway.event_favorite > 0} %>
 								</label>

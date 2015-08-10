@@ -113,7 +113,7 @@
                 <div class="panel-body">
                   <table class="impressions-table">
                     <tbody>
-                    <% @event_decorator.event_giveaways.each do |event_giveaway| %>
+                    <% @event_decorator.favorite_event_giveaways.each do |event_giveaway| %>
                         <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
                             <tr class="event-giveaway">
                                 <td class="giveaway-item col-xs-10"><%= event_giveaway.giveaway.name %></td>
@@ -159,7 +159,7 @@
               <h2>Comments</h2>
             </div>
             <div>
-              <% @event_decorator.comments.each do |comment| %>
+              <% @event_decorator.favorite_comments.each do |comment| %>
                   <div class="comment-text"><%= comment.content %></div>
               <% end %>
             </div>
