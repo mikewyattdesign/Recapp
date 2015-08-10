@@ -144,6 +144,10 @@
     -ms-transition: opacity 0.3s ease-in;
     transition: opacity 0.3s ease-in;
 
+    &.favorite-opaque-box {
+        opacity: 1;
+    }
+
     button {
         width: 35px;
         height: 35px;
@@ -163,6 +167,14 @@
         button {
             color: $orange;
             border: 1px solid $orange;
+        }
+    }
+    .btn-favorite {
+        &:hover {
+            color: $orange;
+        }
+        &.active {
+            @extend .btn-primary;
         }
     }
 }
