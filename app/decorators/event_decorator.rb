@@ -58,4 +58,12 @@ class EventDecorator
             nil # don't show any more than the number of favorited photos
         end
     end
+
+    def favorite_event_giveaways
+        event.event_giveaways.select { |giveaway| giveaway.event_favorite > 0  }
+    end
+
+    def favorite_comments
+        event.comments.select { |comment| comment.event_favorite > 0  }
+    end
 end

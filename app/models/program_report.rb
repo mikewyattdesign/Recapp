@@ -70,7 +70,7 @@ class ProgramReport
     end
 
     def comments
-        comments = events.map(&:comments).flatten(1)
+        comments = events.map(&:comments).flatten(1).select { |e| e.event_favorite > 0 }
     end
 
     def aggregate_impression_data

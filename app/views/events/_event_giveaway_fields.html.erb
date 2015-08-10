@@ -2,8 +2,18 @@
 	<% if event_giveaway.new_record? %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">
-				    <div class="col-md-5 form-cont-box">
+				<div class="row">	
+					<div class="col-md-1 form-cont-box">
+						<div class="favorite-box favorite-opaque-box <%= 'active' if event_giveaway.event_favorite%>">
+							<div class="btn-group" data-toggle="buttons">
+								<label class="btn btn-favorite <%= 'active' if event_giveaway.event_favorite%>" title="Star to include in report">
+									<span class="glyphicon glyphicon-star"></span>
+									<%= f.check_box :event_favorite, {checked: event_giveaway.event_favorite} %>
+								</label>
+							</div>
+						</div>
+					</div>
+				    <div class="col-md-4 form-cont-box">
                     <%= f.collection_select :giveaway_id, Giveaway.all, :id, :name, {selected: event_giveaway.giveaway_id}, { class: "form-control chosen-select"} %>
 
 				    </div>
@@ -20,8 +30,18 @@
 	<% else %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">
-					<div class="col-md-5 form-cont-box">
+				<div class="row">	
+					<div class="col-md-1 form-cont-box">
+						<div class="favorite-box favorite-opaque-box <%= 'active' if event_giveaway.event_favorite > 0%>">
+							<div class="btn-group" data-toggle="buttons">
+								<label class="btn btn-favorite <%= 'active' if event_giveaway.event_favorite > 0 %>" title="Star to include in report">
+									<span class="glyphicon glyphicon-star"></span>
+									<%= f.check_box :event_favorite, {checked: event_giveaway.event_favorite > 0} %>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 form-cont-box">
 				    	<%= f.label :giveaway_id, event_giveaway.giveaway.name, class: "control-label" %>
 				    </div>
 				    <div class="col-md-5 form-cont-box">

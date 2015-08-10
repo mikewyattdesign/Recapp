@@ -3,8 +3,18 @@
 		<div class="col-md-12">
 			<fieldset>
 				<div class="row">	
+					<div class="col-md-1 form-cont-box">
+						<div class="favorite-box favorite-opaque-box <%= 'active' if event_comment.event_favorite%>">
+							<div class="btn-group" data-toggle="buttons">
+								<label class="btn btn-favorite <%= 'active' if event_comment.event_favorite%>" title="Star to include in report">
+									<span class="glyphicon glyphicon-star"></span>
+									<%= f.check_box :event_favorite, {checked: event_comment.event_favorite} %>
+								</label>
+							</div>
+						</div>
+					</div>
 					<%= f.label :content, "content:", class: 'sr-only' %>
-				    <div class="col-md-7 form-cont-box">
+				    <div class="col-md-6 form-cont-box">
 						<%= f.text_field :content, class: "form-control", placeholder: "Comment" %>
 				    </div>
 				    <div class="col-md-3 form-cont-box">
@@ -21,7 +31,17 @@
 		<div class="col-md-12">
 			<fieldset>
 				<div class="row">	
-					<div class="col-md-7 form-cont-box">
+					<div class="col-md-1 form-cont-box">
+						<div class="favorite-box favorite-opaque-box <%= 'active' if event_comment.event_favorite > 0 %>">
+							<div class="btn-group" data-toggle="buttons">
+								<label class="btn btn-favorite <%= 'active' if event_comment.event_favorite > 0 %>"  title="Star to include in report">
+									<span class="glyphicon glyphicon-star"></span>
+									<%= f.check_box :event_favorite, {checked: event_comment.event_favorite > 0, title: 'Star to include in report'} %>
+								</label>
+							</div>
+						</div>
+					</div>	
+					<div class="col-md-6 form-cont-box">
 				    	<%= f.label :comment_id, event_comment.content, class: "control-label" %>
 				    </div>
 				    <div class="col-md-3 form-cont-box">

@@ -27,6 +27,7 @@ class Event < ActiveRecord::Base
     validates :end_date_time, presence: true
     validates :name, presence: true
     validates :program_id, presence: true
+    validates :venue, presence: true
 
     validates :city, presence: true
     validates :state, length: { is: 2 }, format: { with: /[A-Z]{2}/, message: "- State abbreviation only"}, presence: true

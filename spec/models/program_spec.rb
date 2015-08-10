@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Program do
     it 'is valid with a name, brand_id, and overview' do
@@ -24,7 +24,7 @@ describe Program do
     end
     it 'is invalid without an overview' do
         expect do
-            Program.create(overview: nil)
+            Program.create!(overview: nil)
         end.to raise_error(
             ActiveRecord::RecordInvalid,
             /overview can't be blank/i

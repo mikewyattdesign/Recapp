@@ -230,10 +230,10 @@ class EventsController < ApplicationController
         :venue,
         :completed_at,
         :contact_ids => [],
-        :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id, :wholesaler_or_local_support, :_destroy],
+        :event_giveaways_attributes => [:giveaway_id, :id, :count_given_away, :event_id, :wholesaler_or_local_support, :event_favorite, :_destroy],
         :links_attributes => [:url, :linkable_id, :linkable_type, :id, :_destroy],
         :giveaways_attributes => [:id, :name],
-        :comments_attributes => [:id, :comment_id, :content, :comment_type, :_destroy],
+        :comments_attributes => [:id, :comment_id, :content, :comment_type, :event_favorite, :_destroy],
         :weather_attributes => [:id])
     end
 end

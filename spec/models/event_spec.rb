@@ -47,7 +47,7 @@ describe Event do
     end
     it 'is invalid without city' do
         expect do
-            Event.create(city: nil)
+            Event.create!(city: nil)
         end.to raise_error(
             ActiveRecord::RecordInvalid,
             /city can't be blank/i
@@ -55,7 +55,7 @@ describe Event do
     end
     it 'is invalid without state' do
         expect do
-            Event.create(state: nil)
+            Event.create!(state: nil)
         end.to raise_error(
             ActiveRecord::RecordInvalid,
             /state can't be blank/i
@@ -63,7 +63,7 @@ describe Event do
     end
     it 'is invalid without venue' do
         expect do
-            Event.create(venue: nil)
+            Event.create!(venue: nil)
         end.to raise_error(
             ActiveRecord::RecordInvalid,
             /venue can't be blank/i
@@ -74,7 +74,7 @@ describe Event do
         expect(build(:event)).to respond_to(:program)
     end
     it 'returns its program' do
-        program = Program.create(name: 'Heroes', brand_id: 1)
+        program = create(:program)
         event = build(:event, program_id: program.id)
         expect(event.program).to eq program
     end
