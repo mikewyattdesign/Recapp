@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807140221) do
+ActiveRecord::Schema.define(version: 20150810154925) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150807140221) do
     t.integer  "comment_type",     default: 1
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.integer  "event_favorite"
+    t.integer  "event_favorite",   default: 0
     t.integer  "program_favorite"
     t.integer  "brand_favorite"
   end
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20150807140221) do
     t.integer "giveaway_id"
     t.integer "count_given_away"
     t.boolean "wholesaler_or_local_support", default: false
-    t.integer "event_favorite"
+    t.integer "event_favorite",              default: 0
   end
 
   create_table "events", force: true do |t|
