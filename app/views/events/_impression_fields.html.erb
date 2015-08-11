@@ -3,32 +3,32 @@
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :total_attendance, "Total Event Attendance", class: "control-label" %>
-    <%= f.number_field :total_attendance, min: 0, class: "form-control" %>
+    <%= f.number_field :total_attendance, min: 0, class: "form-control", pattern: '\d*' %>
     <span class="help-block">How many people attended the event overall?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :miles, "Miles Traveled from Last Event", class: "control-label" %>
-    <%= f.number_field :miles, min: 0, class: "form-control" %>
+    <%= f.number_field :miles, min: 0, class: "form-control", pattern: '\d*' %>
     <span class="help-block">How many miles did you travel to get to the event?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :walk_by_impressions, "Walk By Impressions", class: "control-label" %>
-    <%= f.number_field :walk_by_impressions, min: 0, class: "form-control" %>
+    <%= f.number_field :walk_by_impressions, min: 0, class: "form-control", pattern: '\d*' %>
     <span class="help-block">How many people walked by your area?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :footprint_impressions, "Footprint Impressions", class: "control-label" %>
-    <%= f.number_field :footprint_impressions, min: 0, class: "form-control" %>
+    <%= f.number_field :footprint_impressions, min: 0, class: "form-control", pattern: '\d*' %>
     <span class="help-block">How many people set foot on your footprint?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :extended_engagements, "Extended Engagements", class: "control-label" %>
-    <%= f.number_field :extended_engagements, min: 0, class: "form-control" %>
+    <%= f.number_field :extended_engagements, min: 0, class: "form-control", pattern: '\d*' %>
     <span class="help-block">How many people did you engage on person for a significant period of time?</span>
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :digital_engagements, "Digital Engagements", class: "control-label" %>
-    <%= f.number_field :digital_engagements, min: 0, class: "form-control" %>
+    <%= f.number_field :digital_engagements, min: 0, class: "form-control", pattern: '\d*' %>
     <span class="help-block">How many people did you engage online in relation to this specific event?</span>
 </div>
 
