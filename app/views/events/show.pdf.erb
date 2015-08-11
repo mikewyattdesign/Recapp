@@ -1,4 +1,5 @@
 <% @event_decorator = event_decorator if @event_decorator.nil? && event_decorator.present? %>
+<% page_number_start = 2; page_number = page_number_start %> 
 <div class="event">
     <div class="row pdf-page">
         <div class="col-xs-1">
@@ -88,19 +89,18 @@
                                     <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.digital_engagements %></td>
                                 </tr>
                             <% end %>
-                            <% if @event_decorator.extended_engagements > 0 %>
+                            <!-- Show Extended Engagements regardless -->
                                 <tr>
                                     <th class="col-md-11 impressions-label">Extended</th>
                                     <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.extended_engagements %></td>
                                 </tr>
-                            <% end %>
                         </tbody>
                     </table>
                 </div>
               </div>
             </div>
         </div>
-        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
 
     <% unless @event_decorator.event_giveaways.empty? %>
@@ -127,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
     <% end %>
 
@@ -150,7 +150,7 @@
             <% end %>
           <% end %>
       </div>
-      <div class="pdf-footer">GROUP360 WORLDWIDE</div>
+      <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
     <% end %>
 
@@ -169,7 +169,7 @@
               <% end %>
             </div>
         </div>
-        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
     <% end %>
 
@@ -192,7 +192,7 @@
           </div>
         <% end %>
         </div>
-        <div class="pdf-footer">GROUP360 WORLDWIDE</div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
     <% end %>
 </div>
