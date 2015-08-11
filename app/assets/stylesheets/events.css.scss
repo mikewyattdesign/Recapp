@@ -162,9 +162,6 @@
 
 .event-header, .show-header {
     padding-bottom: 4%;
-    background-color: $dark-grey;
-    border-bottom: 1px solid $darkest-grey;
-    color: white;
     padding: 10px 20px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -179,15 +176,25 @@
         margin: 0;
         font-size: 30px;
     }
+}
 
+.event-header {
+    background-color: $dark-grey;
+    border-bottom: 1px solid $darkest-grey;
+    color: white;
     .event-name {
         color: white;
     }
 }
 
 .show-header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #D2D2D2;
+    color: #58585a;
     margin-bottom: 20px;
-    border-radius: 3px;
+    .event-name {
+        color: #58585a !important;
+    }
 }
 
 .event-group {
