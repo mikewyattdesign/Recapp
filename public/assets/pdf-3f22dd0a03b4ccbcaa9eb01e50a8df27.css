@@ -9891,86 +9891,86 @@ div.token-input-dropdown-facebook ul li.token-input-selected-dropdown-item-faceb
   color: #fff;
 }
 
-/* line 2, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 2, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .navbar-brand {
   margin-left: 50px;
 }
 
-/* line 6, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 6, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .navbar .navbar-nav {
   display: inline-block;
   float: none;
   max-height: 40px;
 }
 
-/* line 12, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 12, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .navbar .navbar-collapse {
   text-align: center;
 }
 @media screen and (max-width: 768px) {
-  /* line 12, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+  /* line 12, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
   .navbar .navbar-collapse {
     max-height: 500px;
     padding: 0;
   }
 }
 
-/* line 20, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 20, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .navbar {
   background-color: #58585a;
   border-color: #404041;
   border-radius: 0;
-  background-image: url("/assets/group360-logo.png");
+  background-image: url(/assets/group360-logo.png);
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: 20px 5px;
 }
 
-/* line 31, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 31, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .navbar-recapp a {
   color: #FFF !important;
   font-family: Gotham, sans-serif;
   text-transform: uppercase;
 }
 @media screen and (max-width: 768px) {
-  /* line 30, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+  /* line 30, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
   .navbar-recapp {
     display: none;
   }
 }
 
-/* line 42, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 42, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .nav {
   margin: 0;
 }
-/* line 45, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 45, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .nav li {
   background-color: #58585a;
 }
-/* line 48, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 48, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .nav li:hover {
   background-color: #fc9f4c;
 }
-/* line 53, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 53, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .nav li.active a {
   background-color: #fc9f4c !important;
 }
-/* line 58, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 58, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .nav li a {
   color: white !important;
   font-family: Gotham, sans-serif;
   text-transform: uppercase;
 }
-/* line 65, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 65, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .nav .client-login {
   color: #fc9f4c !important;
 }
-/* line 68, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+/* line 68, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
 .nav .client-login:hover {
   color: white !important;
 }
 @media screen and (max-width: 768px) {
-  /* line 42, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss.erb */
+  /* line 42, /Users/michaelwyatt/Sites/g360-event-application/app/assets/stylesheets/navigation.css.scss */
   .nav {
     width: 100%;
   }

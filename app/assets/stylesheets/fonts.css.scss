@@ -1,0 +1,43 @@
+// Fonts
+@font-face {
+    font-family: 'TrendSansOne';
+    src: asset-url('29CE32_6_0.eot');
+    src: asset-url('29CE32_6_0.woff') format('woff'),
+         asset-url('29CE32_6_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TrendSlabOne';
+    src: asset-url('29CE32_10_0.eot');
+    src: asset-url('29CE32_10_0.woff') format('woff'),
+         asset-url('29CE32_10_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham Book';
+    src: asset-url('Gotham-Book.eot');
+    src: asset-url('Gotham-Book.eot?#iefix') format('embedded-opentype'),
+        asset-url('Gotham-Book.woff') format('woff'),
+        asset-url('Gotham-Book.ttf') format('truetype'),
+        asset-url('Gotham-Book.svg') format('svg');
+}
+
+@font-face {
+    font-family: 'Gotham';
+    font-weight: normal;
+    src: asset-url('Gotham-Medium.eot');
+    src: asset-url('Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+        asset-url('Gotham-Medium.woff') format('woff'),
+        asset-url('Gotham-Medium.ttf') format('truetype'),
+        asset-url('Gotham-Medium.svg') format('svg');
+}
+
+@font-face {
+    font-family: 'Gotham';
+    font-weight: bold;
+    src: asset-url('Gotham-Bold.eot');
+    src: asset-url('Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+        asset-url('Gotham-Bold.woff') format('woff'),
+        asset-url('Gotham-Bold.ttf') format('truetype'),
+        asset-url('Gotham-Bold.svg') format('svg');
+}

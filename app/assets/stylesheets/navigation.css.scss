@@ -21,7 +21,7 @@
     background-color: $dark-grey;
     border-color: $darkest-grey;
     border-radius: 0;
-    background-image: url('<%= asset_path('group360-logo.png') %>');
+    background-image: asset-url('group360-logo.png');
     background-repeat: no-repeat;
     background-size: 40px;
     background-position: 20px 5px;
