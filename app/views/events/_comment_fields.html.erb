@@ -4,11 +4,11 @@
 			<fieldset>
 				<div class="row">	
 					<div class="col-md-1 form-cont-box">
-						<div class="favorite-box favorite-opaque-box <%= 'active' if event_comment.event_favorite%>">
+						<div class="favorite-box favorite-opaque-box">
 							<div class="btn-group" data-toggle="buttons">
-								<label class="btn btn-favorite <%= 'active' if event_comment.event_favorite%>" title="Star to include in report">
+								<label class="btn btn-favorite" title="Star to include in report">
 									<span class="glyphicon glyphicon-star"></span>
-									<%= f.check_box :event_favorite, {checked: event_comment.event_favorite} %>
+									<%= f.check_box :event_favorite %>
 								</label>
 							</div>
 						</div>
