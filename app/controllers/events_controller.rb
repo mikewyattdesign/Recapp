@@ -41,12 +41,13 @@ class EventsController < ApplicationController
                       show_as_html: params[:debug].present?,
                       locals: {event_decorator: @event_decorator}
 
-        if (@event.report.present? && @event.report.report.present?)
-          send_file Paperclip.io_adapters.for(@event.report.report).path
-        else
-          Delayed::Job.enqueue GeneratePdfJob.new(@event.id, Event.name)
-          redirect_to @event, alert: 'Report Being Generated'
-        end
+        # No longer implemented
+        # if (@event.report.present? && @event.report.report.present?)
+        #   send_file Paperclip.io_adapters.for(@event.report.report).path
+        # else
+        #   Delayed::Job.enqueue GeneratePdfJob.new(@event.id, Event.name)
+        #   redirect_to @event, alert: 'Report Being Generated'
+        # end
       end
     end
   end
@@ -109,10 +110,10 @@ class EventsController < ApplicationController
           end
         }
         # enqueue our custom job object that uses delayed_job methods
-        Delayed::Job.enqueue GeneratePdfJob.new(params[:id], "Event")
+        # Delayed::Job.enqueue GeneratePdfJob.new(params[:id], "Event")
         # # update the status so nobody generates a PDF twice
         # @event.update_attribute(:status, 'queued')
-        puts 'queued'
+        # puts 'queued'
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
