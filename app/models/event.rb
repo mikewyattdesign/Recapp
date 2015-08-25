@@ -35,6 +35,10 @@ class Event < ActiveRecord::Base
 
     validates_with DateValidator
 
+    def event
+        self
+    end
+
     # Virtual Attributes to simplify Start and End Date Time Entry
 
     def start_date
@@ -182,7 +186,7 @@ class Event < ActiveRecord::Base
     end
 
     def generate_report
-       EventsController.new().render_PDF(id) 
+       EventsController.new().render_PDF(id)
     end
 
     private
