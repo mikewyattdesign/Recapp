@@ -2,7 +2,7 @@
 	<% if event_comment.new_record? %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">	
+				<div class="row">
 					<div class="col-md-1 form-cont-box">
 						<div class="favorite-box favorite-opaque-box">
 							<div class="btn-group" data-toggle="buttons">
@@ -14,13 +14,13 @@
 						</div>
 					</div>
 					<%= f.label :content, "content:", class: 'sr-only' %>
-				    <div class="col-md-6 form-cont-box">
+				    <div class="col-md-5 form-cont-box">
 						<%= f.text_field :content, class: "form-control", placeholder: "Comment" %>
 				    </div>
-				    <div class="col-md-3 form-cont-box">
+				    <div class="col-md-2 form-cont-box">
 						<%= f.select :comment_type, options_for_select(Comment.comment_types, event_comment.comment_type), {}, class: "form-control" %>
 				    </div>
-				    <div class="col-md-2 form-cont-box">
+				    <div class="col-md-2 col-md-offset-2 form-cont-box">
 			    		<%= f.hidden_field :_destroy %>
 				    	<%= link_to 'Cancel', '#', class: 'remove_fields btn btn-danger btn-block' %>
 				    </div>
@@ -30,7 +30,7 @@
 	<% else %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">	
+				<div class="row">
 					<div class="col-md-1 form-cont-box">
 						<div class="favorite-box favorite-opaque-box <%= 'active' if event_comment.event_favorite > 0 %>">
 							<div class="btn-group" data-toggle="buttons">
@@ -40,14 +40,17 @@
 								</label>
 							</div>
 						</div>
-					</div>	
-					<div class="col-md-6 form-cont-box">
+					</div>
+                    <div class="col-md-5 form-cont-box">
 				    	<%= f.label :comment_id, event_comment.content, class: "control-label" %>
 				    </div>
-				    <div class="col-md-3 form-cont-box">
+				    <div class="col-md-2 form-cont-box">
 						<%= f.select :comment_type, options_for_select(Comment.comment_types, event_comment.comment_type), {}, class: "form-control" %>
-				    </div>
-				    <div class="col-md-2 form-cont-box">	
+                    </div>
+                    <div class="col-md-2 form-cont-box">
+                        <%= link_to 'Edit', edit_comment_path(event_comment), class: 'btn btn-success btn-block', data: {confirm: "Your changes will not be saved if you leave the page now."} %>
+                    </div>
+				    <div class="col-md-2 form-cont-box">
 				    	<%= f.hidden_field :_destroy %>
 						<%= link_to 'Remove', '#', class: 'remove_fields btn btn-danger btn-block', title: "Remove #{event_comment.content}" %>
 					</div>
@@ -55,3 +58,4 @@
 			</fieldset>
 		</div>
 	<% end %>
+
