@@ -1,5 +1,5 @@
 <% @event_decorator = event_decorator if @event_decorator.nil? && event_decorator.present? %>
-<% page_number_start = 2; page_number = page_number_start %> 
+<% page_number_start = 2; page_number = page_number_start %>
 <div class="event">
     <div class="row pdf-page">
         <div class="col-xs-1">
@@ -28,7 +28,6 @@
           </div>
         </div>
     </div>
-
     <div class="row pdf-page">
         <div class="col-xs-1">
             <%= wicked_pdf_image_tag('g360left.png') %>
@@ -37,6 +36,8 @@
             <div class="top-container">
                 <h2>Overview</h2>
                 <p class="overview-text"><%= @event_decorator.overview %></p>
+                <h2>Program Details</h2>
+                <p class="overview-text"><%= @event_decorator.program.overview %></p>
             </div>
         </div>
 
