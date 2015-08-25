@@ -126,6 +126,30 @@
                               <% end %>
                           </table>
                       </div>
+                      
+                      <div class="panel panel-default">
+                          <div class="panel-heading">Comments</div>
+                          <div class="panel-body">
+                                <table class="table table-responsive">
+                                    <% @event_decorator.comments.each do |comment| %>
+                                    <tr>
+                                        
+                                        <td class="col-xs-1 text-center">
+                                            <% if comment.event_favorite.present? && comment.event_favorite > 0 %>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            <% end %>
+                                        </td>
+                                        <td class="col-xs-9">
+                                            <%= comment.content %> 
+                                        </td>
+                                        <td class="col-xs-2">
+                                            <%= comment.type_in_words %>
+                                        </td>
+                                    </tr>
+                                    <% end %>
+                                </table>
+                          </div>
+                      </div>
 
                       <div class="event-contacts panel panel-default">
                           <div class="panel-heading">Contacts</div>
