@@ -118,7 +118,7 @@
 <!--
           <%= link_to edit_event_path(@event), class: 'btn btn-primary back-button' do %><span class="glyphicon glyphicon-pencil"></span> &nbsp;Edit Current Event<% end %>
  -->
-
+          <%= link_to 'Back', :back, class: 'btn btn-primary back-button' %>
           <% if can? :destroy, Photo %>
           <%= link_to favorite_order_photos_path(@event), class: 'btn btn-primary back-button' do %><span class="glyphicon glyphicon-sort-by-attributes"></span> &nbsp;Manage Photo Order<% end %>
           <% end %>
