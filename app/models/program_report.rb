@@ -24,7 +24,7 @@ class ProgramReport
     def favorite_photos
         @program.events.select { |event| event.favorite_photos.length > 0 }.map { |event| event.favorite_photos.first }
     end
-    
+
     def first_favorite_photos
         @program.first_favorite_photos
     end
@@ -70,7 +70,9 @@ class ProgramReport
     end
 
     def comments
-        comments = events.map(&:comments).flatten(1).select { |e| e.event_favorite > 0 }
+        comments = events.map(&:comments).flatten(1).select do |c|
+            c.event_favorite > 0 if c.event_favorite.present?
+        end
     end
 
     def aggregate_impression_data
