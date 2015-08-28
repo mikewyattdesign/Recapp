@@ -1,0 +1,10 @@
+<% if @program.comments.size > 0 %>
+    <div class="col-md-12 form-header-label">
+        <h3>Comments</h3>
+    </div>
+    <div id="event-comments">
+        <%= f.fields_for :comments do |el| %>
+            <%= render 'comment_fields', f: el, program_comment: el.object %>
+        <% end %>
+    </div>
+<% end %>

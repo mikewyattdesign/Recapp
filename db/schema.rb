@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810154925) do
+ActiveRecord::Schema.define(version: 20150828140054) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20150810154925) do
     t.integer  "comment_type",     default: 1
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.integer  "event_favorite",   default: 0
-    t.integer  "program_favorite"
-    t.integer  "brand_favorite"
+    t.boolean  "event_favorite",   default: false, null: false
+    t.boolean  "program_favorite", default: false, null: false
+    t.boolean  "brand_favorite",   default: false, null: false
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"

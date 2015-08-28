@@ -49,4 +49,11 @@ describe Program do
             brand_id: brand.id
         )).to respond_to(:events)
     end
+    it 'responds to comments' do
+        brand = create(:brand)
+        expect(Program.new(
+            name: 'Villains',
+            brand_id: brand.id
+            )).to respond_to(:comments)
+    end
 end

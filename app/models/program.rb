@@ -5,9 +5,13 @@ class Program < ActiveRecord::Base
     has_many :users, through: :assignments
     has_one :report, as: :reportable
 
+    has_many :comments, through: :events
+
     validates :name, presence: true
     validates :brand_id, presence: true
     validates :overview, presence: true
+
+    accepts_nested_attributes_for :comments
 
     def program_plus_brand
         "#{self.name} (#{self.brand.name})"

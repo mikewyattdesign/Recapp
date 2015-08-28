@@ -70,9 +70,7 @@ class ProgramReport
     end
 
     def comments
-        comments = events.map(&:comments).flatten(1).select do |c|
-            c.event_favorite > 0 if c.event_favorite.present?
-        end
+        @program.comments.where(program_favorite: true)
     end
 
     def aggregate_impression_data
