@@ -9,7 +9,7 @@
 </div>
 <div class="col-md-6 form-cont-box">
     <%= f.label :program_id, "Program*", class: "control-label" %>
-    <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand, @event.program.present? ? @event.program.id : nil),{} ,class: "form-control" %>
+    <%= f.select :program_id, options_from_collection_for_select(Program.all, :id, :program_plus_brand, @event.program.present? ? @event.program.id : nil),{include_blank: ''} ,class: "form-control", required: true %>
     <span class="help-block">What program is the event part of?</span>
 </div>
 <div class="col-md-6 form-cont-box">

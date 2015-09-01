@@ -55,6 +55,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.program = Program.find(params[:program_id]) if params[:program_id].present?
   end
 
   # GET /events/1/edit
@@ -105,7 +106,7 @@ class EventsController < ApplicationController
             redirect_to new_event_url, notice: "#{@event.name} was successfully updated."
           when 'Update Event'
             redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. "
-          else 
+          else
             redirect_to edit_event_url(@event), notice: "#{@event.name} was successfully updated. "
           end
         }
