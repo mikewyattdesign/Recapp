@@ -64,6 +64,6 @@ class EventDecorator
     end
 
     def favorite_comments
-        event.comments.select { |comment| comment.event_favorite > 0  }
+        event.comments.select { |comment| comment.event_favorite == true }
     end
 end
