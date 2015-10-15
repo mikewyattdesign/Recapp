@@ -22,40 +22,75 @@
         </div>
         <div class="col-xs-10">
             <h2>Events</h2>
-            <% @program.events.unscope(:order).order(start_date_time: :asc)[0...12].each_with_index do |event, index| %>
-                <% if index%3 == 0 %>
-                <div class="row">
-                <% end %>
-                    <% event_decorator = EventDecorator.new(event) %>
-                    <div class="col-xs-4 text-center">
-                        <h3 class='uppercase'><%= event.name %></h3>
-                        <p><%= event_decorator.venue %></p>
-                        <p><%= event_decorator.location %></p>
-                    </div>
-                <% if index%3 == 0 %>
-                </div>
-                <% end %>
-            <% end %>
-        </div>
-    </div>
-
-    <% if @program.events.count > 12 %>
-    <div class="row pdf-page">
-        <div class="col-xs-1">
-            <%= wicked_pdf_image_tag('g360left.png') %>
-        </div>
-        <div class="col-xs-10">
-            <h2>Events</h2>
-            <% @program.events.unscope(:order).order(start_date_time: :asc)[12..24].each do |event| %>
+            <% events = @program.events.unscope(:order).order(start_date_time: :asc)[0...12] %>
+            <div class="row">
+            <% events.each_with_index do |event, index| %>
                 <% event_decorator = EventDecorator.new(event) %>
                 <div class="col-xs-4 text-center">
                     <h3 class='uppercase'><%= event.name %></h3>
                     <p><%= event_decorator.venue %></p>
                     <p><%= event_decorator.location %></p>
                 </div>
+                <% if index+1 >= events.count %>
+                    </div>
+                <% elsif (index+1)%3 == 0 %>
+                    </div>
+                    <div class="row">
+                <% end %>
             <% end %>
         </div>
     </div>
+
+    <% if @program.events.count > 12 %>
+        <div class="row pdf-page">
+            <div class="col-xs-1">
+                <%= wicked_pdf_image_tag('g360left.png') %>
+            </div>
+            <div class="col-xs-10">
+                <h2>Events</h2>
+                <% events = @program.events.unscope(:order).order(start_date_time: :asc)[12...24] %>
+                <div class="row">
+                <% events.each_with_index do |event, index| %>
+                    <% event_decorator = EventDecorator.new(event) %>
+                    <div class="col-xs-4 text-center">
+                        <h3 class='uppercase'><%= event.name %></h3>
+                        <p><%= event_decorator.venue %></p>
+                        <p><%= event_decorator.location %></p>
+                    </div>
+                    <% if index+1 >= events.count %>
+                        </div>
+                    <% elsif (index+1)%3 == 0 %>
+                        </div>
+                        <div class="row">
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    <% elsif @program.events.count > 24 %>
+        <div class="row pdf-page">
+            <div class="col-xs-1">
+                <%= wicked_pdf_image_tag('g360left.png') %>
+            </div>
+            <div class="col-xs-10">
+                <h2>Events</h2>
+                <% events = @program.events.unscope(:order).order(start_date_time: :asc)[24...36] %>
+                <div class="row">
+                <% events.each_with_index do |event, index| %>
+                    <% event_decorator = EventDecorator.new(event) %>
+                    <div class="col-xs-4 text-center">
+                        <h3 class='uppercase'><%= event.name %></h3>
+                        <p><%= event_decorator.venue %></p>
+                        <p><%= event_decorator.location %></p>
+                    </div>
+                    <% if index+1 >= events.count %>
+                        </div>
+                    <% elsif (index+1)%3 == 0 %>
+                        </div>
+                        <div class="row">
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
     <% end %>
 
     <div class="row pdf-page">
@@ -141,21 +176,25 @@
 
         <div class="col-xs-10">
             <h2>Event Photos</h2>
+            <div class="row">
             <% @report.favorite_photos.each_with_index do |photo, index| %>
-                <% if index%3 == 0 %>
-                <div class="row">
-                <% end %>
-                    <% event = Event.find(photo.imageable_id) %>
-                    <% event_decorator = EventDecorator.new(event) %>
-                    <div class="col-xs-4 text-center">
-                        <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
-                        <h3 class='uppercase'><%= event.name %></h3>
-                        <p><%= event_decorator.venue %></p>
-                        <p><%= event_decorator.location %></p>
-                    </div>
-                <% if index%3 == 0 %>
+                <% event = Event.find(photo.imageable_id) %>
+                <% event_decorator = EventDecorator.new(event) %>
+                <div class="col-xs-4 text-center">
+                    <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
+                    <h3 class='uppercase'><%= event.name %></h3>
+                    <p><%= event_decorator.venue %></p>
+                    <p><%= event_decorator.location %></p>
+                    <p><%= 'hello ' + index.to_s + @report.favorite_photos.count.to_s %></p>
                 </div>
-                <% end %>
+
+            <% if index+1 >= @report.favorite_photos.count %>
+                </div>
+            <% elsif (index+1)%3 == 0 %>
+                </div>
+                <div class="row">
+            <% end %>
+
             <% end %>
         </div>
     <% end %>
