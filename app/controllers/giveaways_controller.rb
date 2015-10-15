@@ -11,7 +11,7 @@ class GiveawaysController < ApplicationController
         @event = Event.find(params[:brand_id])
         @comments = @event.comments
     else
-        @giveaways = Giveaway.all
+        @giveaways = Giveaway.order(:name)
     end
   end
 

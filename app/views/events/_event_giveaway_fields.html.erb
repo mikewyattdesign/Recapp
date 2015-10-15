@@ -2,7 +2,7 @@
 	<% if event_giveaway.new_record? %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">	
+				<div class="row">
 					<div class="col-md-1 form-cont-box">
 						<div class="favorite-box favorite-opaque-box">
 							<div class="btn-group" data-toggle="buttons">
@@ -14,7 +14,7 @@
 						</div>
 					</div>
 				    <div class="col-md-4 form-cont-box">
-                    <%= f.collection_select :giveaway_id, Giveaway.all, :id, :name, {selected: event_giveaway.giveaway_id}, { class: "form-control chosen-select"} %>
+                    <%= f.collection_select :giveaway_id, Giveaway.order(:name), :id, :name, {selected: event_giveaway.giveaway_id}, { class: "form-control chosen-select"} %>
 
 				    </div>
 				    <div class="col-md-5 form-cont-box">
@@ -30,7 +30,7 @@
 	<% else %>
 		<div class="col-md-12">
 			<fieldset>
-				<div class="row">	
+				<div class="row">
 					<div class="col-md-1 form-cont-box">
 						<div class="favorite-box favorite-opaque-box <%= 'active' if event_giveaway.event_favorite > 0%>">
 							<div class="btn-group" data-toggle="buttons">
