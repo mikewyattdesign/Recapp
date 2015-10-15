@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
 
     # GET /contacts
     def index
-        @contacts = Contact.all
+        @contacts = Contact.order(first_name: :asc, last_name: :asc)
     end
 
     # GET /contacts/new
