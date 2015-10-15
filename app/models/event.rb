@@ -65,27 +65,34 @@ class Event < ActiveRecord::Base
 
     def start_time
         if start_date_time.present?
-            start_date_time.localtime.strftime('%I:%M %p')
+            start_date_time.localtime.strftime('%l:%M %p')
         else
             '12:00 AM'
         end
     end
 
     def start_time=(time)
-        t = Time.strptime(time, '%I:%M %p', start_date_time)
+        t = time.split(/:| /)
+
+        if t[2] == 'AM'
+            t[0] = '0' if t[0] == '12'
+        elsif t[2] == 'PM'
+            t[0] = t[0]+12 unless t[0] == '12'
+        end
+
         if start_date_time.present?
             d = start_date_time.to_time
         else
-            d = DateTime.now.to_time
+            d = Time.now.to_time
         end
 
-        self.start_date_time = DateTime.new(
+        self.start_date_time = Time.new(
             d.year,
             d.month,
             d.day,
-            t.gmtime.hour,
-            t.gmtime.min,
-            t.gmtime.sec
+            t[0].to_i,
+            t[1].to_i,
+            0
         )
     end
 
@@ -98,20 +105,27 @@ class Event < ActiveRecord::Base
     end
 
     def end_time=(time)
-        t = Time.strptime(time, '%I:%M %p', end_date_time)
+        t = time.split(/:| /)
+
+        if t[2] == 'AM'
+            t[0] = '0' if t[0] == '12'
+        elsif t[2] == 'PM'
+            t[0] = t[0]+12 unless t[0] == '12'
+        end
+
         if end_date_time.present?
             d = end_date_time.to_time
         else
-            d = DateTime.now.to_time
+            d = Time.now.to_time
         end
 
-        self.end_date_time = DateTime.new(
+        self.end_date_time = Time.new(
             d.year,
             d.month,
             d.day,
-            t.gmtime.hour,
-            t.gmtime.min,
-            t.gmtime.sec
+            t[2].to_i,
+            t[1].to_i,
+            0
         )
     end
 
