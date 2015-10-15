@@ -132,16 +132,19 @@
         <div class="col-xs-1">
             <%= wicked_pdf_image_tag('g360left.png') %>
         </div>
-        <div class="col-xs-11">
-          <div class="col-xs-12">
-            <h2>Photos</h2>
-          </div>
+
+        <div class="col-xs-10">
+            <h2>Event Photos</h2>
             <% @report.favorite_photos.each do |photo| %>
-                <div class="col-xs-4">
+                <% event = Event.find(photo.imageable_id) %>
+                <% event_decorator = EventDecorator.new(event) %>
+                <div class="col-xs-4 text-center">
                     <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
+                    <h3 class='uppercase'><%= event.name %></h3>
+                    <p><%= event_decorator.venue %></p>
+                    <p><%= event_decorator.location %></p>
                 </div>
             <% end %>
-          </div>
         </div>
     <% end %>
 
