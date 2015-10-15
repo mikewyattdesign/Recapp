@@ -22,7 +22,7 @@
         </div>
         <div class="col-xs-10">
             <h2>Events</h2>
-            <% @program.events.unscope(:order).order(start_date_time: :asc).each do |event| %>
+            <% @program.events.unscope(:order).order(start_date_time: :asc)[0...15].each do |event| %>
                 <% event_decorator = EventDecorator.new(event) %>
                 <div class="col-xs-4 text-center">
                     <h3 class='uppercase'><%= event.name %></h3>
@@ -32,6 +32,25 @@
             <% end %>
         </div>
     </div>
+
+    <% if @program.events.count > 15 %>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
+        </div>
+        <div class="col-xs-10">
+            <h2>Events</h2>
+            <% @program.events.unscope(:order).order(start_date_time: :asc)[15..30].each do |event| %>
+                <% event_decorator = EventDecorator.new(event) %>
+                <div class="col-xs-4 text-center">
+                    <h3 class='uppercase'><%= event.name %></h3>
+                    <p><%= event_decorator.venue %></p>
+                    <p><%= event_decorator.location %></p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
 
     <div class="row pdf-page">
         <div class="col-xs-1">
