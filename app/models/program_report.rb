@@ -10,7 +10,7 @@ class ProgramReport
     end
 
     def events
-        @program.events.order(start_date_time: :desc)
+        @program.events
     end
 
     def overview
@@ -22,7 +22,7 @@ class ProgramReport
     end
 
     def favorite_photos
-        @program.events.select { |event| event.favorite_photos.length > 0 }.map { |event| event.favorite_photos.first }
+        events.unscope(:order).order(start_date_time: :asc).select { |event| event.favorite_photos.length > 0 }.map { |event| event.favorite_photos.first }
     end
 
     def first_favorite_photos
