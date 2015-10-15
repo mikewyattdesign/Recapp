@@ -26,14 +26,6 @@
             <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="col-md-10 col-md-offset-1 form-cont-box">
-            <%= f.label :unit_cost, "Unit Cost", class: "control-label" %>
-            <%= f.number_field :unit_cost, class: "form-control", min: 0, step: 0.01 %>
-        </div>
-        <div class="col-md-10 col-md-offset-1 form-cont-box">
-            <%= f.label :starting_inventory, "Starting Inventory", class: "control-label"%>
-            <%= f.number_field :starting_inventory, class: "form-control", min: 0  %>
-        </div>
-        <div class="col-md-10 col-md-offset-1 form-cont-box">
             <%= f.label :is_a_sample, "Giveaway Type", class: "control-label"%>
             <%= f.select :is_a_sample, [['Premium',false],['Sample',true]], {}, class: "form-control"  %>
         </div>
