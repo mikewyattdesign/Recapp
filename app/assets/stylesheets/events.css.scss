@@ -456,6 +456,9 @@
 	.heading {
 		display: block;
 		line-height: 1;
+    @media (max-width : 1200px) {
+        font-size: 18px;
+    }
 	}
 
 	&.event-giveaway .giveaway-image {
