@@ -309,6 +309,17 @@
     margin-left: -45px;
     width: 110%;
 
+    @media screen and (min-width : 1640px)  {
+      border-radius: 5px;
+      box-shadow: 0 0 4px grey;
+      z-index: 15;
+      position: fixed;
+      top: 145px;
+      left: 50%;
+      margin-left: -800px;
+      width: 285px;
+    }
+
     @media screen and (max-width : 1200px)  {
       width: 112%;
     }
@@ -336,6 +347,10 @@
         border-left: 15px solid transparent;
         border-right: 0px solid transparent;
         border-top: 15px solid #cb650b;
+
+        @media screen and (min-width : 1640px)  {
+          display: none;
+        }
       }
 
       .right-triangle {
@@ -348,6 +363,10 @@
         border-right: 15px solid transparent;
         border-top: 15px solid #cb650b;
 
+        @media screen and (min-width : 1640px)  {
+          display: none;
+        }
+
         @media screen and (max-width : 1200px)  {
           right: -9px;
         }
@@ -357,6 +376,23 @@
 
 .event-edit-btn {
   text-align: center;
+
+  @media screen and (min-width : 1640px)  {
+    padding: 0px;
+
+    .btn {
+      width: 100%;
+    }
+
+    .btn-success {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-default {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .event-circle {
