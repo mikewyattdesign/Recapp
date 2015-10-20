@@ -17,6 +17,8 @@
         <%= link_to events_path, class: "btn btn-primary back-button" do %><span class="glyphicon glyphicon-calendar"></span> &nbsp;Back to Events<% end %>
       -->
         <div class="col-md-12 event-edit-btn">
+          <h2><span class="glyphicon glyphicon-saved"></span> SAVE</h2>
+
           <%= f.submit @event.new_record? ? 'Create Event' : 'Update Current Event', class: "btn btn-success" %>
 
           <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-default" %>

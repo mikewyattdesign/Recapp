@@ -377,6 +377,33 @@
 .event-edit-btn {
   text-align: center;
 
+  @media screen and (max-width : 1640px)  {
+    text-align: right;
+  }
+
+  @media screen and (max-width : 992px)  {
+    text-align: center;
+  }
+
+  h2 {
+    color: white;
+
+    @media screen and (max-width : 1640px)  {
+      position: absolute;
+      left: 0;
+      top: -25px;
+    }
+
+    @media screen and (max-width : 1200px)  {
+      font-size: 24px;
+      top: -20px;
+    }
+
+    @media screen and (max-width : 992px)  {
+      display: none;
+    }
+  }
+
   @media screen and (min-width : 1640px)  {
     padding: 0px;
 
