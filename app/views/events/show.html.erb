@@ -110,14 +110,12 @@
                                   <th class='text-right'>Amount Distributed</th>
                               </tr>
                               <% @event_decorator.event_giveaways.each do |event_giveaway| %>
-                                  <% if event_giveaway.giveaway.present? %>
-                                      <tr class="event-giveaway">
-                                        <td><%= event_giveaway.giveaway.name %></td>
-                                        <td class='text-right'>
-                                          <%= event_giveaway.count_given_away || 0 %>
-                                        </td>
-                                      </tr>
-                                  <% end %>
+                                  <tr class="event-giveaway">
+                                    <td><%= event_giveaway.giveaway.present? ? event_giveaway.giveaway.name : 'Giveaway missing. Notify the technical administrator' %></td>
+                                    <td class='text-right'>
+                                      <%= event_giveaway.count_given_away || 0 %>
+                                    </td>
+                                  </tr>
                               <% end %>
                           </table>
                       </div>
