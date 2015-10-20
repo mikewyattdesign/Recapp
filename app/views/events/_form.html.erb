@@ -10,7 +10,30 @@
         </div>
     <% end %>
 
+    <div class="event-edit-btn-main hidden-xs" data-spy="affix" data-offset-top="80">
+
+      <div class="event-edit-btn-cont row">
+      <!--
+        <%= link_to events_path, class: "btn btn-primary back-button" do %><span class="glyphicon glyphicon-calendar"></span> &nbsp;Back to Events<% end %>
+      -->
+        <div class="col-md-12 event-edit-btn">
+          <%= f.submit @event.new_record? ? 'Create Event' : 'Update Current Event', class: "btn btn-success" %>
+
+          <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-default" %>
+
+          <%= f.submit @event.new_record? ? 'Create Event and View Recap' : 'Update Event and View Recap', class: "btn btn-default" %>
+        </div>
+
+        <div class="filter-triangles">
+            <div class="left-triangle"></div>
+            <div class="right-triangle"></div>
+        </div>
+      </div>
+
+    </div>
+
     <div class="row">
+        </br>
         <p>NOTE: Fields marked with an asterisk (*) are client facing. Please use proper grammar.</p>
         <%= render 'general_fields', f: f %>
         <div class="col-md-12 form-header-label">
@@ -37,6 +60,7 @@
                 </div>
             </div>
         <% end %>
+
         <div class="col-md-12 form-header-label"></div>
         <% if current_user.is_admin? || @event.completed_at.nil? %>
             <div class="col-md-12">
@@ -45,17 +69,6 @@
                 <% end %>
             </div>
         <% end %>
-        <div class="col-md-12 submit-container">
-            <div class="row add_top_margin">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-<!--
-                  <%= link_to events_path, class: "btn btn-primary back-button" do %><span class="glyphicon glyphicon-calendar"></span> &nbsp;Back to Events<% end %>
- -->
-                  <%= f.submit @event.new_record? ? 'Create Event' : 'Update Current Event', class: "btn btn-success pull-right" %>
-                  <%= f.submit @event.new_record? ? 'Create Event and Add Another' : 'Update Event and Add Another', class: "btn btn-primary" %>
-                  <%= f.submit @event.new_record? ? 'Create Event and View Recap' : 'Update Event and View Recap', class: "btn btn-primary" %>
-                </div>
-            </div>
-        </div>
+
     </div>
 <% end %>
