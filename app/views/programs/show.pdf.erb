@@ -1,5 +1,6 @@
 <% @report = report if @report.nil? && report.present? %>
 <% @program = program if @program.nil? && program.present? %>
+<% page_number_start = 2; page_number = page_number_start %>
 <div class="program">
     <div class="row pdf-page">
         <div class="col-xs-1">
@@ -41,62 +42,66 @@
                 <% end %>
             <% end %>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
 
     <% if @program.events.count > 12 %>
-        <div class="row pdf-page">
-            <div class="col-xs-1">
-                <%= wicked_pdf_image_tag('g360left.png') %>
-            </div>
-            <div class="col-xs-10">
-                <h2>Events</h2>
-                <% events = @program.events.unscope(:order).order(start_date_time: :asc)[12...24] %>
-                <% if events.count > 0 %>
-                <div class="row">
-                <% end %>
-                <% events.each_with_index do |event, index| %>
-                    <% event_decorator = EventDecorator.new(event) %>
-                    <div class="col-xs-4 text-center">
-                        <h3 class='uppercase'><%= event.name %></h3>
-                        <p><%= event_decorator.venue %></p>
-                        <p><%= event_decorator.location %></p>
-                    </div>
-                    <% if index+1 >= events.count %>
-                        </div>
-                    <% elsif (index+1)%3 == 0 %>
-                        </div>
-                        <div class="row">
-                    <% end %>
-                <% end %>
-            </div>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
         </div>
+        <div class="col-xs-10">
+            <h2>Events</h2>
+            <% events = @program.events.unscope(:order).order(start_date_time: :asc)[12...24] %>
+            <% if events.count > 0 %>
+            <div class="row">
+            <% end %>
+            <% events.each_with_index do |event, index| %>
+                <% event_decorator = EventDecorator.new(event) %>
+                <div class="col-xs-4 text-center">
+                    <h3 class='uppercase'><%= event.name %></h3>
+                    <p><%= event_decorator.venue %></p>
+                    <p><%= event_decorator.location %></p>
+                </div>
+                <% if index+1 >= events.count %>
+                    </div>
+                <% elsif (index+1)%3 == 0 %>
+                    </div>
+                    <div class="row">
+                <% end %>
+            <% end %>
+        </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
+    </div>
+
     <% elsif @program.events.count > 24 %>
-        <div class="row pdf-page">
-            <div class="col-xs-1">
-                <%= wicked_pdf_image_tag('g360left.png') %>
-            </div>
-            <div class="col-xs-10">
-                <h2>Events</h2>
-                <% events = @program.events.unscope(:order).order(start_date_time: :asc)[24...36] %>
-                <% if events.count > 0 %>
-                <div class="row">
-                <% end %>
-                <% events.each_with_index do |event, index| %>
-                    <% event_decorator = EventDecorator.new(event) %>
-                    <div class="col-xs-4 text-center">
-                        <h3 class='uppercase'><%= event.name %></h3>
-                        <p><%= event_decorator.venue %></p>
-                        <p><%= event_decorator.location %></p>
-                    </div>
-                    <% if index+1 >= events.count %>
-                        </div>
-                    <% elsif (index+1)%3 == 0 %>
-                        </div>
-                        <div class="row">
-                    <% end %>
-                <% end %>
-            </div>
+    <div class="row pdf-page">
+        <div class="col-xs-1">
+            <%= wicked_pdf_image_tag('g360left.png') %>
         </div>
+        <div class="col-xs-10">
+            <h2>Events</h2>
+            <% events = @program.events.unscope(:order).order(start_date_time: :asc)[24...36] %>
+            <% if events.count > 0 %>
+            <div class="row">
+            <% end %>
+            <% events.each_with_index do |event, index| %>
+                <% event_decorator = EventDecorator.new(event) %>
+                <div class="col-xs-4 text-center">
+                    <h3 class='uppercase'><%= event.name %></h3>
+                    <p><%= event_decorator.venue %></p>
+                    <p><%= event_decorator.location %></p>
+                </div>
+                <% if index+1 >= events.count %>
+                    </div>
+                <% elsif (index+1)%3 == 0 %>
+                    </div>
+                    <div class="row">
+                <% end %>
+            <% end %>
+        </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
+    </div>
     <% end %>
 
     <div class="row pdf-page">
@@ -172,68 +177,74 @@
             </div>
           </div>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
 
     <% unless @report.photos.empty? %>
-        <div class="row pdf-page">
+    <div class="row pdf-page">
+      <div class="col-xs-1">
+          <%= wicked_pdf_image_tag('g360left.png') %>
+      </div>
+
+      <div class="col-xs-10">
+          <h2>Event Photos</h2>
+          <% if @report.favorite_photos.count > 0 %>
+          <div class="row">
+          <% end %>
+          <% @report.favorite_photos.each_with_index do |photo, index| %>
+              <% event = Event.find(photo.imageable_id) %>
+              <% event_decorator = EventDecorator.new(event) %>
+              <div class="col-xs-4 text-center">
+                <div class="pdf-photo-sub-container">
+                  <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
+                  <!-- <p><%= 'hello ' + index.to_s + @report.favorite_photos.count.to_s %></p> -->
+                </div>
+                <h3 class='uppercase'><%= event.name %></h3>
+                <p><%= event_decorator.venue %></p>
+                <p><%= event_decorator.location %></p>
+              </div>
+
+          <% if index+1 >= @report.favorite_photos.count %>
+              </div>
+          <% elsif (index+1)%3 == 0 %>
+              </div>
+              <div class="row">
+          <% end %>
+
+          <% end %>
+          </div>
+          <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
+      </div>
+    <% end %>
+
+    <% unless @report.comments.empty? %>
+    <div class="row pdf-page">
         <div class="col-xs-1">
             <%= wicked_pdf_image_tag('g360left.png') %>
         </div>
-
         <div class="col-xs-10">
-            <h2>Event Photos</h2>
-            <% if @report.favorite_photos.count > 0 %>
-            <div class="row">
-            <% end %>
-            <% @report.favorite_photos.each_with_index do |photo, index| %>
-                <% event = Event.find(photo.imageable_id) %>
-                <% event_decorator = EventDecorator.new(event) %>
-                <div class="col-xs-4 text-center">
-                    <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
-                    <h3 class='uppercase'><%= event.name %></h3>
-                    <p><%= event_decorator.venue %></p>
-                    <p><%= event_decorator.location %></p>
-                    <p><%= 'hello ' + index.to_s + @report.favorite_photos.count.to_s %></p>
-                </div>
-
-            <% if index+1 >= @report.favorite_photos.count %>
-                </div>
-            <% elsif (index+1)%3 == 0 %>
-                </div>
-                <div class="row">
-            <% end %>
-
-            <% end %>
-        </div>
-    <% end %>
-
-
-    <% unless @report.comments.empty? %>
-        <div class="row pdf-page">
-            <div class="col-xs-1">
-                <%= wicked_pdf_image_tag('g360left.png') %>
-            </div>
-            <div class="col-xs-10">
-            <h2>Comments</h2>
-                <div class="program-comments panel panel-default">
-                    <table class="table">
-                        <tr class="program-comment">
-                            <th class="program-comment">COMMENT</th>
-                            <th class="program-comment-count">Type</th>
-                            <th class="program-comment-count">Event</th>
+        <h2>Comments</h2>
+            <div class="program-comments panel panel-default">
+                <table class="table">
+                    <tr class="program-comment">
+                        <th class="program-comment">COMMENT</th>
+                        <th class="program-comment-count">Type</th>
+                        <th class="program-comment-count">Event</th>
+                    </tr>
+                    <% @report.comments.each do |comment| %>
+                        <tr>
+                            <td class="program-comment"><%= comment.content %></td>
+                            <td class="program-comment-count"><%= comment.type_in_words %></td>
+                            <td class="program-comment-count"><%= Event.find(comment.commentable_id).name %></td>
                         </tr>
-                        <% @report.comments.each do |comment| %>
-                            <tr>
-                                <td class="program-comment"><%= comment.content %></td>
-                                <td class="program-comment-count"><%= comment.type_in_words %></td>
-                                <td class="program-comment-count"><%= Event.find(comment.commentable_id).name %></td>
-                            </tr>
-                        <% end %>
-                    </table>
-                </div>
+                    <% end %>
+                </table>
             </div>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
+    </div>
     <% end %>
+
     <div class="row pdf-page">
         <div class="col-xs-1">
             <%= wicked_pdf_image_tag('g360left.png') %>
@@ -252,5 +263,6 @@
             </div>
         <% end %>
         </div>
+        <div class="pdf-footer">GROUP360 WORLDWIDE | <%= "%02d" % page_number %> <% page_number += 1 %></div>
     </div>
 </div>
