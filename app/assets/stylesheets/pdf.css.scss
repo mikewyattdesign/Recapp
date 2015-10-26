@@ -92,7 +92,7 @@
 .pdf-photo-sub-container {
     position: relative;
     border: 1px solid #494949;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     height: 214px;
     background-color: #CCCCCC;
     overflow: hidden;
@@ -108,6 +108,17 @@
     width: 100%;
     height: auto;
     margin: auto;
+}
+
+.pdf-event-photo-container, .pdf-event-info-container {
+  margin-bottom: 10px;
+  h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .page-break-before {

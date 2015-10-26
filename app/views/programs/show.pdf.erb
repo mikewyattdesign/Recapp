@@ -40,8 +40,8 @@
             <% end %>
             <% events.each_with_index do |event, index| %>
                 <% event_decorator = EventDecorator.new(event) %>
-                <div class="col-xs-4 text-center">
-                    <h3 class='uppercase'><%= event.name %></h3>
+                <div class="col-xs-4 text-center pdf-event-info-container">
+                    <h3 class='uppercase'><%= truncate(event.name, length: 37, separator: ' ') %></h3>
                     <p><%= event_decorator.venue %></p>
                     <p><%= event_decorator.location %></p>
                 </div>
@@ -153,11 +153,11 @@
             <% photos.each_with_index do |photo, index| %>
                 <% event = Event.find(photo.imageable_id) %>
                 <% event_decorator = EventDecorator.new(event) %>
-                <div class="col-xs-4 text-center">
+                <div class="col-xs-4 text-center pdf-event-photo-container">
                   <div class="pdf-photo-sub-container">
                     <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
                   </div>
-                  <h3 class='uppercase'><%= truncate(event.name, length: 30, separator: ' ') %></h3>
+                  <h3 class='uppercase'><%= truncate(event.name, length: 37, separator: ' ') %></h3>
                   <p><%= event_decorator.venue %></p>
                   <p><%= event_decorator.location %></p>
                 </div>
