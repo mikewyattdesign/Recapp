@@ -157,7 +157,7 @@
                   <div class="pdf-photo-sub-container">
                     <%= image_tag photo.image(:small), class: "img-responsive pdf-photo pdf-photo-sub" %>
                   </div>
-                  <h3 class='uppercase'><%= event.name %></h3>
+                  <h3 class='uppercase'><%= truncate(event.name, length: 30, separator: ' ') %></h3>
                   <p><%= event_decorator.venue %></p>
                   <p><%= event_decorator.location %></p>
                 </div>
