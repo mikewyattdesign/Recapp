@@ -13,6 +13,8 @@ class EventsController < ApplicationController
         @events = current_user.events.order(start_date_time: :desc)
     end
 
+    @events = @events.approved if current_user.is_client?
+
     @events = event_tag_filter(@events)
     @events = event_date_filter(@events)
 
@@ -25,29 +27,33 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    respond_to do |format|
-      format.html
-      format.json
-      format.pdf do
-        return render pdf: "#{@event.id}_#{@event.name}",
-                      template: '/events/show.pdf.erb',
-                      layout: "/layouts/pdf.html.erb",
-                      redirect_delay: 300,
-                      disable_javascript: false,
-                      orientation: 'Landscape',
-                      encoding: "UTF-8",
-                      margin:  { top: 0, bottom: 0, left: 0, right: 0},
-                      page_size: 'Letter',
-                      show_as_html: params[:debug].present?,
-                      locals: {event_decorator: @event_decorator}
+    if current_user.is_client? && !@event.approved
+      redirect_to events_path
+    else
+      respond_to do |format|
+        format.html
+        format.json
+        format.pdf do
+          return render pdf: "#{@event.id}_#{@event.name}",
+                        template: '/events/show.pdf.erb',
+                        layout: "/layouts/pdf.html.erb",
+                        redirect_delay: 300,
+                        disable_javascript: false,
+                        orientation: 'Landscape',
+                        encoding: "UTF-8",
+                        margin:  { top: 0, bottom: 0, left: 0, right: 0},
+                        page_size: 'Letter',
+                        show_as_html: params[:debug].present?,
+                        locals: {event_decorator: @event_decorator}
 
-        # No longer implemented
-        # if (@event.report.present? && @event.report.report.present?)
-        #   send_file Paperclip.io_adapters.for(@event.report.report).path
-        # else
-        #   Delayed::Job.enqueue GeneratePdfJob.new(@event.id, Event.name)
-        #   redirect_to @event, alert: 'Report Being Generated'
-        # end
+          # No longer implemented
+          # if (@event.report.present? && @event.report.report.present?)
+          #   send_file Paperclip.io_adapters.for(@event.report.report).path
+          # else
+          #   Delayed::Job.enqueue GeneratePdfJob.new(@event.id, Event.name)
+          #   redirect_to @event, alert: 'Report Being Generated'
+          # end
+        end
       end
     end
   end
@@ -118,6 +124,20 @@ class EventsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def approve
+    respond_to do |format|
+      if @event.update(approved: true)
+        format.html {
+            redirect_to @event, notice: "#{@event.name} was successfully approved."
+        }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'show' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908163828) do
+ActiveRecord::Schema.define(version: 20151026200418) do
 
   create_table "api_keys", force: true do |t|
     t.string   "name"
@@ -128,18 +128,18 @@ ActiveRecord::Schema.define(version: 20150908163828) do
     t.boolean  "brand_demo_fit"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "digital_engagements",         default: 0, null: false
-    t.integer  "mileage_impressions",         default: 0, null: false
-    t.integer  "footprint_impressions",       default: 0, null: false
-    t.integer  "walk_by_impressions",         default: 0, null: false
-    t.integer  "total_attendance",            default: 0, null: false
+    t.integer  "digital_engagements",         default: 0,     null: false
+    t.integer  "mileage_impressions",         default: 0,     null: false
+    t.integer  "footprint_impressions",       default: 0,     null: false
+    t.integer  "walk_by_impressions",         default: 0,     null: false
+    t.integer  "total_attendance",            default: 0,     null: false
     t.text     "note"
     t.boolean  "wholesaler_or_local_support"
     t.string   "city"
     t.string   "state"
     t.string   "street"
     t.string   "postal_code"
-    t.integer  "extended_engagements",        default: 0, null: false
+    t.integer  "extended_engagements",        default: 0,     null: false
     t.integer  "estimated_number_of_samples"
     t.decimal  "cost_per_sample"
     t.integer  "tier"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20150908163828) do
     t.string   "venue"
     t.string   "suite"
     t.datetime "completed_at"
+    t.boolean  "approved",                    default: false
   end
 
   create_table "giveaways", force: true do |t|

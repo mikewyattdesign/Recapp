@@ -172,6 +172,9 @@
                     <%= link_to edit_event_path(@event), class: "btn btn-primary" do %><span class="glyphicon glyphicon-pencil"></span> &nbsp;Edit<% end %>
                     <% end %>
                     <%= link_to event_path(@event, format: :pdf), class: "btn btn-info", target: "_blank" do %><span class="glyphicon glyphicon-file"></span> &nbsp;Report<% end %>
+                    <% if can? :approve, Event %>
+                    <%= link_to event_approval_path(@event), class: "btn btn-success" do %><span class="glyphicon glyphicon-ok"></span> &nbsp; Approve<% end %>
+                    <% end %>
                 </ul>
             </div>
 

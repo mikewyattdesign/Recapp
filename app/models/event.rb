@@ -35,9 +35,12 @@ class Event < ActiveRecord::Base
 
     validates_with DateValidator
 
+    scope :approved, -> { where('approved = ?', true) }
+
     def event
         self
     end
+
 
     # Virtual Attributes to simplify Start and End Date Time Entry
 

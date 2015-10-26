@@ -56,6 +56,7 @@ class Ability
         can :cru, Giveaway
         can :crud, Request
         can :crud, Contact
+        cannot :approve, Event
     end
 
     if user.is_field_staff?
@@ -67,6 +68,7 @@ class Ability
         can :cru, Giveaway
         can :cru, Program
         can :cru, Contact
+        cannot :approve, Event
     end
 
     if user.is_g360?
@@ -79,6 +81,7 @@ class Ability
         can :create, Video
         can :read, Video
         can :read, Contact
+        cannot :approve, Event
     end
 
     if user.is_client?
@@ -87,6 +90,7 @@ class Ability
         can :read, Event
         can :read, Photo
         can :read, Video
+        cannot :approve, Event
     end
   end
 end
