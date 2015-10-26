@@ -110,8 +110,20 @@
     margin: auto;
 }
 
-.pdf-event-photo-container, .pdf-event-info-container {
+.pdf-event-photo-container {
   margin-bottom: 10px;
+  h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+}
+.pdf-event-info-container {
+  margin-bottom: 20px;
   h3 {
     margin-top: 10px;
     margin-bottom: 5px;
@@ -119,9 +131,6 @@
   p {
     margin-bottom: 0;
   }
-}
-.pdf-event-info-container {
-  margin-bottom: 20px;
 }
 
 .page-break-before {
