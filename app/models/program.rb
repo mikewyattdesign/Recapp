@@ -17,17 +17,19 @@ class Program < ActiveRecord::Base
         "#{self.name} (#{self.brand.name})"
     end
 
-    def photos
-        event_ids = events.pluck(:id)
+    def photos(user = nil)
+        event_ids = (user.present? && user.is_client?) ? events.approved.pluck(:id) : events.pluck(:id)
         Photo.where(imageable_type: "Event", imageable_id: event_ids)
     end
 
-    def favorite_photos
+    def favorite_photos(user = nil)
+        events = (user.present? && user.is_client?) ? self.events.approved : self.events
         # photos.where(program_favorite: true) # Currently just favorite as event photos.
         photos.where(event_favorite: true)
     end
 
-    def first_favorite_photos
+    def first_favorite_photos(user = nil)
+        events = (user.present? && user.is_client?) ? self.events.approved : self.events
         events.select{|e| e.favorite_photos.count}.map do |event|
             event.favorite_photos.first
         end

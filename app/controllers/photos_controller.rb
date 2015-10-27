@@ -12,9 +12,9 @@ class PhotosController < ApplicationController
       @favoritable_type = "event"
     elsif params[:program_id] && Program.where(id: params[:program_id]).count > 0
       @program = Program.find(params[:program_id])
-      @photos = @program.photos
-      @favorite_photos = @program.favorite_photos
-      @first_favorite_photos = @program.favorite_photos.first
+      @photos = @program.photos(current_user)
+      @favorite_photos = @program.favorite_photos(current_user)
+      @first_favorite_photos = @program.favorite_photos(current_user).first
       @descriptor = @program.name
       @favoritable_type = "program"
     elsif params[:brand_id] && Brand.where(id: params[:brand_id]).count > 0
