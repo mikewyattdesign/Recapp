@@ -18,7 +18,7 @@
 
                   <h2>Events</h2>
                   <ul class="list-group">
-                      <% @program.events.each do |event| %>
+                      <% @report.events.each do |event| %>
                           <% event_decorator = EventDecorator.new(event) %>
                           <li class="list-group-item">
                               <%= link_to event.name, event_path(event) %><span class="pull-right"><%= event_decorator.location %></span>
@@ -41,7 +41,7 @@
                   <h2>Program Details</h2>
                   <div class="row">
                       <div class="col-md-12">
-                          <div class="well"><%= @program.overview %></div>
+                          <div class="well"><%= @report.overview %></div>
                       </div>
                   </div>
 

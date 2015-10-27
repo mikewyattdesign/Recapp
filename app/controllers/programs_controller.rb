@@ -17,7 +17,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
-      @report = ProgramReport.new(@program)
+      @report = ProgramReport.new(@program, current_user)
       respond_to do |format|
         format.html
         format.json
@@ -96,7 +96,7 @@ class ProgramsController < ApplicationController
 
   def render_PDF(id)
     @program = Program.find(id)
-    @report = ProgramReport.new(@program)
+    @report = ProgramReport.new(@program, current_user)
     doc_pdf = render_to_string  pdf: "#{@program.id}_#{@program.name}",
                       template: '/programs/show.pdf.erb',
                       layout: "/layouts/pdf.html.erb",
@@ -128,8 +128,8 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:name, 
-        :brand_id, 
+      params.require(:program).permit(:name,
+        :brand_id,
         :overview,
         comments_attributes: [:id, :comment_id, :program_favorite])
     end

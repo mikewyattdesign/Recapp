@@ -87,7 +87,7 @@ class Ability
     if user.is_client?
         can :read, Brand
         can :read, Program
-        can :read, Event
+        can :read, Event, approved: true
         can :read, Photo
         can :read, Video
         cannot :approve, Event
