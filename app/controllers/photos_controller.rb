@@ -19,8 +19,8 @@ class PhotosController < ApplicationController
       @favoritable_type = "program"
     elsif params[:brand_id] && Brand.where(id: params[:brand_id]).count > 0
       @brand = Brand.find(params[:brand_id])
-      @photos = @brand.photos
-      @favorite_photos = @brand.favorite_photos
+      @photos = @brand.photos(current_user)
+      @favorite_photos = @brand.favorite_photos(current_user)
       @descriptor = @brand.name
       @favoritable_type = "brand"
     else

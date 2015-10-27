@@ -1,5 +1,8 @@
 class Brand < ActiveRecord::Base
+    include Approval
+
     has_many :programs
+    has_many :events, through: :programs
     has_many :assignments, as: :assignable, dependent: :destroy
     has_many :users, through: :assignments
     has_attached_file :logo, styles: {large: '700x700', medium: '500x500', small: '300x300'}
@@ -7,18 +10,13 @@ class Brand < ActiveRecord::Base
 
     validates :name, presence: true, uniqueness: true
 
-    def events
-    	program_ids = programs.pluck(:id)
-    	Event.where(program_id: program_ids)
-    end
-
-    def photos
-        event_ids = events.pluck(:id)
+    def photos(user = nil)
+        event_ids = get_approved_events(self, user).pluck(:id)
         Photo.where(imageable_type: "Event", imageable_id: event_ids)
     end
 
-    def favorite_photos
+    def favorite_photos(user = nil)
         # photos.where(brand_favorite: true) # Currently just favorite as event photos.
-        photos.where(event_favorite: true)
+        photos(user).where(event_favorite: true)
     end
 end

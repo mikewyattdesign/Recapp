@@ -1,6 +1,8 @@
 ##
 # Handles reporting for programs, aggregates data
 class ProgramReport
+    include Approval
+
     def initialize(program, user = nil)
         @program = program
         @user = user
@@ -10,8 +12,8 @@ class ProgramReport
         @program.name
     end
 
-    def events
-        (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
+    def events(user = nil)
+        get_approved_events(@program, @user)
     end
 
     def overview
@@ -23,8 +25,7 @@ class ProgramReport
     end
 
     def favorite_photos
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.unscope(:order).order(start_date_time: :asc).select { |event| event.favorite_photos.length > 0 }.map { |event| event.favorite_photos.first }
+        events(@user).unscope(:order).order(start_date_time: :asc).select { |event| event.favorite_photos.length > 0 }.map { |event| event.favorite_photos.first }
     end
 
     def first_favorite_photos
@@ -32,62 +33,52 @@ class ProgramReport
     end
 
     def total_impressions
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:estimated_total_impressions).reduce(:+)
+        events(@user).map(&:estimated_total_impressions).reduce(:+)
     end
 
     def footprint_impressions
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:footprint_impressions).reduce(:+)
+        events(@user).map(&:footprint_impressions).reduce(:+)
     end
 
     def mileage_impressions
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:mileage_impressions).reduce(:+)
+        events(@user).map(&:mileage_impressions).reduce(:+)
     end
 
     def extended_engagements
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:extended_engagements).reduce(:+)
+        events(@user).map(&:extended_engagements).reduce(:+)
     end
 
     def total_attendance
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:total_attendance).reduce(:+)
+        events(@user).map(&:total_attendance).reduce(:+)
     end
 
     def walk_by_impressions
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:walk_by_impressions).reduce(:+)
+        events(@user).map(&:walk_by_impressions).reduce(:+)
     end
 
     def digital_engagements
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:digital_engagements).reduce(:+)
+        events(@user).map(&:digital_engagements).reduce(:+)
     end
 
     def start_date
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        minimum = events.map(&:start_date_time).min
+        minimum = events(@user).map(&:start_date_time).min
 
         minimum.to_date.strftime('%m/%d/%Y') if minimum
     end
 
     def end_date
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        maximum = events.map(&:end_date_time).max
+        maximum = events(@user).map(&:end_date_time).max
 
         maximum.to_date.strftime('%m/%d/%Y') if maximum
     end
 
     def comments
-        event_ids = (@user.present? && @user.is_client?) ? @program.events.approved.pluck(:id) : @program.events.pluck(:id)
+        event_ids = events(@user).pluck(:id)
         Comment.where(commentable_type: "Event", commentable_id: event_ids, program_favorite: true)
     end
 
     def aggregate_impression_data
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map{ |event|
+        events(@user).map{ |event|
             {name: event.name,
                 data: [
                         ['',],
@@ -103,7 +94,6 @@ class ProgramReport
     end
 
     def contacts
-        events = (@user.present? && @user.is_client?) ? @program.events.approved : @program.events
-        events.map(&:contacts).flatten(1).uniq
+        events(@user).map(&:contacts).flatten(1).uniq
     end
 end

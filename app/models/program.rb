@@ -1,4 +1,6 @@
 class Program < ActiveRecord::Base
+    include Approval
+
     has_many :events, -> {order('"events"."start_date_time" DESC') }
     belongs_to :brand
     has_many :assignments, as: :assignable, dependent: :destroy
@@ -18,19 +20,17 @@ class Program < ActiveRecord::Base
     end
 
     def photos(user = nil)
-        event_ids = (user.present? && user.is_client?) ? events.approved.pluck(:id) : events.pluck(:id)
+        event_ids = get_approved_events(self, user).pluck(:id)
         Photo.where(imageable_type: "Event", imageable_id: event_ids)
     end
 
     def favorite_photos(user = nil)
-        events = (user.present? && user.is_client?) ? self.events.approved : self.events
         # photos.where(program_favorite: true) # Currently just favorite as event photos.
-        photos.where(event_favorite: true)
+        photos(user).where(event_favorite: true)
     end
 
     def first_favorite_photos(user = nil)
-        events = (user.present? && user.is_client?) ? self.events.approved : self.events
-        events.select{|e| e.favorite_photos.count}.map do |event|
+        get_approved_events(self, user).select{|e| e.favorite_photos.count}.map do |event|
             event.favorite_photos.first
         end
     end
