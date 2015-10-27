@@ -137,7 +137,7 @@ class EventsController < ApplicationController
         }
         format.json { head :no_content }
       else
-        format.html { render action: 'show' }
+        format.html { render action: 'show', notice: "#{@event.name} was not approved." }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
