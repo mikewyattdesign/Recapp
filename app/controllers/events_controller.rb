@@ -131,7 +131,7 @@ class EventsController < ApplicationController
 
   def approve
     respond_to do |format|
-      if @event.update(approved: true)
+      if @event.update_attribute('approved', true)
         format.html {
             redirect_to @event, notice: "#{@event.name} was successfully approved."
         }
