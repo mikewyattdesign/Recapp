@@ -13,8 +13,6 @@ class EventsController < ApplicationController
         @events = current_user.events.order(start_date_time: :desc)
     end
 
-    @events = @events.approved if current_user.is_client?
-
     @events = event_tag_filter(@events)
     @events = event_date_filter(@events)
 
