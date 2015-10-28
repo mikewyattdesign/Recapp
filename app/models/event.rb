@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
 
     validates_with DateValidator
 
-    scope :approved, -> { where('approved = ?', true) }
+    scope :approved, -> { where('events.approved = ?', true) }
 
     def event
         self

@@ -1,7 +1,7 @@
 class ProgramsController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_program, only: [:show, :edit, :update, :destroy]
+  before_action :set_program, only: [:show, :edit, :update, :approve, :destroy]
 
   # GET /brands/:brand_id/programs
   # GET /brands/:brand_id/programs.json
@@ -17,28 +17,32 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
-      @report = ProgramReport.new(@program, current_user)
-      respond_to do |format|
-        format.html
-        format.json
-        format.pdf do
-            return render pdf: "#{@program.id}_#{@program.name}",
-                      template: '/programs/show.pdf.erb',
-                      layout: "/layouts/pdf.html.erb",
-                      redirect_delay: 200,
-                      disable_javascript: false,
-                      orientation: 'Landscape',
-                      encoding: "UTF-8",
-                      margin:  { top: 0, bottom: 0, left: 0, right: 0},
-                      page_size: 'Letter',
-                      show_as_html: params[:debug].present?,
-                      locals: {program_decorator: @program_decorator}
-            if (@program.report.present? && @program.report.report.present?)
-              send_file Paperclip.io_adapters.for(@program.report.report).path
-            else
-              Delayed::Job.enqueue GeneratePdfJob.new(@program.id, Program.name)
-              redirect_to @program, alert: 'Report Being Generated'
-            end
+      if current_user.is_client? && !@program.approved
+        redirect_to brand_programs_path(@program.brand)
+      else
+        @report = ProgramReport.new(@program, current_user)
+        respond_to do |format|
+          format.html
+          format.json
+          format.pdf do
+              return render pdf: "#{@program.id}_#{@program.name}",
+                        template: '/programs/show.pdf.erb',
+                        layout: "/layouts/pdf.html.erb",
+                        redirect_delay: 200,
+                        disable_javascript: false,
+                        orientation: 'Landscape',
+                        encoding: "UTF-8",
+                        margin:  { top: 0, bottom: 0, left: 0, right: 0},
+                        page_size: 'Letter',
+                        show_as_html: params[:debug].present?,
+                        locals: {program_decorator: @program_decorator}
+              if (@program.report.present? && @program.report.report.present?)
+                send_file Paperclip.io_adapters.for(@program.report.report).path
+              else
+                Delayed::Job.enqueue GeneratePdfJob.new(@program.id, Program.name)
+                redirect_to @program, alert: 'Report Being Generated'
+              end
+          end
         end
       end
   end
@@ -78,6 +82,20 @@ class ProgramsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
+        format.json { render json: @program.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def approve
+    respond_to do |format|
+      if @program.update_attribute('approved', true)
+        format.html {
+            redirect_to @program, notice: "#{@program.name} was successfully approved."
+        }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'show', notice: "#{@program.name} was not approved." }
         format.json { render json: @program.errors, status: :unprocessable_entity }
       end
     end

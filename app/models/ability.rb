@@ -56,6 +56,7 @@ class Ability
         can :cru, Giveaway
         can :crud, Request
         can :crud, Contact
+        cannot :approve, Program
         cannot :approve, Event
     end
 
@@ -68,6 +69,7 @@ class Ability
         can :cru, Giveaway
         can :cru, Program
         can :cru, Contact
+        cannot :approve, Program
         cannot :approve, Event
     end
 
@@ -81,15 +83,17 @@ class Ability
         can :create, Video
         can :read, Video
         can :read, Contact
+        cannot :approve, Program
         cannot :approve, Event
     end
 
     if user.is_client?
         can :read, Brand
-        can :read, Program
+        can :read, Program, approved: true
         can :read, Event, approved: true
         can :read, Photo
         can :read, Video
+        cannot :approve, Program
         cannot :approve, Event
     end
   end

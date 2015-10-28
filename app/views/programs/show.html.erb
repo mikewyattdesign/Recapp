@@ -5,6 +5,9 @@
             <%= link_to program_path(@program, format: :pdf), class: "btn btn-info pull-right", target: "_blank" do %>
               <span class="glyphicon glyphicon-file"></span> Report
             <% end %>
+            <% if can? :approve, Program %>
+            <%= link_to program_approval_path(@program), class: "btn btn-success btn-approval pull-right" do %><span class="glyphicon glyphicon-ok"></span> &nbsp; Approve<% end %>
+            <% end %>
           </h1>
         </div>
 
@@ -12,8 +15,9 @@
           <div class="row">
               <div class="col-sm-12 col-md-12">
                 <div class="card-stack brand-icon-container">
-
+                  <% if can? :edit, Program %>
                   <%= link_to 'Edit', edit_program_path(@program) %> |
+                  <% end %>
                   <%= link_to 'Back', brand_programs_path(@program.brand) %>
 
                   <h2>Events</h2>

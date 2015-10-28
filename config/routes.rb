@@ -56,6 +56,7 @@ G360EventApplication::Application.routes.draw do
     end
 
     get 'events/:id/approve' => 'events#approve', as: 'event_approval'
+    get 'programs/:id/approve' => 'programs#approve', as: 'program_approval'
 
     get 'events/:id/photos/favorite_order' => 'photos#favorite_order', as: :favorite_order_photos
     post 'events/:id/photos/set_favorite_photo_order' => 'photos#set_favorite_order'

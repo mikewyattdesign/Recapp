@@ -12,6 +12,7 @@
         <div class="form-box">
             <div class="row">
             <% @programs.each do |program| %>
+              <% if can? :read, program %>
               <div class="col-md-4">
                 <div class="card-stack brand-icon-container">
                 <div class="program-icon">
@@ -56,6 +57,7 @@
                 <% end %>
                 </div>
               </div>
+              <% end %>
             <% end %>
             </div>
 <!--

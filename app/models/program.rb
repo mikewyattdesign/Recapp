@@ -15,6 +15,8 @@ class Program < ActiveRecord::Base
 
     accepts_nested_attributes_for :comments
 
+    scope :approved, -> { where('programs.approved = ?', true) }
+
     def program_plus_brand
         "#{self.name} (#{self.brand.name})"
     end
