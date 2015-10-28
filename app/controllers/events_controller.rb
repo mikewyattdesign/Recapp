@@ -102,6 +102,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        @event.update_attribute('approved', false)
         format.html {
           case params[:commit]
           when 'Update Event and View Recap'

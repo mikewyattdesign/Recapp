@@ -78,6 +78,7 @@ class ProgramsController < ApplicationController
   def update
     respond_to do |format|
       if @program.update(program_params)
+        @program.update_attribute('approved', false)
         format.html { redirect_to brand_programs_path(@program.brand), notice: 'Program was successfully updated.' }
         format.json { head :no_content }
       else
