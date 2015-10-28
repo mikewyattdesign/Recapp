@@ -34,7 +34,11 @@ class Ability
 
     alias_action :create, :read, :update, to: :cru
 
+    can :manage, :all if user.is_approver?
+
     can :manage, :all if user.is_super_admin?
+    cannot :approve, Program if user.is_super_admin?
+    cannot :approve, Event if user.is_super_admin?
 
     can :s3_upload_complete, Photo
 

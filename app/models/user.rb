@@ -77,8 +77,12 @@ class User < ActiveRecord::Base
       ["G360",4],
       ["Field Staff",1],
       ["Administrator",3],
-      ["Super Administrator",0]
+      ["Super Administrator",0],
+      ["Approver",5]
     ]
+  end
+  def is_approver?
+    role == 5
   end
   def is_super_admin?
     role == 0
@@ -116,6 +120,8 @@ class User < ActiveRecord::Base
       'Field Staff'
     when 4
       'GROUP360'
+    when 5
+      'Approver'
     else
       'Guest'
     end
