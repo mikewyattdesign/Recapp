@@ -6,7 +6,9 @@
               <span class="glyphicon glyphicon-file"></span> Report
             <% end %>
             <% if can? :approve, Program %>
+            <% if !@program.approved %>
             <%= link_to program_approval_path(@program), class: "btn btn-success btn-approval pull-right" do %><span class="glyphicon glyphicon-ok"></span> &nbsp; Approve<% end %>
+            <% end %>
             <% end %>
           </h1>
         </div>
