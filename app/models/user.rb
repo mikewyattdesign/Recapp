@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def events
-    return Event.all if is_super_admin? || is_admin? || is_g360?
+    return Event.all if is_approver? || is_super_admin? || is_admin? || is_g360?
     program_ids = programs.pluck(:id)
     Event.where(program_id: program_ids)
   end

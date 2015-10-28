@@ -6,7 +6,7 @@ class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
   def index
-    if current_user.is_super_admin? || current_user.is_admin? || current_user.is_g360?
+    if current_user.is_approver? || current_user.is_super_admin? || current_user.is_admin? || current_user.is_g360?
       @brands = Brand.all
     else
       @brands = current_user.brands
