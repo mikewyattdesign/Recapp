@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
   end
 
   def is_guest?
-    !(is_super_admin? || is_admin? || is_client? || is_field_staff? || is_g360?)
+    !(is_approver? || is_super_admin? || is_admin? || is_client? || is_field_staff? || is_g360?)
   end
 
   def role_in_words
