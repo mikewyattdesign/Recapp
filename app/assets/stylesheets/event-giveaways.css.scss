@@ -44,8 +44,15 @@
     }
 }
 
+
 .event-giveaway-name {
-    height: 2em;
+    display: table;
+    width: 100%;
+    span {
+      height: 3em;
+      display: table-cell;
+      vertical-align: middle;
+    }
 }
 
 .giveaway-image {

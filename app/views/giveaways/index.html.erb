@@ -17,12 +17,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="card-stack card-round event-giveaway-container col-md-12">
                         <div class="event-giveaway-name col-md-12">
-                            <%= giveaway.name %> (<%= giveaway.is_a_sample ? 'Sample' : 'Premium' %>)
-                            <!-- <table class="table">
-                                <tr>
-                                  <th></th>
-                                </tr>
-                            </table> -->
+                            <span><%= giveaway.name %></span>
                         </div>
                         <div  class="edit-circle">
                             <%= link_to edit_giveaway_path(giveaway) do %>
