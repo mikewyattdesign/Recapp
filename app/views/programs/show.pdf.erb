@@ -18,11 +18,9 @@
           <div class="programs-photo-main-container-bg">
           </div>
         </div>
-        <% @report.favorite_photos.each do |photo| %>
-            <div class="programs-photo-main-container">
-                <%= image_tag photo.image(:hero), class: "programs-photo-main" %>
-            </div>
-        <% end %>
+        <div class="programs-photo-main-container">
+            <%= image_tag @report.favorite_photos[0].image(:hero), class: "programs-photo-main" %>
+        </div>
     </div>
 
     <% (0...events_page_count).each do |p| %>
