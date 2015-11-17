@@ -11,18 +11,22 @@
 			<Cell><Data ss:Type="String">Is A Sample</Data></Cell>
 		</Row>
 		<% events.each do |event| %>
-			<% event.event_giveaways.where("count_given_away > ?",0).each do |event_giveaway| %>
-				<Row>
-					<Cell><Data ss:Type="String"><%= event.id %></Data></Cell>
-					<Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
-					<Cell><Data ss:Type="String"><%= event.program.brand.name %></Data></Cell>
-					<Cell><Data ss:Type="String"><%= event.program.name %></Data></Cell>
-					<Cell><Data ss:Type="String"><%= event_giveaway.giveaway.name %></Data></Cell>
-					<Cell ss:StyleID="number"><Data ss:Type="Number"><%= event_giveaway.count_given_away %></Data></Cell>
-					<Cell ss:StyleID="currency"><Data ss:Type="Number"><%= event_giveaway.giveaway.unit_cost %></Data></Cell>
-					<Cell><Data ss:Type="String"><%= event_giveaway.giveaway.is_a_sample %></Data></Cell>
-				</Row>
-			<% end %>
+  			<% event.event_giveaways.where("count_given_away > ?",0).each do |event_giveaway| %>
+  				<Row>
+  					<Cell><Data ss:Type="String"><%= event.id %></Data></Cell>
+  					<Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
+  					<Cell><Data ss:Type="String"><%= event.program.brand.name %></Data></Cell>
+  					<Cell><Data ss:Type="String"><%= event.program.name %></Data></Cell>
+            <% if event_giveaway.giveaway.present? %>
+      					<Cell><Data ss:Type="String"><%= event_giveaway.giveaway.name %></Data></Cell>
+      					<Cell ss:StyleID="number"><Data ss:Type="Number"><%= event_giveaway.count_given_away %></Data></Cell>
+      					<Cell ss:StyleID="currency"><Data ss:Type="Number"><%= event_giveaway.giveaway.unit_cost %></Data></Cell>
+      					<Cell><Data ss:Type="String"><%= event_giveaway.giveaway.is_a_sample %></Data></Cell>
+            <% else %>
+                <Cell><Data ss:Type="String"><%= 'GIVEAWAY MISSING' %></Data></Cell>
+            <% end %>
+  				</Row>
+  			<% end %>
 		<% end %>
 	</Table>
 </Worksheet>
