@@ -22,32 +22,37 @@
                   <% end %>
                   <%= link_to 'Back', brand_programs_path(@program.brand) %>
 
-                  <h2>Events</h2>
-                  <ul class="list-group">
-                      <% @report.events.each do |event| %>
-                          <% event_decorator = EventDecorator.new(event) %>
-                          <li class="list-group-item">
-                              <%= link_to event.name, event_path(event) %><span class="pull-right"><%= event_decorator.location %></span>
-                          </li>
-                      <% end %>
-                  </ul>
+                  <h2>Program Details</h2>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="well"><%= @report.overview %></div>
+                      </div>
+                  </div>
 
+                  <div class="panel panel-default">
+                      <table class="table">
+                          <tr>
+                              <th>Events</th>
+                              <th class='text-right'>Location</th>
+                          </tr>
+                          <% @report.events.each do |event| %>
+                              <% event_decorator = EventDecorator.new(event) %>
+                              <tr>
+                                <td><%= link_to event.name, event_path(event) %></td>
+                                <td><span class='pull-right'><%= event_decorator.location %></span></td>
+                              </tr>
+                          <% end %>
+                      </table>
+                  </div>
 
-                  <% unless @report.photos.empty? %>
-                      <h2>Photos</h2>
-                      <div class="row">
+                  <div class="event-photos panel panel-default">
+                      <div class="panel-heading">Photos</div>
+                      <div class="panel-body">
                           <% @report.favorite_photos.each do |photo| %>
                               <div class="<%= photo_grid_class(@report.first_favorite_photos) %>">
                                   <span class="thumbnail"><%= image_tag photo.image(:small) %></span>
                               </div>
                           <% end %>
-                      </div>
-                  <% end %>
-
-                  <h2>Program Details</h2>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="well"><%= @report.overview %></div>
                       </div>
                   </div>
 
@@ -78,29 +83,54 @@
                       </div>
                   </div>
 
-                  <% unless @report.comments.empty? %>
-                      <h2>Comments</h2>
-                      <div class="row">
-                          <div class="col-md-12">
-                              <div class="panel panel-default">
-                                  <table class="table">
-                                      <tr>
-                                          <th>Comment</th>
-                                          <th>Type</th>
-                                          <th>Event</th>
-                                      </tr>
-                                      <% @report.comments.each do |comment| %>
-                                          <tr>
-                                              <td><%= comment.content %></td>
-                                              <td><%= comment.type_in_words %></td>
-                                              <td><%= Event.find(comment.commentable_id).name %></td>
-                                          </tr>
-                                      <% end %>
-                                  </table>
-                              </div>
+                  <div class="panel panel-default">
+                      <table class="table">
+                          <tr>
+                              <th>Giveaway</th>
+                              <th class='text-right'>Amount Distributed</th>
+                          </tr>
+                          <% @report.event_giveaways.each do |event_giveaway| %>
+                              <tr class="event-giveaway">
+                                <td><%= event_giveaway.giveaway.present? ? event_giveaway.giveaway.name : 'Giveaway missing. Notify the technical administrator' %></td>
+                                <td class='text-right'>
+                                  <%= event_giveaway.count_given_away || 0 %>
+                                </td>
+                              </tr>
+                          <% end %>
+                      </table>
+                  </div>
+
+                  <div class="panel panel-default">
+                          <table class="table table-responsive">
+                              <tr>
+                                  <th>Comment</th>
+                                  <th>Type</th>
+                                  <th>Event</th>
+                              </tr>
+                              <% @report.comments.each do |comment| %>
+                                  <tr>
+                                      <td><%= comment.content %></td>
+                                      <td><%= comment.type_in_words %></td>
+                                      <td><%= Event.find(comment.commentable_id).name %></td>
+                                  </tr>
+                              <% end %>
+                          </table>
+                  </div>
+
+                  <div class="panel panel-default">
+                          <div class="panel-heading">Contacts</div>
+                          <div class="panel-body">
+                              <% @report.contacts.each do |contact| %>
+                                  <div class="col-xs-6 contact">
+                                      <div class="name"><%= contact.full_name %></div>
+
+                                      <div class="position brand-primary"><%= contact.title %></div>
+                                      <div class="location"><%= contact.address %> <span class="brand-primary">|</span> <%= contact.city_state_zip %></div>
+                                      <div class="phone"><%= contact.m_phone %> <%= contact.d_phone %></div>
+                                  </div>
+                              <% end %>
                           </div>
                       </div>
-                  <% end %>
 
                   </div>
               </div>

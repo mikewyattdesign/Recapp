@@ -93,6 +93,14 @@ class ProgramReport
             }
     end
 
+    def event_giveaways
+        events(@user).map { |e| e.event_giveaways.map { |eg| eg } }.flatten
+    end
+
+    def favorite_event_giveaways
+        event_giveaways.select { |giveaway| giveaway.event_favorite > 0 }
+    end
+
     def contacts
         events(@user).map(&:contacts).flatten(1).uniq
     end
