@@ -97,8 +97,14 @@ class ProgramReport
         events(@user).map { |e| e.event_giveaways.map { |eg| eg } }.flatten
     end
 
-    def favorite_event_giveaways
-        event_giveaways.select { |giveaway| giveaway.event_favorite > 0 }
+    def favorite_giveaways
+        events(@user).map do |e|
+          e.event_giveaways.select { |giveaway| giveaway.event_favorite > 0 }.map do |eg|
+            Hash[eg.giveaway, eg.count_given_away]
+          end
+        end.flatten.inject do |memo, el|
+          memo.merge(el) { |k, old_v, new_v| old_v+new_v }
+        end
     end
 
     def contacts

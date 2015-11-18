@@ -199,14 +199,15 @@
                 <div class="panel-body">
                   <table class="impressions-table">
                     <tbody>
-                    <% @report.favorite_event_giveaways.each do |event_giveaway| %>
-                      <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
-                          <tr class="event-giveaway">
-                              <td class="giveaway-item col-xs-10"><%= event_giveaway.giveaway.name %></td>
-                              <td class='giveaway-count col-xs-2'><%= number_with_delimiter event_giveaway.count_given_away %></td>
-                          </tr>
+                      <% @report.favorite_giveaways.each do |giveaway| %>
+                      <!-- giveaway = {giveaway, count_given_away} -->
+                        <% if giveaway.present? && giveaway[1] && giveaway[1] > 0 %>
+                            <tr class="event-giveaway">
+                                <td class="giveaway-item col-xs-10"><%= !giveaway[0].blank? ? giveaway[0].name : 'Giveaway missing. Notify the technical administrator' %></td>
+                                <td class='giveaway-count col-xs-2'><%= number_with_delimiter giveaway[1] %></td>
+                            </tr>
+                        <% end %>
                       <% end %>
-                    <% end %>
                     </tbody>
                   </table>
                 </div>
