@@ -67,12 +67,12 @@
     color: #b2b3b2;
 }
 
-.pdf-photo-main-container-bg {
+.pdf-photo-main-container-bg, .programs-photo-main-container-bg {
     position: relative;
     height: 500px;
 }
 
-.pdf-photo-main-container {
+.pdf-photo-main-container, .programs-photo-main-container {
     position: absolute;
     width: 100%;
     height: 500px;
@@ -80,7 +80,7 @@
     z-index: -10;
 }
 
-.pdf-photo-main {
+.pdf-photo-main, .programs-photo-main {
     position: absolute;
     height: auto;
     width: 100%;
@@ -148,11 +148,12 @@
     color: #494949;
 }
 
-.event-name, .program-name {
+.event-name, .report-program-name {
     margin-top: 10px;
+    font-size: 26px;
 }
 
-.event-name {
+.event-name, .report-program-name {
     color: #F89F4F;
     text-transform: uppercase;
     font-weight: bold;
@@ -315,21 +316,3 @@ td, th {
 .contact .position {}
 .contact .location {}
 .contact .phone {}
-
-.programs-photo-main-continer {
-    position: relative;
-}
-
-.programs-photo-main-container-bg {
-    position: relative;
-    height: 500px;
-}
-
-.programs-photo-main {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -10;
-}

@@ -8,7 +8,7 @@ class Report < ActiveRecord::Base
     end
 
     def event
-        if reportable_type == Event.name 
+        if reportable_type == Event.name
             Event.find(reportable_id) if Event.where(id: reportable_id).count > 0
         end
     end

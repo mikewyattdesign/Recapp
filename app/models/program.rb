@@ -37,6 +37,14 @@ class Program < ActiveRecord::Base
         end
     end
 
+    def start_date
+        events.reorder('start_date_time ASC').first.start_date
+    end
+
+    def end_date
+        events.reorder('end_date_time ASC').last.end_date
+    end
+
     after_create do |program|
     	# Update the brand's users with the new program
     	program.brand.users.each {|user| user.assign_to_program(program)} unless program.brand.nil?
