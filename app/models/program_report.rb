@@ -97,9 +97,9 @@ class ProgramReport
         events(@user).map { |e| e.event_giveaways.map { |eg| eg } }.flatten
     end
 
-    def favorite_giveaways
+    def favorite_giveaways(limit = 1)
         events(@user).map do |e|
-          e.event_giveaways.select { |giveaway| giveaway.event_favorite > 0 }.map do |eg|
+          e.event_giveaways.select { |giveaway| giveaway.event_favorite >= limit }.map do |eg|
             Hash[eg.giveaway, eg.count_given_away]
           end
         end.flatten.inject do |memo, el|

@@ -199,7 +199,7 @@
                 <div class="panel-body">
                   <table class="impressions-table">
                     <tbody>
-                      <% @report.favorite_giveaways.each do |giveaway| %>
+                      <% @report.favorite_giveaways(0).each do |giveaway| %>
                       <!-- giveaway = {giveaway, count_given_away} -->
                         <% if giveaway.present? && giveaway[1] && giveaway[1] > 0 %>
                             <tr class="event-giveaway">
