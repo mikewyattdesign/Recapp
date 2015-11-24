@@ -77,10 +77,10 @@ class Event < ActiveRecord::Base
     def start_time=(time)
         t = time.split(/:| /)
 
-        if t[2] == 'AM'
-            t[0] = '0' if t[0] == '12'
-        elsif t[2] == 'PM'
-            t[0] = t[0]+12 unless t[0] == '12'
+        if t[2] == 'AM' && t[0] == '12'
+            t[0] = '0'
+        elsif t[2] == 'PM' && t[0] != '12'
+            t[0] = (t[0].to_i+12).to_s
         end
 
         if start_date_time.present?
@@ -110,10 +110,10 @@ class Event < ActiveRecord::Base
     def end_time=(time)
         t = time.split(/:| /)
 
-        if t[2] == 'AM'
-            t[0] = '0' if t[0] == '12'
-        elsif t[2] == 'PM'
-            t[0] = t[0]+12 unless t[0] == '12'
+        if t[2] == 'AM' && t[0] == '12'
+            t[0] = '0'
+        elsif t[2] == 'PM' && t[0] != '12'
+            t[0] = (t[0].to_i+12).to_s
         end
 
         if end_date_time.present?
