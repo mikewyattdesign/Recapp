@@ -55,24 +55,20 @@
                 <table class="impressions-table">
                   <tbody>
                     <tr>
-                      <th class="col-md-11 impressions-label">Total</th>
-                      <td class="col-md-1 impressions-count"><%= @report.total_impressions %></td>
+                      <th class="col-md-11 impressions-label">Total Attendance</th>
+                      <td class="col-md-1 impressions-count"><%= number_with_delimiter(@report.total_impressions, delimiter: ',') %></td>
                     </tr>
                     <tr>
-                      <th class="col-md-11 impressions-label">Mileage</th>
-                      <td class="col-md-1 impressions-count"><%= @report.mileage_impressions %></td>
+                      <th class="col-md-11 impressions-label">Mileage Impressions</th>
+                      <td class="col-md-1 impressions-count"><%= number_with_delimiter(@report.mileage_impressions, delimiter: ',') %></td>
                     </tr>
                     <tr>
-                      <th class="col-md-11 impressions-label">Footprint</th>
-                      <td class="col-md-1 impressions-count"><%= @report.footprint_impressions %></td>
+                      <th class="col-md-11 impressions-label">Footprint Impressions</th>
+                      <td class="col-md-1 impressions-count"><%= number_with_delimiter(@report.footprint_impressions, delimiter: ',') %></td>
                     </tr>
                     <tr>
-                      <th class="col-md-11 impressions-label">Walk by</th>
-                      <td class="col-md-1 impressions-count"><%= @report.walk_by_impressions %></td>
-                    </tr>
-                    <tr>
-                      <th class="col-md-11 impressions-label">Digital</th>
-                      <td class="col-md-1 impressions-count"><%= @report.digital_engagements %></td>
+                      <th class="col-md-11 impressions-label">Walk by Impressions</th>
+                      <td class="col-md-1 impressions-count"><%= number_with_delimiter(@report.walk_by_impressions, delimiter: ',') %></td>
                     </tr>
                   </tbody>
                 </table>
@@ -89,20 +85,12 @@
                 <table class="impressions-table">
                   <tbody>
                     <tr>
-                      <th class="col-md-11 impressions-label">Extended</th>
-                      <td class="col-md-1 impressions-count"><%= @report.extended_engagements %></td>
+                      <th class="col-md-11 impressions-label">Extended Engagements</th>
+                      <td class="col-md-1 impressions-count"><%= number_with_delimiter(@report.extended_engagements, delimiter: ',') %></td>
                     </tr>
                     <tr>
-                      <th class="col-md-11 impressions-label">Total</th>
-                      <td class="col-md-1 impressions-count"><%= @report.total_attendance %></td>
-                    </tr>
-                    <tr>
-                      <th class="col-md-11 impressions-label">Start Date</th>
-                      <td class="col-md-1 impressions-count"><%= @report.start_date %></td>
-                    </tr>
-                    <tr>
-                      <th class="col-md-11 impressions-label">End Date</th>
-                      <td class="col-md-1 impressions-count"><%= @report.end_date %></td>
+                      <th class="col-md-11 impressions-label">Digital Engagements</th>
+                      <td class="col-md-1 impressions-count"><%= number_with_delimiter(@report.digital_engagements, delimiter: ',') %></td>
                     </tr>
                   </tbody>
                 </table>
