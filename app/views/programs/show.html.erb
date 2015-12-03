@@ -89,14 +89,16 @@
                               <th>Giveaway</th>
                               <th class='text-right'>Amount Distributed</th>
                           </tr>
-                          <% @report.favorite_giveaways.each do |giveaway| %>
-                          <!-- giveaway = {giveaway, count_given_away} -->
-                            <% if giveaway.present? && giveaway[1] && giveaway[1] > 0 %>
-                            <tr class="event-giveaway">
-                                <td class="giveaway-item col-xs-10"><%= !giveaway[0].blank? ? giveaway[0].name : 'Giveaway missing. Notify the technical administrator' %></td>
-                                    <td class='giveaway-count col-xs-2'><span class="pull-right"><%= number_with_delimiter giveaway[1] %></span></td>
-                                </tr>
-                            <% end %>
+                          <% if @report.favorite_giveaways.present? %>
+                              <% @report.favorite_giveaways.each do |giveaway| %>
+                              <!-- giveaway = {giveaway, count_given_away} -->
+                                <% if giveaway.present? && giveaway[1] && giveaway[1] > 0 %>
+                                <tr class="event-giveaway">
+                                    <td class="giveaway-item col-xs-10"><%= !giveaway[0].blank? ? giveaway[0].name : 'Giveaway missing. Notify the technical administrator' %></td>
+                                        <td class='giveaway-count col-xs-2'><span class="pull-right"><%= number_with_delimiter giveaway[1] %></span></td>
+                                    </tr>
+                                <% end %>
+                              <% end %>
                           <% end %>
                       </table>
                   </div>

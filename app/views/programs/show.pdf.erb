@@ -187,6 +187,7 @@
                 <div class="panel-body">
                   <table class="impressions-table">
                     <tbody>
+                      <% if @report.favorite_giveaways.present? %>
                       <% @report.favorite_giveaways.each do |giveaway| %>
                       <!-- giveaway = {giveaway, count_given_away} -->
                         <% if giveaway.present? && giveaway[1] && giveaway[1] > 0 %>
@@ -195,6 +196,7 @@
                                 <td class='giveaway-count col-xs-2'><span class="pull-right"><%= number_with_delimiter giveaway[1] %></span></td>
                             </tr>
                         <% end %>
+                      <% end %>
                       <% end %>
                     </tbody>
                   </table>
