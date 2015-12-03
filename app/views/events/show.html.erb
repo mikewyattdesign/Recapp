@@ -46,7 +46,6 @@
                           <div class="panel-heading">Impressions Graph</div>
                           <div class="panel-body">
                               <%= column_chart [
-                                  ['Total Impressions',     @event_decorator.estimated_total_impressions],
                                   ['Mileage Impressions',   @event_decorator.mileage_impressions],
                                   ['Footprint Impressions', @event_decorator.footprint_impressions],
                                   ['Walk by Impressions',   @event_decorator.walk_by_impressions],
@@ -60,26 +59,21 @@
                           <div class="panel-heading">Impressions Details</div>
                           <div class="panel-body">
                               <div class="row">
-
-                                  <div class="col-md-4 col-xs-12 estimated-total-impressions impressions">
-                                      <span class="heading">Total</span>
-                                      <%= number_to_abbreviated(@event_decorator.estimated_total_impressions) %>
+                                  <div class="col-md-3 col-xs-12 total-attendance impressions">
+                                      <%= number_to_abbreviated(@event_decorator.total_attendance) %>
+                                      <span class="heading">Attendance</span>
                                   </div>
-                                  <div class="col-md-2 col-xs-12 mileage-impressions impressions">
+                                  <div class="col-md-3 col-xs-12 mileage-impressions impressions">
                                       <%= number_to_abbreviated(@event_decorator.mileage_impressions) %>
                                       <span class="heading">Mileage</span>
                                   </div>
-                                  <div class="col-md-2 col-xs-12 footprint-attendance impressions">
+                                  <div class="col-md-3 col-xs-12 footprint-attendance impressions">
                                       <%= number_to_abbreviated(@event_decorator.footprint_impressions) %>
                                       <span class="heading">Footprint</span>
                                   </div>
-                                  <div class="col-md-2 col-xs-12 display-attendance impressions">
+                                  <div class="col-md-3 col-xs-12 display-attendance impressions">
                                       <%= number_to_abbreviated(@event_decorator.walk_by_impressions) %>
                                       <span class="heading">Walk-by</span>
-                                  </div>
-                                  <div class="col-md-2 col-xs-12 total-attendance impressions">
-                                      <%= number_to_abbreviated(@event_decorator.total_attendance) %>
-                                      <span class="heading">Event</span>
                                   </div>
                               </div>
 

@@ -81,8 +81,6 @@ class ProgramReport
         events(@user).map{ |event|
             {name: event.name,
                 data: [
-                        ['',],
-                        ['Total Impressions',     event.estimated_total_impressions],
                         ['Mileage Impressions',   event.mileage_impressions],
                         ['Footprint Impressions', event.footprint_impressions],
                         ['Walk by Impressions',   event.walk_by_impressions],

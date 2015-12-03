@@ -49,25 +49,25 @@
                         <table class="impressions-table">
                             <tbody>
                                 <tr>
-                                    <th class="col-md-11 impressions-label">Total</th>
-                                    <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.total_attendance %></td>
+                                    <th class="col-md-11 impressions-label">Total Attendance</th>
+                                    <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.total_attendance %></span></td>
                                 </tr>
                                 <% if @event_decorator.mileage_impressions > 0 %>
                                     <tr class="impressions-row">
                                         <th class="col-md-11 impressions-label">Mileage</th>
-                                        <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.mileage_impressions %></td>
+                                        <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.mileage_impressions %></span></td>
                                     </tr>
                                 <% end %>
                                 <% if @event_decorator.footprint_impressions > 0 %>
                                     <tr>
                                         <th class="col-md-11 impressions-label">Footprint</th>
-                                        <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.footprint_impressions %></td>
+                                        <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.footprint_impressions %></span></td>
                                     </tr>
                                 <% end %>
                                 <% if @event_decorator.walk_by_impressions > 0 %>
                                     <tr>
                                         <th class="col-md-11 impressions-label">Walk by</th>
-                                        <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.walk_by_impressions %></td>
+                                        <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.walk_by_impressions %></span></td>
                                     </tr>
                                 <% end %>
                             </tbody>
@@ -87,13 +87,13 @@
                             <% if @event_decorator.digital_engagements > 0 %>
                                 <tr>
                                     <th class="col-md-11 impressions-label">Digital</th>
-                                    <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.digital_engagements %></td>
+                                    <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.digital_engagements %></span></td>
                                 </tr>
                             <% end %>
                             <!-- Show Extended Engagements regardless -->
                                 <tr>
                                     <th class="col-md-11 impressions-label">Extended</th>
-                                    <td class="col-md-1 impressions-count"><%= number_with_delimiter @event_decorator.extended_engagements %></td>
+                                    <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.extended_engagements %></span></td>
                                 </tr>
                         </tbody>
                     </table>
@@ -119,7 +119,7 @@
                         <% if event_giveaway.count_given_away && event_giveaway.count_given_away > 0 %>
                             <tr class="event-giveaway">
                                 <td class="giveaway-item col-xs-10"><%= event_giveaway.giveaway.name %></td>
-                                <td class='giveaway-count col-xs-2'><%= number_with_delimiter event_giveaway.count_given_away %></td>
+                                <td class='giveaway-count col-xs-2'><span class="pull-right"><%= number_with_delimiter event_giveaway.count_given_away %></span></td>
                             </tr>
                         <% end %>
                     <% end %>
