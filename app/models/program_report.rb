@@ -72,9 +72,13 @@ class ProgramReport
         maximum.to_date.strftime('%m/%d/%Y') if maximum
     end
 
+
+    ## Selects viewable events and maps the first two favorited comments into an array.
     def comments
-        event_ids = events(@user).pluck(:id)
-        Comment.where(commentable_type: "Event", commentable_id: event_ids, program_favorite: true)
+        # event_ids = events(@user).pluck(:id)
+        # Comment.where(commentable_type: "Event", commentable_id: event_ids, program_favorite: true)
+        # events(@user).unscope(:order).order(start_date_time: :asc).each { |event| event.map { |event| event.favorite_comments.first } }
+        events(@user).map { |e| e.comments.select { |c| c.event_favorite == true }.first(2) }.flatten
     end
 
     def aggregate_impression_data
