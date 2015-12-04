@@ -47,4 +47,6 @@
 //= require s3_direct_upload
 // require s3-direct-upload-inline
 
+//= require alert_unsaved_changes
+
 //= require_tree .
