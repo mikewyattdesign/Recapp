@@ -22,6 +22,7 @@ class GiveawaysController < ApplicationController
 
   # GET /giveaways/new
   def new
+    @event = Event.find(params[:event_id]) if params[:event_id].present?
     @giveaway = Giveaway.new
   end
 
@@ -32,11 +33,18 @@ class GiveawaysController < ApplicationController
   # POST /giveaways
   # POST /giveaways.json
   def create
+    @event = Event.find(params[:event][:id]) if params[:event][:id].present?
     @giveaway = Giveaway.new(giveaway_params)
 
     respond_to do |format|
       if @giveaway.save
-        format.html { redirect_to giveaways_url, notice: "#{@giveaway.name} was successfully created." }
+        format.html {
+          if @event.present?
+            redirect_to edit_event_path(@event), notice: "#{@giveaway.name} was successfully created."
+          else
+            redirect_to giveaways_url, notice: "#{@giveaway.name} was successfully created."
+          end
+        }
         format.json { render action: 'show', status: :created, location: @giveaway }
       else
         format.html { render action: 'new' }

@@ -5,7 +5,10 @@
     <%= f.fields_for :event_giveaways do |eg| %>
         <%= render 'event_giveaway_fields', f: eg %>
     <% end %>
-    <%= link_to_add_fields "Add Event Giveaway", f, :event_giveaways %>
+    <div class="col-xs-12">
+      <%= link_to_add_fields "Add Event Giveaway", f, :event_giveaways %>
+      <%= link_to "New Giveaway", "/events/#{@event.id}/giveaways/new", class: 'btn btn-primary pull-right' %>
+    </div>
 </div>
 <div class="clearfix"></div>
 

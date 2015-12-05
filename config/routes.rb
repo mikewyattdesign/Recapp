@@ -49,6 +49,7 @@ G360EventApplication::Application.routes.draw do
             resources :tags
             resources :comments
             resources :photos
+            resources :giveaways, only: [:new, :create]
             resources :event_giveaways
             resources :videos
             resources :documents
