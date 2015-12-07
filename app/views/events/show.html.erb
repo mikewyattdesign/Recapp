@@ -104,15 +104,20 @@
                       </div>
 
                       <div class="event-giveaways panel panel-default">
-                          <table class="table">
+                          <table class="table table-responsive">
                               <tr>
-                                  <th>Giveaway</th>
+                                  <th colspan="2">Giveaway</th>
                                   <th class='text-right'>Amount Distributed</th>
                               </tr>
                               <% @event_decorator.event_giveaways.each do |event_giveaway| %>
                                   <tr class="event-giveaway">
-                                    <td><%= event_giveaway.giveaway.present? ? event_giveaway.giveaway.name : 'Giveaway missing. Notify the technical administrator' %></td>
-                                    <td class='text-right'>
+                                    <td class="col-xs-1 text-center">
+                                        <% if event_giveaway.event_favorite.present? && event_giveaway.event_favorite > 0 %>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        <% end %>
+                                    </td>
+                                    <td class="col-xs-9"><%= event_giveaway.giveaway.present? ? event_giveaway.giveaway.name : 'Giveaway missing. Notify the technical administrator' %></td>
+                                    <td class='col-xs-2 text-right'>
                                       <%= event_giveaway.count_given_away || 0 %>
                                     </td>
                                   </tr>
@@ -121,27 +126,28 @@
                       </div>
 
                       <div class="panel panel-default">
-                          <div class="panel-heading">Comments</div>
-                          <div class="panel-body">
-                                <table class="table table-responsive">
-                                    <% @event_decorator.comments.each do |comment| %>
-                                    <tr>
+                          <table class="table table-responsive">
+                              <tr>
+                                <th colspan="2">Comments</th>
+                                <th class='text-right'>Comment Type</th>
+                              </tr>
+                              <% @event_decorator.comments.each do |comment| %>
+                              <tr>
 
-                                        <td class="col-xs-1 text-center">
-                                            <% if comment.event_favorite.present? && comment.event_favorite == true %>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                            <% end %>
-                                        </td>
-                                        <td class="col-xs-9">
-                                            <%= comment.content %>
-                                        </td>
-                                        <td class="col-xs-2">
-                                            <%= comment.type_in_words %>
-                                        </td>
-                                    </tr>
-                                    <% end %>
-                                </table>
-                          </div>
+                                  <td class="col-xs-1 text-center">
+                                      <% if comment.event_favorite.present? && comment.event_favorite == true %>
+                                          <span class="glyphicon glyphicon-star"></span>
+                                      <% end %>
+                                  </td>
+                                  <td class="col-xs-9">
+                                      <%= comment.content %>
+                                  </td>
+                                  <td class="col-xs-2 text-right">
+                                      <%= comment.type_in_words %>
+                                  </td>
+                              </tr>
+                              <% end %>
+                          </table>
                       </div>
 
                       <div class="event-contacts panel panel-default">
