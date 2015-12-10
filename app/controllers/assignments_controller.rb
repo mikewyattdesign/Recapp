@@ -6,6 +6,13 @@ class AssignmentsController < ApplicationController
   def index
     @assignments = Assignment.all
     @users = User.all
+    if sort_params[:sort_role].present?
+        @users = (sort_params[:sort_role] == 'asc') ? @users.sort_by{|user| user.role_in_words } : @users.sort_by{|user| user.role_in_words }.reverse
+    elsif sort_params[:sort_email].present?
+        @users = @users.order(email: sort_params[:sort_email].to_sym)
+    else
+        @users.unscope(:order).order(email: :asc)
+    end
   end
 
   # GET /assignments/1
@@ -144,7 +151,11 @@ class AssignmentsController < ApplicationController
     end
 
     def role_params
-      params.require(:user).permit(:user_id,:role)  
+      params.require(:user).permit(:user_id,:role)
+    end
+
+    def sort_params
+      params.permit(:sort_email, :sort_role)
     end
 
     def create_params
