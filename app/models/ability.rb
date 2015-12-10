@@ -36,18 +36,17 @@ class Ability
 
     can :manage, :all if user.is_approver?
 
-    can :manage, :all if user.is_super_admin?
-    cannot :approve, Program if user.is_super_admin?
-    cannot :approve, Event if user.is_super_admin?
-
     can :s3_upload_complete, Photo
+
+    if user.is_super_admin?
+        can :manage, :all
+        cannot :approve, Program
+        cannot :approve, Event
+    end
 
     if user.is_admin?
         can :crud, Assignment
-        can :update_role, Assignment
-        can :create, User
-        can :read, User
-        can :update, User
+        can :cru, User
         can :read, Brand
         can :cru, Program
         can :create, Event

@@ -26,9 +26,19 @@
                           <th>Create</th>
                           <th>Update</th>
                           <th>Delete</th>
+                          <th>Approve</th>
                       </tr>
                   </thead>
                   <tbody class="user-permission-info">
+                      <tr>
+                          <td>Approver</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>All</td>
+                          <td>Program & Event</td>
+                      </tr>
                       <tr>
                           <td>Super Administrator</td>
                           <td>All</td>
@@ -36,22 +46,25 @@
                           <td>All</td>
                           <td>All</td>
                           <td>All</td>
+                          <td>No</td>
                       </tr>
                       <tr>
                           <td>Administrator</td>
                           <td>All</td>
                           <td>All</td>
                           <td>All</td>
-                          <td>All</td>
-                          <td>User Roles & Contact</td>
+                          <td>EXCEPT User Role</td>
+                          <td>Contact</td>
+                          <td>No</td>
                       </tr>
                       <tr>
                           <td>Field Staff</td>
                           <td>All</td>
                           <td>All</td>
                           <td>All</td>
-                          <td>All</td>
+                          <td>EXCEPT User Role</td>
                           <td>Photo & Video</td>
+                          <td>No</td>
                       </tr>
                       <tr>
                           <td>G360</td>
@@ -60,17 +73,20 @@
                           <td>Photo & Video</td>
                           <td>No</td>
                           <td>No</td>
+                          <td>No</td>
                       </tr>
                       <tr>
                           <td>Client</td>
-                          <td>Only Client's Content</td>
-                          <td>Only Client's Content</td>
+                          <td>ONLY Client's Content</td>
+                          <td>ONLY Client's Content</td>
+                          <td>No</td>
                           <td>No</td>
                           <td>No</td>
                           <td>No</td>
                       </tr>
                       <tr>
                           <td>Guest</td>
+                          <td>No</td>
                           <td>No</td>
                           <td>No</td>
                           <td>No</td>
@@ -198,10 +214,16 @@
                     <tr>
                       <td class="text-center"><input type="checkbox"  class="user-select-checkbox" data-user-id="<%= user.id %>"></td>
                       <td <%= "data-you" if user.id == current_user.id %>><%= link_to  user.email, "/users/#{user.id}" %></td>
-                      <td><%= form_for user, url: update_role_path  do |f| %>
-                        <%= f.select  :role, options_for_select(User.roles, selected: user.role, disabled: '5') %> <!-- Disable people from changing themselves to approver -->
-                        <%= f.hidden_field :user_id, value: user.id %>
-                      <% end %></td>
+                      <td>
+                        <% if can? :update_role, Assignment %>
+                          <%= form_for user, url: update_role_path  do |f| %>
+                            <%= f.select  :role, options_for_select(User.roles, selected: user.role, disabled: '5') %> <!-- Disable people from changing themselves to approver -->
+                            <%= f.hidden_field :user_id, value: user.id %>
+                          <% end %>
+                        <% else %>
+                          <%= user.role_in_words %>
+                        <% end %>
+                      </td>
                       <td class="user-assignments-cell">
                         <% if user.has_assignments? %>
                           <ul class="token-input-list-facebook token-list-display assignment-list">
