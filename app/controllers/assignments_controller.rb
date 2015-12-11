@@ -5,13 +5,11 @@ class AssignmentsController < ApplicationController
   # GET /assignments.json
   def index
     @assignments = Assignment.all
-    @users = User.all
+    @users = User.all.order(email: :asc)
     if sort_params[:sort_role].present?
         @users = (sort_params[:sort_role] == 'asc') ? @users.sort_by{|user| user.role_in_words } : @users.sort_by{|user| user.role_in_words }.reverse
     elsif sort_params[:sort_email].present?
-        @users = @users.order(email: sort_params[:sort_email].to_sym)
-    else
-        @users.unscope(:order).order(email: :asc)
+        @users = @users.unscope(:order).order(email: sort_params[:sort_email].to_sym)
     end
   end
 

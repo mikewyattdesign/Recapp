@@ -1,0 +1,50 @@
+<table class="table table-hover" id="user-select-table">
+  <thead>
+    <tr>
+      <th class="text-center"><input type="checkbox" data-toggles-all="#user-select-table .user-select-checkbox"></th>
+      <th>
+        <%= link_to assignments_path(sort_email: (params[:sort_email].present? && params[:sort_email] == 'desc') ? 'asc' : 'desc') do %>
+          Email&nbsp;<span class='<%= "glyphicon #{(params[:sort_email].present?) ? (params[:sort_email] == 'desc') ? 'glyphicon-sort-by-alphabet-alt' : 'glyphicon-sort-by-alphabet' : 'glyphicon-sort'}" %>'> </span>
+        <% end %>
+      </th>
+      <th>
+        <%= link_to assignments_path(sort_role: (params[:sort_role].present? && params[:sort_role] == 'asc') ? 'desc' : 'asc') do %>
+          Role&nbsp;<span class='<%= "glyphicon #{(params[:sort_role].present?) ? (params[:sort_role] == 'desc') ? 'glyphicon-sort-by-alphabet-alt' : 'glyphicon-sort-by-alphabet' : 'glyphicon-sort'}" %>'> </span>
+        <% end %>
+      </th>
+      <th>Assignments</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="text-center"><input type="checkbox"  class="user-select-checkbox" data-user-id="<%= user.id %>"></td>
+        <td <%= "data-you" if user.id == current_user.id %>><%= link_to  user.email, "/users/#{user.id}" %></td>
+        <td>
+          <% if can? :update_role, Assignment %>
+            <%= form_for user, url: update_role_path  do |f| %>
+              <%= f.select  :role, options_for_select(User.roles, selected: user.role, disabled: '5') %> <!-- Disable people from changing themselves to approver -->
+              <%= f.hidden_field :user_id, value: user.id %>
+            <% end %>
+          <% else %>
+            <%= user.role_in_words %>
+          <% end %>
+        </td>
+        <td class="user-assignments-cell">
+          <% if user.has_assignments? %>
+            <ul class="token-input-list-facebook token-list-display assignment-list">
+              <% user.assignments.each do |assignment| %>
+                <% if assignment.assignable_type == 'Brand' %>
+                  <li class="brand-assignment token-input-token-facebook"><%= assignment.brand.name %></li>
+                <% else %>
+                  <li class="program-assignment token-input-token-facebook"><%= assignment.program.name %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
