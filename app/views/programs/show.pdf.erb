@@ -53,23 +53,31 @@
             <div class="event-impressions panel panel-default">
               <div class="panel-body">
                 <table class="impressions-table">
-                  <tbody>
+                  <tbody
+                    <% if @report.total_attendance > 0 %>
                     <tr>
                       <th class="col-md-11 impressions-label">Total Attendance</th>
                       <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter(@report.total_attendance, delimiter: ',') %></span></td>
                     </tr>
+                    <% end %>
+                    <% if @report.mileage_impressions > 0 %>
                     <tr>
                       <th class="col-md-11 impressions-label">Mileage Impressions</th>
                       <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter(@report.mileage_impressions, delimiter: ',') %></span></td>
                     </tr>
+                    <% end %>
+                    <% if @report.footprint_impressions > 0 %>
                     <tr>
                       <th class="col-md-11 impressions-label">Footprint Impressions</th>
                       <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter(@report.footprint_impressions, delimiter: ',') %></span></td>
                     </tr>
+                    <% end %>
+                    <% if @report.walk_by_impressions > 0 %>
                     <tr>
                       <th class="col-md-11 impressions-label">Walk by Impressions</th>
                       <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter(@report.walk_by_impressions, delimiter: ',') %></span></td>
                     </tr>
+                    <% end %>
                   </tbody>
                 </table>
               </div>
@@ -84,14 +92,18 @@
               <div class="panel-body">
                 <table class="impressions-table">
                   <tbody>
-                    <tr>
-                      <th class="col-md-11 impressions-label">Extended Engagements</th>
-                      <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter(@report.extended_engagements, delimiter: ',') %></span></td>
-                    </tr>
+                    <% if @report.digital_engagements > 0 %>
                     <tr>
                       <th class="col-md-11 impressions-label">Digital Engagements</th>
                       <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter(@report.digital_engagements, delimiter: ',') %></span></td>
                     </tr>
+                    <% end %>
+                    <% if @report.extended_engagements > 0 %>
+                    <tr>
+                      <th class="col-md-11 impressions-label">Extended Engagements</th>
+                      <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter(@report.extended_engagements, delimiter: ',') %></span></td>
+                    </tr>
+                    <% end %>
                   </tbody>
                 </table>
               </div>

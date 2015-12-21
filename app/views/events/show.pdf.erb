@@ -48,10 +48,12 @@
                     <div class="panel-body">
                         <table class="impressions-table">
                             <tbody>
+                                <% if @event_decorator.total_attendance > 0 %>
                                 <tr>
                                     <th class="col-md-11 impressions-label">Total Attendance</th>
                                     <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.total_attendance %></span></td>
                                 </tr>
+                                <% end %>
                                 <% if @event_decorator.mileage_impressions > 0 %>
                                     <tr class="impressions-row">
                                         <th class="col-md-11 impressions-label">Mileage</th>
@@ -90,11 +92,12 @@
                                     <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.digital_engagements %></span></td>
                                 </tr>
                             <% end %>
-                            <!-- Show Extended Engagements regardless -->
+                            <% if @event_decorator.extended_engagements > 0 %>
                                 <tr>
                                     <th class="col-md-11 impressions-label">Extended</th>
                                     <td class="col-md-1 impressions-count"><span class="pull-right"><%= number_with_delimiter @event_decorator.extended_engagements %></span></td>
                                 </tr>
+                              <% end %>
                         </tbody>
                     </table>
                 </div>
