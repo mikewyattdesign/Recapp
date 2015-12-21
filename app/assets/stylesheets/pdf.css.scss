@@ -91,15 +91,16 @@
 
 .pdf-photo-sub-container {
     position: relative;
-    border: 1px solid #494949;
     margin-bottom: 10px;
     height: 214px;
-    background-color: #CCCCCC;
+    background-color: transparent;
     overflow: hidden;
+    img {
+      border: 1px solid #494949;
+    }
 }
 
 .pdf-photo-sub {
-    border: 1px solid #494949;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -108,6 +109,9 @@
     width: 100%;
     height: auto;
     margin: auto;
+    img {
+      border: 1px solid #494949;
+    }
 }
 
 .pdf-event-photo-container {
