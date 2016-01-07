@@ -61,6 +61,7 @@ class ProgramsController < ApplicationController
   # POST /programs.json
   def create
     @program = Program.new(program_params)
+    UserMailer.notify_approver(@program).deliver
 
     respond_to do |format|
       if @program.save
@@ -79,6 +80,7 @@ class ProgramsController < ApplicationController
     respond_to do |format|
       if @program.update(program_params)
         @program.update_attribute('approved', false)
+        UserMailer.notify_approver(@program).deliver
         format.html { redirect_to brand_programs_path(@program.brand), notice: 'Program was successfully updated.' }
         format.json { head :no_content }
       else

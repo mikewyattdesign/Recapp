@@ -20,3 +20,5 @@
 
 # Ignore locally uploaded photos
 /public/system
+
+.env

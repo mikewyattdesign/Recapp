@@ -74,6 +74,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        UserMailer.notify_approver(@event).deliver
+
         format.html {
           case params[:commit]
           when 'Create Event'
@@ -103,6 +105,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         @event.update_attribute('approved', false)
+        UserMailer.notify_approver(@event).deliver
         format.html {
           case params[:commit]
           when 'Update Event and View Recap'

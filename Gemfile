@@ -113,6 +113,8 @@ group :development, :test do
 
     gem 'guard-hologram', '1.0.0', require: false
 
+    # For local environment variables.
+    gem 'dotenv-rails'
 end
 
 group :development do
