@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @events = @events.paginate(page: params[:page], per_page: 50)
+        @events = @events.paginate(page: params[:page], per_page: ENV['EVENTS_PER_PAGE'])
       end
       format.xls
     end
