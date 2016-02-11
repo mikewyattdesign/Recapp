@@ -9,10 +9,10 @@ gem 'rails', '4.1.6'
 gem 'rollbar', '1.5.3'
 
 # Application monitoring service
-gem 'newrelic_rpm', '3.9.6.257'
+gem 'newrelic_rpm', '3.14.3.313'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '5.0.1'
+gem 'sass-rails', '5.0.4'
 
 # Use bootstrap for styling
 gem 'bootstrap-sass', '3.3.3'
