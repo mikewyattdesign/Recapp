@@ -17,7 +17,9 @@ class EventsController < ApplicationController
     @events = event_date_filter(@events)
 
     respond_to do |format|
-      format.html
+      format.html do
+        @events = @events.paginate(page: params[:page], per_page: 50)
+      end
       format.xls
     end
   end

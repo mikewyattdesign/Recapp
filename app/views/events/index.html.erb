@@ -50,7 +50,7 @@
                     <% @events.each do |event| %>
                     <% if can? :read, event %>
                     <% event_decorator = EventDecorator.new(event) %>
-                    <div class="row" data-event-id="<%= event.id %>">
+                    <div class="row event-row" data-event-id="<%= event.id %>">
                         <div class="col-sm-2 col-md-2">
                         </div>
 
@@ -95,6 +95,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center">
+            <%= will_paginate @events %>
         </div>
     </div>
 </div>

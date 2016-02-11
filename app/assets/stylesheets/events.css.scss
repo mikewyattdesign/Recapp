@@ -198,10 +198,10 @@
 }
 
 .event-group {
-    .row:first-child .event-timeline {
+    .row.event-row:first-child .event-timeline {
         top: 50%;
     }
-    .row:last-child .event-timeline {
+    .row.event-row:last-child .event-timeline {
         bottom: 50%;
     }
 }

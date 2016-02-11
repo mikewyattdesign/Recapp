@@ -82,7 +82,7 @@ gem 'wicked_pdf', '0.11.0'
 gem 'wkhtmltopdf-binary', '0.9.9.3'
 
 # Pagination for Events
-gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate', '~> 3.0.6'
 gem 'betterlorem', '~> 0.1.2'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 

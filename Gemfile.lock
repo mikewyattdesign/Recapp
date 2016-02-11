@@ -360,7 +360,7 @@ DEPENDENCIES
   uglifier (= 2.5.3)
   unicorn (= 4.8.3)
   wicked_pdf (= 0.11.0)
-  will_paginate (~> 3.0.5)
+  will_paginate (~> 3.0.6)
   wkhtmltopdf-binary (= 0.9.9.3)
 
 BUNDLED WITH
