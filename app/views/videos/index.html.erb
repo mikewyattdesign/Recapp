@@ -63,9 +63,12 @@
             <% @videos.each do |video| %>
               <div class="col-sm-6 col-md-4">
                 <div class="card-stack card-round videos-container photo">
-                  <div class="list-video-container">
-                    <a href="<%= video.media.url(:medium) %>" target="_blank" data-title="<a href='<%= video.media.url %>' download>Download</a>">
+                  <div class="list-video-container text-center">
+                    <a href="<%= video.media.url(:original) %>" target="_blank" data-title="<a href='<%= video.media.url %>' download>Download</a>">
+                    <%= video.media_file_name %>
+                    <!--
                     <%= image_tag video.media(:thumb), class: 'img-responsive list-video' %>
+                    -->
                     </a>
                   </div>
                     <!--
