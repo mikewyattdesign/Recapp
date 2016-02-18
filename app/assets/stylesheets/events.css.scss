@@ -633,3 +633,9 @@
 .event-start {
     padding-bottom: 7px;
 }
+
+@media (min-width : 768px) and (max-width : 1420px) {
+  .no-events {
+    margin-top: 130px;
+  }
+}

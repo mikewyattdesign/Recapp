@@ -11,6 +11,7 @@
 
         <div class="form-box">
             <div class="row">
+            <% viewable_program_length = @programs.length %>
             <% @programs.each do |program| %>
               <% if can? :read, program %>
               <div class="col-md-4">
@@ -20,6 +21,8 @@
                 </div>
                 <div class="brand-name">
                     <%= program.name %>
+                </div>
+                <div class="brand-name">
                     <%= link_to program_path(program), class: "btn btn-info info-button" do %>
                       <span class="glyphicon glyphicon-list"></span> Overview
                     <% end %>
@@ -57,7 +60,12 @@
                 <% end %>
                 </div>
               </div>
+              <% else %>
+                <% viewable_program_length = viewable_program_length - 1 %>
               <% end %>
+            <% end %>
+            <% if viewable_program_length == 0 %>
+              <h3>There are no programs approved for viewing at this time.</h3>
             <% end %>
             </div>
 <!--
