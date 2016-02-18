@@ -68,6 +68,16 @@
 
                 border-top: 15px solid #cb650b;
             }
+
+            .left-triangle,
+            .right-triangle {
+              @media screen and (max-width : 1200px) {
+                top: 116px;
+              }
+              @media screen and (max-width : 980px) {
+                top: 111px;
+              }
+            }
         }
     }
 
