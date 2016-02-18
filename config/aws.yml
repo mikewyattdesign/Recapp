@@ -1,12 +1,12 @@
-development: 
-  access_key_id: AKIAJIH7A6UL5TW2KCNQ
-  secret_access_key: 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
+development:
+  access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
   bucket: nutshell-360-dev
-test: 
-  access_key_id: AKIAJIH7A6UL5TW2KCNQ
-  secret_access_key: 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
+test:
+  access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
   bucket: nutshell-360-dev
-production: 
+production:
   access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
   secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
   bucket: <%= ENV["S3_BUCKET_NAME"] %>
