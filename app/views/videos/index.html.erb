@@ -64,14 +64,12 @@
               <div class="col-sm-6 col-md-4">
                 <div class="card-stack card-round videos-container photo">
                   <div class="list-video-container">
-                    <div class="text-center">
-                    <a href="<%= video.media.url(:original) %>" target="_blank" data-title="<a href='<%= video.media.url %>' download>Download</a>">
-                      <%= video.media_file_name %>
+                    <a href="<%= video.media.url(:medium) %>" target="_blank" data-title="<a href='<%= video.media.url %>' download>Download</a>">
+                    <%= image_tag video.media(:thumb), class: 'img-responsive list-video' %>
                     </a>
-                    </div>
+                  </div>
                     <!--
-                    <%= image_tag video.media(:thumb), class: 'img-responsive list-video' %></div>
-
+                      <%= video.media_file_name %>
                   <div>
                     <%= link_to video do %>
                       <button type="button" class="btn btn-default info-button"><span class="glyphicon glyphicon glyphicon-pencil"></span> Show</button>
