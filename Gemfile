@@ -48,8 +48,8 @@ gem 'cancancan', '1.9.2'
 # Use paperclip for photo attachment
 gem 'paperclip', '4.2.0'
 
-# Use paperclip-ffmpeg for video handling
-gem 'paperclip-ffmpeg', '1.2.0'
+# Use paperclip-av-transcoder for video handling
+gem 'paperclip-av-transcoder', '0.6.4'
 
 # Use remotipart for remote file uploads
 gem 'remotipart', '1.2.1'

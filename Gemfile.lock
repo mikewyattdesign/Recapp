@@ -34,6 +34,8 @@ GEM
     autoprefixer-rails (6.3.2)
       execjs
       json
+    av (0.9.0)
+      cocaine (~> 0.5.3)
     aws-sdk (1.57.0)
       aws-sdk-v1 (= 1.57.0)
     aws-sdk-v1 (1.57.0)
@@ -180,9 +182,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paperclip-ffmpeg (1.2.0)
+    paperclip-av-transcoder (0.6.4)
+      av (~> 0.9.0)
       paperclip (>= 2.5.2)
-      rails
     pg (0.17.1)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -342,7 +344,7 @@ DEPENDENCIES
   newrelic_rpm (= 3.14.3.313)
   nokogiri (= 1.6.3.1)
   paperclip (= 4.2.0)
-  paperclip-ffmpeg (= 1.2.0)
+  paperclip-av-transcoder (= 0.6.4)
   pg (= 0.17.1)
   rails (= 4.1.6)
   rails_12factor (= 0.0.3)
